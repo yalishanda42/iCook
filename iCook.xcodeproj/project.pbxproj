@@ -105,13 +105,11 @@
 			children = (
 				7431686C241185B0002B3905 /* AppDelegate.swift */,
 				7431686E241185B0002B3905 /* SceneDelegate.swift */,
+				743168A1241194C7002B3905 /* Storyboards */,
 				74316870241185B0002B3905 /* ViewController.swift */,
-				74316872241185B0002B3905 /* Main.storyboard */,
-				7431687A241185B1002B3905 /* LaunchScreen.storyboard */,
+				743168A2241194D0002B3905 /* Supporting Files */,
 				7431687D241185B1002B3905 /* Info.plist */,
 				74316875241185B0002B3905 /* iCook.xcdatamodeld */,
-				74316878241185B1002B3905 /* Assets.xcassets */,
-				7431689F241189F2002B3905 /* Colors.xcassets */,
 			);
 			path = iCook;
 			sourceTree = "<group>";
@@ -132,6 +130,24 @@
 				74316893241185B2002B3905 /* Info.plist */,
 			);
 			path = iCookUITests;
+			sourceTree = "<group>";
+		};
+		743168A1241194C7002B3905 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				74316872241185B0002B3905 /* Main.storyboard */,
+				7431687A241185B1002B3905 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		743168A2241194D0002B3905 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7431689F241189F2002B3905 /* Colors.xcassets */,
+				74316878241185B1002B3905 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
