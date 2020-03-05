@@ -16,6 +16,7 @@
 		7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7431687A241185B1002B3905 /* LaunchScreen.storyboard */; };
 		74316887241185B1002B3905 /* iCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316886241185B1002B3905 /* iCookTests.swift */; };
 		74316892241185B2002B3905 /* iCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316891241185B2002B3905 /* iCookUITests.swift */; };
+		743168A0241189F2002B3905 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7431689F241189F2002B3905 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		7431688D241185B2002B3905 /* iCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74316891241185B2002B3905 /* iCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCookUITests.swift; sourceTree = "<group>"; };
 		74316893241185B2002B3905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7431689F241189F2002B3905 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +107,11 @@
 				7431686E241185B0002B3905 /* SceneDelegate.swift */,
 				74316870241185B0002B3905 /* ViewController.swift */,
 				74316872241185B0002B3905 /* Main.storyboard */,
-				74316878241185B1002B3905 /* Assets.xcassets */,
 				7431687A241185B1002B3905 /* LaunchScreen.storyboard */,
 				7431687D241185B1002B3905 /* Info.plist */,
 				74316875241185B0002B3905 /* iCook.xcdatamodeld */,
+				74316878241185B1002B3905 /* Assets.xcassets */,
+				7431689F241189F2002B3905 /* Colors.xcassets */,
 			);
 			path = iCook;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */,
+				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
 				74316874241185B0002B3905 /* Main.storyboard in Resources */,
 			);
