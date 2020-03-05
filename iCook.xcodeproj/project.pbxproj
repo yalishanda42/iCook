@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		74316869241185B0002B3905 /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		74316869241185B0002B3905 /* iДаГотвим!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iДаГотвим!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7431686C241185B0002B3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7431686E241185B0002B3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		74316870241185B0002B3905 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		7431686A241185B0002B3905 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				74316869241185B0002B3905 /* iCook.app */,
+				74316869241185B0002B3905 /* iДаГотвим!.app */,
 				74316882241185B1002B3905 /* iCookTests.xctest */,
 				7431688D241185B2002B3905 /* iCookUITests.xctest */,
 			);
@@ -148,7 +148,7 @@
 			);
 			name = iCook;
 			productName = iCook;
-			productReference = 74316869241185B0002B3905 /* iCook.app */;
+			productReference = 74316869241185B0002B3905 /* iДаГотвим!.app */;
 			productType = "com.apple.product-type.application";
 		};
 		74316881241185B1002B3905 /* iCookTests */ = {
@@ -446,7 +446,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bg.abv.yalishanda.iCook;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iДаГотвим!";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -464,7 +464,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bg.abv.yalishanda.iCook;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iДаГотвим!";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
