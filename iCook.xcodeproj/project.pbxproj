@@ -674,6 +674,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = bg.abv.yalishanda.iCook;
 				PRODUCT_NAME = "iДаГотвим!";
 				SWIFT_VERSION = 5.0;
@@ -693,6 +694,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = bg.abv.yalishanda.iCook;
 				PRODUCT_NAME = "iДаГотвим!";
 				SWIFT_VERSION = 5.0;

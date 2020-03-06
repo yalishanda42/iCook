@@ -29,7 +29,7 @@ class APIService {
             method: .post,
             parameters: parameters,
             encoding: JSONEncoding.default
-        ).responseDecodable(of: APIResponse.self) { response in
+        ).responseDecodable(of: APITokenResponse.self) { response in
             print(response)
         }
     }
