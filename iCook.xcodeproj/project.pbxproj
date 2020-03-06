@@ -16,24 +16,15 @@
 		74316879241185B1002B3905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74316878241185B1002B3905 /* Assets.xcassets */; };
 		7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7431687A241185B1002B3905 /* LaunchScreen.storyboard */; };
 		74316887241185B1002B3905 /* iCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316886241185B1002B3905 /* iCookTests.swift */; };
-		74316892241185B2002B3905 /* iCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316891241185B2002B3905 /* iCookUITests.swift */; };
 		743168A0241189F2002B3905 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7431689F241189F2002B3905 /* Colors.xcassets */; };
 		743168AB2411A01E002B3905 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AA2411A01E002B3905 /* RoundedTextField.swift */; };
 		743168B02411AB8C002B3905 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AF2411AB8C002B3905 /* APIService.swift */; };
 		743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168B52411B9F6002B3905 /* APITokenResponse.swift */; };
-		92FEC1FAB620573CCED8FBC5 /* Pods_iCook_iCookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42CA19572C28BD56C40EAC9 /* Pods_iCook_iCookUITests.framework */; };
 		D275451AD402F6680690FA05 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54D0EDA9885A02EE29C0386 /* Pods_iCook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		74316883241185B1002B3905 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 74316861241185B0002B3905 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 74316868241185B0002B3905;
-			remoteInfo = iCook;
-		};
-		7431688E241185B2002B3905 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 74316861241185B0002B3905 /* Project object */;
 			proxyType = 1;
@@ -60,7 +51,6 @@
 		74316882241185B1002B3905 /* iCookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74316886241185B1002B3905 /* iCookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCookTests.swift; sourceTree = "<group>"; };
 		74316888241185B1002B3905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7431688D241185B2002B3905 /* iCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74316891241185B2002B3905 /* iCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCookUITests.swift; sourceTree = "<group>"; };
 		74316893241185B2002B3905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7431689F241189F2002B3905 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -87,14 +77,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EC5DB9E52861C6D7E510634 /* Pods_iCookTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7431688A241185B2002B3905 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				92FEC1FAB620573CCED8FBC5 /* Pods_iCook_iCookUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +110,6 @@
 			children = (
 				74316869241185B0002B3905 /* iCook.app */,
 				74316882241185B1002B3905 /* iCookTests.xctest */,
-				7431688D241185B2002B3905 /* iCookUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,26 +269,6 @@
 			productReference = 74316882241185B1002B3905 /* iCookTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7431688C241185B2002B3905 /* iCookUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7431689C241185B2002B3905 /* Build configuration list for PBXNativeTarget "iCookUITests" */;
-			buildPhases = (
-				F3C89EDBFCD5C5DD2B4EC472 /* [CP] Check Pods Manifest.lock */,
-				74316889241185B2002B3905 /* Sources */,
-				7431688A241185B2002B3905 /* Frameworks */,
-				7431688B241185B2002B3905 /* Resources */,
-				93B619A762414A421871BC4E /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7431688F241185B2002B3905 /* PBXTargetDependency */,
-			);
-			name = iCookUITests;
-			productName = iCookUITests;
-			productReference = 7431688D241185B2002B3905 /* iCookUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -322,10 +283,6 @@
 						CreatedOnToolsVersion = 11.3.1;
 					};
 					74316881241185B1002B3905 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = 74316868241185B0002B3905;
-					};
-					7431688C241185B2002B3905 = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = 74316868241185B0002B3905;
 					};
@@ -346,7 +303,6 @@
 			targets = (
 				74316868241185B0002B3905 /* iCook */,
 				74316881241185B1002B3905 /* iCookTests */,
-				7431688C241185B2002B3905 /* iCookUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -364,13 +320,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		74316880241185B1002B3905 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7431688B241185B2002B3905 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,45 +366,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iCook/Pods-iCook-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		93B619A762414A421871BC4E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F3C89EDBFCD5C5DD2B4EC472 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iCook-iCookUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F8AA984997708484ABDC3332 /* [CP] Check Pods Manifest.lock */ = {
@@ -505,14 +415,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		74316889241185B2002B3905 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				74316892241185B2002B3905 /* iCookUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -520,11 +422,6 @@
 			isa = PBXTargetDependency;
 			target = 74316868241185B0002B3905 /* iCook */;
 			targetProxy = 74316883241185B1002B3905 /* PBXContainerItemProxy */;
-		};
-		7431688F241185B2002B3905 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 74316868241185B0002B3905 /* iCook */;
-			targetProxy = 7431688E241185B2002B3905 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -748,48 +645,6 @@
 			};
 			name = Release;
 		};
-		7431689D241185B2002B3905 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49BBD1FC481AA9C3558E15E7 /* Pods-iCook-iCookUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4643PTS49B;
-				INFOPLIST_FILE = iCookUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = bg.abv.yalishanda.iCookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = iCook;
-			};
-			name = Debug;
-		};
-		7431689E241185B2002B3905 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E862A23B141EDACEE46383B /* Pods-iCook-iCookUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4643PTS49B;
-				INFOPLIST_FILE = iCookUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = bg.abv.yalishanda.iCookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = iCook;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -816,15 +671,6 @@
 			buildConfigurations = (
 				7431689A241185B2002B3905 /* Debug */,
 				7431689B241185B2002B3905 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7431689C241185B2002B3905 /* Build configuration list for PBXNativeTarget "iCookUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7431689D241185B2002B3905 /* Debug */,
-				7431689E241185B2002B3905 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
