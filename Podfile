@@ -13,8 +13,8 @@ target 'iCook' do
     # Pods for testing
   end
 
-  target 'iCookUITests' do
-    # Pods for testing
-  end
+  # target 'iCookUITests' do
+      # Pods for UI testing
+  #  end
 
 end
