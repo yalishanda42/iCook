@@ -48,7 +48,7 @@
 		2EA50A790A6B83FE13632C3F /* Pods-iCookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookTests.debug.xcconfig"; path = "Target Support Files/Pods-iCookTests/Pods-iCookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49BBD1FC481AA9C3558E15E7 /* Pods-iCook-iCookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook-iCookUITests.debug.xcconfig"; path = "Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E862A23B141EDACEE46383B /* Pods-iCook-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook-iCookUITests.release.xcconfig"; path = "Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
-		74316869241185B0002B3905 /* iДаГотвим!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iДаГотвим!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74316869241185B0002B3905 /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7431686C241185B0002B3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7431686E241185B0002B3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		74316870241185B0002B3905 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		7431686A241185B0002B3905 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				74316869241185B0002B3905 /* iДаГотвим!.app */,
+				74316869241185B0002B3905 /* iCook.app */,
 				74316882241185B1002B3905 /* iCookTests.xctest */,
 				7431688D241185B2002B3905 /* iCookUITests.xctest */,
 			);
@@ -266,7 +266,7 @@
 			);
 			name = iCook;
 			productName = iCook;
-			productReference = 74316869241185B0002B3905 /* iДаГотвим!.app */;
+			productReference = 74316869241185B0002B3905 /* iCook.app */;
 			productType = "com.apple.product-type.application";
 		};
 		74316881241185B1002B3905 /* iCookTests */ = {
@@ -676,7 +676,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = bg.abv.yalishanda.iCook;
-				PRODUCT_NAME = "iДаГотвим!";
+				PRODUCT_NAME = iCook;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -696,7 +696,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = bg.abv.yalishanda.iCook;
-				PRODUCT_NAME = "iДаГотвим!";
+				PRODUCT_NAME = iCook;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
