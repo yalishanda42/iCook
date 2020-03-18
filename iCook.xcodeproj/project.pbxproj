@@ -11,15 +11,21 @@
 		7431686D241185B0002B3905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431686C241185B0002B3905 /* AppDelegate.swift */; };
 		7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431686E241185B0002B3905 /* SceneDelegate.swift */; };
 		74316871241185B0002B3905 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316870241185B0002B3905 /* LoginViewController.swift */; };
-		74316874241185B0002B3905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74316872241185B0002B3905 /* Main.storyboard */; };
+		74316874241185B0002B3905 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74316872241185B0002B3905 /* Login.storyboard */; };
 		74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74316875241185B0002B3905 /* iCook.xcdatamodeld */; };
 		74316879241185B1002B3905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74316878241185B1002B3905 /* Assets.xcassets */; };
 		7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7431687A241185B1002B3905 /* LaunchScreen.storyboard */; };
 		74316887241185B1002B3905 /* iCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316886241185B1002B3905 /* iCookTests.swift */; };
 		743168A0241189F2002B3905 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7431689F241189F2002B3905 /* Colors.xcassets */; };
 		743168AB2411A01E002B3905 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AA2411A01E002B3905 /* RoundedTextField.swift */; };
-		743168B02411AB8C002B3905 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AF2411AB8C002B3905 /* APIService.swift */; };
+		743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AF2411AB8C002B3905 /* TestAPIService.swift */; };
 		743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168B52411B9F6002B3905 /* APITokenResponse.swift */; };
+		74400FC42422A8DA00DC2E76 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC32422A8DA00DC2E76 /* Coordinator.swift */; };
+		74400FC62422A95900DC2E76 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC52422A95900DC2E76 /* LoginCoordinator.swift */; };
+		74400FC82422A98400DC2E76 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC72422A98400DC2E76 /* AppCoordinator.swift */; };
+		74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */; };
+		74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */; };
+		74400FD12422B09D00DC2E76 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FD02422B09D00DC2E76 /* APIService.swift */; };
 		D275451AD402F6680690FA05 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54D0EDA9885A02EE29C0386 /* Pods_iCook.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +49,7 @@
 		7431686C241185B0002B3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7431686E241185B0002B3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		74316870241185B0002B3905 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		74316873241185B0002B3905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		74316873241185B0002B3905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		74316876241185B0002B3905 /* iCook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iCook.xcdatamodel; sourceTree = "<group>"; };
 		74316878241185B1002B3905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7431687B241185B1002B3905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,8 +61,14 @@
 		74316893241185B2002B3905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7431689F241189F2002B3905 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		743168AA2411A01E002B3905 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
-		743168AF2411AB8C002B3905 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		743168AF2411AB8C002B3905 /* TestAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPIService.swift; sourceTree = "<group>"; };
 		743168B52411B9F6002B3905 /* APITokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITokenResponse.swift; sourceTree = "<group>"; };
+		74400FC32422A8DA00DC2E76 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		74400FC52422A95900DC2E76 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		74400FC72422A98400DC2E76 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstantiable.swift"; sourceTree = "<group>"; };
+		74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		74400FD02422B09D00DC2E76 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CB877DA0F570D1D9A44933C0 /* Pods-iCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.release.xcconfig"; path = "Target Support Files/Pods-iCook/Pods-iCook.release.xcconfig"; sourceTree = "<group>"; };
 		CC61FB0290D01A9CDB0BBB4C /* Pods-iCookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookTests.release.xcconfig"; path = "Target Support Files/Pods-iCookTests/Pods-iCookTests.release.xcconfig"; sourceTree = "<group>"; };
 		D42CA19572C28BD56C40EAC9 /* Pods_iCook_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCook_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,10 +131,8 @@
 			children = (
 				7431686C241185B0002B3905 /* AppDelegate.swift */,
 				7431686E241185B0002B3905 /* SceneDelegate.swift */,
-				743168A1241194C7002B3905 /* Storyboards */,
+				74400FC12422A51900DC2E76 /* Scenes */,
 				743168A424119DE7002B3905 /* Common */,
-				743168A324119D82002B3905 /* Login */,
-				743168AE2411AB6F002B3905 /* Networking */,
 				743168A2241194D0002B3905 /* Supporting Files */,
 				7431687D241185B1002B3905 /* Info.plist */,
 				74316875241185B0002B3905 /* iCook.xcdatamodeld */,
@@ -148,15 +158,6 @@
 			path = iCookUITests;
 			sourceTree = "<group>";
 		};
-		743168A1241194C7002B3905 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				74316872241185B0002B3905 /* Main.storyboard */,
-				7431687A241185B1002B3905 /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
 		743168A2241194D0002B3905 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +170,10 @@
 		743168A324119D82002B3905 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				74316870241185B0002B3905 /* LoginViewController.swift */,
+				74400FC52422A95900DC2E76 /* LoginCoordinator.swift */,
+				74316872241185B0002B3905 /* Login.storyboard */,
+				74400FCD2422AD2300DC2E76 /* ViewModels */,
+				74400FC22422A81C00DC2E76 /* ViewControllers */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -177,7 +181,9 @@
 		743168A424119DE7002B3905 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				74400FCC2422ACB300DC2E76 /* Extensions */,
 				743168A524119E00002B3905 /* Controls */,
+				743168AE2411AB6F002B3905 /* Networking */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -193,8 +199,9 @@
 		743168AE2411AB6F002B3905 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				74400FD02422B09D00DC2E76 /* APIService.swift */,
+				743168AF2411AB8C002B3905 /* TestAPIService.swift */,
 				743168B32411AE72002B3905 /* Models */,
-				743168AF2411AB8C002B3905 /* APIService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -213,6 +220,49 @@
 				743168B52411B9F6002B3905 /* APITokenResponse.swift */,
 			);
 			path = APIResponses;
+			sourceTree = "<group>";
+		};
+		74400FC12422A51900DC2E76 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				74400FC72422A98400DC2E76 /* AppCoordinator.swift */,
+				74400FC32422A8DA00DC2E76 /* Coordinator.swift */,
+				74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */,
+				74400FCB2422ABC100DC2E76 /* LaunchScreen */,
+				743168A324119D82002B3905 /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		74400FC22422A81C00DC2E76 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74316870241185B0002B3905 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74400FCB2422ABC100DC2E76 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7431687A241185B1002B3905 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		74400FCC2422ACB300DC2E76 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		74400FCD2422AD2300DC2E76 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		929ADDEDFFD70B43D7D4DBF3 /* Pods */ = {
@@ -315,7 +365,7 @@
 				7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */,
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
-				74316874241185B0002B3905 /* Main.storyboard in Resources */,
+				74316874241185B0002B3905 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,11 +447,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74400FC42422A8DA00DC2E76 /* Coordinator.swift in Sources */,
 				74316871241185B0002B3905 /* LoginViewController.swift in Sources */,
+				74400FC82422A98400DC2E76 /* AppCoordinator.swift in Sources */,
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
 				743168AB2411A01E002B3905 /* RoundedTextField.swift in Sources */,
-				743168B02411AB8C002B3905 /* APIService.swift in Sources */,
+				743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */,
+				74400FC62422A95900DC2E76 /* LoginCoordinator.swift in Sources */,
+				74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */,
+				74400FD12422B09D00DC2E76 /* APIService.swift in Sources */,
+				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,
 			);
@@ -426,12 +482,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		74316872241185B0002B3905 /* Main.storyboard */ = {
+		74316872241185B0002B3905 /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				74316873241185B0002B3905 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 		7431687A241185B1002B3905 /* LaunchScreen.storyboard */ = {

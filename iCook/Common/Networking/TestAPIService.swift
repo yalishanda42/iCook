@@ -1,5 +1,5 @@
 //
-//  APIService.swift
+//  TestAPIService.swift
 //  iCook
 //
 //  Created by Alexander Ignatov on 5.03.20.
@@ -9,12 +9,11 @@
 import Foundation
 import Alamofire
 
-class APIService {
-    
-    typealias BearerToken = String
-    
+class TestAPIService {
     private let uriBase = "https://idagotvim.000webhostapp.com/api"
-    
+}
+
+extension TestAPIService: APIService {
     func authenticate(
         email: String,
         password: String,
