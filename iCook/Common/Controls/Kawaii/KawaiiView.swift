@@ -57,9 +57,32 @@ class KawaiiView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        clipsToBounds = true
         layer.cornerRadius = cornerRadius
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
-        clipsToBounds = true
+        addShadow()
+    }
+    
+    private func addShadow() {
+        let shadowPath = UIBezierPath()
+        shadowPath.move(to: CGPoint(x: 0, y: bounds.height))
+        shadowPath.addLine(to: CGPoint(x: bounds.width, y: bounds.height))
+        shadowPath.addLine(to: CGPoint(x: bounds.width, y: 0))
+        
+        let shadowContainerView = UIView()
+        shadowContainerView.backgroundColor = .clear
+        addSubview(shadowContainerView)
+        shadowContainerView.clipsToBounds = false
+        shadowContainerView.layer.shadowColor = UIColor.gray.cgColor
+        shadowContainerView.layer.shadowOpacity = 0.33
+        shadowContainerView.layer.shadowOffset = .zero
+        shadowContainerView.layer.shadowRadius = 20
+        shadowContainerView.layer.shadowPath = shadowPath.cgPath
+        shadowContainerView.translatesAutoresizingMaskIntoConstraints = false
+        shadowContainerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        shadowContainerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        shadowContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        shadowContainerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 }
