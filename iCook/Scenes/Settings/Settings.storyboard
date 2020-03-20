@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KrR-YF-38m">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZEt-2E-EjM">
+            <objects>
+                <tabBarController id="IBo-9t-Tvt" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bVh-aV-4ge">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Yiv-3B-JeE" kind="relationship" relationship="viewControllers" id="rXM-6k-RoT"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdv-Hy-fs7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-683" y="-153"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="bZP-8f-qET">
+            <objects>
+                <navigationController id="Yiv-3B-JeE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="OyX-cD-ULz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uqN-0J-Hpo">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KrR-YF-38m" kind="relationship" relationship="rootViewController" id="CGX-SF-J9K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HrY-CY-kdF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="167" y="-153"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="hle-fo-7So">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" title="Settings" id="KrR-YF-38m" customClass="SettingsViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hsC-iG-CA3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YeK-zD-AFh">
+                                <rect key="frame" x="0.0" y="272" width="414" height="541"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9k-KI-nBV" userLabel="Account Information Container">
+                                <rect key="frame" x="0.0" y="88" width="414" height="184"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooking-hapi-face" translatesAutoresizingMaskIntoConstraints="NO" id="kfC-Qx-Yae">
+                                        <rect key="frame" x="8" y="16" width="160" height="160"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="Imu-sc-mq4"/>
+                                            <constraint firstAttribute="width" constant="160" id="yZf-V0-Scu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcG-Mi-Nad" userLabel="Account Labels Container">
+                                        <rect key="frame" x="176" y="16" width="230" height="160"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yalishanda@abv.bg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thq-CL-Ayi">
+                                                <rect key="frame" x="20" y="94.5" width="202" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="mediumgrey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alexander Ignatov" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubt-M6-TWM">
+                                                <rect key="frame" x="20" y="41.5" width="202" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="thq-CL-Ayi" firstAttribute="top" secondItem="Ubt-M6-TWM" secondAttribute="bottom" constant="24" id="AtY-2g-h6H"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ubt-M6-TWM" secondAttribute="trailing" constant="8" id="Mrt-KJ-gFL"/>
+                                            <constraint firstItem="Ubt-M6-TWM" firstAttribute="leading" secondItem="GcG-Mi-Nad" secondAttribute="leading" constant="20" id="Xbb-dl-8ZR"/>
+                                            <constraint firstAttribute="trailing" secondItem="thq-CL-Ayi" secondAttribute="trailing" constant="8" id="iYo-Su-ObP"/>
+                                            <constraint firstItem="Ubt-M6-TWM" firstAttribute="centerY" secondItem="GcG-Mi-Nad" secondAttribute="centerY" constant="-24" id="ilD-XQ-scz"/>
+                                            <constraint firstItem="thq-CL-Ayi" firstAttribute="leading" secondItem="GcG-Mi-Nad" secondAttribute="leading" constant="20" id="ztU-07-dce"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="kfC-Qx-Yae" firstAttribute="top" secondItem="b9k-KI-nBV" secondAttribute="top" constant="16" id="1wt-Hf-hZm"/>
+                                    <constraint firstAttribute="bottom" secondItem="kfC-Qx-Yae" secondAttribute="bottom" constant="8" id="2CO-wY-86w"/>
+                                    <constraint firstItem="GcG-Mi-Nad" firstAttribute="height" secondItem="kfC-Qx-Yae" secondAttribute="height" id="9rB-fl-C8A"/>
+                                    <constraint firstItem="GcG-Mi-Nad" firstAttribute="leading" secondItem="kfC-Qx-Yae" secondAttribute="trailing" constant="8" symbolic="YES" id="KTS-rq-9P7"/>
+                                    <constraint firstAttribute="bottom" secondItem="GcG-Mi-Nad" secondAttribute="bottom" constant="8" id="edw-AZ-Glg"/>
+                                    <constraint firstItem="kfC-Qx-Yae" firstAttribute="leading" secondItem="b9k-KI-nBV" secondAttribute="leading" constant="8" id="g9S-uW-Caj"/>
+                                    <constraint firstAttribute="trailing" secondItem="GcG-Mi-Nad" secondAttribute="trailing" constant="8" id="lbT-Zy-y49"/>
+                                    <constraint firstItem="GcG-Mi-Nad" firstAttribute="top" secondItem="b9k-KI-nBV" secondAttribute="top" constant="16" id="uOn-MM-1rb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YeK-zD-AFh" firstAttribute="leading" secondItem="zif-H6-gx7" secondAttribute="leading" id="Awf-Ux-byv"/>
+                            <constraint firstItem="b9k-KI-nBV" firstAttribute="leading" secondItem="zif-H6-gx7" secondAttribute="leading" id="D3u-F9-He0"/>
+                            <constraint firstItem="b9k-KI-nBV" firstAttribute="top" secondItem="zif-H6-gx7" secondAttribute="top" id="D9o-UH-hbn"/>
+                            <constraint firstItem="zif-H6-gx7" firstAttribute="trailing" secondItem="b9k-KI-nBV" secondAttribute="trailing" id="Ddm-Bv-9ib"/>
+                            <constraint firstItem="zif-H6-gx7" firstAttribute="trailing" secondItem="YeK-zD-AFh" secondAttribute="trailing" id="Ln0-OS-2gD"/>
+                            <constraint firstItem="zif-H6-gx7" firstAttribute="bottom" secondItem="YeK-zD-AFh" secondAttribute="bottom" id="OBF-lC-KXv"/>
+                            <constraint firstItem="YeK-zD-AFh" firstAttribute="top" secondItem="b9k-KI-nBV" secondAttribute="bottom" id="tCO-Gs-CzB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zif-H6-gx7"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Tud-Mx-AYu"/>
+                    <navigationItem key="navigationItem" id="No1-hL-qLO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K0h-aB-chG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1126" y="-153"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cooking-hapi-face" width="512" height="512"/>
+        <namedColor name="mediumgrey">
+            <color red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -24,7 +24,6 @@ class AppCoordinator: Coordinator {
         
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = UIColor(named: "accent-darker")
-        tabBarController.tabBar.barTintColor = UIColor(named: "background-lighter")
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
 
@@ -40,5 +39,11 @@ class AppCoordinator: Coordinator {
         let dashboardCoordinator = DashboardCoordinator(in: navControllerOne)
         childs.append(dashboardCoordinator)
         dashboardCoordinator.start()
+        let browseCoordinator = BrowseCoordinator(in: navControllerTwo)
+        childs.append(browseCoordinator)
+        browseCoordinator.start()
+        let settingsCoordinator = SettingsCoordinator(in: navControllerThree)
+        childs.append(settingsCoordinator)
+        settingsCoordinator.start()
     }
 }

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9OL-pz-br3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="lWN-kJ-T7r">
+            <objects>
+                <tabBarController id="3AV-Jq-vrk" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cQX-cq-sV7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="jf7-Zm-1vd" kind="relationship" relationship="viewControllers" id="qqL-wU-JTN"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HqH-PJ-bsF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1690" y="125"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="mxg-v5-gZM">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="swA-dE-6Im" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="jf7-Zm-1vd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="4Y0-wE-ptG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="08d-d7-saz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="55U-h0-Wbz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="9OL-pz-br3" kind="relationship" relationship="rootViewController" id="MBk-aM-dGZ"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-778" y="125"/>
+        </scene>
+        <!--Browse-->
+        <scene sceneID="zZS-aU-mYL">
+            <objects>
+                <viewController storyboardIdentifier="BrowseViewController" title="Browse" id="9OL-pz-br3" customClass="BrowseViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GrS-hH-3xf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="What do you wanna eat?" translatesAutoresizingMaskIntoConstraints="NO" id="MWB-wy-npI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frying-pan" translatesAutoresizingMaskIntoConstraints="NO" id="K9T-A8-a6T">
+                                <rect key="frame" x="147" y="324" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="3z1-fD-VlU"/>
+                                    <constraint firstAttribute="width" constant="120" id="y4O-hy-Rv3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for dishes, recipes and saved lists." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iut-bh-KqJ">
+                                <rect key="frame" x="12" y="476" width="390" height="23"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="19"/>
+                                <color key="textColor" name="deep-purple"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="K9T-A8-a6T" firstAttribute="centerX" secondItem="GrS-hH-3xf" secondAttribute="centerX" id="Bgz-9j-7Uo"/>
+                            <constraint firstItem="Xws-ih-WXN" firstAttribute="trailing" secondItem="Iut-bh-KqJ" secondAttribute="trailing" constant="12" id="OP6-a7-y9z"/>
+                            <constraint firstItem="MWB-wy-npI" firstAttribute="top" secondItem="Xws-ih-WXN" secondAttribute="top" id="R9W-2a-RxP"/>
+                            <constraint firstItem="Iut-bh-KqJ" firstAttribute="top" secondItem="K9T-A8-a6T" secondAttribute="bottom" constant="32" id="SjU-eU-XOc"/>
+                            <constraint firstItem="K9T-A8-a6T" firstAttribute="centerY" secondItem="GrS-hH-3xf" secondAttribute="centerY" constant="-64" id="fqn-0p-fOP"/>
+                            <constraint firstItem="MWB-wy-npI" firstAttribute="leading" secondItem="Xws-ih-WXN" secondAttribute="leading" id="hep-TJ-2B5"/>
+                            <constraint firstItem="MWB-wy-npI" firstAttribute="trailing" secondItem="Xws-ih-WXN" secondAttribute="trailing" id="qzq-ae-1qd"/>
+                            <constraint firstItem="Iut-bh-KqJ" firstAttribute="leading" secondItem="Xws-ih-WXN" secondAttribute="leading" constant="12" id="yih-VQ-5w8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xws-ih-WXN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qdl-bE-Spg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ufI-Y8-Bq9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="frying-pan" width="512" height="512"/>
+        <namedColor name="deep-purple">
+            <color red="0.41568627450980394" green="0.38823529411764707" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

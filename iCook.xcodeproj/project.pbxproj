@@ -26,6 +26,12 @@
 		74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */; };
 		74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */; };
 		74400FD12422B09D00DC2E76 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FD02422B09D00DC2E76 /* APIService.swift */; };
+		74B8B88224251DA600C29491 /* Browse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B8B88124251DA600C29491 /* Browse.storyboard */; };
+		74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88324251DB800C29491 /* BrowseCoordinator.swift */; };
+		74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88724251E0700C29491 /* BrowseViewController.swift */; };
+		74B8B88B24251E9000C29491 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88A24251E9000C29491 /* SettingsViewController.swift */; };
+		74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88C2425203400C29491 /* SettingsCoordinator.swift */; };
+		74B8B88F2425206400C29491 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B8B88E2425206400C29491 /* Settings.storyboard */; };
 		74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74DB90432424E6D90092E51C /* Dashboard.storyboard */; };
 		74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB90452424E6F50092E51C /* DashboardCoordinator.swift */; };
 		74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB90472424E78E0092E51C /* DashboardViewController.swift */; };
@@ -72,6 +78,12 @@
 		74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstantiable.swift"; sourceTree = "<group>"; };
 		74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		74400FD02422B09D00DC2E76 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		74B8B88124251DA600C29491 /* Browse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Browse.storyboard; sourceTree = "<group>"; };
+		74B8B88324251DB800C29491 /* BrowseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCoordinator.swift; sourceTree = "<group>"; };
+		74B8B88724251E0700C29491 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		74B8B88A24251E9000C29491 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		74B8B88C2425203400C29491 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		74B8B88E2425206400C29491 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		74DB90432424E6D90092E51C /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		74DB90452424E6F50092E51C /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
 		74DB90472424E78E0092E51C /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +248,8 @@
 				74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */,
 				74400FCB2422ABC100DC2E76 /* LaunchScreen */,
 				74DB90422424E6C20092E51C /* Dashboard */,
+				74B8B88024251D4400C29491 /* Browse */,
+				74B8B88924251E7C00C29491 /* Settings */,
 				743168A324119D82002B3905 /* Login */,
 			);
 			path = Scenes;
@@ -270,6 +284,42 @@
 				74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74B8B88024251D4400C29491 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				74B8B88324251DB800C29491 /* BrowseCoordinator.swift */,
+				74B8B88124251DA600C29491 /* Browse.storyboard */,
+				74B8B88624251DF500C29491 /* ViewControllers */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
+		74B8B88624251DF500C29491 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74B8B88724251E0700C29491 /* BrowseViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74B8B88924251E7C00C29491 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				74B8B88C2425203400C29491 /* SettingsCoordinator.swift */,
+				74B8B88E2425206400C29491 /* Settings.storyboard */,
+				74B8B890242524E300C29491 /* ViewControllers */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		74B8B890242524E300C29491 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74B8B88A24251E9000C29491 /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		74DB90422424E6C20092E51C /* Dashboard */ = {
@@ -387,11 +437,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B8B88224251DA600C29491 /* Browse.storyboard in Resources */,
 				7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */,
 				74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */,
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
 				74316874241185B0002B3905 /* Login.storyboard in Resources */,
+				74B8B88F2425206400C29491 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +527,7 @@
 			files = (
 				74400FC42422A8DA00DC2E76 /* Coordinator.swift in Sources */,
 				74316871241185B0002B3905 /* LoginViewController.swift in Sources */,
+				74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */,
 				74400FC82422A98400DC2E76 /* AppCoordinator.swift in Sources */,
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
@@ -482,7 +535,10 @@
 				743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */,
 				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
 				74400FC62422A95900DC2E76 /* LoginCoordinator.swift in Sources */,
+				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */,
+				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
+				74B8B88B24251E9000C29491 /* SettingsViewController.swift in Sources */,
 				74400FD12422B09D00DC2E76 /* APIService.swift in Sources */,
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
