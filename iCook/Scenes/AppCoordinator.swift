@@ -11,7 +11,7 @@ import UIKit
 class AppCoordinator: Coordinator {
     
     var window: UIWindow?
-    var child: Coordinator?
+    var childs: [Coordinator] = []
     
     lazy var apiService: APIService = TestAPIService()
     
@@ -22,11 +22,23 @@ class AppCoordinator: Coordinator {
     func start() {
         guard let window = window else { return }
         
-        let rootViewController = UINavigationController()
-        window.rootViewController = rootViewController
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = UIColor(named: "accent-darker")
+        tabBarController.tabBar.barTintColor = UIColor(named: "background-lighter")
+        window.rootViewController = tabBarController
         window.makeKeyAndVisible()
-        let login = LoginCoordinator(rootViewController, apiService: apiService)
-        child = login
-        login.start()
+
+        let navControllerOne = UINavigationController()
+        navControllerOne.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(systemName: "house"), tag: 0)
+        let navControllerTwo = UINavigationController()
+        navControllerTwo.tabBarItem = UITabBarItem(title: "Browse", image: UIImage(systemName: "book"), tag: 1)
+        let navControllerThree = UINavigationController()
+        navControllerThree.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)
+
+        tabBarController.viewControllers = [navControllerOne, navControllerTwo, navControllerThree]
+        
+        let dashboardCoordinator = DashboardCoordinator(in: navControllerOne)
+        childs.append(dashboardCoordinator)
+        dashboardCoordinator.start()
     }
 }

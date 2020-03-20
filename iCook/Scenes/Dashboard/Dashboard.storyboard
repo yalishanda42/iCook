@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DhC-GI-LGB">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item-->
+        <scene sceneID="OCV-ry-23S">
+            <objects>
+                <navigationController id="0OF-YG-xxR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="H3a-sa-oRu"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LkM-J6-65k">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DhC-GI-LGB" kind="relationship" relationship="rootViewController" id="Rja-FA-pou"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CQA-6P-ye8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1012" y="139"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="UkJ-3H-hdG">
+            <objects>
+                <tabBarController id="Ben-kc-d0Y" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hgh-Mr-uqp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="0OF-YG-xxR" kind="relationship" relationship="viewControllers" id="jI0-3q-nOu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3q4-mD-o39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1928" y="139"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="kUf-S7-myq">
+            <objects>
+                <viewController storyboardIdentifier="DashboardViewController" title="Dashboard" id="DhC-GI-LGB" customClass="DashboardViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AD1-rL-1eb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good morning!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L15-9d-GXo">
+                                <rect key="frame" x="102.5" y="240" width="209" height="35"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="29"/>
+                                <color key="textColor" name="accent-darker"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.haze" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fcX-Wc-5pI">
+                                <rect key="frame" x="87" y="98.5" width="240" height="128"/>
+                                <color key="tintColor" name="accent-darker"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="126" id="20Y-ew-DQg"/>
+                                    <constraint firstAttribute="width" constant="240" id="PHF-5r-Vqs"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-nP-IAf">
+                                <rect key="frame" x="87.5" y="452" width="239" height="329"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJi-7q-7IC">
+                                        <rect key="frame" x="55.5" y="0.0" width="128" height="67"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                        <state key="normal" title="Quick!">
+                                            <color key="titleColor" name="accent-lighter"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn5-Ku-FVM">
+                                        <rect key="frame" x="31.5" y="131" width="176" height="67"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                        <state key="normal" title="Help me!">
+                                            <color key="titleColor" name="accent-lighter"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fir-Ln-OZG">
+                                        <rect key="frame" x="0.0" y="262" width="239" height="67"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                        <state key="normal" title="Help others!">
+                                            <color key="titleColor" name="accent-lighter"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fcX-Wc-5pI" firstAttribute="centerX" secondItem="AD1-rL-1eb" secondAttribute="centerX" id="3Ny-0I-igv"/>
+                            <constraint firstItem="NDX-nP-IAf" firstAttribute="centerX" secondItem="AD1-rL-1eb" secondAttribute="centerX" id="BO8-bq-cIz"/>
+                            <constraint firstItem="Guv-WN-tB5" firstAttribute="bottom" secondItem="NDX-nP-IAf" secondAttribute="bottom" constant="32" id="F8a-fG-AXK"/>
+                            <constraint firstItem="L15-9d-GXo" firstAttribute="centerX" secondItem="AD1-rL-1eb" secondAttribute="centerX" id="YQf-st-m0q"/>
+                            <constraint firstItem="fcX-Wc-5pI" firstAttribute="top" secondItem="AD1-rL-1eb" secondAttribute="top" constant="99" id="e1u-PA-VET"/>
+                            <constraint firstItem="L15-9d-GXo" firstAttribute="top" secondItem="fcX-Wc-5pI" secondAttribute="bottom" constant="15" id="jHZ-3x-x28"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Guv-WN-tB5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oCn-b1-Srz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tLt-Oj-Yhx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-97" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sun.haze" catalog="system" width="64" height="58"/>
+        <namedColor name="accent-darker">
+            <color red="0.99900001287460327" green="0.62300002574920654" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="accent-lighter">
+            <color red="0.99800002574920654" green="0.69800001382827759" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -26,6 +26,9 @@
 		74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */; };
 		74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */; };
 		74400FD12422B09D00DC2E76 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FD02422B09D00DC2E76 /* APIService.swift */; };
+		74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74DB90432424E6D90092E51C /* Dashboard.storyboard */; };
+		74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB90452424E6F50092E51C /* DashboardCoordinator.swift */; };
+		74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB90472424E78E0092E51C /* DashboardViewController.swift */; };
 		D275451AD402F6680690FA05 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54D0EDA9885A02EE29C0386 /* Pods_iCook.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstantiable.swift"; sourceTree = "<group>"; };
 		74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		74400FD02422B09D00DC2E76 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		74DB90432424E6D90092E51C /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		74DB90452424E6F50092E51C /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
+		74DB90472424E78E0092E51C /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		CB877DA0F570D1D9A44933C0 /* Pods-iCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.release.xcconfig"; path = "Target Support Files/Pods-iCook/Pods-iCook.release.xcconfig"; sourceTree = "<group>"; };
 		CC61FB0290D01A9CDB0BBB4C /* Pods-iCookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookTests.release.xcconfig"; path = "Target Support Files/Pods-iCookTests/Pods-iCookTests.release.xcconfig"; sourceTree = "<group>"; };
 		D42CA19572C28BD56C40EAC9 /* Pods_iCook_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCook_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +235,7 @@
 				74400FC32422A8DA00DC2E76 /* Coordinator.swift */,
 				74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */,
 				74400FCB2422ABC100DC2E76 /* LaunchScreen */,
+				74DB90422424E6C20092E51C /* Dashboard */,
 				743168A324119D82002B3905 /* Login */,
 			);
 			path = Scenes;
@@ -263,6 +270,24 @@
 				74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74DB90422424E6C20092E51C /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				74DB90452424E6F50092E51C /* DashboardCoordinator.swift */,
+				74DB90432424E6D90092E51C /* Dashboard.storyboard */,
+				74DB90492424E7910092E51C /* ViewControllers */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		74DB90492424E7910092E51C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74DB90472424E78E0092E51C /* DashboardViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		929ADDEDFFD70B43D7D4DBF3 /* Pods */ = {
@@ -363,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */,
+				74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */,
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
 				74316874241185B0002B3905 /* Login.storyboard in Resources */,
@@ -454,12 +480,14 @@
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
 				743168AB2411A01E002B3905 /* RoundedTextField.swift in Sources */,
 				743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */,
+				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
 				74400FC62422A95900DC2E76 /* LoginCoordinator.swift in Sources */,
 				74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */,
 				74400FD12422B09D00DC2E76 /* APIService.swift in Sources */,
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,
+				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
