@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DashboardCoordinator: Coordinator {
+final class DashboardCoordinator: TabCoordinator {
     
     let navController: UINavigationController
     

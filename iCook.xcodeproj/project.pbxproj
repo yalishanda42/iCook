@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3EC5DB9E52861C6D7E510634 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB56EFC62DDB89C1AB70F77 /* Pods_iCookTests.framework */; };
+		742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */; };
+		742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 742A5B6B24255942005F6C8F /* KawaiiTextField.xib */; };
 		7431686D241185B0002B3905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431686C241185B0002B3905 /* AppDelegate.swift */; };
 		7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431686E241185B0002B3905 /* SceneDelegate.swift */; };
 		74316871241185B0002B3905 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316870241185B0002B3905 /* LoginViewController.swift */; };
@@ -17,7 +19,7 @@
 		7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7431687A241185B1002B3905 /* LaunchScreen.storyboard */; };
 		74316887241185B1002B3905 /* iCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316886241185B1002B3905 /* iCookTests.swift */; };
 		743168A0241189F2002B3905 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7431689F241189F2002B3905 /* Colors.xcassets */; };
-		743168AB2411A01E002B3905 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AA2411A01E002B3905 /* RoundedTextField.swift */; };
+		743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AA2411A01E002B3905 /* KawaiiTextField.swift */; };
 		743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AF2411AB8C002B3905 /* TestAPIService.swift */; };
 		743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168B52411B9F6002B3905 /* APITokenResponse.swift */; };
 		74400FC42422A8DA00DC2E76 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC32422A8DA00DC2E76 /* Coordinator.swift */; };
@@ -54,6 +56,8 @@
 		2EA50A790A6B83FE13632C3F /* Pods-iCookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookTests.debug.xcconfig"; path = "Target Support Files/Pods-iCookTests/Pods-iCookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49BBD1FC481AA9C3558E15E7 /* Pods-iCook-iCookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook-iCookUITests.debug.xcconfig"; path = "Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E862A23B141EDACEE46383B /* Pods-iCook-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook-iCookUITests.release.xcconfig"; path = "Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
+		742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+XibLoadable.swift"; sourceTree = "<group>"; };
+		742A5B6B24255942005F6C8F /* KawaiiTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KawaiiTextField.xib; sourceTree = "<group>"; };
 		74316869241185B0002B3905 /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7431686C241185B0002B3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7431686E241185B0002B3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +73,7 @@
 		74316891241185B2002B3905 /* iCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCookUITests.swift; sourceTree = "<group>"; };
 		74316893241185B2002B3905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7431689F241189F2002B3905 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		743168AA2411A01E002B3905 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		743168AA2411A01E002B3905 /* KawaiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiTextField.swift; sourceTree = "<group>"; };
 		743168AF2411AB8C002B3905 /* TestAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPIService.swift; sourceTree = "<group>"; };
 		743168B52411B9F6002B3905 /* APITokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITokenResponse.swift; sourceTree = "<group>"; };
 		74400FC32422A8DA00DC2E76 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -121,6 +125,15 @@
 				1EB56EFC62DDB89C1AB70F77 /* Pods_iCookTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		742A5B6A2425589C005F6C8F /* Kawaii */ = {
+			isa = PBXGroup;
+			children = (
+				743168AA2411A01E002B3905 /* KawaiiTextField.swift */,
+				742A5B6B24255942005F6C8F /* KawaiiTextField.xib */,
+			);
+			path = Kawaii;
 			sourceTree = "<group>";
 		};
 		74316860241185B0002B3905 = {
@@ -209,7 +222,7 @@
 		743168A524119E00002B3905 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				743168AA2411A01E002B3905 /* RoundedTextField.swift */,
+				742A5B6A2425589C005F6C8F /* Kawaii */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -274,6 +287,7 @@
 		74400FCC2422ACB300DC2E76 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -440,6 +454,7 @@
 				74B8B88224251DA600C29491 /* Browse.storyboard in Resources */,
 				7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */,
 				74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */,
+				742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */,
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
 				74316874241185B0002B3905 /* Login.storyboard in Resources */,
@@ -531,7 +546,7 @@
 				74400FC82422A98400DC2E76 /* AppCoordinator.swift in Sources */,
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
-				743168AB2411A01E002B3905 /* RoundedTextField.swift in Sources */,
+				743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */,
 				743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */,
 				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
 				74400FC62422A95900DC2E76 /* LoginCoordinator.swift in Sources */,
@@ -543,6 +558,7 @@
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,
+				742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */,
 				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

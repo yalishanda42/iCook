@@ -13,8 +13,8 @@ class LoginViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var screenTitle: UILabel!
-    @IBOutlet weak var firstField: RoundedTextField!
-    @IBOutlet weak var secondField: RoundedTextField!
+    @IBOutlet weak var firstField: KawaiiTextField!
+    @IBOutlet weak var secondField: KawaiiTextField!
     @IBOutlet weak var continueButton: UIButton!
     
     // MARK: - Properties
@@ -31,13 +31,7 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func onTapContinueButton(_ sender: Any) {
-        guard let email = firstField.text,
-            let password = secondField.text
-        else {
-            return
-        }
-        
-        viewModel.loginCommand(email: email, password: password)
+        viewModel.loginCommand(email: firstField.text, password: secondField.text)
     }
 }
 

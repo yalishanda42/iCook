@@ -8,12 +8,24 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
+protocol TabCoordinator: Coordinator {
+    init(in navController: UINavigationController)
+}
+
+final class AppCoordinator: Coordinator {
     
-    var window: UIWindow?
-    var childs: [Coordinator] = []
+    var childCoordinators: [Coordinator] = []
+
+    private var window: UIWindow?
     
-    lazy var apiService: APIService = TestAPIService()
+    private lazy var tabBarController: UITabBarController = {
+        let result = UITabBarController()
+        result.tabBar.tintColor = UIColor(named: "accent-darker")
+        result.viewControllers = []
+        return result
+    }()
+    
+    private lazy var apiService: APIService = TestAPIService()
     
     init(in window: UIWindow?) {
         self.window = window
@@ -22,28 +34,67 @@ class AppCoordinator: Coordinator {
     func start() {
         guard let window = window else { return }
         
-        let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = UIColor(named: "accent-darker")
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
+                
+        for tab in Tab.allCases {
+            let navController = UINavigationController()
+            navController.tabBarItem = tab.tabBarItem
+            
+            var tabControllers = tabBarController.viewControllers ?? []
+            tabControllers.append(navController)
+            tabBarController.viewControllers = tabControllers
+            
+            let coordinator = tab.coordinatorClass.init(in: navController)
+            childCoordinators.append(coordinator)
+            coordinator.start()
+        }
+    }
+}
 
-        let navControllerOne = UINavigationController()
-        navControllerOne.tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(systemName: "house"), tag: 0)
-        let navControllerTwo = UINavigationController()
-        navControllerTwo.tabBarItem = UITabBarItem(title: "Browse", image: UIImage(systemName: "book"), tag: 1)
-        let navControllerThree = UINavigationController()
-        navControllerThree.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)
-
-        tabBarController.viewControllers = [navControllerOne, navControllerTwo, navControllerThree]
+extension AppCoordinator {
+    enum Tab: Int, CaseIterable {
+        case dashboard = 0
+        case browse = 1
+        case settings = 2
         
-        let dashboardCoordinator = DashboardCoordinator(in: navControllerOne)
-        childs.append(dashboardCoordinator)
-        dashboardCoordinator.start()
-        let browseCoordinator = BrowseCoordinator(in: navControllerTwo)
-        childs.append(browseCoordinator)
-        browseCoordinator.start()
-        let settingsCoordinator = SettingsCoordinator(in: navControllerThree)
-        childs.append(settingsCoordinator)
-        settingsCoordinator.start()
+        var tabBarItem: UITabBarItem {
+            return UITabBarItem(title: displayName, image: tabBarImage, tag: rawValue)
+        }
+        
+        var displayName: String {
+            switch self {
+            case .dashboard:
+                return "Dashboard"
+            case .browse:
+                return "Browse"
+            case .settings:
+                return "Settings"
+            }
+        }
+        
+        var tabBarImage: UIImage? {
+            let imageName: String
+            switch self {
+            case .dashboard:
+                imageName = "house"
+            case .browse:
+                imageName = "book"
+            case .settings:
+                imageName = "gear"
+            }
+            return UIImage(systemName: imageName)
+        }
+        
+        var coordinatorClass: TabCoordinator.Type {
+            switch self {
+            case .dashboard:
+                return DashboardCoordinator.self
+            case .browse:
+                return BrowseCoordinator.self
+            case .settings:
+                return SettingsCoordinator.self
+            }
+        }
     }
 }

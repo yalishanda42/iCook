@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginCoordinator: Coordinator {
+final class LoginCoordinator: Coordinator {
     
     let rootViewController: UINavigationController
     let apiService: APIService

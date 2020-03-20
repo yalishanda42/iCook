@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BrowseCoordinator: Coordinator {
+final class BrowseCoordinator: TabCoordinator {
     
     let navController: UINavigationController
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsCoordinator: Coordinator {
+final class SettingsCoordinator: TabCoordinator {
     
     let navController: UINavigationController
     

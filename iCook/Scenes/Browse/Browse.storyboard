@@ -28,7 +28,6 @@
         <!--Item-->
         <scene sceneID="mxg-v5-gZM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="swA-dE-6Im" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="jf7-Zm-1vd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="4Y0-wE-ptG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="08d-d7-saz">
@@ -42,6 +41,7 @@
                         <segue destination="9OL-pz-br3" kind="relationship" relationship="rootViewController" id="MBk-aM-dGZ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="swA-dE-6Im" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-778" y="125"/>
         </scene>
@@ -53,10 +53,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="What do you wanna eat?" translatesAutoresizingMaskIntoConstraints="NO" id="MWB-wy-npI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frying-pan" translatesAutoresizingMaskIntoConstraints="NO" id="K9T-A8-a6T">
                                 <rect key="frame" x="147" y="324" width="120" height="120"/>
                                 <constraints>
@@ -70,16 +66,23 @@
                                 <color key="textColor" name="deep-purple"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ij-qY-JIL" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="OaC-Y9-xoB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="K9T-A8-a6T" firstAttribute="centerX" secondItem="GrS-hH-3xf" secondAttribute="centerX" id="Bgz-9j-7Uo"/>
                             <constraint firstItem="Xws-ih-WXN" firstAttribute="trailing" secondItem="Iut-bh-KqJ" secondAttribute="trailing" constant="12" id="OP6-a7-y9z"/>
-                            <constraint firstItem="MWB-wy-npI" firstAttribute="top" secondItem="Xws-ih-WXN" secondAttribute="top" id="R9W-2a-RxP"/>
                             <constraint firstItem="Iut-bh-KqJ" firstAttribute="top" secondItem="K9T-A8-a6T" secondAttribute="bottom" constant="32" id="SjU-eU-XOc"/>
+                            <constraint firstItem="8ij-qY-JIL" firstAttribute="top" secondItem="Xws-ih-WXN" secondAttribute="top" id="eRq-vu-BRa"/>
                             <constraint firstItem="K9T-A8-a6T" firstAttribute="centerY" secondItem="GrS-hH-3xf" secondAttribute="centerY" constant="-64" id="fqn-0p-fOP"/>
-                            <constraint firstItem="MWB-wy-npI" firstAttribute="leading" secondItem="Xws-ih-WXN" secondAttribute="leading" id="hep-TJ-2B5"/>
-                            <constraint firstItem="MWB-wy-npI" firstAttribute="trailing" secondItem="Xws-ih-WXN" secondAttribute="trailing" id="qzq-ae-1qd"/>
+                            <constraint firstItem="Xws-ih-WXN" firstAttribute="trailing" secondItem="8ij-qY-JIL" secondAttribute="trailing" constant="8" id="sn3-4p-vJL"/>
+                            <constraint firstItem="8ij-qY-JIL" firstAttribute="leading" secondItem="Xws-ih-WXN" secondAttribute="leading" constant="8" id="x4K-hN-Yu9"/>
                             <constraint firstItem="Iut-bh-KqJ" firstAttribute="leading" secondItem="Xws-ih-WXN" secondAttribute="leading" constant="12" id="yih-VQ-5w8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xws-ih-WXN"/>
