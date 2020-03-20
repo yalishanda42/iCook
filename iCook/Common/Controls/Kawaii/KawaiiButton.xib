@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+            <connections>
+                <outlet property="button" destination="EFG-eC-V09" id="B9Q-rY-X1m"/>
+                <outlet property="buttonLeadingContraint" destination="pIJ-ax-RWk" id="cJ6-QO-hlT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="129"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFG-eC-V09">
+                    <rect key="frame" x="20" y="0.0" width="394" height="129"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="EFG-eC-V09" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DfT-3h-1BU"/>
+                <constraint firstAttribute="bottom" secondItem="EFG-eC-V09" secondAttribute="bottom" id="EXJ-KU-f86"/>
+                <constraint firstItem="EFG-eC-V09" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="pIJ-ax-RWk"/>
+                <constraint firstAttribute="trailing" secondItem="EFG-eC-V09" secondAttribute="trailing" id="swr-ab-Vsk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-112.16517857142857"/>
+        </view>
+    </objects>
+</document>

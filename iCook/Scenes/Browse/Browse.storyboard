@@ -67,7 +67,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ij-qY-JIL" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="60"/>
+                                <rect key="frame" x="8" y="88" width="398" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="OaC-Y9-xoB"/>

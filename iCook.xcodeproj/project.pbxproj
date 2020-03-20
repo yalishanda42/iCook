@@ -28,6 +28,10 @@
 		74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */; };
 		74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */; };
 		74400FD12422B09D00DC2E76 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FD02422B09D00DC2E76 /* APIService.swift */; };
+		749BC3532425735E0068B492 /* KawaiiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3522425735E0068B492 /* KawaiiView.swift */; };
+		749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3542425755C0068B492 /* UIColor+AssetColors.swift */; };
+		749BC357242579260068B492 /* KawaiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC356242579260068B492 /* KawaiiButton.swift */; };
+		749BC3592425793A0068B492 /* KawaiiButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 749BC3582425793A0068B492 /* KawaiiButton.xib */; };
 		74B8B88224251DA600C29491 /* Browse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B8B88124251DA600C29491 /* Browse.storyboard */; };
 		74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88324251DB800C29491 /* BrowseCoordinator.swift */; };
 		74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88724251E0700C29491 /* BrowseViewController.swift */; };
@@ -82,6 +86,10 @@
 		74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstantiable.swift"; sourceTree = "<group>"; };
 		74400FCE2422AFC300DC2E76 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		74400FD02422B09D00DC2E76 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		749BC3522425735E0068B492 /* KawaiiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiView.swift; sourceTree = "<group>"; };
+		749BC3542425755C0068B492 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
+		749BC356242579260068B492 /* KawaiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiButton.swift; sourceTree = "<group>"; };
+		749BC3582425793A0068B492 /* KawaiiButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KawaiiButton.xib; sourceTree = "<group>"; };
 		74B8B88124251DA600C29491 /* Browse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Browse.storyboard; sourceTree = "<group>"; };
 		74B8B88324251DB800C29491 /* BrowseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCoordinator.swift; sourceTree = "<group>"; };
 		74B8B88724251E0700C29491 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
@@ -130,8 +138,11 @@
 		742A5B6A2425589C005F6C8F /* Kawaii */ = {
 			isa = PBXGroup;
 			children = (
+				749BC3522425735E0068B492 /* KawaiiView.swift */,
 				743168AA2411A01E002B3905 /* KawaiiTextField.swift */,
 				742A5B6B24255942005F6C8F /* KawaiiTextField.xib */,
+				749BC356242579260068B492 /* KawaiiButton.swift */,
+				749BC3582425793A0068B492 /* KawaiiButton.xib */,
 			);
 			path = Kawaii;
 			sourceTree = "<group>";
@@ -288,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */,
+				749BC3542425755C0068B492 /* UIColor+AssetColors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -458,6 +470,7 @@
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
 				74316874241185B0002B3905 /* Login.storyboard in Resources */,
+				749BC3592425793A0068B492 /* KawaiiButton.xib in Resources */,
 				74B8B88F2425206400C29491 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,14 +563,17 @@
 				743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */,
 				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
 				74400FC62422A95900DC2E76 /* LoginCoordinator.swift in Sources */,
+				749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */,
 				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */,
 				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
 				74B8B88B24251E9000C29491 /* SettingsViewController.swift in Sources */,
 				74400FD12422B09D00DC2E76 /* APIService.swift in Sources */,
+				749BC357242579260068B492 /* KawaiiButton.swift in Sources */,
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,
+				749BC3532425735E0068B492 /* KawaiiView.swift in Sources */,
 				742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */,
 				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,
 			);

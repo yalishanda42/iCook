@@ -20,7 +20,7 @@ final class AppCoordinator: Coordinator {
     
     private lazy var tabBarController: UITabBarController = {
         let result = UITabBarController()
-        result.tabBar.tintColor = UIColor(named: "accent-darker")
+        result.tabBar.tintColor = .accentDarker
         result.viewControllers = []
         return result
     }()

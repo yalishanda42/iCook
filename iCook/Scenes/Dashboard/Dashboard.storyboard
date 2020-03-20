@@ -47,46 +47,51 @@
                                     <constraint firstAttribute="width" constant="240" id="PHF-5r-Vqs"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-nP-IAf">
-                                <rect key="frame" x="87.5" y="452" width="239" height="329"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-nP-IAf">
+                                <rect key="frame" x="32" y="461" width="350" height="320"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJi-7q-7IC">
-                                        <rect key="frame" x="55.5" y="0.0" width="128" height="67"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                        <state key="normal" title="Quick!">
-                                            <color key="titleColor" name="accent-lighter"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn5-Ku-FVM">
-                                        <rect key="frame" x="31.5" y="131" width="176" height="67"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                        <state key="normal" title="Help me!">
-                                            <color key="titleColor" name="accent-lighter"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fir-Ln-OZG">
-                                        <rect key="frame" x="0.0" y="262" width="239" height="67"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                        <state key="normal" title="Help others!">
-                                            <color key="titleColor" name="accent-lighter"/>
-                                        </state>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDz-SJ-s7y" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="64"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="rvB-yd-fQs"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-AY-5em" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="350" height="64"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dec-tb-vjg" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="256" width="350" height="64"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="PDz-SJ-s7y" firstAttribute="height" secondItem="wdw-AY-5em" secondAttribute="height" id="EY0-CJ-g3s"/>
+                                    <constraint firstItem="PDz-SJ-s7y" firstAttribute="height" secondItem="Dec-tb-vjg" secondAttribute="height" id="h1Q-WP-uZy"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Guv-WN-tB5" firstAttribute="trailing" secondItem="NDX-nP-IAf" secondAttribute="trailing" constant="32" id="1py-sd-hE3"/>
                             <constraint firstItem="fcX-Wc-5pI" firstAttribute="centerX" secondItem="AD1-rL-1eb" secondAttribute="centerX" id="3Ny-0I-igv"/>
                             <constraint firstItem="NDX-nP-IAf" firstAttribute="centerX" secondItem="AD1-rL-1eb" secondAttribute="centerX" id="BO8-bq-cIz"/>
                             <constraint firstItem="Guv-WN-tB5" firstAttribute="bottom" secondItem="NDX-nP-IAf" secondAttribute="bottom" constant="32" id="F8a-fG-AXK"/>
                             <constraint firstItem="L15-9d-GXo" firstAttribute="centerX" secondItem="AD1-rL-1eb" secondAttribute="centerX" id="YQf-st-m0q"/>
                             <constraint firstItem="fcX-Wc-5pI" firstAttribute="top" secondItem="AD1-rL-1eb" secondAttribute="top" constant="99" id="e1u-PA-VET"/>
                             <constraint firstItem="L15-9d-GXo" firstAttribute="top" secondItem="fcX-Wc-5pI" secondAttribute="bottom" constant="15" id="jHZ-3x-x28"/>
+                            <constraint firstItem="NDX-nP-IAf" firstAttribute="leading" secondItem="Guv-WN-tB5" secondAttribute="leading" constant="32" id="v5n-4a-403"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Guv-WN-tB5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="k6g-Wl-8Tc"/>
                     <navigationItem key="navigationItem" id="oCn-b1-Srz"/>
+                    <connections>
+                        <outlet property="contributionButton" destination="Dec-tb-vjg" id="3Qk-7U-Io9"/>
+                        <outlet property="quickButton" destination="PDz-SJ-s7y" id="GKq-0T-4nL"/>
+                        <outlet property="suggestionButton" destination="wdw-AY-5em" id="VgX-G0-lSq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLt-Oj-Yhx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,9 +102,6 @@
         <image name="sun.haze" catalog="system" width="64" height="58"/>
         <namedColor name="accent-darker">
             <color red="0.99900001287460327" green="0.62300002574920654" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="accent-lighter">
-            <color red="0.99800002574920654" green="0.69800001382827759" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
