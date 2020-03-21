@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class KawaiiButton: KawaiiView, XibLoadable {
 
-    @IBOutlet private weak var button: UIButton!
+    @IBOutlet weak var button: UIButton!
     @IBOutlet private weak var buttonLeadingContraint: NSLayoutConstraint!
     
     var onTap: (() -> Void)?
