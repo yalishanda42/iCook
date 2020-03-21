@@ -43,7 +43,8 @@ extension DashboardCoordinator: DashboardViewModelCoordinatorDelegate {
         loginCoordinator.onFinish = { [weak self] success in
             guard let self = self else { return }
             guard success else {
-                print("not logged")
+                AppDelegate.logger.warning("Unable to login.")
+                // TODO: Handle error
                 return
             }
             self.child = nil

@@ -13,6 +13,7 @@
 		7413199A242696D700A42A4F /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74131999242696D700A42A4F /* DishViewController.swift */; };
 		7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7413199B24269D0D00A42A4F /* APIBaseResponse.swift */; };
 		7413199F2426C3DB00A42A4F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7413199E2426C3DB00A42A4F /* Alamofire */; };
+		741319A22426D6D500A42A4F /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 741319A12426D6D500A42A4F /* Logging */; };
 		742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */; };
 		742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 742A5B6B24255942005F6C8F /* KawaiiTextField.xib */; };
 		74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74311478242659C700F6A959 /* AppServiceDependencies.swift */; };
@@ -118,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				741319A22426D6D500A42A4F /* Logging in Frameworks */,
 				7413199F2426C3DB00A42A4F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +438,7 @@
 			name = iCook;
 			packageProductDependencies = (
 				7413199E2426C3DB00A42A4F /* Alamofire */,
+				741319A12426D6D500A42A4F /* Logging */,
 			);
 			productName = iCook;
 			productReference = 74316869241185B0002B3905 /* iCook.app */;
@@ -489,6 +492,7 @@
 			mainGroup = 74316860241185B0002B3905;
 			packageReferences = (
 				7413199D2426C3DB00A42A4F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				741319A02426D6D500A42A4F /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = 7431686A241185B0002B3905 /* Products */;
 			projectDirPath = "";
@@ -841,6 +845,14 @@
 				minimumVersion = 5.0.4;
 			};
 		};
+		741319A02426D6D500A42A4F /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -848,6 +860,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7413199D2426C3DB00A42A4F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		741319A12426D6D500A42A4F /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 741319A02426D6D500A42A4F /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
 		};
 /* End XCSwiftPackageProductDependency section */
 

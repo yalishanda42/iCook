@@ -8,11 +8,16 @@
 
 import UIKit
 import CoreData
+import Logging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
+    static let logger: Logger = {
+        var result = Logger(label: "bg.abv.yalishanda.iCook")
+        result.logLevel = .trace
+        return result
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true

@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import Logging
 
 class AppAPIService {
     private let uriBase = "https://idagotvim.000webhostapp.com/api"
@@ -32,7 +33,7 @@ extension AppAPIService: APIService {
             parameters: parameters,
             encoding: JSONEncoding.default
         ).responseDecodable(of: APITokenResponse.self) { responseResult in
-            print(responseResult)
+            AppDelegate.logger.trace("Login user response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
             switch responseResult.result {
             case .success(let response):
                 if let token = response.token {
@@ -68,7 +69,7 @@ extension AppAPIService: APIService {
             parameters: parameters,
             encoding: JSONEncoding.default
         ).responseDecodable(of: APIBaseResponse.self) { responseResult in
-            print(responseResult)
+            AppDelegate.logger.trace("Register user response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
             switch responseResult.result {
             case .success(let response):
                 switch responseResult.response?.statusCode {

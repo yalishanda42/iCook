@@ -26,15 +26,16 @@ class AppAuthenticationService: AuthenticationService {
         apiService.login(email: email, password: password) { [weak self] result in
             switch result {
             case .success(let obtainedToken):
+                AppDelegate.logger.debug("Obtained token \(obtainedToken)")
                 self?.token = obtainedToken
                 completion(true, nil)
             case .failure(let error):
                 switch error {
                 case .connectionFailure(failureMessage: let message):
-                    print(message)
+                    AppDelegate.logger.notice("Login authentication connection failure: \(message)")
                     completion(false, message)
                 case .invalidCredentials(serverMessage: let message):
-                    print(message)
+                    AppDelegate.logger.notice("Login authentication invalid credentials: \(message)")
                     completion(false, message)
                 }
             }
@@ -51,17 +52,18 @@ class AppAuthenticationService: AuthenticationService {
         apiService.register(firstName: firstName, famiyName: famiyName, email: email, password: password) { result in
             switch result {
             case .success(let message):
-                print("Successful register: \(message)")
+                AppDelegate.logger.trace("Successful registration server message: \(message)")
                 completion(true, message)
             case .failure(let error):
                 let msg: String
                 switch error {
                 case .connectionFailure(failureMessage: let message):
+                    AppDelegate.logger.notice("Register authentication connection failure: \(message)")
                     msg = message
                 case .invalidCredentials(serverMessage: let message):
+                    AppDelegate.logger.notice("Register authentication invalid credentials: \(message)")
                     msg = message
                 }
-                print("Unsuccessful register: \(msg)")
                 completion(false, msg)
             }
         }

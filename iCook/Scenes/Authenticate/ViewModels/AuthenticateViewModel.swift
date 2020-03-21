@@ -51,7 +51,7 @@ class AuthenticateViewModel {
     
     func goRegisterCommand() {
         guard type != .register else {
-            print("Incorrect behaviour! Tried to go to Register from Register!")
+            AppDelegate.logger.error("Incorrect behaviour! Tried to go to Register from Register!")
             return
         }
         coordinatorDelegate?.goToRegister()
@@ -70,7 +70,6 @@ private extension AuthenticateViewModel {
             [weak self] success, message in
             guard success else {
                 // TODO: handle error
-                print(message!)
                 return
             }
             self?.coordinatorDelegate?.finish()
@@ -85,7 +84,6 @@ private extension AuthenticateViewModel {
         authenticationService.register(firstName: firstName, famiyName: famiyName, email: email, password: password) { [weak self] success, message in
             guard success else {
                 // TODO handle error
-                print(message!)
                 return
             }
             self?.login(email: email, password: password)
