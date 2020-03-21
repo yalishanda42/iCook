@@ -16,6 +16,9 @@ class DashboardViewController: UIViewController {
     @IBOutlet private weak var suggestionButton: KawaiiButton!
     @IBOutlet private weak var contributionButton: KawaiiButton!
     
+    // MARK: - Properties
+    
+    var viewModel: DashboardViewModel!
     
     // MARK: - Lifecycle
     
@@ -35,6 +38,10 @@ class DashboardViewController: UIViewController {
         contributionButton.titleColorNormal = .accentDarker
         contributionButton.titleColorSelected = .accentLighter
         contributionButton.barColor = .accentDarker
+        
+        quickButton.onTap = { [weak self] in
+            self?.viewModel.quickRecommendationCommand()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

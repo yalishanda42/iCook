@@ -10,17 +10,17 @@ import UIKit
 
 final class LoginCoordinator: Coordinator {
     
-    let rootViewController: UINavigationController
-    let apiService: APIService
+    private let viewController: UIViewController
+    private let services: ServiceDependencies
     
-    init(_ rootViewController: UINavigationController, apiService: APIService) {
-        self.rootViewController = rootViewController
-        self.apiService = apiService
+    init(in viewController: UIViewController, services: ServiceDependencies) {
+        self.viewController = viewController
+        self.services = services
     }
     
     func start() {
         let loginViewController = LoginViewController.instantiateFromStoryboard()
-        loginViewController.viewModel = LoginViewModel(apiService: apiService)
-        rootViewController.setViewControllers([loginViewController], animated: true)
+        loginViewController.viewModel = LoginViewModel(authenticationService: services.authenticationService)
+        viewController.present(loginViewController, animated: true)
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class KawaiiTextField: KawaiiView, XibLoadable {
     
-    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet weak var textField: UITextField!
     
     var text: String {
         return textField.text ?? ""

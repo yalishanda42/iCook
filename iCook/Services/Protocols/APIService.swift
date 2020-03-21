@@ -12,9 +12,14 @@ protocol APIService {
     
     typealias BearerToken = String
 
-    func authenticate(
+    func login(
         email: String,
         password: String,
-        completion: (Result<BearerToken, Error>) -> Void
+        completion: @escaping (Result<BearerToken, APIAuthenticationError>) -> Void
     )
+}
+
+enum APIAuthenticationError: Error {
+    case invalidCredentials(serverMessage: String)
+    case connectionFailure(failureMessage: String)
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TabCoordinator: Coordinator {
-    init(in navController: UINavigationController)
+    init(in: UINavigationController, services: ServiceDependencies)
 }
 
 final class AppCoordinator: Coordinator {
@@ -18,6 +18,8 @@ final class AppCoordinator: Coordinator {
 
     private var window: UIWindow?
     
+    private let services: ServiceDependencies
+    
     private lazy var tabBarController: UITabBarController = {
         let result = UITabBarController()
         result.tabBar.tintColor = .accentDarker
@@ -25,10 +27,9 @@ final class AppCoordinator: Coordinator {
         return result
     }()
     
-    private lazy var apiService: APIService = TestAPIService()
-    
-    init(in window: UIWindow?) {
+    init(in window: UIWindow?, services: ServiceDependencies) {
         self.window = window
+        self.services = services
     }
     
     func start() {
@@ -44,8 +45,7 @@ final class AppCoordinator: Coordinator {
             var tabControllers = tabBarController.viewControllers ?? []
             tabControllers.append(navController)
             tabBarController.viewControllers = tabControllers
-            
-            let coordinator = tab.coordinatorClass.init(in: navController)
+            let coordinator = tab.coordinatorClass.init(in: navController, services: services)
             childCoordinators.append(coordinator)
             coordinator.start()
         }

@@ -14,6 +14,8 @@ class KawaiiButton: KawaiiView, XibLoadable {
     @IBOutlet private weak var button: UIButton!
     @IBOutlet private weak var buttonLeadingContraint: NSLayoutConstraint!
     
+    var onTap: (() -> Void)?
+    
     var title: String {
         get {
             return button.title(for: .normal) ?? ""
@@ -48,5 +50,10 @@ class KawaiiButton: KawaiiView, XibLoadable {
     override func awakeFromNib() {
         super.awakeFromNib()
         buttonLeadingContraint.constant = cornerRadius
+        button.addTarget(self, action: #selector(onTapButtonAction(_:)), for: .touchUpInside)
+    }
+    
+    @objc func onTapButtonAction(_ sender: Any) {
+        onTap?()
     }
 }

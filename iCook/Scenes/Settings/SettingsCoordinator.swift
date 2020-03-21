@@ -10,10 +10,13 @@ import UIKit
 
 final class SettingsCoordinator: TabCoordinator {
     
-    let navController: UINavigationController
+    private let navController: UINavigationController
     
-    init(in navController: UINavigationController) {
+    private let services: ServiceDependencies
+    
+    init(in navController: UINavigationController, services: ServiceDependencies) {
         self.navController = navController
+        self.services = services
     }
     
     func start() {

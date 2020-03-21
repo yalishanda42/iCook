@@ -10,15 +10,15 @@ import Foundation
 
 class LoginViewModel {
     
-    let apiService: APIService
+    private let authenticationService: AuthenticationService
     
-    init(apiService: APIService) {
-        self.apiService = apiService
+    init(authenticationService: AuthenticationService) {
+        self.authenticationService = authenticationService
     }
     
     func loginCommand(email: String, password: String) {
-        apiService.authenticate(email: email, password: password) { result in
-            print(result)
+        authenticationService.login(email: email, password: password) { success, message in
+            print(message ?? "Success!")
         }
     }
 }

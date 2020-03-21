@@ -87,7 +87,9 @@
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="fh1-1T-fOW" id="Zui-rS-Ay0"/>
+                        <outlet property="firstField" destination="A5H-Rp-gTW" id="Z0b-Ax-id6"/>
                         <outlet property="screenTitle" destination="hr1-1p-akm" id="Vx3-Aj-nuG"/>
+                        <outlet property="secondField" destination="axF-xQ-qFb" id="8Y5-oJ-yST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -10,6 +10,8 @@
 		3EC5DB9E52861C6D7E510634 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB56EFC62DDB89C1AB70F77 /* Pods_iCookTests.framework */; };
 		742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */; };
 		742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 742A5B6B24255942005F6C8F /* KawaiiTextField.xib */; };
+		74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74311478242659C700F6A959 /* AppServiceDependencies.swift */; };
+		7431147B24265BA100F6A959 /* ServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431147A24265BA100F6A959 /* ServiceDependencies.swift */; };
 		7431686D241185B0002B3905 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431686C241185B0002B3905 /* AppDelegate.swift */; };
 		7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431686E241185B0002B3905 /* SceneDelegate.swift */; };
 		74316871241185B0002B3905 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316870241185B0002B3905 /* LoginViewController.swift */; };
@@ -20,7 +22,7 @@
 		74316887241185B1002B3905 /* iCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74316886241185B1002B3905 /* iCookTests.swift */; };
 		743168A0241189F2002B3905 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7431689F241189F2002B3905 /* Colors.xcassets */; };
 		743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AA2411A01E002B3905 /* KawaiiTextField.swift */; };
-		743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AF2411AB8C002B3905 /* TestAPIService.swift */; };
+		743168B02411AB8C002B3905 /* AppAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168AF2411AB8C002B3905 /* AppAPIService.swift */; };
 		743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743168B52411B9F6002B3905 /* APITokenResponse.swift */; };
 		74400FC42422A8DA00DC2E76 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC32422A8DA00DC2E76 /* Coordinator.swift */; };
 		74400FC62422A95900DC2E76 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74400FC52422A95900DC2E76 /* LoginCoordinator.swift */; };
@@ -41,6 +43,9 @@
 		74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74DB90432424E6D90092E51C /* Dashboard.storyboard */; };
 		74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB90452424E6F50092E51C /* DashboardCoordinator.swift */; };
 		74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DB90472424E78E0092E51C /* DashboardViewController.swift */; };
+		74EDA7E7242646AA00E853E8 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EDA7E6242646AA00E853E8 /* DashboardViewModel.swift */; };
+		74EDA7EA2426475200E853E8 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EDA7E92426475200E853E8 /* AuthenticationService.swift */; };
+		74EDA7EC2426493000E853E8 /* AppAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */; };
 		D275451AD402F6680690FA05 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54D0EDA9885A02EE29C0386 /* Pods_iCook.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +67,8 @@
 		6E862A23B141EDACEE46383B /* Pods-iCook-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook-iCookUITests.release.xcconfig"; path = "Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+XibLoadable.swift"; sourceTree = "<group>"; };
 		742A5B6B24255942005F6C8F /* KawaiiTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KawaiiTextField.xib; sourceTree = "<group>"; };
+		74311478242659C700F6A959 /* AppServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceDependencies.swift; sourceTree = "<group>"; };
+		7431147A24265BA100F6A959 /* ServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDependencies.swift; sourceTree = "<group>"; };
 		74316869241185B0002B3905 /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7431686C241185B0002B3905 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7431686E241185B0002B3905 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +85,7 @@
 		74316893241185B2002B3905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7431689F241189F2002B3905 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		743168AA2411A01E002B3905 /* KawaiiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiTextField.swift; sourceTree = "<group>"; };
-		743168AF2411AB8C002B3905 /* TestAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPIService.swift; sourceTree = "<group>"; };
+		743168AF2411AB8C002B3905 /* AppAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAPIService.swift; sourceTree = "<group>"; };
 		743168B52411B9F6002B3905 /* APITokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITokenResponse.swift; sourceTree = "<group>"; };
 		74400FC32422A8DA00DC2E76 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		74400FC52422A95900DC2E76 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -99,6 +106,9 @@
 		74DB90432424E6D90092E51C /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		74DB90452424E6F50092E51C /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
 		74DB90472424E78E0092E51C /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		74EDA7E6242646AA00E853E8 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		74EDA7E92426475200E853E8 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthenticationService.swift; sourceTree = "<group>"; };
 		CB877DA0F570D1D9A44933C0 /* Pods-iCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.release.xcconfig"; path = "Target Support Files/Pods-iCook/Pods-iCook.release.xcconfig"; sourceTree = "<group>"; };
 		CC61FB0290D01A9CDB0BBB4C /* Pods-iCookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookTests.release.xcconfig"; path = "Target Support Files/Pods-iCookTests/Pods-iCookTests.release.xcconfig"; sourceTree = "<group>"; };
 		D42CA19572C28BD56C40EAC9 /* Pods_iCook_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCook_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +157,16 @@
 			path = Kawaii;
 			sourceTree = "<group>";
 		};
+		7431147C24265C0B00F6A959 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				743168B32411AE72002B3905 /* Network Models */,
+				743168AF2411AB8C002B3905 /* AppAPIService.swift */,
+				74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		74316860241185B0002B3905 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +194,7 @@
 				7431686C241185B0002B3905 /* AppDelegate.swift */,
 				7431686E241185B0002B3905 /* SceneDelegate.swift */,
 				74400FC12422A51900DC2E76 /* Scenes */,
+				743168AE2411AB6F002B3905 /* Services */,
 				743168A424119DE7002B3905 /* Common */,
 				743168A2241194D0002B3905 /* Supporting Files */,
 				7431687D241185B1002B3905 /* Info.plist */,
@@ -225,7 +246,6 @@
 			children = (
 				74400FCC2422ACB300DC2E76 /* Extensions */,
 				743168A524119E00002B3905 /* Controls */,
-				743168AE2411AB6F002B3905 /* Networking */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -238,22 +258,23 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
-		743168AE2411AB6F002B3905 /* Networking */ = {
+		743168AE2411AB6F002B3905 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				74400FD02422B09D00DC2E76 /* APIService.swift */,
-				743168AF2411AB8C002B3905 /* TestAPIService.swift */,
-				743168B32411AE72002B3905 /* Models */,
+				7431147A24265BA100F6A959 /* ServiceDependencies.swift */,
+				74311478242659C700F6A959 /* AppServiceDependencies.swift */,
+				74EDA7E82426470300E853E8 /* Protocols */,
+				7431147C24265C0B00F6A959 /* Implementations */,
 			);
-			path = Networking;
+			path = Services;
 			sourceTree = "<group>";
 		};
-		743168B32411AE72002B3905 /* Models */ = {
+		743168B32411AE72002B3905 /* Network Models */ = {
 			isa = PBXGroup;
 			children = (
 				743168B42411B9DE002B3905 /* APIResponses */,
 			);
-			path = Models;
+			path = "Network Models";
 			sourceTree = "<group>";
 		};
 		743168B42411B9DE002B3905 /* APIResponses */ = {
@@ -353,6 +374,7 @@
 			children = (
 				74DB90452424E6F50092E51C /* DashboardCoordinator.swift */,
 				74DB90432424E6D90092E51C /* Dashboard.storyboard */,
+				74EDA7E52426469400E853E8 /* ViewModels */,
 				74DB90492424E7910092E51C /* ViewControllers */,
 			);
 			path = Dashboard;
@@ -364,6 +386,23 @@
 				74DB90472424E78E0092E51C /* DashboardViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74EDA7E52426469400E853E8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				74EDA7E6242646AA00E853E8 /* DashboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74EDA7E82426470300E853E8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				74400FD02422B09D00DC2E76 /* APIService.swift */,
+				74EDA7E92426475200E853E8 /* AuthenticationService.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		929ADDEDFFD70B43D7D4DBF3 /* Pods */ = {
@@ -560,22 +599,27 @@
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
 				743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */,
-				743168B02411AB8C002B3905 /* TestAPIService.swift in Sources */,
+				743168B02411AB8C002B3905 /* AppAPIService.swift in Sources */,
 				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
 				74400FC62422A95900DC2E76 /* LoginCoordinator.swift in Sources */,
 				749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */,
 				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74400FCF2422AFC300DC2E76 /* LoginViewModel.swift in Sources */,
 				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
+				74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */,
 				74B8B88B24251E9000C29491 /* SettingsViewController.swift in Sources */,
+				74EDA7E7242646AA00E853E8 /* DashboardViewModel.swift in Sources */,
 				74400FD12422B09D00DC2E76 /* APIService.swift in Sources */,
 				749BC357242579260068B492 /* KawaiiButton.swift in Sources */,
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,
+				74EDA7EC2426493000E853E8 /* AppAuthenticationService.swift in Sources */,
 				749BC3532425735E0068B492 /* KawaiiView.swift in Sources */,
+				7431147B24265BA100F6A959 /* ServiceDependencies.swift in Sources */,
 				742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */,
 				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,
+				74EDA7EA2426475200E853E8 /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
