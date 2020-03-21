@@ -23,7 +23,7 @@ extension AppAPIService: APIService {
         
         let parameters = [
             "email": email,
-            "password": password
+            "password": password,
         ]
         
         AF.request(
@@ -38,6 +38,43 @@ extension AppAPIService: APIService {
                 if let token = response.token {
                     completion(.success(token))
                 } else {
+                    completion(.failure(.invalidCredentials(serverMessage: response.message)))
+                }
+            case .failure(let error):
+                completion(.failure(.connectionFailure(failureMessage: error.localizedDescription)))
+            }
+        }
+    }
+    
+    func register(
+        firstName: String,
+        famiyName: String,
+        email: String,
+        password: String,
+        completion: @escaping (Result<String, APIAuthenticationError>) -> Void
+    ) {
+        let endpoint = Endpoint.createUser
+        
+        let parameters = [
+            "email": email,
+            "password": password,
+            "firstname": firstName,
+            "lastname": famiyName,
+        ]
+        
+        AF.request(
+            "\(uriBase)/\(endpoint.rawValue)",
+            method: endpoint.httpRequestMethod,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        ).responseDecodable(of: APIBaseResponse.self) { responseResult in
+            print(responseResult)
+            switch responseResult.result {
+            case .success(let response):
+                switch responseResult.response?.statusCode {
+                case 200:
+                    completion(.success(response.message))
+                default:
                     completion(.failure(.invalidCredentials(serverMessage: response.message)))
                 }
             case .failure(let error):

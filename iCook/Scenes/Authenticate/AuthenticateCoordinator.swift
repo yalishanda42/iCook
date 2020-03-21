@@ -10,10 +10,12 @@ import UIKit
 
 final class AuthenticateCoordinator: Coordinator {
     
+    var onFinish: ((_ authenticationSuccessful: Bool) -> Void)?
+    
     private let viewController: UIViewController
     private let services: ServiceDependencies
     
-    private let navControllerWrapper: UINavigationController()
+    private let navControllerWrapper = UINavigationController()
     
     private lazy var loginViewModel: AuthenticateViewModel = {
         let result = AuthenticateViewModel(type: .login, authenticationService: services.authenticationService)
@@ -50,7 +52,9 @@ final class AuthenticateCoordinator: Coordinator {
     }
     
     func finish() {
-        navControllerWrapper.dismiss(animated: true, completion: nil)
+        navControllerWrapper.dismiss(animated: true) { [weak self] in
+            self?.onFinish?(true)
+        }
     }
 }
 

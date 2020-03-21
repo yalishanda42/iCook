@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3EC5DB9E52861C6D7E510634 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB56EFC62DDB89C1AB70F77 /* Pods_iCookTests.framework */; };
 		7413198E24266BC300A42A4F /* AuthenticateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7413198D24266BC300A42A4F /* AuthenticateViewModel.swift */; };
+		741319952426963300A42A4F /* DishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741319942426963300A42A4F /* DishCoordinator.swift */; };
+		741319972426968900A42A4F /* Dish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741319962426968900A42A4F /* Dish.storyboard */; };
+		7413199A242696D700A42A4F /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74131999242696D700A42A4F /* DishViewController.swift */; };
+		7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7413199B24269D0D00A42A4F /* APIBaseResponse.swift */; };
 		742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */; };
 		742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 742A5B6B24255942005F6C8F /* KawaiiTextField.xib */; };
 		74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74311478242659C700F6A959 /* AppServiceDependencies.swift */; };
@@ -66,6 +70,10 @@
 		49BBD1FC481AA9C3558E15E7 /* Pods-iCook-iCookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook-iCookUITests.debug.xcconfig"; path = "Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E862A23B141EDACEE46383B /* Pods-iCook-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook-iCookUITests.release.xcconfig"; path = "Target Support Files/Pods-iCook-iCookUITests/Pods-iCook-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7413198D24266BC300A42A4F /* AuthenticateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateViewModel.swift; sourceTree = "<group>"; };
+		741319942426963300A42A4F /* DishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCoordinator.swift; sourceTree = "<group>"; };
+		741319962426968900A42A4F /* Dish.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dish.storyboard; sourceTree = "<group>"; };
+		74131999242696D700A42A4F /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
+		7413199B24269D0D00A42A4F /* APIBaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseResponse.swift; sourceTree = "<group>"; };
 		742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+XibLoadable.swift"; sourceTree = "<group>"; };
 		742A5B6B24255942005F6C8F /* KawaiiTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KawaiiTextField.xib; sourceTree = "<group>"; };
 		74311478242659C700F6A959 /* AppServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceDependencies.swift; sourceTree = "<group>"; };
@@ -157,6 +165,24 @@
 			isa = PBXGroup;
 			children = (
 				74316870241185B0002B3905 /* AuthenticateViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74131993242695F400A42A4F /* Dish */ = {
+			isa = PBXGroup;
+			children = (
+				741319942426963300A42A4F /* DishCoordinator.swift */,
+				741319962426968900A42A4F /* Dish.storyboard */,
+				74131998242696CC00A42A4F /* ViewControllers */,
+			);
+			path = Dish;
+			sourceTree = "<group>";
+		};
+		74131998242696CC00A42A4F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74131999242696D700A42A4F /* DishViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -296,6 +322,7 @@
 		743168B42411B9DE002B3905 /* APIResponses */ = {
 			isa = PBXGroup;
 			children = (
+				7413199B24269D0D00A42A4F /* APIBaseResponse.swift */,
 				743168B52411B9F6002B3905 /* APITokenResponse.swift */,
 			);
 			path = APIResponses;
@@ -312,6 +339,7 @@
 				74B8B88024251D4400C29491 /* Browse */,
 				74B8B88924251E7C00C29491 /* Settings */,
 				743168A324119D82002B3905 /* Authenticate */,
+				74131993242695F400A42A4F /* Dish */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -502,6 +530,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				741319972426968900A42A4F /* Dish.storyboard in Resources */,
 				74B8B88224251DA600C29491 /* Browse.storyboard in Resources */,
 				7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */,
 				74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */,
@@ -606,17 +635,20 @@
 				749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */,
 				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
+				7413199A242696D700A42A4F /* DishViewController.swift in Sources */,
 				74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */,
 				74B8B88B24251E9000C29491 /* SettingsViewController.swift in Sources */,
 				74EDA7E7242646AA00E853E8 /* DashboardViewModel.swift in Sources */,
 				74400FD12422B09D00DC2E76 /* APIService.swift in Sources */,
 				749BC357242579260068B492 /* KawaiiButton.swift in Sources */,
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
+				7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,
 				74EDA7EC2426493000E853E8 /* AppAuthenticationService.swift in Sources */,
 				749BC3532425735E0068B492 /* KawaiiView.swift in Sources */,
 				7431147B24265BA100F6A959 /* ServiceDependencies.swift in Sources */,
+				741319952426963300A42A4F /* DishCoordinator.swift in Sources */,
 				742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */,
 				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,
 				74EDA7EA2426475200E853E8 /* AuthenticationService.swift in Sources */,

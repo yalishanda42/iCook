@@ -19,21 +19,39 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="XFd-9U-ame">
                                 <rect key="frame" x="24" y="142.5" width="366" height="384"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5H-Rp-gTW" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AcG-B4-seO">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="60"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HL6-2y-swg" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qS9-b4-0gC" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
+                                                <rect key="frame" x="191" y="0.0" width="175" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5H-Rp-gTW" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="81" width="366" height="60"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="F9A-wo-OTQ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axF-xQ-qFb" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="81" width="366" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-y1-1hS" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="O5Q-rW-VJi">
                                         <rect key="frame" x="0.0" y="162" width="366" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axF-xQ-qFb" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-y1-1hS" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
+                                                <rect key="frame" x="191" y="0.0" width="175" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeX-an-eUc" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="243" width="366" height="60"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -78,6 +96,8 @@
                         <outlet property="backButton" destination="3wm-6B-vLf" id="qcc-3E-Wvb"/>
                         <outlet property="continueButton" destination="CQd-EG-oIu" id="Pcj-HN-oLp"/>
                         <outlet property="emailField" destination="A5H-Rp-gTW" id="Z0b-Ax-id6"/>
+                        <outlet property="familyName" destination="qS9-b4-0gC" id="Bgb-hw-lbB"/>
+                        <outlet property="firstName" destination="HL6-2y-swg" id="ahd-bJ-Y5G"/>
                         <outlet property="passwordField" destination="axF-xQ-qFb" id="8Y5-oJ-yST"/>
                         <outlet property="registerButton" destination="jeX-an-eUc" id="uZz-cx-WB4"/>
                         <outlet property="repeatPasswordField" destination="DHa-y1-1hS" id="SC4-pb-HZJ"/>

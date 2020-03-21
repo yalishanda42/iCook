@@ -17,6 +17,15 @@ protocol APIService {
         password: String,
         completion: @escaping (Result<BearerToken, APIAuthenticationError>) -> Void
     )
+    
+    func register(
+        firstName: String,
+        famiyName: String,
+        email: String,
+        password: String,
+        completion: @escaping (Result<String, APIAuthenticationError>) -> Void
+    )
+    
 }
 
 enum APIAuthenticationError: Error {

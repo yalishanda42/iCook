@@ -40,11 +40,22 @@ final class DashboardCoordinator: TabCoordinator {
 extension DashboardCoordinator: DashboardViewModelCoordinatorDelegate {
     func goToLoginScreen() {
         let loginCoordinator = AuthenticateCoordinator(in: presentedViewController, services: services)
+        loginCoordinator.onFinish = { [weak self] success in
+            guard let self = self else { return }
+            guard success else {
+                print("not logged")
+                return
+            }
+            self.child = nil
+            self.goToDishScreen()
+        }
         child = loginCoordinator
         loginCoordinator.start()
     }
     
     func goToDishScreen() {
-        print("baklava")  // TEST
+        let dishCoordinator = DishCoordinator(in: presentedViewController, services: services)
+        child = dishCoordinator
+        dishCoordinator.start()
     }
 }

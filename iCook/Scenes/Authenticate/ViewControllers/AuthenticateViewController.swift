@@ -11,9 +11,10 @@ import UIKit
 class AuthenticateViewController: UIViewController {
 
     // MARK: - Outlets
-    
     @IBOutlet weak var screenTitle: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var firstName: KawaiiTextField!
+    @IBOutlet weak var familyName: KawaiiTextField!
     @IBOutlet weak var emailField: KawaiiTextField!
     @IBOutlet weak var passwordField: KawaiiTextField!
     @IBOutlet weak var repeatPasswordField: KawaiiTextField!
@@ -28,6 +29,8 @@ class AuthenticateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstName.textField.placeholder = "First name"
+        familyName.textField.placeholder = "Family name"
         emailField.textField.placeholder = "E-mail"
         passwordField.textField.placeholder = "Password"
         repeatPasswordField.textField.placeholder = "Repeat password"
@@ -37,6 +40,8 @@ class AuthenticateViewController: UIViewController {
         passwordField.textField.isSecureTextEntry = true
         repeatPasswordField.textField.isSecureTextEntry = true
         
+        firstName.barColor = .deepPurple
+        familyName.barColor = .deepPurple
         emailField.barColor = .deepPurple
         passwordField.barColor = .deepPurple
         repeatPasswordField.barColor = .deepPurple
@@ -49,11 +54,15 @@ class AuthenticateViewController: UIViewController {
         
         switch viewModel.type {
         case .login:
+            firstName.isHidden = true
+            familyName.isHidden = true
             screenTitle.text = "Login"
             repeatPasswordField.isHidden = true
             registerButton.isHidden = false
             backButton.isHidden = true
         case .register:
+            firstName.isHidden = false
+            familyName.isHidden = false
             screenTitle.text = "Register"
             repeatPasswordField.isHidden = false
             registerButton.isHidden = true
@@ -76,6 +85,8 @@ class AuthenticateViewController: UIViewController {
     func onTapContinueButton() {
         viewModel.continueCommand(
             // TODO: Use RxSwift's two-way binding
+            firstName: firstName.text,
+            famiyName: familyName.text,
             email: emailField.text,
             password: passwordField.text,
             repeatedPassword: repeatPasswordField.text

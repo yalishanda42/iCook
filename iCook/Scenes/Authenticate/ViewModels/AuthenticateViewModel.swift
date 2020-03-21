@@ -28,19 +28,24 @@ class AuthenticateViewModel {
 
     func continueCommand(
         // TODO: Use RxSwift's two-way binding
+        firstName: String,
+        famiyName: String,
         email: String,
         password: String,
         repeatedPassword: String
     ) {
         switch type {
         case .login:
-            authenticationService.login(email: email, password: password) {
-                [weak self] success, message in
-                print(message ?? "Success!")
-                self?.coordinatorDelegate?.finish()
-            }
+            login(email: email, password: password)
         case .register:
-            break // TODO: register + login + finish()
+            register(
+                // TODO: Use RxSwift's two-way binding
+                firstName: firstName,
+                famiyName: famiyName,
+                email: email,
+                password: password,
+                repeatedPassword: repeatedPassword
+            )
         }
     }
     
@@ -56,6 +61,39 @@ class AuthenticateViewModel {
         coordinatorDelegate?.goBack()
     }
 }
+
+// MARK: - Helpers
+
+private extension AuthenticateViewModel {
+    func login(email: String, password: String) {
+        authenticationService.login(email: email, password: password) {
+            [weak self] success, message in
+            guard success else {
+                // TODO: handle error
+                print(message!)
+                return
+            }
+            self?.coordinatorDelegate?.finish()
+        }
+    }
+    
+    func register(firstName: String, famiyName: String, email: String, password: String, repeatedPassword: String) {
+        guard password == repeatedPassword else {
+            // TODO: handle password mismatch
+            return
+        }
+        authenticationService.register(firstName: firstName, famiyName: famiyName, email: email, password: password) { [weak self] success, message in
+            guard success else {
+                // TODO handle error
+                print(message!)
+                return
+            }
+            self?.login(email: email, password: password)
+        }
+    }
+}
+
+// MARK: - Authentication Scene Type
 
 extension AuthenticateViewModel {
     enum AuthenticationSubScene {
