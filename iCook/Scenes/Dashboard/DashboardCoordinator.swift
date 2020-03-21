@@ -40,6 +40,7 @@ final class DashboardCoordinator: TabCoordinator {
 extension DashboardCoordinator: DashboardViewModelCoordinatorDelegate {
     func goToLoginScreen() {
         let loginCoordinator = AuthenticateCoordinator(in: presentedViewController, services: services)
+        child = loginCoordinator
         loginCoordinator.start()
     }
     

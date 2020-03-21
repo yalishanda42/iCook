@@ -8,7 +8,14 @@
 
 import Foundation
 
+protocol AuthenticateViewModelCoordinatorDelegate: AnyObject, Coordinator {
+    func goToRegister()
+    func goBack()
+}
+
 class AuthenticateViewModel {
+    
+    weak var coordinatorDelegate: AuthenticateViewModelCoordinatorDelegate?
     
     let type: AuthenticationSubScene
     
@@ -19,10 +26,34 @@ class AuthenticateViewModel {
         self.authenticationService = authenticationService
     }
 
-    func loginCommand(email: String, password: String) {
-       authenticationService.login(email: email, password: password) { success, message in
-           print(message ?? "Success!")
-       }
+    func continueCommand(
+        // TODO: Use RxSwift's two-way binding
+        email: String,
+        password: String,
+        repeatedPassword: String
+    ) {
+        switch type {
+        case .login:
+            authenticationService.login(email: email, password: password) {
+                [weak self] success, message in
+                print(message ?? "Success!")
+                self?.coordinatorDelegate?.finish()
+            }
+        case .register:
+            break // TODO: register + login + finish()
+        }
+    }
+    
+    func goRegisterCommand() {
+        guard type != .register else {
+            print("Incorrect behaviour! Tried to go to Register from Register!")
+            return
+        }
+        coordinatorDelegate?.goToRegister()
+    }
+    
+    func goBackCommand() {
+        coordinatorDelegate?.goBack()
     }
 }
 

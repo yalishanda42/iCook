@@ -13,6 +13,7 @@ class AuthenticateViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var screenTitle: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var emailField: KawaiiTextField!
     @IBOutlet weak var passwordField: KawaiiTextField!
     @IBOutlet weak var repeatPasswordField: KawaiiTextField!
@@ -43,33 +44,50 @@ class AuthenticateViewController: UIViewController {
         registerButton.titleColorNormal = .accentLighter
         continueButton.barColor = .accentLighter
         continueButton.titleColorNormal = .accentLighter
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
+        navigationController?.isToolbarHidden = true
+        
         switch viewModel.type {
         case .login:
+            screenTitle.text = "Login"
             repeatPasswordField.isHidden = true
             registerButton.isHidden = false
-            navigationController?.setToolbarHidden(true, animated: animated)
+            backButton.isHidden = true
         case .register:
+            screenTitle.text = "Register"
             repeatPasswordField.isHidden = false
             registerButton.isHidden = true
-            navigationController?.setToolbarHidden(false, animated: animated)
+            backButton.isHidden = false
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        if viewModel.type == .login {
-            navigationController?.setToolbarHidden(false, animated: animated)
+        
+        continueButton.onTap = { [weak self] in
+            self?.onTapContinueButton()
         }
+        
+        registerButton.onTap = { [weak self] in
+            self?.onTapGoRegisterButton()
+        }
+        
+        backButton.addTarget(self, action: #selector(onTapBackButton), for: .touchUpInside)
     }
     
     // MARK: - Actions
     
-    @objc func onTapContinueButton(_ sender: Any) {
-        viewModel.loginCommand(email: emailField.text, password: passwordField.text)
+    func onTapContinueButton() {
+        viewModel.continueCommand(
+            // TODO: Use RxSwift's two-way binding
+            email: emailField.text,
+            password: passwordField.text,
+            repeatedPassword: repeatPasswordField.text
+        )
+    }
+    
+    func onTapGoRegisterButton() {
+        viewModel.goRegisterCommand()
+    }
+    
+    @objc func onTapBackButton() {
+        viewModel.goBackCommand()
     }
 }
 

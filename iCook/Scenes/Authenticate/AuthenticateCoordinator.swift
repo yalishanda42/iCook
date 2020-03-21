@@ -13,13 +13,17 @@ final class AuthenticateCoordinator: Coordinator {
     private let viewController: UIViewController
     private let services: ServiceDependencies
     
+    private let navControllerWrapper: UINavigationController()
+    
     private lazy var loginViewModel: AuthenticateViewModel = {
         let result = AuthenticateViewModel(type: .login, authenticationService: services.authenticationService)
+        result.coordinatorDelegate = self
         return result
     }()
     
     private lazy var registerViewModel: AuthenticateViewModel = {
         let result = AuthenticateViewModel(type: .register, authenticationService: services.authenticationService)
+        result.coordinatorDelegate = self
         return result
     }()
     
@@ -41,8 +45,21 @@ final class AuthenticateCoordinator: Coordinator {
     }
     
     func start() {
-        let navController = UINavigationController()
-        navController.setViewControllers([loginViewController], animated: false)
-        viewController.present(navController, animated: true)
+        navControllerWrapper.setViewControllers([loginViewController], animated: false)
+        viewController.present(navControllerWrapper, animated: true)
+    }
+    
+    func finish() {
+        navControllerWrapper.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension AuthenticateCoordinator: AuthenticateViewModelCoordinatorDelegate {
+    func goToRegister() {
+        navControllerWrapper.pushViewController(registerViewController, animated: true)
+    }
+    
+    func goBack() {
+        navControllerWrapper.popViewController(animated: true)
     }
 }

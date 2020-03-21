@@ -44,24 +44,38 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr1-1p-akm">
-                                <rect key="frame" x="157.5" y="62" width="99" height="44.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr1-1p-akm">
+                                <rect key="frame" x="131.5" y="62" width="151" height="44.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="37"/>
                                 <color key="textColor" name="deep-purple"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wm-6B-vLf">
+                                <rect key="frame" x="20" y="72" width="73" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" name="accent-lighter"/>
+                                <state key="normal" title=" Login" image="arrow.uturn.left" catalog="system">
+                                    <color key="titleColor" name="accent-lighter"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" name="background-lighter"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="XFd-9U-ame" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="9ai-xq-s9s"/>
+                            <constraint firstItem="3wm-6B-vLf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="DNL-FX-8TB"/>
                             <constraint firstItem="hr1-1p-akm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="SMb-hJ-VHD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XFd-9U-ame" secondAttribute="trailing" constant="24" id="Vw6-na-vaJ"/>
                             <constraint firstItem="hr1-1p-akm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a2v-9J-TIO"/>
                             <constraint firstItem="XFd-9U-ame" firstAttribute="top" secondItem="hr1-1p-akm" secondAttribute="bottom" constant="36" id="c20-8t-LLe"/>
+                            <constraint firstItem="3wm-6B-vLf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="feo-7K-l3G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="JuX-jG-FVA"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="3wm-6B-vLf" id="qcc-3E-Wvb"/>
                         <outlet property="continueButton" destination="CQd-EG-oIu" id="Pcj-HN-oLp"/>
                         <outlet property="emailField" destination="A5H-Rp-gTW" id="Z0b-Ax-id6"/>
                         <outlet property="passwordField" destination="axF-xQ-qFb" id="8Y5-oJ-yST"/>
@@ -72,12 +86,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+            <point key="canvasLocation" x="697" y="38"/>
         </scene>
     </scenes>
     <resources>
-        <namedColor name="background-lighter">
-            <color red="1" green="0.95294117647058818" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="arrow.uturn.left" catalog="system" width="64" height="56"/>
+        <namedColor name="accent-lighter">
+            <color red="0.99800002574920654" green="0.69800001382827759" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="deep-purple">
             <color red="0.41568627450980394" green="0.38823529411764707" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
