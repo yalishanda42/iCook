@@ -18,7 +18,14 @@ class DishCoordinator: Coordinator {
         result.modalPresentationStyle = .fullScreen
         return result
     }()
-    private lazy var dishViewController = DishViewController.instantiateFromStoryboard()
+    
+    private lazy var dishViewController: DishViewController = {
+        let result = DishViewController.instantiateFromStoryboard()
+        result.viewModel = dishViewModel
+        return result
+    }()
+    
+    private lazy var dishViewModel = DishViewModel()
     
     init(in viewController: UIViewController, services: ServiceDependencies) {
         self.viewController = viewController

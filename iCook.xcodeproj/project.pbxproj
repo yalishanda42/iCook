@@ -39,6 +39,9 @@
 		749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3542425755C0068B492 /* UIColor+AssetColors.swift */; };
 		749BC357242579260068B492 /* KawaiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC356242579260068B492 /* KawaiiButton.swift */; };
 		749BC3592425793A0068B492 /* KawaiiButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 749BC3582425793A0068B492 /* KawaiiButton.xib */; };
+		74B891B42427A41E00993FB7 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B891B32427A41E00993FB7 /* RecipeTableViewCell.xib */; };
+		74B891B62427A44000993FB7 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891B52427A44000993FB7 /* RecipeTableViewCell.swift */; };
+		74B891B92427AC7100993FB7 /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891B82427AC7100993FB7 /* DishViewModel.swift */; };
 		74B8B88224251DA600C29491 /* Browse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B8B88124251DA600C29491 /* Browse.storyboard */; };
 		74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88324251DB800C29491 /* BrowseCoordinator.swift */; };
 		74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88724251E0700C29491 /* BrowseViewController.swift */; };
@@ -100,6 +103,9 @@
 		749BC3542425755C0068B492 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
 		749BC356242579260068B492 /* KawaiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiButton.swift; sourceTree = "<group>"; };
 		749BC3582425793A0068B492 /* KawaiiButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KawaiiButton.xib; sourceTree = "<group>"; };
+		74B891B32427A41E00993FB7 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
+		74B891B52427A44000993FB7 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		74B891B82427AC7100993FB7 /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
 		74B8B88124251DA600C29491 /* Browse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Browse.storyboard; sourceTree = "<group>"; };
 		74B8B88324251DB800C29491 /* BrowseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCoordinator.swift; sourceTree = "<group>"; };
 		74B8B88724251E0700C29491 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 			children = (
 				741319942426963300A42A4F /* DishCoordinator.swift */,
 				741319962426968900A42A4F /* Dish.storyboard */,
+				74B891B72427AC6800993FB7 /* ViewModels */,
 				74131998242696CC00A42A4F /* ViewControllers */,
 			);
 			path = Dish;
@@ -276,6 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				742A5B6A2425589C005F6C8F /* Kawaii */,
+				74B891B32427A41E00993FB7 /* RecipeTableViewCell.xib */,
+				74B891B52427A44000993FB7 /* RecipeTableViewCell.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -339,6 +348,14 @@
 				749BC3542425755C0068B492 /* UIColor+AssetColors.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		74B891B72427AC6800993FB7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				74B891B82427AC7100993FB7 /* DishViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		74B8B88024251D4400C29491 /* Browse */ = {
@@ -515,6 +532,7 @@
 				74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */,
 				742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */,
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
+				74B891B42427A41E00993FB7 /* RecipeTableViewCell.xib in Resources */,
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
 				74316874241185B0002B3905 /* Authenticate.storyboard in Resources */,
 				749BC3592425793A0068B492 /* KawaiiButton.xib in Resources */,
@@ -548,9 +566,11 @@
 				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
 				74400FC62422A95900DC2E76 /* AuthenticateCoordinator.swift in Sources */,
 				749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */,
+				74B891B92427AC7100993FB7 /* DishViewModel.swift in Sources */,
 				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
 				7413199A242696D700A42A4F /* DishViewController.swift in Sources */,
+				74B891B62427A44000993FB7 /* RecipeTableViewCell.swift in Sources */,
 				74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */,
 				74B8B88B24251E9000C29491 /* SettingsViewController.swift in Sources */,
 				74EDA7E7242646AA00E853E8 /* DashboardViewModel.swift in Sources */,
