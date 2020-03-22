@@ -14,4 +14,6 @@ protocol ServiceDependencies {
     
     var authenticationService: AuthenticationService { get }
     
+    var dishService: DishService { get }
+    
 }

@@ -42,6 +42,13 @@
 		74B891B42427A41E00993FB7 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B891B32427A41E00993FB7 /* RecipeTableViewCell.xib */; };
 		74B891B62427A44000993FB7 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891B52427A44000993FB7 /* RecipeTableViewCell.swift */; };
 		74B891B92427AC7100993FB7 /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891B82427AC7100993FB7 /* DishViewModel.swift */; };
+		74B891BB2427BFD400993FB7 /* DishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891BA2427BFD400993FB7 /* DishService.swift */; };
+		74B891BE2427C1BE00993FB7 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891BD2427C1BE00993FB7 /* Dish.swift */; };
+		74B891C22427CAC200993FB7 /* RecipeOverviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891C12427CAC200993FB7 /* RecipeOverviewInfo.swift */; };
+		74B891C82427CCFE00993FB7 /* FakeDishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891C72427CCFE00993FB7 /* FakeDishService.swift */; };
+		74B891CA2427D0D700993FB7 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891C92427D0D700993FB7 /* FakeAuthenticationService.swift */; };
+		74B891CC2427D1CF00993FB7 /* FakeServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891CB2427D1CF00993FB7 /* FakeServiceDependencies.swift */; };
+		74B891CF2427E11F00993FB7 /* RecipeOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891CE2427E11F00993FB7 /* RecipeOverviewViewModel.swift */; };
 		74B8B88224251DA600C29491 /* Browse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B8B88124251DA600C29491 /* Browse.storyboard */; };
 		74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88324251DB800C29491 /* BrowseCoordinator.swift */; };
 		74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8B88724251E0700C29491 /* BrowseViewController.swift */; };
@@ -106,6 +113,13 @@
 		74B891B32427A41E00993FB7 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		74B891B52427A44000993FB7 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		74B891B82427AC7100993FB7 /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
+		74B891BA2427BFD400993FB7 /* DishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishService.swift; sourceTree = "<group>"; };
+		74B891BD2427C1BE00993FB7 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		74B891C12427CAC200993FB7 /* RecipeOverviewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeOverviewInfo.swift; sourceTree = "<group>"; };
+		74B891C72427CCFE00993FB7 /* FakeDishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDishService.swift; sourceTree = "<group>"; };
+		74B891C92427D0D700993FB7 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
+		74B891CB2427D1CF00993FB7 /* FakeServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeServiceDependencies.swift; sourceTree = "<group>"; };
+		74B891CE2427E11F00993FB7 /* RecipeOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeOverviewViewModel.swift; sourceTree = "<group>"; };
 		74B8B88124251DA600C29491 /* Browse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Browse.storyboard; sourceTree = "<group>"; };
 		74B8B88324251DB800C29491 /* BrowseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCoordinator.swift; sourceTree = "<group>"; };
 		74B8B88724251E0700C29491 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +177,7 @@
 				741319962426968900A42A4F /* Dish.storyboard */,
 				74B891B72427AC6800993FB7 /* ViewModels */,
 				74131998242696CC00A42A4F /* ViewControllers */,
+				74B891BC2427C1B700993FB7 /* Models */,
 			);
 			path = Dish;
 			sourceTree = "<group>";
@@ -193,6 +208,8 @@
 				743168B32411AE72002B3905 /* Network Models */,
 				743168AF2411AB8C002B3905 /* AppAPIService.swift */,
 				74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */,
+				74B891C72427CCFE00993FB7 /* FakeDishService.swift */,
+				74B891C92427D0D700993FB7 /* FakeAuthenticationService.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -294,6 +311,7 @@
 			children = (
 				7431147A24265BA100F6A959 /* ServiceDependencies.swift */,
 				74311478242659C700F6A959 /* AppServiceDependencies.swift */,
+				74B891CB2427D1CF00993FB7 /* FakeServiceDependencies.swift */,
 				74EDA7E82426470300E853E8 /* Protocols */,
 				7431147C24265C0B00F6A959 /* Implementations */,
 			);
@@ -354,8 +372,18 @@
 			isa = PBXGroup;
 			children = (
 				74B891B82427AC7100993FB7 /* DishViewModel.swift */,
+				74B891CE2427E11F00993FB7 /* RecipeOverviewViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74B891BC2427C1B700993FB7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				74B891BD2427C1BE00993FB7 /* Dish.swift */,
+				74B891C12427CAC200993FB7 /* RecipeOverviewInfo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		74B8B88024251D4400C29491 /* Browse */ = {
@@ -426,6 +454,7 @@
 			children = (
 				74400FD02422B09D00DC2E76 /* APIService.swift */,
 				74EDA7E92426475200E853E8 /* AuthenticationService.swift */,
+				74B891BA2427BFD400993FB7 /* DishService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -556,19 +585,25 @@
 			files = (
 				74400FC42422A8DA00DC2E76 /* Coordinator.swift in Sources */,
 				74316871241185B0002B3905 /* AuthenticateViewController.swift in Sources */,
+				74B891C82427CCFE00993FB7 /* FakeDishService.swift in Sources */,
 				74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */,
 				74400FC82422A98400DC2E76 /* AppCoordinator.swift in Sources */,
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
 				743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */,
+				74B891CA2427D0D700993FB7 /* FakeAuthenticationService.swift in Sources */,
 				743168B02411AB8C002B3905 /* AppAPIService.swift in Sources */,
+				74B891C22427CAC200993FB7 /* RecipeOverviewInfo.swift in Sources */,
+				74B891CF2427E11F00993FB7 /* RecipeOverviewViewModel.swift in Sources */,
 				7413198E24266BC300A42A4F /* AuthenticateViewModel.swift in Sources */,
+				74B891BB2427BFD400993FB7 /* DishService.swift in Sources */,
 				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
 				74400FC62422A95900DC2E76 /* AuthenticateCoordinator.swift in Sources */,
 				749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */,
 				74B891B92427AC7100993FB7 /* DishViewModel.swift in Sources */,
 				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
+				74B891BE2427C1BE00993FB7 /* Dish.swift in Sources */,
 				7413199A242696D700A42A4F /* DishViewController.swift in Sources */,
 				74B891B62427A44000993FB7 /* RecipeTableViewCell.swift in Sources */,
 				74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */,
@@ -587,6 +622,7 @@
 				742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */,
 				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,
 				74EDA7EA2426475200E853E8 /* AuthenticationService.swift in Sources */,
+				74B891CC2427D1CF00993FB7 /* FakeServiceDependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

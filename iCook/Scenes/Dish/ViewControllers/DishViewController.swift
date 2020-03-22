@@ -12,7 +12,10 @@ class DishViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var recipesTableView: UITableView!
+    @IBOutlet private weak var recipesTableView: UITableView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var takeawayButton: KawaiiButton!
+    @IBOutlet private weak var addRecipeButton: KawaiiButton!
     
     // MARK: - Properties
     
@@ -28,12 +31,48 @@ class DishViewController: UIViewController {
         recipesTableView.delegate = self
         recipesTableView.dataSource = self
         recipesTableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: recipeCellReuseId)
+        
+        takeawayButton.onTap = { [weak self] in
+            self?.onTapTakeawayButton()
+        }
+        
+        addRecipeButton.onTap = { [weak self] in
+            self?.onTapAddRecipeButton()
+        }
+        
+        setupViewModelListeners()
     }
     
     // MARK: - Actions
     
     @IBAction func onTapBackButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        viewModel.goBackCommand()
+    }
+}
+
+// MARK: - Helpers
+
+private extension DishViewController {
+    func onTapTakeawayButton() {
+        viewModel.orderTakeawayCommand()
+    }
+    
+    func onTapAddRecipeButton() {
+        viewModel.addRecipeCommand()
+    }
+    
+    func setupViewModelListeners() {
+        viewModel.onImageChangedListener = { [weak self] in
+            guard let self = self else { return }
+            self.imageView.image = self.viewModel.image
+        }
+        viewModel.onRecipesListChangedListener = { [weak self] in
+            self?.recipesTableView.reloadData()
+        }
+        viewModel.onDishNameChangedListener = { [weak self] in
+            guard let self = self else { return }
+            self.navigationItem.title = self.viewModel.dishName
+        }
     }
 }
 
@@ -42,8 +81,7 @@ extension DishViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        
-        return viewModel.numberOfCells
+        viewModel.numberOfRecipes
     }
     
     func tableView(
@@ -54,9 +92,14 @@ extension DishViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: recipeCellReuseId, for: indexPath) as? RecipeTableViewCell else {
             fatalError("Wrong Recipes table view setup.")
         }
+        let cellViewModel = viewModel.recipeViewModel(forIndexPath: indexPath)
+        cell.configure(with: cellViewModel)
         return cell
     }
 }
 
 extension DishViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        CGFloat.leastNormalMagnitude
+    }
 }

@@ -16,7 +16,7 @@ final class DashboardCoordinator: TabCoordinator {
     private let services: ServiceDependencies
     
     private lazy var viewModel: DashboardViewModel = {
-        let result = DashboardViewModel(authenticationService: services.authenticationService)
+        let result = DashboardViewModel(authenticationService: services.authenticationService, dishService: services.dishService)
         result.coordinatorDelegate = self
         return result
     }()
@@ -38,7 +38,7 @@ final class DashboardCoordinator: TabCoordinator {
 }
 
 extension DashboardCoordinator: DashboardViewModelCoordinatorDelegate {
-    func goToLoginScreen() {
+    func goToLoginScreen(onSuccessfulLogin: @escaping () -> Void) {
         let loginCoordinator = AuthenticateCoordinator(in: presentedViewController, services: services)
         loginCoordinator.onFinish = { [weak self] success in
             guard let self = self else { return }
@@ -48,14 +48,17 @@ extension DashboardCoordinator: DashboardViewModelCoordinatorDelegate {
                 return
             }
             self.child = nil
-            self.goToDishScreen()
+            if success {
+                onSuccessfulLogin()
+            }
+            // TODO: else?
         }
         child = loginCoordinator
         loginCoordinator.start()
     }
     
-    func goToDishScreen() {
-        let dishCoordinator = DishCoordinator(in: presentedViewController, services: services)
+    func goToDishScreen(dishId: Int) {
+        let dishCoordinator = DishCoordinator(in: presentedViewController, services: services, dishId: dishId)
         child = dishCoordinator
         dishCoordinator.start()
     }

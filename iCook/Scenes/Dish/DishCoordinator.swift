@@ -12,6 +12,7 @@ class DishCoordinator: Coordinator {
     
     private let viewController: UIViewController
     private let services: ServiceDependencies
+    private let dishId: Int
     
     private let navControllerWrapper: UINavigationController = {
         let result = UINavigationController()
@@ -25,15 +26,35 @@ class DishCoordinator: Coordinator {
         return result
     }()
     
-    private lazy var dishViewModel = DishViewModel()
+    private lazy var dishViewModel: DishViewModel = {
+        let result = DishViewModel(dishId: dishId, dishService: services.dishService)
+        result.coordinatorDelegate = self
+        return result
+    }()
     
-    init(in viewController: UIViewController, services: ServiceDependencies) {
+    init(in viewController: UIViewController, services: ServiceDependencies, dishId: Int) {
         self.viewController = viewController
         self.services = services
+        self.dishId = dishId
     }
     
     func start() {
         navControllerWrapper.setViewControllers([dishViewController], animated: false)
         viewController.present(navControllerWrapper, animated: true, completion: nil)
+        dishViewModel.load()
+    }
+    
+    func finish() {
+        navControllerWrapper.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension DishCoordinator: DishViewModelCoordinatorDelegate {
+    func goToTakeaway() {
+        // TODO
+    }
+    
+    func goToAddRecipe() {
+        // TODO
     }
 }
