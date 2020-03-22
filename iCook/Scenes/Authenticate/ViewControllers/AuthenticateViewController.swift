@@ -20,6 +20,7 @@ class AuthenticateViewController: UIViewController {
     @IBOutlet weak var repeatPasswordField: KawaiiTextField!
     @IBOutlet weak var registerButton: KawaiiButton!
     @IBOutlet weak var continueButton: KawaiiButton!
+    @IBOutlet weak var namesStackView: UIStackView!
     
     // MARK: - Properties
     
@@ -33,10 +34,11 @@ class AuthenticateViewController: UIViewController {
         passwordField.textField.isSecureTextEntry = true
         repeatPasswordField.textField.isSecureTextEntry = true
         
-        navigationController?.isToolbarHidden = true
+        navigationController?.isNavigationBarHidden = true
         
         switch viewModel.type {
         case .login:
+            namesStackView.isHidden = true
             firstName.isHidden = true
             familyName.isHidden = true
             screenTitle.text = "Login"
@@ -44,6 +46,7 @@ class AuthenticateViewController: UIViewController {
             registerButton.isHidden = false
             backButton.isHidden = true
         case .register:
+            namesStackView.isHidden = false
             firstName.isHidden = false
             familyName.isHidden = false
             screenTitle.text = "Register"

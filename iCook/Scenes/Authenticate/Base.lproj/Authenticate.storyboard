@@ -146,6 +146,7 @@
                         <outlet property="emailField" destination="A5H-Rp-gTW" id="Z0b-Ax-id6"/>
                         <outlet property="familyName" destination="qS9-b4-0gC" id="Bgb-hw-lbB"/>
                         <outlet property="firstName" destination="HL6-2y-swg" id="ahd-bJ-Y5G"/>
+                        <outlet property="namesStackView" destination="AcG-B4-seO" id="nfQ-Tf-jVs"/>
                         <outlet property="passwordField" destination="axF-xQ-qFb" id="8Y5-oJ-yST"/>
                         <outlet property="registerButton" destination="jeX-an-eUc" id="uZz-cx-WB4"/>
                         <outlet property="repeatPasswordField" destination="DHa-y1-1hS" id="SC4-pb-HZJ"/>
