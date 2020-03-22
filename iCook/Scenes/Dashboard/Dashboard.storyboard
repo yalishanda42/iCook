@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DhC-GI-LGB">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -34,13 +34,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good morning!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L15-9d-GXo">
-                                <rect key="frame" x="102.5" y="218" width="209" height="35"/>
+                                <rect key="frame" x="102.66666666666669" y="218" width="209" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="29"/>
                                 <color key="textColor" name="deep-purple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.haze" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fcX-Wc-5pI">
-                                <rect key="frame" x="87" y="76.5" width="240" height="128"/>
+                                <rect key="frame" x="87" y="77.000000000000014" width="240" height="127.33333333333333"/>
                                 <color key="tintColor" name="background-darker"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="126" id="20Y-ew-DQg"/>
@@ -56,14 +56,41 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="rvB-yd-fQs"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Quick suggestion!"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
+                                                <color key="value" name="accent-darker"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                <color key="value" name="accent-darker"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-AY-5em" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="112" width="350" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Find something to eat."/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
+                                                <color key="value" name="deep-purple"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                <color key="value" name="deep-purple"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dec-tb-vjg" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="224" width="350" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Rate recipes or add new."/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
+                                                <color key="value" name="deep-purple"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                <color key="value" name="deep-purple"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -100,6 +127,9 @@
     </scenes>
     <resources>
         <image name="sun.haze" catalog="system" width="64" height="58"/>
+        <namedColor name="accent-darker">
+            <color red="0.99900001287460327" green="0.62300002574920654" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="background-darker">
             <color red="1" green="0.8784313725490196" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

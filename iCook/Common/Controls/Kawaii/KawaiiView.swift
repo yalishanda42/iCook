@@ -8,16 +8,17 @@
 
 import UIKit
 
+@IBDesignable
 class KawaiiView: UIView {
     
-    var barColor: UIColor = .blue {
+    @IBInspectable var barColor: UIColor = .blue {
         didSet {
             setNeedsDisplay()
             setNeedsLayout()
         }
     }
     
-    var borderColor = UIColor.gray.withAlphaComponent(0.5) {
+    @IBInspectable var borderColor = UIColor.gray.withAlphaComponent(0.5) {
         didSet {
             setNeedsDisplay()
             setNeedsLayout()

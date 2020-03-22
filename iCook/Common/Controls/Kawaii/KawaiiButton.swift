@@ -13,10 +13,8 @@ class KawaiiButton: KawaiiView, XibLoadable {
 
     @IBOutlet weak var button: UIButton!
     @IBOutlet private weak var buttonLeadingContraint: NSLayoutConstraint!
-    
-    var onTap: (() -> Void)?
-    
-    var title: String {
+        
+    @IBInspectable var title: String {
         get {
             return button.title(for: .normal) ?? ""
         }
@@ -25,17 +23,19 @@ class KawaiiButton: KawaiiView, XibLoadable {
         }
     }
     
-    var titleColorNormal: UIColor = .blue {
+    @IBInspectable var titleColorNormal: UIColor = .blue {
         didSet {
             button.setTitleColor(titleColorNormal, for: .normal)
         }
     }
     
-    var titleColorSelected = UIColor.blue.withAlphaComponent(0.5) {
+    @IBInspectable var titleColorSelected = UIColor.blue.withAlphaComponent(0.5) {
         didSet {
             button.setTitleColor(titleColorSelected, for: .selected)
         }
     }
+    
+    var onTap: (() -> Void)?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

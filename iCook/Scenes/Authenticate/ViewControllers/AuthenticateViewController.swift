@@ -29,26 +29,9 @@ class AuthenticateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstName.textField.placeholder = "First name"
-        familyName.textField.placeholder = "Family name"
-        emailField.textField.placeholder = "E-mail"
-        passwordField.textField.placeholder = "Password"
-        repeatPasswordField.textField.placeholder = "Repeat password"
-        registerButton.title = "Don't have an account? Sign up!"
-        continueButton.title = "Let's eat!"
         
         passwordField.textField.isSecureTextEntry = true
         repeatPasswordField.textField.isSecureTextEntry = true
-        
-        firstName.barColor = .deepPurple
-        familyName.barColor = .deepPurple
-        emailField.barColor = .deepPurple
-        passwordField.barColor = .deepPurple
-        repeatPasswordField.barColor = .deepPurple
-        registerButton.barColor  = .accentLighter
-        registerButton.titleColorNormal = .accentLighter
-        continueButton.barColor = .accentLighter
-        continueButton.titleColorNormal = .accentLighter
         
         navigationController?.isToolbarHidden = true
         

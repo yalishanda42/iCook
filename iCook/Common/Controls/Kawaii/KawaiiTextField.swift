@@ -13,6 +13,15 @@ class KawaiiTextField: KawaiiView, XibLoadable {
     
     @IBOutlet weak var textField: UITextField!
     
+    @IBInspectable var placeholder: String {
+        get {
+            return textField.placeholder ?? ""
+        }
+        set {
+            textField.placeholder = newValue
+        }
+    }
+    
     var text: String {
         return textField.text ?? ""
     }

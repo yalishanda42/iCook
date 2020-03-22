@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bw5-bd-lth">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -32,17 +32,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BAKLAVA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ega-fY-ahR">
-                                <rect key="frame" x="118.5" y="422.5" width="177" height="51"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <color key="textColor" name="deep-purple"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-dish" translatesAutoresizingMaskIntoConstraints="NO" id="QbF-KL-bzm">
+                                <rect key="frame" x="0.0" y="88" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="G8b-I9-5UU"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZr-9j-17v" userLabel="Order Takeaway Button" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                <rect key="frame" x="8" y="312" width="398" height="36"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="I don't wanna cook, order for home!"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
+                                        <color key="value" name="deep-purple"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                        <color key="value" name="deep-purple"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iIG-A9-CjA">
+                                <rect key="frame" x="0.0" y="372" width="414" height="414"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PeA-wI-jhx">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="27.666666666666686"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTY-sP-1eO" userLabel="Add Recipe Button" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                <rect key="frame" x="8" y="810" width="398" height="36"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Add a recipe"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
+                                        <color key="value" name="deep-purple"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                        <color key="value" name="deep-purple"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ega-fY-ahR" firstAttribute="centerX" secondItem="3Iv-3h-TnZ" secondAttribute="centerX" id="3De-Ds-5yx"/>
-                            <constraint firstItem="ega-fY-ahR" firstAttribute="centerY" secondItem="3Iv-3h-TnZ" secondAttribute="centerY" id="nQk-BO-1tZ"/>
+                            <constraint firstItem="oZr-9j-17v" firstAttribute="leading" secondItem="Hyv-8L-UFM" secondAttribute="leading" constant="8" id="0hz-JM-tTk"/>
+                            <constraint firstItem="QTY-sP-1eO" firstAttribute="leading" secondItem="Hyv-8L-UFM" secondAttribute="leading" constant="8" id="5cp-Ej-kIv"/>
+                            <constraint firstItem="QbF-KL-bzm" firstAttribute="leading" secondItem="Hyv-8L-UFM" secondAttribute="leading" id="6Su-JY-mfr"/>
+                            <constraint firstItem="QbF-KL-bzm" firstAttribute="trailing" secondItem="Hyv-8L-UFM" secondAttribute="trailing" id="DBZ-5j-A9k"/>
+                            <constraint firstItem="QbF-KL-bzm" firstAttribute="top" secondItem="Hyv-8L-UFM" secondAttribute="top" id="IeW-dP-3Wu"/>
+                            <constraint firstItem="iIG-A9-CjA" firstAttribute="top" secondItem="oZr-9j-17v" secondAttribute="bottom" constant="24" id="Twi-H8-eVF"/>
+                            <constraint firstItem="QTY-sP-1eO" firstAttribute="top" secondItem="iIG-A9-CjA" secondAttribute="bottom" constant="24" id="URK-OJ-21s"/>
+                            <constraint firstItem="Hyv-8L-UFM" firstAttribute="trailing" secondItem="QTY-sP-1eO" secondAttribute="trailing" constant="8" id="VCD-U6-zA1"/>
+                            <constraint firstItem="Hyv-8L-UFM" firstAttribute="trailing" secondItem="oZr-9j-17v" secondAttribute="trailing" constant="8" id="eFi-de-yXE"/>
+                            <constraint firstItem="oZr-9j-17v" firstAttribute="top" secondItem="QbF-KL-bzm" secondAttribute="bottom" constant="24" id="gyz-Ec-R2L"/>
+                            <constraint firstItem="iIG-A9-CjA" firstAttribute="trailing" secondItem="Hyv-8L-UFM" secondAttribute="trailing" id="xEa-N1-YFZ"/>
+                            <constraint firstItem="iIG-A9-CjA" firstAttribute="leading" secondItem="Hyv-8L-UFM" secondAttribute="leading" id="xYO-dI-Sv4"/>
+                            <constraint firstItem="Hyv-8L-UFM" firstAttribute="bottom" secondItem="QTY-sP-1eO" secondAttribute="bottom" constant="16" id="xvs-oG-TAe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hyv-8L-UFM"/>
                     </view>
@@ -56,10 +104,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJ1-gg-ien" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="82"/>
+            <point key="canvasLocation" x="-26.086956521739133" y="81.696428571428569"/>
         </scene>
     </scenes>
     <resources>
+        <image name="test-dish" width="1280" height="720"/>
         <namedColor name="deep-purple">
             <color red="0.41568627450980394" green="0.38823529411764707" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

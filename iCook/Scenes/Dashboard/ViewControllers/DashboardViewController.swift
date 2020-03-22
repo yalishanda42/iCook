@@ -25,20 +25,6 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        quickButton.title = "Quick! Give me something random to eat!"
-        suggestionButton.title = "Recommend me the best thing to eat."
-        contributionButton.title = "Share a recipe or rate others!"
-        
-        quickButton.titleColorNormal = .accentDarker
-        quickButton.titleColorSelected = .accentLighter
-        quickButton.barColor = .accentDarker
-        suggestionButton.titleColorNormal = .accentDarker
-        suggestionButton.titleColorSelected = .accentLighter
-        suggestionButton.barColor = .accentDarker
-        contributionButton.titleColorNormal = .accentDarker
-        contributionButton.titleColorSelected = .accentLighter
-        contributionButton.barColor = .accentDarker
-        
         quickButton.onTap = { [weak self] in
             self?.viewModel.quickRecommendationCommand()
         }
