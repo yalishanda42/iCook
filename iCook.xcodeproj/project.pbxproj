@@ -313,7 +313,6 @@
 			children = (
 				74400FC72422A98400DC2E76 /* AppCoordinator.swift */,
 				74400FC32422A8DA00DC2E76 /* Coordinator.swift */,
-				74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */,
 				74400FCB2422ABC100DC2E76 /* LaunchScreen */,
 				74DB90422424E6C20092E51C /* Dashboard */,
 				74B8B88024251D4400C29491 /* Browse */,
@@ -335,6 +334,7 @@
 		74400FCC2422ACB300DC2E76 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */,
 				742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */,
 				749BC3542425755C0068B492 /* UIColor+AssetColors.swift */,
 			);
