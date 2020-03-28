@@ -16,9 +16,20 @@ protocol DishViewModelCoordinatorDelegate: AnyObject, Coordinator {
 
 class DishViewModel {
     
-    typealias OnChangeListener = () -> Void
-    
+    // MARK: - Coordinator
+        
     weak var coordinatorDelegate: DishViewModelCoordinatorDelegate?
+    
+    // MARK: - Output
+    
+    let dishName = BehaviorSubject<String>(value: "")
+    
+    let dishImageUrl = BehaviorSubject<String>(value: "")
+    
+    let recipesList = BehaviorSubject<[RecipeOverviewViewModel]>(value: [])
+    
+    
+    // MARK: - Private
     
     private let disposeBag = DisposeBag()
     
@@ -26,43 +37,7 @@ class DishViewModel {
     
     private let dishId: Int 
     
-    private var dish: Dish? {
-        didSet {
-            dishName = dish?.name
-            recipesList = dish?.recipeOverviews
-                               .map(RecipeOverviewViewModel.init)
-                               .sorted { $0.rating > $1.rating } ?? []
-            fetchImageFromUrl(dish?.imageUrl ?? "") { [weak self] image in
-                self?.image = image
-            }
-        }
-    }
-    
-    var onDishNameChangedListener: OnChangeListener?
-    private(set) var dishName: String? {
-        didSet {
-            onDishNameChangedListener?()
-        }
-    }
-    
-    var onImageChangedListener: OnChangeListener?
-    // TODO: Add UIKit viewmodel extension?
-    private(set) var image: UIImage? {
-        didSet {
-            onImageChangedListener?()
-        }
-    }
-    
-    var onRecipesListChangedListener: OnChangeListener?
-    private var recipesList: [RecipeOverviewViewModel] = [] {
-        didSet {
-            onRecipesListChangedListener?()
-        }
-    }
-    
-    var numberOfRecipes: Int {
-        return recipesList.count
-    }
+    private var dish: Dish?
     
     init(dishId: Int, dishService: DishService) {
         self.dishId = dishId
@@ -73,16 +48,20 @@ class DishViewModel {
         dishService.fetchDishInfo(for: dishId)
             .subscribe(
                 onNext: { [weak self] dish in
-                    AppDelegate.logger.debug("Fetched dish: \(dish)")
-                    self?.dish = dish
-                }, onError: { error in
+                    guard let self = self else { return }
+                    AppDelegate.logger.trace("Fetched dish: \(dish)")
+                    self.dish = dish
+                    self.dishName.onNext(dish.name)
+                    self.dishImageUrl.onNext(dish.imageUrl)
+                    self.recipesList.onNext(dish.recipeOverviews
+                                                .map(RecipeOverviewViewModel.init)
+                                                .sorted(by: { $0.rating > $1.rating }))
+                }, onError: { [weak self] error in
+                    guard let self = self else { return }
+                    AppDelegate.logger.notice("Unable to fetch dish with id \(self.dishId)")
                     // TODO: Handle error
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
-    }
-    
-    func recipeViewModel(forIndexPath indexPath: IndexPath) -> RecipeOverviewViewModel {
-        return recipesList[indexPath.row]
     }
     
     func orderTakeawayCommand() {
@@ -100,11 +79,11 @@ class DishViewModel {
 
 extension DishViewModel {
     // TODO: Add extension to all viewmodels (generic ViewModel protocol?) or a service? or both, in layers?
-    func fetchImageFromUrl(_ url: String?, completion: @escaping (UIImage?) -> Void) {
+    func fetchImageFromUrl(_ url: String?, completion: @escaping (UIImage) -> Void) {
         guard url == url else {
-            completion(nil)
+            completion(UIImage()) // TODO: Should be a fallback image
             return
         }
-        // TODO
+        // TODO: Implement image fetcher
     }
 }

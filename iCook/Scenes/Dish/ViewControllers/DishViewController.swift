@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DishViewController: UIViewController {
     
@@ -23,13 +25,14 @@ class DishViewController: UIViewController {
     
     private let recipeCellReuseId = "recipeCell"
     
+    private let disposeBag = DisposeBag()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         recipesTableView.delegate = self
-        recipesTableView.dataSource = self
         recipesTableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: recipeCellReuseId)
         
         takeawayButton.onTap = { [weak self] in
@@ -40,7 +43,7 @@ class DishViewController: UIViewController {
             self?.onTapAddRecipeButton()
         }
         
-        setupViewModelListeners()
+        setupBindings()
     }
     
     // MARK: - Actions
@@ -61,40 +64,18 @@ private extension DishViewController {
         viewModel.addRecipeCommand()
     }
     
-    func setupViewModelListeners() {
-        viewModel.onImageChangedListener = { [weak self] in
-            guard let self = self else { return }
-            self.imageView.image = self.viewModel.image
-        }
-        viewModel.onRecipesListChangedListener = { [weak self] in
-            self?.recipesTableView.reloadData()
-        }
-        viewModel.onDishNameChangedListener = { [weak self] in
-            guard let self = self else { return }
-            self.navigationItem.title = self.viewModel.dishName
-        }
-    }
-}
-
-extension DishViewController: UITableViewDataSource {
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        viewModel.numberOfRecipes
-    }
-    
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    func setupBindings() {
+        viewModel.dishName.bind(to: navigationItem.rx.title).disposed(by: disposeBag)
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: recipeCellReuseId, for: indexPath) as? RecipeTableViewCell else {
-            fatalError("Wrong Recipes table view setup.")
-        }
-        let cellViewModel = viewModel.recipeViewModel(forIndexPath: indexPath)
-        cell.configure(with: cellViewModel)
-        return cell
+        viewModel.dishImageUrl.bind { [weak self] url in
+            self?.imageView.downloaded(from: url)
+        }.disposed(by: disposeBag)
+        
+        viewModel.recipesList.bind(
+            to: recipesTableView.rx.items(cellIdentifier: recipeCellReuseId, cellType: RecipeTableViewCell.self)
+        ){ row, viewModel, cell in
+            cell.configure(with: viewModel)
+        }.disposed(by: disposeBag)
     }
 }
 
