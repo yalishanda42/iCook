@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import RxSwift
 
 class FakeDishService: DishService {
     
-    func generateNewQuickRandomDishSuggestion(completion: @escaping (Int) -> Void) {
-        completion(8888)
+    func generateNewQuickRandomDishSuggestion() -> Observable<Int> {
+        return Observable.just(8888)
     }
     
-    func fetchDishInfo(for dishId: Int, completion: @escaping (Dish) -> Void) {
-        completion(Dish(
+    func fetchDishInfo(for dishId: Int) -> Observable<Dish> {
+        return Observable.just(Dish(
             id: dishId,
             name: "Baklava",
             imageUrl: "https://us.123rf.com/450wm/hayatikayhan/hayatikayhan1901/hayatikayhan190101187/116429036-traditional-delicious-turkish-baklava-with-pistachio-nuts-.jpg?ver=6",

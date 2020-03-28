@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol AuthenticateViewModelCoordinatorDelegate: AnyObject, Coordinator {
     func goToRegister()
@@ -19,11 +20,26 @@ class AuthenticateViewModel {
     
     let type: AuthenticationSubScene
     
+    private let disposeBag = DisposeBag()
+    
     private let authenticationService: AuthenticationService
 
     init(type: AuthenticationSubScene, authenticationService: AuthenticationService) {
         self.type = type
         self.authenticationService = authenticationService
+        
+        authenticationService.isAuthenticatedObservable
+            .subscribe(
+                onNext: { [weak self] authenticated in
+                    if authenticated {
+                        self?.coordinatorDelegate?.finish()
+                    } else {
+                        // TODO: Handle failure
+                    }
+                }, onError: { error in
+                    // TODO: Handle error
+                }, onCompleted: nil, onDisposed: nil)
+            .disposed(by: disposeBag)
     }
 
     func continueCommand(
@@ -66,14 +82,7 @@ class AuthenticateViewModel {
 
 private extension AuthenticateViewModel {
     func login(email: String, password: String) {
-        authenticationService.login(email: email, password: password) {
-            [weak self] success, message in
-            guard success else {
-                // TODO: handle error
-                return
-            }
-            self?.coordinatorDelegate?.finish()
-        }
+        authenticationService.login(email: email, password: password)
     }
     
     func register(firstName: String, famiyName: String, email: String, password: String, repeatedPassword: String) {
@@ -81,13 +90,26 @@ private extension AuthenticateViewModel {
             // TODO: handle password mismatch
             return
         }
-        authenticationService.register(firstName: firstName, famiyName: famiyName, email: email, password: password) { [weak self] success, message in
-            guard success else {
-                // TODO handle error
-                return
-            }
-            self?.login(email: email, password: password)
-        }
+        
+        authenticationService.register(
+            firstName: firstName,
+            famiyName: famiyName,
+            email: email,
+            password: password
+        ).subscribe(
+            onNext: { [weak self] success in
+                if success {
+                    self?.login(email: email, password: password)
+                } else {
+                    // TODO: Handle failure
+                }
+            },
+            onError: { error in
+                // TODO: Handle error
+            },
+            onCompleted: nil,
+            onDisposed: nil
+        ).disposed(by: disposeBag)
     }
 }
 

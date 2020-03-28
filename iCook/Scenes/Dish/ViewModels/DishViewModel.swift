@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol DishViewModelCoordinatorDelegate: AnyObject, Coordinator {
     func goToTakeaway()
@@ -18,6 +19,8 @@ class DishViewModel {
     typealias OnChangeListener = () -> Void
     
     weak var coordinatorDelegate: DishViewModelCoordinatorDelegate?
+    
+    private let disposeBag = DisposeBag()
     
     private let dishService: DishService
     
@@ -67,9 +70,15 @@ class DishViewModel {
     }
     
     func load() {
-        dishService.fetchDishInfo(for: dishId) { [weak self] dish in
-            self?.dish = dish
-        }
+        dishService.fetchDishInfo(for: dishId)
+            .subscribe(
+                onNext: { [weak self] dish in
+                    AppDelegate.logger.debug("Fetched dish: \(dish)")
+                    self?.dish = dish
+                }, onError: { error in
+                    // TODO: Handle error
+                }, onCompleted: nil, onDisposed: nil)
+            .disposed(by: disposeBag)
     }
     
     func recipeViewModel(forIndexPath indexPath: IndexPath) -> RecipeOverviewViewModel {

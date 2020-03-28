@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol AuthenticationService {
     
-    typealias CompletionCallback = (_ success: Bool, _ message: String?) -> Void
+    var isCurrentlyAuthenticated: Bool { get }
+        
+    var isAuthenticatedObservable: BehaviorSubject<Bool> { get }
     
-    var isAuthenticated: Bool { get }
+    func login(email: String, password: String)
     
-    func login(email: String, password: String, completion: @escaping CompletionCallback)
+    func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Bool>
     
-    func register(firstName: String, famiyName: String, email: String, password: String, completion: @escaping CompletionCallback)
 }

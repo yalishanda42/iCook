@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol DashboardViewModelCoordinatorDelegate: AnyObject {
     func goToLoginScreen(onSuccessfulLogin: @escaping () -> Void)
@@ -17,6 +18,8 @@ class DashboardViewModel {
     
     weak var coordinatorDelegate: DashboardViewModelCoordinatorDelegate?
     
+    private let disposeBag = DisposeBag()
+    
     private let authenticationService: AuthenticationService
     private let dishService: DishService
     
@@ -26,7 +29,7 @@ class DashboardViewModel {
     }
     
     func quickRecommendationCommand() {
-        guard authenticationService.isAuthenticated else {
+        guard authenticationService.isCurrentlyAuthenticated else {
             authenticate()
             return
         }
@@ -44,8 +47,12 @@ private extension DashboardViewModel {
     }
     
     func showQuickRecommendation() {
-        dishService.generateNewQuickRandomDishSuggestion { [weak self] dishId in
-            self?.coordinatorDelegate?.goToDishScreen(dishId: dishId)
-        }
+        dishService.generateNewQuickRandomDishSuggestion()
+            .subscribe(
+                onNext: { [weak self] dishId in
+                    self?.coordinatorDelegate?.goToDishScreen(dishId: dishId)
+                }, onError: { error in
+                    // TODO: Handle error.
+            }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
 }

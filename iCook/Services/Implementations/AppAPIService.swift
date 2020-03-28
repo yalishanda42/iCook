@@ -9,40 +9,40 @@
 import Foundation
 import Alamofire
 import Logging
+import RxSwift
 
 class AppAPIService {
-    private let uriBase = "https://idagotvim.000webhostapp.com/api"
+    private static let uriBase = "https://idagotvim.000webhostapp.com/api"
 }
 
 extension AppAPIService: APIService {
-    func login(
-        email: String,
-        password: String,
-        completion: @escaping (Result<BearerToken, APIAuthenticationError>) -> Void)
-    {
-        let endpoint = Endpoint.login
+    func login(email: String, password: String) -> Observable<BearerToken> {
         
-        let parameters = [
-            "email": email,
-            "password": password,
-        ]
+        let endpoint = Endpoint.login(email: email, password: password)
         
-        AF.request(
-            "\(uriBase)/\(endpoint.rawValue)",
-            method: endpoint.httpRequestMethod,
-            parameters: parameters,
-            encoding: JSONEncoding.default
-        ).responseDecodable(of: APITokenResponse.self) { responseResult in
-            AppDelegate.logger.trace("Login user response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
-            switch responseResult.result {
-            case .success(let response):
-                if let token = response.token {
-                    completion(.success(token))
-                } else {
-                    completion(.failure(.invalidCredentials(serverMessage: response.message)))
-                }
-            case .failure(let error):
-                completion(.failure(.connectionFailure(failureMessage: error.localizedDescription)))
+        return Observable.create { observer -> Disposable in
+            let request = AF.request(
+                endpoint.url,
+                method: endpoint.httpRequestMethod,
+                parameters: endpoint.parameters,
+                encoding: JSONEncoding.default
+            ).responseDecodable(of: APITokenResponse.self) { responseResult in
+                AppDelegate.logger.trace("Login user response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
+                
+                switch responseResult.result {
+                case .success(let response):
+                    if let token = response.token {
+                        observer.onNext(token)
+                        observer.onCompleted()
+                    } else {
+                        observer.onError(APIAuthenticationError.invalidCredentials(serverMessage: response.message))
+                    }
+                case .failure(let error):
+                    observer.onError(APIAuthenticationError.connectionFailure(failureMessage: error.localizedDescription))                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
             }
         }
     }
@@ -51,46 +51,60 @@ extension AppAPIService: APIService {
         firstName: String,
         famiyName: String,
         email: String,
-        password: String,
-        completion: @escaping (Result<String, APIAuthenticationError>) -> Void
-    ) {
-        let endpoint = Endpoint.createUser
+        password: String
+    ) -> Observable<Bool> {
         
-        let parameters = [
-            "email": email,
-            "password": password,
-            "firstname": firstName,
-            "lastname": famiyName,
-        ]
+        let endpoint = Endpoint.createUser(firstName: firstName, famiyName: famiyName, email: email, password: password)
         
-        AF.request(
-            "\(uriBase)/\(endpoint.rawValue)",
-            method: endpoint.httpRequestMethod,
-            parameters: parameters,
-            encoding: JSONEncoding.default
-        ).responseDecodable(of: APIBaseResponse.self) { responseResult in
-            AppDelegate.logger.trace("Register user response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
-            switch responseResult.result {
-            case .success(let response):
-                switch responseResult.response?.statusCode {
-                case 200:
-                    completion(.success(response.message))
-                default:
-                    completion(.failure(.invalidCredentials(serverMessage: response.message)))
+        return Observable.create { observer -> Disposable in
+            let request = AF.request(
+                endpoint.url,
+                method: endpoint.httpRequestMethod,
+                parameters: endpoint.parameters,
+                encoding: JSONEncoding.default
+            ).responseDecodable(of: APIBaseResponse.self) { responseResult in
+                AppDelegate.logger.trace("Register user response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
+                
+                switch responseResult.result {
+                case .success(let response):
+                    switch responseResult.response?.statusCode {
+                    case 200:
+                        observer.onNext(true)
+                        observer.onCompleted()
+                    default:
+                        observer.onError(APIAuthenticationError.invalidCredentials(serverMessage: response.message))
+                    }
+                case .failure(let error):
+                    observer.onError(APIAuthenticationError.connectionFailure(failureMessage: error.localizedDescription))
                 }
-            case .failure(let error):
-                completion(.failure(.connectionFailure(failureMessage: error.localizedDescription)))
+            }
+            
+            return Disposables.create {
+                request.cancel()
             }
         }
     }
 }
 
 extension AppAPIService {
-    enum Endpoint: String {
-        case createUser = "create_user"
-        case login = "login"
-        case updateUser = "update_user"
-        case validateToken = "validate_token"
+    enum Endpoint {
+        case createUser(firstName: String, famiyName: String, email: String, password: String)
+        case login(email: String, password: String)
+        case updateUser(firstName: String, famiyName: String, email: String, password: String?)
+        case validateToken
+        
+        var url: String {
+            switch self {
+            case .createUser:
+                return "\(uriBase)/create_user"
+            case .login:
+                return "\(uriBase)/login"
+            case .updateUser:
+                return "\(uriBase)/update_user"
+            case .validateToken:
+                return "\(uriBase)/validate_token"
+            }
+        }
         
         var httpRequestMethod: HTTPMethod {
             switch self {
@@ -98,5 +112,33 @@ extension AppAPIService {
                 return .post
             }
         }
+        
+        var parameters: [String: String] {
+            switch self {
+            case .createUser(firstName: let firstname, famiyName: let familyname, email: let email, password: let password):
+                return [
+                    Parameters.firstname: firstname,
+                    Parameters.lastname: familyname,
+                    Parameters.email: email,
+                    Parameters.password: password,
+                ]
+            case .login(email: let email, password: let password):
+                return [
+                    Parameters.email: email,
+                    Parameters.password: password
+                ]
+            default:
+                return [:]
+            }
+        }
+    }
+}
+
+extension AppAPIService {
+    enum Parameters {
+        static let email = "email"
+        static let password = "password"
+        static let firstname = "firstname"
+        static let lastname = "lastname"
     }
 }

@@ -7,24 +7,20 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol APIService {
     
     typealias BearerToken = String
 
-    func login(
-        email: String,
-        password: String,
-        completion: @escaping (Result<BearerToken, APIAuthenticationError>) -> Void
-    )
+    func login(email: String, password: String) -> Observable<BearerToken>
     
     func register(
         firstName: String,
         famiyName: String,
         email: String,
-        password: String,
-        completion: @escaping (Result<String, APIAuthenticationError>) -> Void
-    )
+        password: String
+    ) -> Observable<Bool>
     
 }
 

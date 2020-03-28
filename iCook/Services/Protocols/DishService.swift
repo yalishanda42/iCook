@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol DishService {
     
-    func generateNewQuickRandomDishSuggestion(completion: @escaping (_ dishId: Int) -> Void)
+    func generateNewQuickRandomDishSuggestion() -> Observable<Int>
     
-    func fetchDishInfo(for dishId: Int, completion: @escaping (Dish) -> Void)
+    func fetchDishInfo(for dishId: Int) -> Observable<Dish>
     
 }

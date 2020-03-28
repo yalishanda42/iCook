@@ -7,66 +7,44 @@
 //
 
 import Foundation
+import RxSwift
 
 class AppAuthenticationService: AuthenticationService {
     
-    var isAuthenticated: Bool {
-        return token != nil
-    }
+    private(set) var isCurrentlyAuthenticated = false
+    
+    let isAuthenticatedObservable = BehaviorSubject(value: false)
     
     private let apiService: APIService
-    
-    private var token: APIService.BearerToken?
+        
+    private let disposeBag = DisposeBag()
     
     init(apiService: APIService) {
         self.apiService = apiService
+        
+        isAuthenticatedObservable.subscribe(onNext: { [weak self] isAuthenticated in
+                self?.isCurrentlyAuthenticated = isAuthenticated
+            }, onError: { [weak self] error in
+                self?.isCurrentlyAuthenticated = false
+            }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
     
-    func login(email: String, password: String, completion: @escaping CompletionCallback) {
-        apiService.login(email: email, password: password) { [weak self] result in
-            switch result {
-            case .success(let obtainedToken):
-                AppDelegate.logger.debug("Obtained token \(obtainedToken)")
-                self?.token = obtainedToken
-                completion(true, nil)
-            case .failure(let error):
-                switch error {
-                case .connectionFailure(failureMessage: let message):
-                    AppDelegate.logger.notice("Login authentication connection failure: \(message)")
-                    completion(false, message)
-                case .invalidCredentials(serverMessage: let message):
-                    AppDelegate.logger.notice("Login authentication invalid credentials: \(message)")
-                    completion(false, message)
-                }
-            }
-        }
+    func login(email: String, password: String) {
+        apiService.login(email: email, password: password)
+            .subscribe(onNext: { [weak self] token in
+                        self?.isAuthenticatedObservable.onNext(true)
+                    }, onError: { [weak self] error in
+                        self?.isAuthenticatedObservable.onNext(false)
+                    }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
     
     func register(
         firstName: String,
         famiyName: String,
         email: String,
-        password: String,
-        completion: @escaping CompletionCallback
-    ) {
-        apiService.register(firstName: firstName, famiyName: famiyName, email: email, password: password) { result in
-            switch result {
-            case .success(let message):
-                AppDelegate.logger.trace("Successful registration server message: \(message)")
-                completion(true, message)
-            case .failure(let error):
-                let msg: String
-                switch error {
-                case .connectionFailure(failureMessage: let message):
-                    AppDelegate.logger.notice("Register authentication connection failure: \(message)")
-                    msg = message
-                case .invalidCredentials(serverMessage: let message):
-                    AppDelegate.logger.notice("Register authentication invalid credentials: \(message)")
-                    msg = message
-                }
-                completion(false, msg)
-            }
-        }
+        password: String
+    ) -> Observable<Bool> {
+        return apiService.register(firstName: firstName, famiyName: famiyName, email: email, password: password)
     }
     
 }

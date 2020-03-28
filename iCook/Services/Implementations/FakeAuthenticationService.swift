@@ -7,16 +7,20 @@
 //
 
 import Foundation
+import RxSwift
 
 class FakeAuthenticationService: AuthenticationService {
     
-    let isAuthenticated = true
+    let isCurrentlyAuthenticated = true
     
-    func login(email: String, password: String, completion: @escaping CompletionCallback) {
-        completion(true, "fake login")
+    let isAuthenticatedObservable = BehaviorSubject(value: true)
+    
+    func login(email: String, password: String) {
+        AppDelegate.logger.trace("Fake login.")
     }
     
-    func register(firstName: String, famiyName: String, email: String, password: String, completion: @escaping CompletionCallback) {
-        completion(true, "fake register")
+    func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Bool> {
+        AppDelegate.logger.trace("Fake registration.")
+        return Observable.just(true)
     }
 }
