@@ -16,19 +16,27 @@ protocol AuthenticateViewModelCoordinatorDelegate: AnyObject, Coordinator {
 
 class AuthenticateViewModel {
     
+    // MARK: - Coordinator
+    
     weak var coordinatorDelegate: AuthenticateViewModelCoordinatorDelegate?
     
+    // MARK: - Authentication Scene Type
+    
     let type: AuthenticationSubScene
+    
+    // MARK: - Properties
     
     private let disposeBag = DisposeBag()
     
     private let authenticationService: AuthenticationService
+    
+    // MARK: - Initialization
 
     init(type: AuthenticationSubScene, authenticationService: AuthenticationService) {
         self.type = type
         self.authenticationService = authenticationService
         
-        authenticationService.isAuthenticatedObservable
+        authenticationService.isAuthenticated
             .subscribe(
                 onNext: { [weak self] authenticated in
                     if authenticated {

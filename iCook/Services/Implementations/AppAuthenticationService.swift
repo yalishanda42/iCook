@@ -10,10 +10,8 @@ import Foundation
 import RxSwift
 
 class AppAuthenticationService: AuthenticationService {
-    
-    private(set) var isCurrentlyAuthenticated = false
-    
-    let isAuthenticatedObservable = BehaviorSubject(value: false)
+        
+    let isAuthenticated = BehaviorSubject(value: false)
     
     private let apiService: APIService
         
@@ -21,20 +19,14 @@ class AppAuthenticationService: AuthenticationService {
     
     init(apiService: APIService) {
         self.apiService = apiService
-        
-        isAuthenticatedObservable.subscribe(onNext: { [weak self] isAuthenticated in
-                self?.isCurrentlyAuthenticated = isAuthenticated
-            }, onError: { [weak self] error in
-                self?.isCurrentlyAuthenticated = false
-            }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
     
     func login(email: String, password: String) {
         apiService.login(email: email, password: password)
             .subscribe(onNext: { [weak self] token in
-                        self?.isAuthenticatedObservable.onNext(true)
+                        self?.isAuthenticated.onNext(true)
                     }, onError: { [weak self] error in
-                        self?.isAuthenticatedObservable.onNext(false)
+                        self?.isAuthenticated.onNext(false)
                     }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
     

@@ -29,7 +29,7 @@ class DashboardViewModel {
     }
     
     func quickRecommendationCommand() {
-        guard authenticationService.isCurrentlyAuthenticated else {
+        guard (try? authenticationService.isAuthenticated.value()) ?? false else {
             authenticate()
             return
         }

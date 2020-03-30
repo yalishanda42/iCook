@@ -10,10 +10,8 @@ import Foundation
 import RxSwift
 
 class FakeAuthenticationService: AuthenticationService {
-    
-    let isCurrentlyAuthenticated = true
-    
-    let isAuthenticatedObservable = BehaviorSubject(value: true)
+        
+    let isAuthenticated = BehaviorSubject(value: true)
     
     func login(email: String, password: String) {
         AppDelegate.logger.trace("Fake login.")

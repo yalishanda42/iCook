@@ -10,10 +10,8 @@ import Foundation
 import RxSwift
 
 protocol AuthenticationService {
-    
-    var isCurrentlyAuthenticated: Bool { get }
-        
-    var isAuthenticatedObservable: BehaviorSubject<Bool> { get }
+            
+    var isAuthenticated: BehaviorSubject<Bool> { get }
     
     func login(email: String, password: String)
     

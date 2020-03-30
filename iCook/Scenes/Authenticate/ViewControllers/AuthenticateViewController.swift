@@ -11,6 +11,7 @@ import UIKit
 class AuthenticateViewController: UIViewController {
 
     // MARK: - Outlets
+    
     @IBOutlet weak var screenTitle: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var firstName: KawaiiTextField!
