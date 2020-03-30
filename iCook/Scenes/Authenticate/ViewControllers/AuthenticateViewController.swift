@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AuthenticateViewController: UIViewController {
 
@@ -27,65 +29,72 @@ class AuthenticateViewController: UIViewController {
     
     var viewModel: AuthenticateViewModel!
     
+    private let disposeBag = DisposeBag()
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViews()
+        setupBindings()
+    }
+}
+
+// MARK: - Helpers
+    
+private extension AuthenticateViewController {
+    func setupViews() {
+        navigationController?.isNavigationBarHidden = true
         passwordField.textField.isSecureTextEntry = true
         repeatPasswordField.textField.isSecureTextEntry = true
-        
-        navigationController?.isNavigationBarHidden = true
-        
-        switch viewModel.type {
-        case .login:
-            namesStackView.isHidden = true
-            firstName.isHidden = true
-            familyName.isHidden = true
-            screenTitle.text = "Login"
-            repeatPasswordField.isHidden = true
-            registerButton.isHidden = false
-            backButton.isHidden = true
-        case .register:
-            namesStackView.isHidden = false
-            firstName.isHidden = false
-            familyName.isHidden = false
-            screenTitle.text = "Register"
-            repeatPasswordField.isHidden = false
-            registerButton.isHidden = true
-            backButton.isHidden = false
-        }
-        
-        continueButton.onTap = { [weak self] in
-            self?.onTapContinueButton()
-        }
-        
-        registerButton.onTap = { [weak self] in
-            self?.onTapGoRegisterButton()
-        }
-        
-        backButton.addTarget(self, action: #selector(onTapBackButton), for: .touchUpInside)
     }
     
-    // MARK: - Actions
-    
-    func onTapContinueButton() {
-        viewModel.continueCommand(
-            // TODO: Use RxSwift's two-way binding
-            firstName: firstName.text,
-            famiyName: familyName.text,
-            email: emailField.text,
-            password: passwordField.text,
-            repeatedPassword: repeatPasswordField.text
-        )
-    }
-    
-    func onTapGoRegisterButton() {
-        viewModel.goRegisterCommand()
-    }
-    
-    @objc func onTapBackButton() {
-        viewModel.goBackCommand()
+    func setupBindings() {
+        namesStackView.isHidden = viewModel.firstNameIsHidden && viewModel.familyNameIsHidden
+        firstName.isHidden = viewModel.firstNameIsHidden
+        familyName.isHidden = viewModel.familyNameIsHidden
+        screenTitle.text = viewModel.screenTitleText
+        repeatPasswordField.isHidden = viewModel.repeatPasswordFieldIsHidden
+        registerButton.isHidden = viewModel.registerButtonIsHidden
+        backButton.isHidden = viewModel.backButtonIsHidden
+        
+        firstName.textField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.firstName)
+            .disposed(by: disposeBag)
+        
+        familyName.textField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.familyName)
+            .disposed(by: disposeBag)
+        
+        emailField.textField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.email)
+            .disposed(by: disposeBag)
+        
+        passwordField.textField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.password)
+            .disposed(by: disposeBag)
+        
+        repeatPasswordField.textField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.passwordRepeated)
+            .disposed(by: disposeBag)
+
+        continueButton.button.rx.tap
+            .bind(onNext: viewModel.continueCommand)
+            .disposed(by: disposeBag)
+        
+        registerButton.button.rx.tap
+            .bind(onNext: viewModel.goRegisterCommand)
+            .disposed(by: disposeBag)
+        
+        backButton.rx.tap
+            .bind(onNext: viewModel.goBackCommand)
+            .disposed(by: disposeBag)
     }
 }
 

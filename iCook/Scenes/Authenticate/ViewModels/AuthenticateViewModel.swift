@@ -20,9 +20,20 @@ class AuthenticateViewModel {
     
     weak var coordinatorDelegate: AuthenticateViewModelCoordinatorDelegate?
     
-    // MARK: - Authentication Scene Type
+    // MARK: - Bindings
     
-    let type: AuthenticationSubScene
+    let firstName = BehaviorSubject<String>(value: "")
+    let familyName = BehaviorSubject<String>(value: "")
+    let email = BehaviorSubject<String>(value: "")
+    let password = BehaviorSubject<String>(value: "")
+    let passwordRepeated = BehaviorSubject<String>(value: "")
+    
+    let firstNameIsHidden: Bool
+    let familyNameIsHidden: Bool
+    let screenTitleText: String
+    let repeatPasswordFieldIsHidden: Bool
+    let registerButtonIsHidden: Bool
+    let backButtonIsHidden: Bool
     
     // MARK: - Properties
     
@@ -30,13 +41,32 @@ class AuthenticateViewModel {
     
     private let authenticationService: AuthenticationService
     
+    private let type: AuthenticationSubScene
+    
     // MARK: - Initialization
 
     init(type: AuthenticationSubScene, authenticationService: AuthenticationService) {
         self.type = type
         self.authenticationService = authenticationService
         
-        authenticationService.isAuthenticated
+        switch self.type{
+        case .login:
+            firstNameIsHidden = true
+            familyNameIsHidden = true
+            screenTitleText = "Login"
+            repeatPasswordFieldIsHidden = true
+            registerButtonIsHidden = false
+            backButtonIsHidden = true
+        case .register:
+            firstNameIsHidden = false
+            familyNameIsHidden = false
+            screenTitleText = "Register"
+            repeatPasswordFieldIsHidden = false
+            registerButtonIsHidden = true
+            backButtonIsHidden = false
+        }
+        
+        self.authenticationService.isAuthenticated
             .subscribe(
                 onNext: { [weak self] authenticated in
                     if authenticated {
@@ -49,31 +79,29 @@ class AuthenticateViewModel {
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
+}
 
-    func continueCommand(
-        // TODO: Use RxSwift's two-way binding
-        firstName: String,
-        famiyName: String,
-        email: String,
-        password: String,
-        repeatedPassword: String
-    ) {
-        switch type {
-        case .login:
-            login(email: email, password: password)
-        case .register:
-            register(
-                // TODO: Use RxSwift's two-way binding
-                firstName: firstName,
-                famiyName: famiyName,
-                email: email,
-                password: password,
-                repeatedPassword: repeatedPassword
-            )
-        }
+// MARK: - Commands
+
+extension AuthenticateViewModel {
+    func continueCommand(_: Void) {
+        Observable.combineLatest(email, password, passwordRepeated, firstName, familyName).subscribe(
+            onNext: { [unowned self] email, password, passwordRepeated, firstName, familyName in
+                guard password == passwordRepeated else {
+                    // TODO: Handle password mismatch
+                    return
+                }
+                
+                switch self.type {
+                case .login:
+                    self.login(email: email, password: password)
+                case .register:
+                    self.register(firstName: firstName, famiyName: familyName, email: email, password: password, repeatedPassword: passwordRepeated)
+                }
+        }).disposed(by: disposeBag)
     }
     
-    func goRegisterCommand() {
+    func goRegisterCommand(_: Void) {
         guard type != .register else {
             AppDelegate.logger.error("Incorrect behaviour! Tried to go to Register from Register!")
             return
@@ -81,7 +109,7 @@ class AuthenticateViewModel {
         coordinatorDelegate?.goToRegister()
     }
     
-    func goBackCommand() {
+    func goBackCommand(_: Void) {
         coordinatorDelegate?.goBack()
     }
 }

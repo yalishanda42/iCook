@@ -20,7 +20,7 @@ class DishViewModel {
         
     weak var coordinatorDelegate: DishViewModelCoordinatorDelegate?
     
-    // MARK: - Output
+    // MARK: - Bindings
     
     let dishName = BehaviorSubject<String>(value: "")
     
