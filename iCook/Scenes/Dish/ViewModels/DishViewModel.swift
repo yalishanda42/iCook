@@ -29,7 +29,7 @@ class DishViewModel {
     let recipesList = BehaviorSubject<[RecipeOverviewViewModel]>(value: [])
     
     
-    // MARK: - Private
+    // MARK: - Properties
     
     private let disposeBag = DisposeBag()
     
@@ -39,10 +39,14 @@ class DishViewModel {
     
     private var dish: Dish?
     
+    // MARK: - Initialization
+    
     init(dishId: Int, dishService: DishService) {
         self.dishId = dishId
         self.dishService = dishService
     }
+    
+    // MARK: - Loading
     
     func load() {
         dishService.fetchDishInfo(for: dishId)
@@ -63,27 +67,20 @@ class DishViewModel {
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
-    
-    func orderTakeawayCommand() {
+}
+
+// MARK: - Commands
+
+extension DishViewModel {
+    func orderTakeawayCommand(_: Void) {
         coordinatorDelegate?.goToTakeaway()
     }
     
-    func addRecipeCommand() {
+    func addRecipeCommand(_: Void) {
         coordinatorDelegate?.goToAddRecipe()
     }
     
-    func goBackCommand() {
+    func goBackCommand(_: Void) {
         coordinatorDelegate?.finish()
-    }
-}
-
-extension DishViewModel {
-    // TODO: Add extension to all viewmodels (generic ViewModel protocol?) or a service? or both, in layers?
-    func fetchImageFromUrl(_ url: String?, completion: @escaping (UIImage) -> Void) {
-        guard url == url else {
-            completion(UIImage()) // TODO: Should be a fallback image
-            return
-        }
-        // TODO: Implement image fetcher
     }
 }

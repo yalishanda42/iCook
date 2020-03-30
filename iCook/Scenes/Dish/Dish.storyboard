@@ -113,6 +113,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addRecipeButton" destination="QTY-sP-1eO" id="XfL-b3-0pQ"/>
+                        <outlet property="doneButton" destination="QI5-pd-E8b" id="5Sc-KV-Cu3"/>
                         <outlet property="imageView" destination="QbF-KL-bzm" id="5vN-zh-zAz"/>
                         <outlet property="recipesTableView" destination="iIG-A9-CjA" id="Mjs-zx-AcY"/>
                         <outlet property="takeawayButton" destination="oZr-9j-17v" id="lEG-nf-Gxb"/>

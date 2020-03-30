@@ -18,6 +18,7 @@ class DishViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var takeawayButton: KawaiiButton!
     @IBOutlet private weak var addRecipeButton: KawaiiButton!
+    @IBOutlet private weak var doneButton: UIBarButtonItem!
     
     // MARK: - Properties
     
@@ -32,55 +33,46 @@ class DishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recipesTableView.delegate = self
-        recipesTableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: recipeCellReuseId)
-        
-        takeawayButton.onTap = { [weak self] in
-            self?.onTapTakeawayButton()
-        }
-        
-        addRecipeButton.onTap = { [weak self] in
-            self?.onTapAddRecipeButton()
-        }
-        
+        setupTableView()
         setupBindings()
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func onTapBackButton(_ sender: Any) {
-        viewModel.goBackCommand()
     }
 }
 
 // MARK: - Helpers
 
 private extension DishViewController {
-    func onTapTakeawayButton() {
-        viewModel.orderTakeawayCommand()
-    }
-    
-    func onTapAddRecipeButton() {
-        viewModel.addRecipeCommand()
+    func setupTableView() {
+        recipesTableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: recipeCellReuseId)
+        recipesTableView.tableFooterView = UIView()
     }
     
     func setupBindings() {
-        viewModel.dishName.bind(to: navigationItem.rx.title).disposed(by: disposeBag)
+        viewModel.dishName
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: disposeBag)
         
         viewModel.dishImageUrl.bind { [weak self] url in
-            self?.imageView.downloaded(from: url)
+            self?.imageView.imageDownloaded(from: url)
         }.disposed(by: disposeBag)
         
         viewModel.recipesList.bind(
-            to: recipesTableView.rx.items(cellIdentifier: recipeCellReuseId, cellType: RecipeTableViewCell.self)
-        ){ row, viewModel, cell in
+            to: recipesTableView.rx.items(
+                cellIdentifier: recipeCellReuseId,
+                cellType: RecipeTableViewCell.self)
+        ) { row, viewModel, cell in
             cell.configure(with: viewModel)
         }.disposed(by: disposeBag)
-    }
-}
-
-extension DishViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        CGFloat.leastNormalMagnitude
+        
+        takeawayButton.button.rx.tap
+            .bind(onNext: viewModel.orderTakeawayCommand)
+            .disposed(by: disposeBag)
+        
+        addRecipeButton.button.rx.tap
+            .bind(onNext: viewModel.addRecipeCommand)
+            .disposed(by: disposeBag)
+        
+        doneButton.rx.tap
+            .bind(onNext: viewModel.goBackCommand)
+            .disposed(by: disposeBag)
     }
 }
