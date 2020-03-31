@@ -47,32 +47,27 @@ private extension DishViewController {
     }
     
     func setupBindings() {
-        viewModel.dishName
-            .bind(to: navigationItem.rx.title)
+        
+        let output = viewModel.transform(DishViewModel.Input(
+            takeawayButtonTap: takeawayButton.button.rx.tap.asObservable(),
+            addRecipeButtonTap: addRecipeButton.button.rx.tap.asObservable(),
+            doneButtonTap: doneButton.rx.tap.asObservable()
+        ))
+        
+        output.dishName
+            .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
-        
-        viewModel.dishImageUrl.bind { [weak self] url in
+                
+        output.dishImageUrl.drive (onNext: { [weak self] url in
             self?.imageView.imageDownloaded(from: url)
-        }.disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
         
-        viewModel.recipesList.bind(
-            to: recipesTableView.rx.items(
+        output.recipesViewModels.drive(
+            recipesTableView.rx.items(
                 cellIdentifier: recipeCellReuseId,
                 cellType: RecipeTableViewCell.self)
         ) { row, viewModel, cell in
             cell.configure(with: viewModel)
         }.disposed(by: disposeBag)
-        
-        takeawayButton.button.rx.tap
-            .bind(onNext: viewModel.orderTakeawayCommand)
-            .disposed(by: disposeBag)
-        
-        addRecipeButton.button.rx.tap
-            .bind(onNext: viewModel.addRecipeCommand)
-            .disposed(by: disposeBag)
-        
-        doneButton.rx.tap
-            .bind(onNext: viewModel.goBackCommand)
-            .disposed(by: disposeBag)
     }
 }

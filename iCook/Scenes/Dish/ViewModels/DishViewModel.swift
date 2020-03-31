@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 protocol DishViewModelCoordinatorDelegate: AnyObject, Coordinator {
     func goToTakeaway()
@@ -20,16 +21,20 @@ class DishViewModel {
         
     weak var coordinatorDelegate: DishViewModelCoordinatorDelegate?
     
-    // MARK: - Bindings
-    
-    let dishName = BehaviorSubject<String>(value: "")
-    
-    let dishImageUrl = BehaviorSubject<String>(value: "")
-    
-    let recipesList = BehaviorSubject<[RecipeOverviewViewModel]>(value: [])
-    
-    
     // MARK: - Properties
+    
+    private var dishName: Driver<String> {
+        dish.map { $0.name }.asDriver(onErrorJustReturn: "")
+    }
+    
+    private var dishImageUrl: Driver<String> {
+        dish.map { $0.imageUrl }.asDriver(onErrorJustReturn: "")
+    }
+    
+    private var dishRecipeViewModels: Driver<[RecipeOverviewViewModel]> {
+        dish.map { $0.recipeOverviews.map(RecipeOverviewViewModel.init) }
+            .asDriver(onErrorJustReturn: [])
+    }
     
     private let disposeBag = DisposeBag()
     
@@ -37,50 +42,72 @@ class DishViewModel {
     
     private let dishId: Int 
     
-    private var dish: Dish?
+    private let dish: Observable<Dish>
     
     // MARK: - Initialization
     
     init(dishId: Int, dishService: DishService) {
         self.dishId = dishId
         self.dishService = dishService
+        self.dish = self.dishService.fetchDishInfo(for: self.dishId)
     }
     
     // MARK: - Loading
     
     func load() {
-        dishService.fetchDishInfo(for: dishId)
-            .subscribe(
-                onNext: { [weak self] dish in
-                    guard let self = self else { return }
+        dish.subscribe(
+                onNext: { dish in
                     AppDelegate.logger.trace("Fetched dish: \(dish)")
-                    self.dish = dish
-                    self.dishName.onNext(dish.name)
-                    self.dishImageUrl.onNext(dish.imageUrl)
-                    self.recipesList.onNext(dish.recipeOverviews
-                                                .map(RecipeOverviewViewModel.init)
-                                                .sorted(by: { $0.rating > $1.rating }))
                 }, onError: { [weak self] error in
                     guard let self = self else { return }
-                    AppDelegate.logger.notice("Unable to fetch dish with id \(self.dishId)")
+                    AppDelegate.logger.notice("Unable to fetch dish with id \(self.dishId): \(error.localizedDescription)")
                     // TODO: Handle error
+                    // ...
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
 }
 
-// MARK: - Commands
+// MARK: - IO Bindings
 
 extension DishViewModel {
-    func orderTakeawayCommand(_: Void) {
+    struct Input {
+        let takeawayButtonTap: Observable<Void>
+        let addRecipeButtonTap: Observable<Void>
+        let doneButtonTap: Observable<Void>
+    }
+    
+    struct Output {
+        let dishName: Driver<String>
+        let dishImageUrl: Driver<String>
+        let recipesViewModels: Driver<[RecipeOverviewViewModel]>
+    }
+    
+    func transform(_ input: Input) -> Output {
+        input.takeawayButtonTap.subscribe(onNext: orderTakeaway).disposed(by: disposeBag)
+        input.addRecipeButtonTap.subscribe(onNext: addRecipe).disposed(by: disposeBag)
+        input.doneButtonTap.subscribe(onNext: goBack).disposed(by: disposeBag)
+        
+        return Output(
+            dishName: dishName,
+            dishImageUrl: dishImageUrl,
+            recipesViewModels: dishRecipeViewModels
+        )
+    }
+}
+
+// MARK: - Helpers
+
+extension DishViewModel {
+    private func orderTakeaway() {
         coordinatorDelegate?.goToTakeaway()
     }
     
-    func addRecipeCommand(_: Void) {
+    private func addRecipe() {
         coordinatorDelegate?.goToAddRecipe()
     }
     
-    func goBackCommand(_: Void) {
+    private func goBack() {
         coordinatorDelegate?.finish()
     }
 }
