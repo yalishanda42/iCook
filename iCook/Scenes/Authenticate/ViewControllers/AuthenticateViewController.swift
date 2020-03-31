@@ -59,42 +59,16 @@ private extension AuthenticateViewController {
         registerButton.isHidden = viewModel.registerButtonIsHidden
         backButton.isHidden = viewModel.backButtonIsHidden
         
-        firstName.textField.rx.text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.firstName)
-            .disposed(by: disposeBag)
-        
-        familyName.textField.rx.text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.familyName)
-            .disposed(by: disposeBag)
-        
-        emailField.textField.rx.text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.email)
-            .disposed(by: disposeBag)
-        
-        passwordField.textField.rx.text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.password)
-            .disposed(by: disposeBag)
-        
-        repeatPasswordField.textField.rx.text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.passwordRepeated)
-            .disposed(by: disposeBag)
-
-        continueButton.button.rx.tap
-            .bind(onNext: viewModel.continueCommand)
-            .disposed(by: disposeBag)
-        
-        registerButton.button.rx.tap
-            .bind(onNext: viewModel.goRegisterCommand)
-            .disposed(by: disposeBag)
-        
-        backButton.rx.tap
-            .bind(onNext: viewModel.goBackCommand)
-            .disposed(by: disposeBag)
+        viewModel.transform(AuthenticateViewModel.Input(
+            firstNameText: firstName.textField.rx.text.asObservable(),
+            familyNameText: familyName.textField.rx.text.asObservable(),
+            emailText: emailField.textField.rx.text.asObservable(),
+            passwordText: passwordField.textField.rx.text.asObservable(),
+            passwordRepeatedText: repeatPasswordField.textField.rx.text.asObservable(),
+            continueButtonTap: continueButton.button.rx.tap.asObservable(),
+            goResgisterButtonTap: registerButton.button.rx.tap.asObservable(),
+            goBackButtonTap: backButton.rx.tap.asObservable())
+        )
     }
 }
 
