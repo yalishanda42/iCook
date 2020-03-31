@@ -101,12 +101,12 @@ extension AuthenticateViewModel {
     
     func transform(_ input: Input) -> Void {
         continueButtonTap(input: input)
-            .subscribe(onNext: self.sendAuthenticationRequest(email:password:passwordRepeated:firstName:familyName:))
+            .subscribe(onNext: sendAuthenticationRequest(email:password:passwordRepeated:firstName:familyName:))
             .disposed(by: disposeBag)
         
-        input.goBackButtonTap.subscribe(onNext: self.goBack).disposed(by: disposeBag)
+        input.goBackButtonTap.subscribe(onNext: goBack).disposed(by: disposeBag)
         
-        input.goResgisterButtonTap.subscribe(onNext: self.goRegister).disposed(by: disposeBag)
+        input.goResgisterButtonTap.subscribe(onNext: goRegister).disposed(by: disposeBag)
     }
 }
 
