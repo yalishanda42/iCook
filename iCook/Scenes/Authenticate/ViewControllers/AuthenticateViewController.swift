@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AuthenticateViewController: UIViewController {
+class AuthenticateViewController: SceneViewController<AuthenticateViewModel> {
 
     // MARK: - Outlets
     
@@ -25,32 +25,18 @@ class AuthenticateViewController: UIViewController {
     @IBOutlet weak var continueButton: KawaiiButton!
     @IBOutlet weak var namesStackView: UIStackView!
     
-    // MARK: - Properties
+    // MARK: - Setup
     
-    var viewModel: AuthenticateViewModel!
-    
-    private let disposeBag = DisposeBag()
-    
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupViews()
-        setupBindings()
-    }
-}
-
-// MARK: - Helpers
-    
-private extension AuthenticateViewController {
-    func setupViews() {
+    override func setupViews() {
+        super.setupViews()
         navigationController?.isNavigationBarHidden = true
         passwordField.textField.isSecureTextEntry = true
         repeatPasswordField.textField.isSecureTextEntry = true
     }
     
-    func setupBindings() {
+    override func setupBindings() {
+        super.setupBindings()
+        
         namesStackView.isHidden = viewModel.firstNameIsHidden && viewModel.familyNameIsHidden
         firstName.isHidden = viewModel.firstNameIsHidden
         familyName.isHidden = viewModel.familyNameIsHidden
@@ -71,4 +57,3 @@ private extension AuthenticateViewController {
         )
     }
 }
-

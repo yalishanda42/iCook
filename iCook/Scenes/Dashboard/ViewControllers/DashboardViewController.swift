@@ -7,28 +7,26 @@
 //
 
 import UIKit
+import RxCocoa
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: SceneViewController<DashboardViewModel> {
     
     // MARK: - Outlets
     
     @IBOutlet private weak var quickButton: KawaiiButton!
     @IBOutlet private weak var suggestionButton: KawaiiButton!
     @IBOutlet private weak var contributionButton: KawaiiButton!
+
+    // MARK: - Setup
     
-    // MARK: - Properties
-    
-    var viewModel: DashboardViewModel!
+    override func setupBindings() {
+        super.setupBindings()
+        viewModel.transform(DashboardViewModel.Input(
+            quickRecommendationButtonTap: quickButton.button.rx.tap.asObservable()
+        ))
+    }
     
     // MARK: - Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        quickButton.onTap = { [weak self] in
-            self?.viewModel.quickRecommendationCommand()
-        }
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

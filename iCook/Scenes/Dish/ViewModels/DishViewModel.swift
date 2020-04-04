@@ -15,7 +15,7 @@ protocol DishViewModelCoordinatorDelegate: AnyObject, Coordinator {
     func goToAddRecipe()
 }
 
-class DishViewModel {
+class DishViewModel: SceneViewModel {
     
     // MARK: - Coordinator
         
@@ -35,8 +35,6 @@ class DishViewModel {
         dish.map { $0.recipeOverviews.map(RecipeOverviewViewModel.init) }
             .asDriver(onErrorJustReturn: [])
     }
-    
-    private let disposeBag = DisposeBag()
     
     private let dishService: DishService
     
@@ -70,7 +68,7 @@ class DishViewModel {
 
 // MARK: - IO Bindings
 
-extension DishViewModel {
+extension DishViewModel: IOTransformable {
     struct Input {
         let takeawayButtonTap: Observable<Void>
         let addRecipeButtonTap: Observable<Void>

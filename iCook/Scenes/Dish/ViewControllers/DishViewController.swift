@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class DishViewController: UIViewController {
+class DishViewController: SceneViewController<DishViewModel> {
     
     // MARK: - Outlets
     
@@ -22,31 +22,18 @@ class DishViewController: UIViewController {
     
     // MARK: - Properties
     
-    var viewModel: DishViewModel!
-    
     private let recipeCellReuseId = "recipeCell"
     
-    private let disposeBag = DisposeBag()
+    // MARK: - Setup
     
-    // MARK: - Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupTableView()
-        setupBindings()
-    }
-}
-
-// MARK: - Helpers
-
-private extension DishViewController {
-    func setupTableView() {
+    override func setupViews() {
+        super.setupViews()
         recipesTableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: recipeCellReuseId)
         recipesTableView.tableFooterView = UIView()
     }
     
-    func setupBindings() {
+    override func setupBindings() {
+        super.setupBindings()
         
         let output = viewModel.transform(DishViewModel.Input(
             takeawayButtonTap: takeawayButton.button.rx.tap.asObservable(),

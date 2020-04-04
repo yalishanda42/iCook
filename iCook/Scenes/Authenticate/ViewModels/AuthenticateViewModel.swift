@@ -15,7 +15,7 @@ protocol AuthenticateViewModelCoordinatorDelegate: AnyObject, Coordinator {
     func goBack()
 }
 
-class AuthenticateViewModel {
+class AuthenticateViewModel: SceneViewModel {
 
     // MARK: - Coordinator
 
@@ -29,8 +29,6 @@ class AuthenticateViewModel {
     let repeatPasswordFieldIsHidden: Bool
     let registerButtonIsHidden: Bool
     let backButtonIsHidden: Bool
-
-    private let disposeBag = DisposeBag()
 
     private let authenticationService: AuthenticationService
 
@@ -58,6 +56,8 @@ class AuthenticateViewModel {
             registerButtonIsHidden = true
             backButtonIsHidden = false
         }
+        
+        super.init()
 
         self.authenticationService.isAuthenticated
             .subscribe(
@@ -85,7 +85,7 @@ extension AuthenticateViewModel {
 
 // MARK: - IO Bindings
 
-extension AuthenticateViewModel {
+extension AuthenticateViewModel: IOTransformable {
     struct Input {
         // Text
         let firstNameText: Observable<String?>
