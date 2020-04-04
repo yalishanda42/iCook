@@ -21,13 +21,15 @@ class AppAuthenticationService: AuthenticationService {
         self.apiService = apiService
     }
     
-    func login(email: String, password: String) {
-        apiService.login(email: email, password: password)
-            .subscribe(onNext: { [weak self] token in
-                        self?.isAuthenticated.onNext(true)
-                    }, onError: { [weak self] error in
-                        self?.isAuthenticated.onNext(false)
-                    }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
+    func login(email: String, password: String) -> Observable<Bool> {
+        let result = apiService.login(email: email, password: password)
+        result.subscribe(onNext: { [weak self] token in
+                    self?.isAuthenticated.onNext(true)
+                }, onError: { [weak self] error in
+                    self?.isAuthenticated.onNext(false)
+                }, onCompleted: nil, onDisposed: nil
+            ).disposed(by: disposeBag)
+        return result.map { _ in true }
     }
     
     func register(

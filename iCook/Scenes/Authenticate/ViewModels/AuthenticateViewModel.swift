@@ -58,19 +58,6 @@ class AuthenticateViewModel: SceneViewModel {
         }
         
         super.init()
-
-        self.authenticationService.isAuthenticated
-            .subscribe(
-                onNext: { [weak self] authenticated in
-                    if authenticated {
-                        self?.coordinatorDelegate?.finish()
-                    } else {
-                        // TODO: Handle failure
-                    }
-                }, onError: { error in
-                    // TODO: Handle error
-                }, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
     }
 }
 
@@ -154,6 +141,17 @@ private extension AuthenticateViewModel {
 
     func login(email: String, password: String) {
         authenticationService.login(email: email, password: password)
+            .subscribe(
+                onNext: { [weak self] authenticated in
+                    if authenticated {
+                        self?.coordinatorDelegate?.finish()
+                    } else {
+                        AppDelegate.logger.warning("Incorrect 'false' value received for AuthenticationService.isAuthenticated")
+                    }
+                }, onError: { [weak self] error in
+                    self?._errorReceived.onNext(error)
+                }, onCompleted: nil, onDisposed: nil)
+            .disposed(by: disposeBag)
     }
 
     func register(firstName: String, famiyName: String, email: String, password: String, repeatedPassword: String) {
@@ -172,11 +170,11 @@ private extension AuthenticateViewModel {
                 if success {
                     self?.login(email: email, password: password)
                 } else {
-                    // TODO: Handle failure
+                    AppDelegate.logger.warning("Incorrect 'false' value received for AuthenticationService.register()")
                 }
             },
-            onError: { error in
-                // TODO: Handle error
+            onError: { [weak self] error in
+                self?._errorReceived.onNext(error)
             },
             onCompleted: nil,
             onDisposed: nil

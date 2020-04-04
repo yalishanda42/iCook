@@ -10,5 +10,5 @@ import Foundation
 
 struct APITokenResponse: APIResponse {
     let message: String
-    let token: String?
+    let token: APIService.BearerToken?
 }

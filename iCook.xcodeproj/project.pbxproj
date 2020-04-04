@@ -46,6 +46,7 @@
 		749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3542425755C0068B492 /* UIColor+AssetColors.swift */; };
 		749BC357242579260068B492 /* KawaiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC356242579260068B492 /* KawaiiButton.swift */; };
 		749BC3592425793A0068B492 /* KawaiiButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 749BC3582425793A0068B492 /* KawaiiButton.xib */; };
+		74A7CF542438F4AA00BD44AC /* UIAlertController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7CF532438F4AA00BD44AC /* UIAlertController+Rx.swift */; };
 		74B891B42427A41E00993FB7 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B891B32427A41E00993FB7 /* RecipeTableViewCell.xib */; };
 		74B891B62427A44000993FB7 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891B52427A44000993FB7 /* RecipeTableViewCell.swift */; };
 		74B891B92427AC7100993FB7 /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B891B82427AC7100993FB7 /* DishViewModel.swift */; };
@@ -122,6 +123,7 @@
 		749BC3542425755C0068B492 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
 		749BC356242579260068B492 /* KawaiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiButton.swift; sourceTree = "<group>"; };
 		749BC3582425793A0068B492 /* KawaiiButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KawaiiButton.xib; sourceTree = "<group>"; };
+		74A7CF532438F4AA00BD44AC /* UIAlertController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Rx.swift"; sourceTree = "<group>"; };
 		74B891B32427A41E00993FB7 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		74B891B52427A44000993FB7 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		74B891B82427AC7100993FB7 /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */,
 				749BC3542425755C0068B492 /* UIColor+AssetColors.swift */,
 				747C5C88243017F5000C2875 /* UIImageView+Downloaded.swift */,
+				74A7CF532438F4AA00BD44AC /* UIAlertController+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				74EDA7EC2426493000E853E8 /* AppAuthenticationService.swift in Sources */,
 				749BC3532425735E0068B492 /* KawaiiView.swift in Sources */,
 				7431147B24265BA100F6A959 /* ServiceDependencies.swift in Sources */,
+				74A7CF542438F4AA00BD44AC /* UIAlertController+Rx.swift in Sources */,
 				741319952426963300A42A4F /* DishCoordinator.swift in Sources */,
 				742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */,
 				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,

@@ -13,7 +13,7 @@ protocol AuthenticationService {
             
     var isAuthenticated: BehaviorSubject<Bool> { get }
     
-    func login(email: String, password: String)
+    func login(email: String, password: String) -> Observable<Bool>
     
     func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Bool>
     

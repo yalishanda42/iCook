@@ -34,7 +34,7 @@ class SceneViewController<VM: SceneViewModel>: UIViewController {
             }
         }
     }
-    
+        
     final let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -52,5 +52,13 @@ class SceneViewController<VM: SceneViewModel>: UIViewController {
         viewModel.isLoading.drive(onNext: { [weak self] isLoading in
             self?.isLoading = isLoading
             }).disposed(by: disposeBag)
+        
+        viewModel.errorReceived.drive(onNext: { [weak self] title, message in
+            guard let self = self else { return }
+            
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
     }
 }
