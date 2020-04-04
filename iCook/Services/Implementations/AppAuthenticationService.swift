@@ -22,8 +22,8 @@ class AppAuthenticationService: AuthenticationService {
     }
     
     func login(email: String, password: String) -> Observable<Bool> {
-        let result = apiService.login(email: email, password: password)
-        result.subscribe(onNext: { [weak self] token in
+        let result = apiService.login(email: email, password: password).share()
+        result.debug().subscribe(onNext: { [weak self] token in
                     self?.isAuthenticated.onNext(true)
                 }, onError: { [weak self] error in
                     self?.isAuthenticated.onNext(false)
