@@ -25,6 +25,11 @@ protocol APIService {
 }
 
 enum APIAuthenticationError: Error {
-    case invalidCredentials(serverMessage: String)
+    case notFound(serverMessage: String)
+    case internalServerError(serverMessage: String)
+    case badRequest(serverMessage: String)
+    case unauthorized(serverMessage: String)
+    case unknownError(serverMessage: String)
+    
     case connectionFailure(failureMessage: String)
 }

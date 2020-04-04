@@ -20,30 +20,9 @@ extension AppAPIService: APIService {
         
         let endpoint = Endpoint.login(email: email, password: password)
         
-        return Observable.create { observer -> Disposable in
-            let request = AF.request(
-                endpoint.url,
-                method: endpoint.httpRequestMethod,
-                parameters: endpoint.parameters,
-                encoding: JSONEncoding.default
-            ).responseDecodable(of: APITokenResponse.self) { responseResult in
-                AppDelegate.logger.trace("Login user response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
-                
-                switch responseResult.result {
-                case .success(let response):
-                    if let token = response.token {
-                        observer.onNext(token)
-                        observer.onCompleted()
-                    } else {
-                        observer.onError(APIAuthenticationError.invalidCredentials(serverMessage: response.message))
-                    }
-                case .failure(let error):
-                    observer.onError(APIAuthenticationError.connectionFailure(failureMessage: error.localizedDescription))                }
-            }
-            
-            return Disposables.create {
-                request.cancel()
-            }
+        return performRequest(toEndpoint: endpoint, responseType: APITokenResponse.self) { (observer, response) in
+            observer.onNext(response.token!)
+            observer.onCompleted()
         }
     }
     
@@ -56,32 +35,9 @@ extension AppAPIService: APIService {
         
         let endpoint = Endpoint.createUser(firstName: firstName, famiyName: famiyName, email: email, password: password)
         
-        return Observable.create { observer -> Disposable in
-            let request = AF.request(
-                endpoint.url,
-                method: endpoint.httpRequestMethod,
-                parameters: endpoint.parameters,
-                encoding: JSONEncoding.default
-            ).responseDecodable(of: APIBaseResponse.self) { responseResult in
-                AppDelegate.logger.trace("Register user response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
-                
-                switch responseResult.result {
-                case .success(let response):
-                    switch responseResult.response?.statusCode {
-                    case 200:
-                        observer.onNext(true)
-                        observer.onCompleted()
-                    default:
-                        observer.onError(APIAuthenticationError.invalidCredentials(serverMessage: response.message))
-                    }
-                case .failure(let error):
-                    observer.onError(APIAuthenticationError.connectionFailure(failureMessage: error.localizedDescription))
-                }
-            }
-            
-            return Disposables.create {
-                request.cancel()
-            }
+        return performRequest(toEndpoint: endpoint, responseType: APIBaseResponse.self) { (observer, response) in
+            observer.onNext(true)
+            observer.onCompleted()
         }
     }
 }
@@ -140,5 +96,50 @@ extension AppAPIService {
         static let password = "password"
         static let firstname = "firstname"
         static let lastname = "lastname"
+    }
+}
+
+// MARK: - Helpers
+
+private extension AppAPIService {
+    func performRequest<ResponseType: APIResponse, ReturnType>(
+        toEndpoint endpoint: Endpoint,
+        responseType: ResponseType.Type,
+        onSuccessfulResult successHandler: ((AnyObserver<ReturnType>, ResponseType) -> Void)?
+    ) -> Observable<ReturnType> {
+        return Observable.create { observer -> Disposable in
+            let request = AF.request(
+                endpoint.url,
+                method: endpoint.httpRequestMethod,
+                parameters: endpoint.parameters,
+                encoding: JSONEncoding.default
+            ).responseDecodable(of: ResponseType.self) { responseResult in
+                AppDelegate.logger.trace("Received API response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
+                
+                switch responseResult.result {
+                case .success(let response):
+                    switch responseResult.response?.statusCode {
+                    case 200:
+                        successHandler?(observer, response)
+                    case 400:
+                        observer.onError(APIAuthenticationError.badRequest(serverMessage: response.message))
+                    case 401:
+                        observer.onError(APIAuthenticationError.unauthorized(serverMessage: response.message))
+                    case 404:
+                        observer.onError(APIAuthenticationError.notFound(serverMessage: response.message))
+                    case 500:
+                        observer.onError(APIAuthenticationError.internalServerError(serverMessage: response.message))
+                    default:
+                        observer.onError(APIAuthenticationError.unknownError(serverMessage: response.message))
+                    }
+                case .failure(let error):
+                    observer.onError(APIAuthenticationError.connectionFailure(failureMessage: error.localizedDescription))
+                }
+            }
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        }
     }
 }

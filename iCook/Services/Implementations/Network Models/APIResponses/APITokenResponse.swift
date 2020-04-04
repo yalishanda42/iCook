@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct APITokenResponse: Codable {
+struct APITokenResponse: APIResponse {
     let message: String
     let token: String?
 }

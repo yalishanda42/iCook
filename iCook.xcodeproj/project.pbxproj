@@ -17,6 +17,7 @@
 		742396D32438AEF000A56C99 /* SceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D22438AEF000A56C99 /* SceneViewModel.swift */; };
 		742396D52438B0E600A56C99 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D42438B0E600A56C99 /* SceneViewController.swift */; };
 		742396D72438B99400A56C99 /* IOTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D62438B99400A56C99 /* IOTransformable.swift */; };
+		742396D92438C7F900A56C99 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D82438C7F900A56C99 /* APIResponse.swift */; };
 		742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */; };
 		742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 742A5B6B24255942005F6C8F /* KawaiiTextField.xib */; };
 		74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74311478242659C700F6A959 /* AppServiceDependencies.swift */; };
@@ -88,6 +89,7 @@
 		742396D22438AEF000A56C99 /* SceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModel.swift; sourceTree = "<group>"; };
 		742396D42438B0E600A56C99 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		742396D62438B99400A56C99 /* IOTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOTransformable.swift; sourceTree = "<group>"; };
+		742396D82438C7F900A56C99 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		742A5B68242557CD005F6C8F /* UIView+XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+XibLoadable.swift"; sourceTree = "<group>"; };
 		742A5B6B24255942005F6C8F /* KawaiiTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KawaiiTextField.xib; sourceTree = "<group>"; };
 		74311478242659C700F6A959 /* AppServiceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceDependencies.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 		743168B42411B9DE002B3905 /* APIResponses */ = {
 			isa = PBXGroup;
 			children = (
+				742396D82438C7F900A56C99 /* APIResponse.swift */,
 				7413199B24269D0D00A42A4F /* APIBaseResponse.swift */,
 				743168B52411B9F6002B3905 /* APITokenResponse.swift */,
 			);
@@ -610,6 +613,7 @@
 				747C5C89243017F5000C2875 /* UIImageView+Downloaded.swift in Sources */,
 				74400FC82422A98400DC2E76 /* AppCoordinator.swift in Sources */,
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
+				742396D92438C7F900A56C99 /* APIResponse.swift in Sources */,
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
 				743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */,
 				74B891CA2427D0D700993FB7 /* FakeAuthenticationService.swift in Sources */,
