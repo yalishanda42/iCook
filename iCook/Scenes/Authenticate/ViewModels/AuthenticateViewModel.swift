@@ -140,7 +140,7 @@ private extension AuthenticateViewModel {
     }
 
     func login(email: String, password: String) {
-        authenticationService.login(email: email, password: password).debug()
+        authenticationService.login(email: email, password: password)
             .subscribe(
                 onNext: { [weak self] authenticated in
                     if authenticated {
