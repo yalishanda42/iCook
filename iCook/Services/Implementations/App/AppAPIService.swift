@@ -15,16 +15,20 @@ class AppAPIService {
     private static let uriBase = "https://idagotvim.000webhostapp.com/api"
 }
 
+// MARK: - API Service
+
 extension AppAPIService: APIService {
+    
+    // MARK: - Login
+    
     func login(email: String, password: String) -> Observable<BearerToken> {
         
         let endpoint = Endpoint.login(email: email, password: password)
         
-        return performRequest(toEndpoint: endpoint, responseType: APITokenResponse.self) { (observer, response) in
-            observer.onNext(response.token!)
-            observer.onCompleted()
-        }
+        return performRequest(to: endpoint, responseType: APITokenResponse.self).map { $0.token }
     }
+    
+    // MARK: - Create User
     
     func register(
         firstName: String,
@@ -35,12 +39,20 @@ extension AppAPIService: APIService {
         
         let endpoint = Endpoint.createUser(firstName: firstName, famiyName: famiyName, email: email, password: password)
         
-        return performRequest(toEndpoint: endpoint, responseType: APIBaseResponse.self) { (observer, response) in
-            observer.onNext(true)
-            observer.onCompleted()
-        }
+        return performRequest(to: endpoint, responseType: APIBaseResponse.self).map { _ in true }
+    }
+    
+    // MARK: - Validate Token
+    
+    func validateToken(_ token: BearerToken) -> Observable<Bool> {
+        return performRequest(
+            to: Endpoint.validateToken,
+            responseType: APIUserDataResponse.self,
+            authenticateWith: token).map { _ in true }
     }
 }
+
+// MARK: - Endpoints
 
 extension AppAPIService {
     enum Endpoint {
@@ -69,6 +81,15 @@ extension AppAPIService {
             }
         }
         
+        var requiresAuthentication: Bool {
+            switch self {
+            case .login, .createUser:
+                return false
+            case .validateToken, .updateUser:
+                return true
+            }
+        }
+        
         var parameters: [String: String] {
             switch self {
             case .createUser(firstName: let firstname, famiyName: let familyname, email: let email, password: let password):
@@ -90,6 +111,8 @@ extension AppAPIService {
     }
 }
 
+// MARK: - Parameters
+
 extension AppAPIService {
     enum Parameters {
         static let email = "email"
@@ -102,38 +125,83 @@ extension AppAPIService {
 // MARK: - Helpers
 
 private extension AppAPIService {
-    func performRequest<ResponseType: APIResponse, ReturnType>(
-        toEndpoint endpoint: Endpoint,
+    func performRequest<ResponseType: APIResponse>(
+        to endpoint: Endpoint,
         responseType: ResponseType.Type,
-        onSuccessfulResult successHandler: ((AnyObserver<ReturnType>, ResponseType) -> Void)?
-    ) -> Observable<ReturnType> {
+        authenticateWith token: BearerToken = BearerToken()
+    ) -> Observable<ResponseType> {
         return Observable.create { observer -> Disposable in
             let request = AF.request(
                 endpoint.url,
                 method: endpoint.httpRequestMethod,
                 parameters: endpoint.parameters,
-                encoding: JSONEncoding.default
-            ).responseDecodable(of: ResponseType.self) { responseResult in
-                AppDelegate.logger.trace("Received API response:\nResult: \(responseResult.result)\nStatus code \(String(describing: responseResult.response?.statusCode))")
+                encoding: JSONEncoding.default,
+                headers: HTTPHeaders(endpoint.requiresAuthentication ? [HTTPHeader.authorization(bearerToken: token)] : [])
+            ).responseJSON { responseResult in
+                AppDelegate.logger.trace("\n> Received API response:\n>> Status code \(String(describing: responseResult.response?.statusCode))\n>> Result: \(responseResult.result)")
                 
                 switch responseResult.result {
-                case .success(let response):
-                    switch responseResult.response?.statusCode {
-                    case 200:
-                        successHandler?(observer, response)
-                    case 400:
-                        observer.onError(APIAuthenticationError.badRequest(serverMessage: response.message))
-                    case 401:
-                        observer.onError(APIAuthenticationError.unauthorized(serverMessage: response.message))
-                    case 404:
-                        observer.onError(APIAuthenticationError.notFound(serverMessage: response.message))
-                    case 500:
-                        observer.onError(APIAuthenticationError.internalServerError(serverMessage: response.message))
-                    default:
-                        observer.onError(APIAuthenticationError.unknownError(serverMessage: response.message))
+                case .success:
+                    // Response received!
+                    
+                    guard let data = responseResult.data else {
+                        AppDelegate.logger.error("Response with no data received!")
+                        observer.onError(APIConnectionError.connectionFailure(failureMessage: "Response with no data received!"))
+                        return
                     }
+                    
+                    guard let statusCode = responseResult.response?.statusCode else {
+                        AppDelegate.logger.error("Response with no status code received!")
+                        observer.onError(APIConnectionError.connectionFailure(failureMessage: "Response with no status code received!"))
+                        return
+                    }
+                    
+                    guard statusCode == 200 else {
+                        // Response received is of type APIBaseResponse because status code is not "200 OK"
+                        
+                        let serverResponse: APIBaseResponse
+                        do {
+                            serverResponse = try JSONDecoder().decode(APIBaseResponse.self, from: data)
+                        } catch let error {
+                            AppDelegate.logger.error("Could not decode base server response! \(error.localizedDescription)")
+                            observer.onError(error)
+                            return
+                        }
+                        
+                        let message = serverResponse.message
+                        
+                        switch statusCode {
+                        case 400:
+                            observer.onError(APIConnectionError.badRequest(serverMessage: message))
+                        case 401:
+                            observer.onError(APIConnectionError.unauthorized(serverMessage: message))
+                        case 404:
+                            observer.onError(APIConnectionError.notFound(serverMessage: message))
+                        case 500:
+                            observer.onError(APIConnectionError.internalServerError(serverMessage: message))
+                        default:
+                            observer.onError(APIConnectionError.unknownError(serverMessage: message))
+                        }
+                        return
+                    }
+                    
+                    // Response received is of the needed type because the status code is "200 OK"
+                    
+                    let serverResponse: ResponseType
+                    do {
+                        serverResponse = try JSONDecoder().decode(ResponseType.self, from: data)
+                    } catch let error {
+                        AppDelegate.logger.error("Could not decode response of type \(String(describing: ResponseType.self)) for endpoint \(endpoint)! \(error.localizedDescription)")
+                        observer.onError(error)
+                        return
+                    }
+                    
+                    observer.onNext(serverResponse)
+                    observer.onCompleted()
+
                 case .failure(let error):
-                    observer.onError(APIAuthenticationError.connectionFailure(failureMessage: error.localizedDescription))
+                    // No response received.
+                    observer.onError(APIConnectionError.connectionFailure(failureMessage: error.localizedDescription))
                 }
             }
             

@@ -24,7 +24,7 @@ class SceneViewModel {
         isLoading = _isLoading.asDriver(onErrorJustReturn: false)
         
         errorReceived = _errorReceived.map { error in
-            guard let apiError = error as? APIAuthenticationError else {
+            guard let apiError = error as? APIConnectionError else {
                 return (title: "Error", message: "😟")
             }
             

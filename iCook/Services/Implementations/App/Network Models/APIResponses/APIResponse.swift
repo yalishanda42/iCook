@@ -6,8 +6,6 @@
 //  Copyright © 2020 Alexander Ignatov. All rights reserved.
 //
 
-import Foundation
-
 protocol APIResponse: Codable {
     var message: String { get }
 }

@@ -6,8 +6,6 @@
 //  Copyright © 2020 Alexander Ignatov. All rights reserved.
 //
 
-import Foundation
-
 struct APIBaseResponse: APIResponse {
     let message: String
 }

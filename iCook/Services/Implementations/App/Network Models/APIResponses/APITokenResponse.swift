@@ -6,9 +6,7 @@
 //  Copyright © 2020 Alexander Ignatov. All rights reserved.
 //
 
-import Foundation
-
 struct APITokenResponse: APIResponse {
     let message: String
-    let token: APIService.BearerToken?
+    let token: APIService.BearerToken
 }

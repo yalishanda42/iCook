@@ -24,7 +24,7 @@ protocol APIService {
     
 }
 
-enum APIAuthenticationError: Error {
+enum APIConnectionError: Error {
     // Returned from server
     case notFound(serverMessage: String)
     case internalServerError(serverMessage: String)

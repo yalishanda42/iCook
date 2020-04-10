@@ -42,6 +42,8 @@
 		747C5C85242FF69C000C2875 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 747C5C84242FF69C000C2875 /* RxSwift */; };
 		747C5C87242FF69C000C2875 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 747C5C86242FF69C000C2875 /* RxCocoa */; };
 		747C5C89243017F5000C2875 /* UIImageView+Downloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747C5C88243017F5000C2875 /* UIImageView+Downloaded.swift */; };
+		747E37942440E8E0001490CF /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37932440E8E0001490CF /* UserData.swift */; };
+		747E37962440E932001490CF /* APIUserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37952440E932001490CF /* APIUserDataResponse.swift */; };
 		749BC3532425735E0068B492 /* KawaiiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3522425735E0068B492 /* KawaiiView.swift */; };
 		749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3542425755C0068B492 /* UIColor+AssetColors.swift */; };
 		749BC357242579260068B492 /* KawaiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC356242579260068B492 /* KawaiiButton.swift */; };
@@ -119,6 +121,8 @@
 		74400FC92422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstantiable.swift"; sourceTree = "<group>"; };
 		74400FD02422B09D00DC2E76 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		747C5C88243017F5000C2875 /* UIImageView+Downloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Downloaded.swift"; sourceTree = "<group>"; };
+		747E37932440E8E0001490CF /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		747E37952440E932001490CF /* APIUserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserDataResponse.swift; sourceTree = "<group>"; };
 		749BC3522425735E0068B492 /* KawaiiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiView.swift; sourceTree = "<group>"; };
 		749BC3542425755C0068B492 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
 		749BC356242579260068B492 /* KawaiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiButton.swift; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				743168B42411B9DE002B3905 /* APIResponses */,
+				747E37932440E8E0001490CF /* UserData.swift */,
 			);
 			path = "Network Models";
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				742396D82438C7F900A56C99 /* APIResponse.swift */,
 				7413199B24269D0D00A42A4F /* APIBaseResponse.swift */,
 				743168B52411B9F6002B3905 /* APITokenResponse.swift */,
+				747E37952440E932001490CF /* APIUserDataResponse.swift */,
 			);
 			path = APIResponses;
 			sourceTree = "<group>";
@@ -630,6 +636,7 @@
 				74B891C82427CCFE00993FB7 /* FakeDishService.swift in Sources */,
 				74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */,
 				747C5C89243017F5000C2875 /* UIImageView+Downloaded.swift in Sources */,
+				747E37962440E932001490CF /* APIUserDataResponse.swift in Sources */,
 				74400FC82422A98400DC2E76 /* AppCoordinator.swift in Sources */,
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
 				742396D92438C7F900A56C99 /* APIResponse.swift in Sources */,
@@ -657,6 +664,7 @@
 				74400FD12422B09D00DC2E76 /* APIService.swift in Sources */,
 				749BC357242579260068B492 /* KawaiiButton.swift in Sources */,
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
+				747E37942440E8E0001490CF /* UserData.swift in Sources */,
 				7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */,
 				742396D52438B0E600A56C99 /* SceneViewController.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
