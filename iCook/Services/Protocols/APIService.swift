@@ -22,6 +22,8 @@ protocol APIService {
         password: String
     ) -> Observable<Bool>
     
+    func validateToken(_ token: BearerToken) -> Observable<Bool>
+    
 }
 
 enum APIConnectionError: Error {
