@@ -32,8 +32,11 @@ class DishViewModel: SceneViewModel {
     }
     
     private var dishRecipeViewModels: Driver<[RecipeOverviewViewModel]> {
-        dish.map { $0.recipeOverviews.map(RecipeOverviewViewModel.init) }
-            .asDriver(onErrorJustReturn: [])
+        dish.map { dish in
+                dish.recipeOverviews
+                    .map(RecipeOverviewViewModel.init)
+                    .sorted { recipe1, recipe2 in recipe1.rating > recipe2.rating  }
+            }.asDriver(onErrorJustReturn: [])
     }
     
     private let dishService: DishService
@@ -59,8 +62,7 @@ class DishViewModel: SceneViewModel {
                 }, onError: { [weak self] error in
                     guard let self = self else { return }
                     AppDelegate.logger.notice("Unable to fetch dish with id \(self.dishId): \(error.localizedDescription)")
-                    // TODO: Handle error
-                    // ...
+                    self._errorReceived.onNext(error)
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
