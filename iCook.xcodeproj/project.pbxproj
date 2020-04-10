@@ -221,11 +221,8 @@
 		7431147C24265C0B00F6A959 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				743168B32411AE72002B3905 /* Network Models */,
-				743168AF2411AB8C002B3905 /* AppAPIService.swift */,
-				74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */,
-				74B891C72427CCFE00993FB7 /* FakeDishService.swift */,
-				74B891C92427D0D700993FB7 /* FakeAuthenticationService.swift */,
+				74D08C352440DC56009C883D /* App */,
+				74D08C362440DC5D009C883D /* Fake */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -442,6 +439,25 @@
 				74B8B88A24251E9000C29491 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74D08C352440DC56009C883D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				743168B32411AE72002B3905 /* Network Models */,
+				743168AF2411AB8C002B3905 /* AppAPIService.swift */,
+				74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		74D08C362440DC5D009C883D /* Fake */ = {
+			isa = PBXGroup;
+			children = (
+				74B891C92427D0D700993FB7 /* FakeAuthenticationService.swift */,
+				74B891C72427CCFE00993FB7 /* FakeDishService.swift */,
+			);
+			path = Fake;
 			sourceTree = "<group>";
 		};
 		74DB90422424E6C20092E51C /* Dashboard */ = {

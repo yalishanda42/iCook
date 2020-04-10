@@ -142,12 +142,8 @@ private extension AuthenticateViewModel {
     func login(email: String, password: String) {
         authenticationService.login(email: email, password: password)
             .subscribe(
-                onNext: { [weak self] authenticated in
-                    if authenticated {
-                        self?.coordinatorDelegate?.finish()
-                    } else {
-                        AppDelegate.logger.warning("Incorrect 'false' value received for AuthenticationService.isAuthenticated")
-                    }
+                onNext: { [weak self] _ in
+                    self?.coordinatorDelegate?.finish()
                 }, onError: { [weak self] error in
                     self?._errorReceived.onNext(error)
                 }, onCompleted: nil, onDisposed: nil)

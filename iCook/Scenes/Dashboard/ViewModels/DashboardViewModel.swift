@@ -62,8 +62,8 @@ private extension DashboardViewModel {
             .subscribe(
                 onNext: { [weak self] dishId in
                     self?.coordinatorDelegate?.goToDishScreen(dishId: dishId)
-                }, onError: { error in
-                    // TODO: Handle error.
+                }, onError: { [weak self] error in
+                    self?._errorReceived.onNext(error)
             }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
 }

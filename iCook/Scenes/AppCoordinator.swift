@@ -33,7 +33,10 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        guard let window = window else { return }
+        guard let window = window else {
+            AppDelegate.logger.error("Attempt to start AppCoordinator in a window which is nil!")
+            return
+        }
         
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()

@@ -13,9 +13,9 @@ class FakeAuthenticationService: AuthenticationService {
         
     let isAuthenticated = BehaviorSubject(value: true)
     
-    func login(email: String, password: String) -> Observable<Bool> {
+    func login(email: String, password: String) -> Observable<Void> {
         AppDelegate.logger.trace("Fake login.")
-        return isAuthenticated
+        return Observable.just(())
     }
     
     func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Bool> {
