@@ -25,7 +25,7 @@ extension AppAPIService: APIService {
         
         let endpoint = Endpoint.login(email: email, password: password)
         
-        return performRequest(to: endpoint, responseType: APITokenResponse.self).map { $0.token }
+        return performRequest(to: endpoint, responseType: APITokenResponse.self).share().map { $0.token }
     }
     
     // MARK: - Create User
@@ -39,16 +39,16 @@ extension AppAPIService: APIService {
         
         let endpoint = Endpoint.createUser(firstName: firstName, famiyName: famiyName, email: email, password: password)
         
-        return performRequest(to: endpoint, responseType: APIBaseResponse.self).map { _ in true }
+        return performRequest(to: endpoint, responseType: APIBaseResponse.self).share().map { _ in true }
     }
     
     // MARK: - Validate Token
     
-    func validateToken(_ token: BearerToken) -> Observable<Bool> {
+    func validateToken(_ token: BearerToken) -> Observable<UserData> {
         return performRequest(
             to: Endpoint.validateToken,
             responseType: APIUserDataResponse.self,
-            authenticateWith: token).map { _ in true }
+            authenticateWith: token).share().map { $0.data }
     }
 }
 

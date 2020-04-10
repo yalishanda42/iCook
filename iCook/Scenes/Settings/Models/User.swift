@@ -1,14 +1,13 @@
 //
-//  UserData.swift
+//  User.swift
 //  iCook
 //
 //  Created by Alexander Ignatov on 10.04.20.
 //  Copyright © 2020 Alexander Ignatov. All rights reserved.
 //
 
-struct UserData: Codable {
-    let id: Int
-    let firstname: String
-    let lastname: String
+struct User {
+    let firstName: String
+    let familyName: String
     let email: String
 }

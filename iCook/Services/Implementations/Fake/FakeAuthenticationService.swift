@@ -15,11 +15,30 @@ class FakeAuthenticationService: AuthenticationService {
     
     func login(email: String, password: String) -> Observable<Void> {
         AppDelegate.logger.trace("Fake login.")
+        isAuthenticated.onNext(true)
         return Observable.just(())
     }
     
     func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Bool> {
         AppDelegate.logger.trace("Fake registration.")
         return Observable.just(true)
+    }
+    
+    func validateToken() -> Observable<UserData> {
+        guard (try? isAuthenticated.value()) ?? false else {
+            return Observable.error(AuthenticationError.unauthorizedOperation)
+        }
+        
+        return Observable.just(UserData(
+            id: 1,
+            firstname: "First Name",
+            lastname: "Last Name",
+            email: "email@example.com"
+        ))
+    }
+    
+    func logout() -> Observable<Void> {
+        isAuthenticated.onNext(false)
+        return Observable.just(())
     }
 }

@@ -16,4 +16,6 @@ protocol ServiceDependencies {
     
     var dishService: DishService { get }
     
+    var userService: UserService { get }
+    
 }

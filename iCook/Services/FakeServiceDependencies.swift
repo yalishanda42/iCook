@@ -15,5 +15,7 @@ class FakeServiceDependencies: ServiceDependencies {
     private(set) lazy var authenticationService: AuthenticationService = FakeAuthenticationService()
     
     private(set) lazy var dishService: DishService = FakeDishService()
+    
+    private(set) lazy var userService: UserService = AppUserService(authenticationService: authenticationService)
 
 }

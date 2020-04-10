@@ -22,7 +22,7 @@ protocol APIService {
         password: String
     ) -> Observable<Bool>
     
-    func validateToken(_ token: BearerToken) -> Observable<Bool>
+    func validateToken(_ token: BearerToken) -> Observable<UserData>
     
 }
 

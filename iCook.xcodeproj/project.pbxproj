@@ -44,6 +44,11 @@
 		747C5C89243017F5000C2875 /* UIImageView+Downloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747C5C88243017F5000C2875 /* UIImageView+Downloaded.swift */; };
 		747E37942440E8E0001490CF /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37932440E8E0001490CF /* UserData.swift */; };
 		747E37962440E932001490CF /* APIUserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37952440E932001490CF /* APIUserDataResponse.swift */; };
+		747E37982440FB1B001490CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37972440FB1B001490CF /* User.swift */; };
+		747E379C2440FB96001490CF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E379B2440FB96001490CF /* SettingsViewModel.swift */; };
+		747E379E24410036001490CF /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E379D24410036001490CF /* UserService.swift */; };
+		747E37A0244101F8001490CF /* AppUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E379F244101F8001490CF /* AppUserService.swift */; };
+		747E37A324410A92001490CF /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37A224410A92001490CF /* UIViewController+Rx.swift */; };
 		749BC3532425735E0068B492 /* KawaiiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3522425735E0068B492 /* KawaiiView.swift */; };
 		749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3542425755C0068B492 /* UIColor+AssetColors.swift */; };
 		749BC357242579260068B492 /* KawaiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC356242579260068B492 /* KawaiiButton.swift */; };
@@ -123,6 +128,11 @@
 		747C5C88243017F5000C2875 /* UIImageView+Downloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Downloaded.swift"; sourceTree = "<group>"; };
 		747E37932440E8E0001490CF /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		747E37952440E932001490CF /* APIUserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserDataResponse.swift; sourceTree = "<group>"; };
+		747E37972440FB1B001490CF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		747E379B2440FB96001490CF /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		747E379D24410036001490CF /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		747E379F244101F8001490CF /* AppUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserService.swift; sourceTree = "<group>"; };
+		747E37A224410A92001490CF /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		749BC3522425735E0068B492 /* KawaiiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiView.swift; sourceTree = "<group>"; };
 		749BC3542425755C0068B492 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
 		749BC356242579260068B492 /* KawaiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiButton.swift; sourceTree = "<group>"; };
@@ -335,13 +345,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		743168B32411AE72002B3905 /* Network Models */ = {
+		743168B32411AE72002B3905 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
-				743168B42411B9DE002B3905 /* APIResponses */,
 				747E37932440E8E0001490CF /* UserData.swift */,
+				743168B42411B9DE002B3905 /* APIResponses */,
 			);
-			path = "Network Models";
+			path = "Data Models";
 			sourceTree = "<group>";
 		};
 		743168B42411B9DE002B3905 /* APIResponses */ = {
@@ -389,8 +399,25 @@
 				749BC3542425755C0068B492 /* UIColor+AssetColors.swift */,
 				747C5C88243017F5000C2875 /* UIImageView+Downloaded.swift */,
 				74A7CF532438F4AA00BD44AC /* UIAlertController+Rx.swift */,
+				747E37A224410A92001490CF /* UIViewController+Rx.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		747E37992440FB20001490CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				747E37972440FB1B001490CF /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		747E379A2440FB84001490CF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				747E379B2440FB96001490CF /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		74B891B72427AC6800993FB7 /* ViewModels */ = {
@@ -434,7 +461,9 @@
 			children = (
 				74B8B88C2425203400C29491 /* SettingsCoordinator.swift */,
 				74B8B88E2425206400C29491 /* Settings.storyboard */,
+				747E379A2440FB84001490CF /* ViewModels */,
 				74B8B890242524E300C29491 /* ViewControllers */,
+				747E37992440FB20001490CF /* Models */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -450,9 +479,10 @@
 		74D08C352440DC56009C883D /* App */ = {
 			isa = PBXGroup;
 			children = (
-				743168B32411AE72002B3905 /* Network Models */,
 				743168AF2411AB8C002B3905 /* AppAPIService.swift */,
 				74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */,
+				747E379F244101F8001490CF /* AppUserService.swift */,
+				743168B32411AE72002B3905 /* Data Models */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -499,6 +529,7 @@
 				74400FD02422B09D00DC2E76 /* APIService.swift */,
 				74EDA7E92426475200E853E8 /* AuthenticationService.swift */,
 				74B891BA2427BFD400993FB7 /* DishService.swift */,
+				747E379D24410036001490CF /* UserService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -653,10 +684,12 @@
 				749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */,
 				74B891B92427AC7100993FB7 /* DishViewModel.swift in Sources */,
 				742396D72438B99400A56C99 /* IOTransformable.swift in Sources */,
+				747E379E24410036001490CF /* UserService.swift in Sources */,
 				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
 				74B891BE2427C1BE00993FB7 /* Dish.swift in Sources */,
 				7413199A242696D700A42A4F /* DishViewController.swift in Sources */,
+				747E37A0244101F8001490CF /* AppUserService.swift in Sources */,
 				74B891B62427A44000993FB7 /* RecipeTableViewCell.swift in Sources */,
 				74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */,
 				74B8B88B24251E9000C29491 /* SettingsViewController.swift in Sources */,
@@ -665,12 +698,15 @@
 				749BC357242579260068B492 /* KawaiiButton.swift in Sources */,
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
 				747E37942440E8E0001490CF /* UserData.swift in Sources */,
+				747E37A324410A92001490CF /* UIViewController+Rx.swift in Sources */,
+				747E379C2440FB96001490CF /* SettingsViewModel.swift in Sources */,
 				7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */,
 				742396D52438B0E600A56C99 /* SceneViewController.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,
 				74EDA7EC2426493000E853E8 /* AppAuthenticationService.swift in Sources */,
 				749BC3532425735E0068B492 /* KawaiiView.swift in Sources */,
+				747E37982440FB1B001490CF /* User.swift in Sources */,
 				7431147B24265BA100F6A959 /* ServiceDependencies.swift in Sources */,
 				74A7CF542438F4AA00BD44AC /* UIAlertController+Rx.swift in Sources */,
 				741319952426963300A42A4F /* DishCoordinator.swift in Sources */,

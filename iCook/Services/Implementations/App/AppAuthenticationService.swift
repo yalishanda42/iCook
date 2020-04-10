@@ -25,7 +25,7 @@ class AppAuthenticationService: AuthenticationService {
     }
     
     func login(email: String, password: String) -> Observable<Void> {
-        let result = apiService.login(email: email, password: password).share()
+        let result = apiService.login(email: email, password: password)
         result.subscribe(onNext: { [weak self] token in
                     self?.bearerToken.onNext(token)
                 }, onError: { [weak self] error in
@@ -44,4 +44,16 @@ class AppAuthenticationService: AuthenticationService {
         return apiService.register(firstName: firstName, famiyName: famiyName, email: email, password: password)
     }
     
+    func validateToken() -> Observable<UserData> {
+        guard let token = (try? bearerToken.value()) ?? nil else {
+            return Observable.error(AuthenticationError.unauthorizedOperation)
+        }
+        
+        return apiService.validateToken(token)
+    }
+    
+    func logout() -> Observable<Void> {
+        bearerToken.onNext(nil)
+        return Observable.just(())
+    }
 }

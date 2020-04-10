@@ -17,4 +17,19 @@ protocol AuthenticationService {
     
     func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Bool>
     
+    func validateToken() -> Observable<UserData>
+    
+    func logout() -> Observable<Void>
+}
+
+enum AuthenticationError: Error {
+    case unauthorizedOperation
+    
+    /// Retrieve the localized description for this error.
+    var localizedDescription: String {
+        switch self {
+        case .unauthorizedOperation:
+            return "An operation which requires authorization was attempted."
+        }
+    }
 }
