@@ -75,8 +75,9 @@ class AppAuthenticationService: AuthenticationService {
 private extension AppAuthenticationService {
         
     func retrieveToken() -> APIService.BearerToken? {
-        let request = Token.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
-        let result: [Any]
+        let request = Token.fetchRequest() as NSFetchRequest<Token>
+        let result: [Token]
+        
         do {
             result = try context.fetch(request)
         } catch let error {
@@ -84,12 +85,11 @@ private extension AppAuthenticationService {
             return nil
         }
         
-        guard let currentTokenObject = (result as? [NSManagedObject] ?? []).last,
-            let currentToken = currentTokenObject.value(forKey: "bearer") as? String else {
+        guard let currentTokenObject = result.last else {
             return nil
         }
         
-        return currentToken
+        return currentTokenObject.bearer
     }
     
     func persistToken(_ token: APIService.BearerToken?) {
@@ -100,14 +100,14 @@ private extension AppAuthenticationService {
         
         guard token != retrieveToken() else { return }
         
-        guard let entity = NSEntityDescription.entity(forEntityName: "Token", in: context) else {
-            AppDelegate.logger.critical("Could not create entity for entity name 'Token'!")
+        guard let entity = NSEntityDescription.entity(forEntityName: String(describing: Token.self), in: context) else {
+            AppDelegate.logger.critical("Could not create entity for entity name \(String(describing: Token.self))!")
             return
         }
         
-        let newToken = NSManagedObject(entity: entity, insertInto: context)
+        let newToken = Token(entity: entity, insertInto: context)
         
-        newToken.setValue(token, forKey: "bearer")
+        newToken.bearer = token
         
         do {
             try context.save()
@@ -117,19 +117,18 @@ private extension AppAuthenticationService {
     }
     
     func deleteToken() {
-        guard let currentlyPersistedToken = retrieveToken() else { return }
-        
-        let fetchRequest = Token.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
-        fetchRequest.predicate = NSPredicate(format: "bearer = %@", currentlyPersistedToken)
+        let fetchRequest = Token.fetchRequest() as NSFetchRequest<Token>
+        let result: [Token]
         
         do {
-            let result = try context.fetch(fetchRequest)
-            if let matchingToken = result.first as? NSManagedObject {
-                context.delete(matchingToken)
-            }
+            result = try context.fetch(fetchRequest)
         } catch let error {
             AppDelegate.logger.error("Could not fetch query for deletion of a token! \(error.localizedDescription)")
             return
+        }
+        
+        for token in result {
+            context.delete(token)
         }
         
         do {
