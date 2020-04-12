@@ -89,6 +89,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7410CF162443702900F1F9CE /* Token+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Token+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7410CF172443702900F1F9CE /* Token+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Token+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7413198D24266BC300A42A4F /* AuthenticateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateViewModel.swift; sourceTree = "<group>"; };
 		741319942426963300A42A4F /* DishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCoordinator.swift; sourceTree = "<group>"; };
 		741319962426968900A42A4F /* Dish.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dish.storyboard; sourceTree = "<group>"; };
@@ -348,6 +350,8 @@
 		743168B32411AE72002B3905 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				7410CF162443702900F1F9CE /* Token+CoreDataClass.swift */,
+				7410CF172443702900F1F9CE /* Token+CoreDataProperties.swift */,
 				747E37932440E8E0001490CF /* UserData.swift */,
 				743168B42411B9DE002B3905 /* APIResponses */,
 			);

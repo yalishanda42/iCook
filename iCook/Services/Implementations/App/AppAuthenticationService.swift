@@ -6,8 +6,9 @@
 //  Copyright © 2020 Alexander Ignatov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RxSwift
+import CoreData
 
 class AppAuthenticationService: AuthenticationService {
         
@@ -20,11 +21,19 @@ class AppAuthenticationService: AuthenticationService {
         
     private let disposeBag = DisposeBag()
     
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     init(apiService: APIService) {
         self.apiService = apiService
         self.isAuthenticated = isAuthenticatedSubject.asObservable()
         
         bearerToken.map { $0 != nil }.subscribe(isAuthenticatedSubject).disposed(by: disposeBag)
+        
+        if let savedToken = retrieveToken() {
+            bearerToken.onNext(savedToken)
+        }
+        
+        bearerToken.subscribe(onNext: persistToken).disposed(by: disposeBag)
     }
     
     func login(email: String, password: String) -> Observable<Void> {
@@ -48,7 +57,7 @@ class AppAuthenticationService: AuthenticationService {
     }
     
     func validateToken() -> Observable<UserData> {
-        guard let token = (try? bearerToken.value()) ?? nil else {
+        guard let token = try? bearerToken.value() else {
             return Observable.error(AuthenticationError.unauthorizedOperation)
         }
         
@@ -58,5 +67,75 @@ class AppAuthenticationService: AuthenticationService {
     func logout() -> Observable<Void> {
         bearerToken.onNext(nil)
         return Observable.just(())
+    }
+}
+
+// MARK: - Database helpers
+
+private extension AppAuthenticationService {
+        
+    func retrieveToken() -> APIService.BearerToken? {
+        let request = Token.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
+        let result: [Any]
+        do {
+            result = try context.fetch(request)
+        } catch let error {
+            AppDelegate.logger.error("Could not execute fetch request for Token (\(error.localizedDescription)).")
+            return nil
+        }
+        
+        guard let currentTokenObject = (result as? [NSManagedObject] ?? []).last,
+            let currentToken = currentTokenObject.value(forKey: "bearer") as? String else {
+            return nil
+        }
+        
+        return currentToken
+    }
+    
+    func persistToken(_ token: APIService.BearerToken?) {
+        guard let token = token else {
+            deleteToken()
+            return
+        }
+        
+        guard token != retrieveToken() else { return }
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "Token", in: context) else {
+            AppDelegate.logger.critical("Could not create entity for entity name 'Token'!")
+            return
+        }
+        
+        let newToken = NSManagedObject(entity: entity, insertInto: context)
+        
+        newToken.setValue(token, forKey: "bearer")
+        
+        do {
+            try context.save()
+        } catch let error {
+            AppDelegate.logger.error("Could not save context while saving new token! (\(error.localizedDescription)")
+        }
+    }
+    
+    func deleteToken() {
+        guard let currentlyPersistedToken = retrieveToken() else { return }
+        
+        let fetchRequest = Token.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
+        fetchRequest.predicate = NSPredicate(format: "bearer = %@", currentlyPersistedToken)
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            if let matchingToken = result.first as? NSManagedObject {
+                context.delete(matchingToken)
+            }
+        } catch let error {
+            AppDelegate.logger.error("Could not fetch query for deletion of a token! \(error.localizedDescription)")
+            return
+        }
+        
+        do {
+            try context.save()
+        } catch let error {
+            AppDelegate.logger.error("Could not save context while deleting token! \(error.localizedDescription)")
+        }
     }
 }
