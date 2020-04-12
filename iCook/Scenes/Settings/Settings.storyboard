@@ -118,7 +118,7 @@
                     <navigationItem key="navigationItem" id="No1-hL-qLO"/>
                     <connections>
                         <outlet property="emailLabel" destination="tS2-XY-vZm" id="Fjc-8U-iuR"/>
-                        <outlet property="logOutButton" destination="CBk-vw-lsg" id="AA5-0r-LFk"/>
+                        <outlet property="logOutlogInButton" destination="CBk-vw-lsg" id="AA5-0r-LFk"/>
                         <outlet property="namesLabel" destination="45e-G9-9ap" id="iFJ-b3-fgq"/>
                     </connections>
                 </viewController>

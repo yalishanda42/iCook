@@ -10,8 +10,9 @@ import UIKit
 
 final class SettingsCoordinator: TabCoordinator {
     
-    private let navController: UINavigationController
+    private var child: Coordinator?
     
+    private let navController: UINavigationController
     private let services: ServiceDependencies
     
     private lazy var settingsController: SettingsViewController = {
@@ -20,10 +21,14 @@ final class SettingsCoordinator: TabCoordinator {
         return result
     }()
     
-    private lazy var settingsViewModel = SettingsViewModel(
-        userService: services.userService,
-        authenticationService: services.authenticationService
-    )
+    private lazy var settingsViewModel: SettingsViewModel = {
+        let result =  SettingsViewModel(
+            userService: services.userService,
+            authenticationService:services.authenticationService
+        )
+        result.coordinatorDelegate = self
+        return result
+    }()
     
     init(in navController: UINavigationController, services: ServiceDependencies) {
         self.navController = navController
@@ -32,5 +37,13 @@ final class SettingsCoordinator: TabCoordinator {
     
     func start() {
         navController.setViewControllers([settingsController], animated: true)
+    }
+}
+
+extension SettingsCoordinator: SettingsViewModelCoordinatorDelegate {
+    func gotoLogIn() {
+        let authCoordinator = AuthenticateCoordinator(in: settingsController, services: services)
+        child = authCoordinator
+        authCoordinator.start()
     }
 }
