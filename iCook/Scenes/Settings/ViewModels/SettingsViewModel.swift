@@ -12,9 +12,8 @@ import RxCocoa
 
 class SettingsViewModel: SceneViewModel {
     
-    private let userData: Observable<User>
-    private let userNames: Observable<String>
-    private let userEmail: Observable<String>
+    private let userNames = BehaviorSubject<String>(value: "")
+    private let userEmail = BehaviorSubject<String>(value: "")
     
     private let authenticationService: AuthenticationService
     private let userService: UserService
@@ -22,14 +21,16 @@ class SettingsViewModel: SceneViewModel {
     init(userService: UserService, authenticationService: AuthenticationService) {
         self.authenticationService = authenticationService
         self.userService = userService
-        self.userData = userService.fetchUserData()
-        self.userNames = userData.map { "\($0.firstName) \($0.familyName)"}
-        self.userEmail = userData.map { $0.email }
         super.init()
     }
     
     func load() {
-        userService.fetchUserData().subscribe(onError: { [weak self] error in
+        userService.fetchUserData().subscribe(
+            onNext: { [weak self] user in
+                guard let self = self else { return }
+                self.userNames.onNext("\(user.firstName) \(user.familyName)")
+                self.userEmail.onNext(user.email)
+            }, onError: { [weak self] error in
                 self?._errorReceived.onNext(error)
             }).disposed(by: disposeBag)
     }

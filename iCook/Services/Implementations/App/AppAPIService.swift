@@ -137,7 +137,7 @@ private extension AppAPIService {
                 parameters: endpoint.parameters,
                 encoding: JSONEncoding.default,
                 headers: HTTPHeaders(endpoint.requiresAuthentication ? [HTTPHeader.authorization(bearerToken: token)] : [])
-            ).responseJSON { responseResult in
+                ).responseJSON { responseResult in
                 AppDelegate.logger.trace("\n> Received API response:\n>> Status code \(String(describing: responseResult.response?.statusCode))\n>> Result: \(responseResult.result)")
                 
                 switch responseResult.result {
