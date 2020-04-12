@@ -11,11 +11,17 @@ import RxSwift
 
 class FakeAuthenticationService: AuthenticationService {
         
-    let isAuthenticated = BehaviorSubject(value: true)
+    let isAuthenticated: Observable<Bool>
+    
+    private let isAuthenticatedSubject = BehaviorSubject(value: true)
+    
+    init() {
+        self.isAuthenticated = isAuthenticatedSubject.asObservable()
+    }
     
     func login(email: String, password: String) -> Observable<Void> {
         AppDelegate.logger.trace("Fake login.")
-        isAuthenticated.onNext(true)
+        isAuthenticatedSubject.onNext(true)
         return Observable.just(())
     }
     
@@ -25,7 +31,7 @@ class FakeAuthenticationService: AuthenticationService {
     }
     
     func validateToken() -> Observable<UserData> {
-        guard (try? isAuthenticated.value()) ?? false else {
+        guard (try? isAuthenticatedSubject.value()) ?? false else {
             return Observable.error(AuthenticationError.unauthorizedOperation)
         }
         
@@ -38,7 +44,7 @@ class FakeAuthenticationService: AuthenticationService {
     }
     
     func logout() -> Observable<Void> {
-        isAuthenticated.onNext(false)
+        isAuthenticatedSubject.onNext(false)
         return Observable.just(())
     }
 }

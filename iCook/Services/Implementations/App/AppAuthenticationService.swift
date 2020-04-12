@@ -11,8 +11,9 @@ import RxSwift
 
 class AppAuthenticationService: AuthenticationService {
         
-    let isAuthenticated = BehaviorSubject<Bool>(value: false)
+    let isAuthenticated: Observable<Bool>
     
+    private let isAuthenticatedSubject = BehaviorSubject(value: false)
     private let bearerToken = BehaviorSubject<APIService.BearerToken?>(value: nil)
     
     private let apiService: APIService
@@ -21,7 +22,9 @@ class AppAuthenticationService: AuthenticationService {
     
     init(apiService: APIService) {
         self.apiService = apiService
-        bearerToken.map { $0 != nil }.subscribe(isAuthenticated).disposed(by: disposeBag)
+        self.isAuthenticated = isAuthenticatedSubject.asObservable()
+        
+        bearerToken.map { $0 != nil }.subscribe(isAuthenticatedSubject).disposed(by: disposeBag)
     }
     
     func login(email: String, password: String) -> Observable<Void> {

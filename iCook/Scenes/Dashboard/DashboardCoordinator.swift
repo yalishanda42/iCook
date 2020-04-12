@@ -16,7 +16,10 @@ final class DashboardCoordinator: TabCoordinator {
     private let services: ServiceDependencies
     
     private lazy var viewModel: DashboardViewModel = {
-        let result = DashboardViewModel(authenticationService: services.authenticationService, dishService: services.dishService)
+        let result = DashboardViewModel(
+            authenticationService: services.authenticationService,
+            dishService: services.dishService
+        )
         result.coordinatorDelegate = self
         return result
     }()

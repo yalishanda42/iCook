@@ -36,24 +36,20 @@ extension DashboardViewModel: IOTransformable {
     }
     
     func transform(_ input: Input) -> Void {
-        input.quickRecommendationButtonTap.subscribe(onNext: quickRecommendation).disposed(by: disposeBag)
+        input.quickRecommendationButtonTap
+            .withLatestFrom(authenticationService.isAuthenticated)
+            .subscribe(onNext: { [unowned self] isLoggedIn in
+                isLoggedIn ? self.showQuickRecommendation() : self.authenticate()
+            }).disposed(by: disposeBag)
     }
 }
 
 // MARK: - Helpers
 
 private extension DashboardViewModel {
-    func quickRecommendation() {
-        guard (try? authenticationService.isAuthenticated.value()) ?? false else {
-            authenticate()
-            return
-        }
-        showQuickRecommendation()
-    }
-    
     func authenticate() {
         coordinatorDelegate?.goToLoginScreen() { [weak self] in
-            self?.quickRecommendation()
+            self?.showQuickRecommendation()
         }
     }
     

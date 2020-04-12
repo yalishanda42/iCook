@@ -11,7 +11,7 @@ import RxSwift
 
 protocol AuthenticationService {
             
-    var isAuthenticated: BehaviorSubject<Bool> { get }
+    var isAuthenticated: Observable<Bool> { get }
     
     func login(email: String, password: String) -> Observable<Void>
     
