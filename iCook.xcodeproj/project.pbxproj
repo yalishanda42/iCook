@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7410CF1D2443D28F00F1F9CE /* AppDishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410CF1C2443D28F00F1F9CE /* AppDishService.swift */; };
+		7410CF1F2443D38A00F1F9CE /* APIIntDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7410CF1E2443D38A00F1F9CE /* APIIntDataResponse.swift */; };
 		7413198E24266BC300A42A4F /* AuthenticateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7413198D24266BC300A42A4F /* AuthenticateViewModel.swift */; };
 		741319952426963300A42A4F /* DishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741319942426963300A42A4F /* DishCoordinator.swift */; };
 		741319972426968900A42A4F /* Dish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741319962426968900A42A4F /* Dish.storyboard */; };
@@ -91,6 +93,8 @@
 /* Begin PBXFileReference section */
 		7410CF162443702900F1F9CE /* Token+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Token+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7410CF172443702900F1F9CE /* Token+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Token+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7410CF1C2443D28F00F1F9CE /* AppDishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDishService.swift; sourceTree = "<group>"; };
+		7410CF1E2443D38A00F1F9CE /* APIIntDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIIntDataResponse.swift; sourceTree = "<group>"; };
 		7413198D24266BC300A42A4F /* AuthenticateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateViewModel.swift; sourceTree = "<group>"; };
 		741319942426963300A42A4F /* DishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCoordinator.swift; sourceTree = "<group>"; };
 		741319962426968900A42A4F /* Dish.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dish.storyboard; sourceTree = "<group>"; };
@@ -365,6 +369,7 @@
 				7413199B24269D0D00A42A4F /* APIBaseResponse.swift */,
 				743168B52411B9F6002B3905 /* APITokenResponse.swift */,
 				747E37952440E932001490CF /* APIUserDataResponse.swift */,
+				7410CF1E2443D38A00F1F9CE /* APIIntDataResponse.swift */,
 			);
 			path = APIResponses;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			children = (
 				743168AF2411AB8C002B3905 /* AppAPIService.swift */,
 				74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */,
+				7410CF1C2443D28F00F1F9CE /* AppDishService.swift */,
 				747E379F244101F8001490CF /* AppUserService.swift */,
 				743168B32411AE72002B3905 /* Data Models */,
 			);
@@ -670,6 +676,7 @@
 				742396D32438AEF000A56C99 /* SceneViewModel.swift in Sources */,
 				74B891C82427CCFE00993FB7 /* FakeDishService.swift in Sources */,
 				74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */,
+				7410CF1D2443D28F00F1F9CE /* AppDishService.swift in Sources */,
 				747C5C89243017F5000C2875 /* UIImageView+Downloaded.swift in Sources */,
 				747E37962440E932001490CF /* APIUserDataResponse.swift in Sources */,
 				74400FC82422A98400DC2E76 /* AppCoordinator.swift in Sources */,
@@ -680,6 +687,7 @@
 				74B891CA2427D0D700993FB7 /* FakeAuthenticationService.swift in Sources */,
 				743168B02411AB8C002B3905 /* AppAPIService.swift in Sources */,
 				74B891C22427CAC200993FB7 /* RecipeOverviewInfo.swift in Sources */,
+				7410CF1F2443D38A00F1F9CE /* APIIntDataResponse.swift in Sources */,
 				74B891CF2427E11F00993FB7 /* RecipeOverviewViewModel.swift in Sources */,
 				7413198E24266BC300A42A4F /* AuthenticateViewModel.swift in Sources */,
 				74B891BB2427BFD400993FB7 /* DishService.swift in Sources */,

@@ -48,7 +48,18 @@ extension AppAPIService: APIService {
         return performRequest(
             to: Endpoint.validateToken,
             responseType: APIUserDataResponse.self,
-            authenticateWith: token).share().map { $0.data }
+            authenticateWith: token
+        ).share().map { $0.data }
+    }
+    
+    // MARK: - Quick Recommendation
+    
+    func quickRecommendation(_ token: BearerToken) -> Observable<Int> {
+        return performRequest(
+            to: Endpoint.quickRecommendation,
+            responseType: APIIntDataResponse.self,
+            authenticateWith: token
+        ).share().map { $0.data }
     }
 }
 
@@ -60,6 +71,7 @@ extension AppAPIService {
         case login(email: String, password: String)
         case updateUser(firstName: String, famiyName: String, email: String, password: String?)
         case validateToken
+        case quickRecommendation
         
         var url: String {
             switch self {
@@ -71,6 +83,8 @@ extension AppAPIService {
                 return "\(uriBase)/update_user"
             case .validateToken:
                 return "\(uriBase)/validate_token"
+            case .quickRecommendation:
+                return "\(uriBase)/quick_recommendation"
             }
         }
         
@@ -85,7 +99,7 @@ extension AppAPIService {
             switch self {
             case .login, .createUser:
                 return false
-            case .validateToken, .updateUser:
+            case .validateToken, .updateUser, .quickRecommendation:
                 return true
             }
         }

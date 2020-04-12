@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 
 protocol AuthenticationService {
+    
+    // Strictly related to authentication
             
     var isAuthenticated: Observable<Bool> { get }
     
@@ -20,6 +22,10 @@ protocol AuthenticationService {
     func validateToken() -> Observable<UserData>
     
     func logout() -> Observable<Void>
+    
+    // Just requiring authentication
+    
+    func quickRecommendation() -> Observable<Int>
 }
 
 enum AuthenticationError: Error {

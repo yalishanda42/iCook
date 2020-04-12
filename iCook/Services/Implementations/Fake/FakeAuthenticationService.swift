@@ -47,4 +47,8 @@ class FakeAuthenticationService: AuthenticationService {
         isAuthenticatedSubject.onNext(false)
         return Observable.just(())
     }
+    
+    func quickRecommendation() -> Observable<Int> {
+        return Observable.just(8888)
+    }
 }

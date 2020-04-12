@@ -24,6 +24,8 @@ protocol APIService {
     
     func validateToken(_ token: BearerToken) -> Observable<UserData>
     
+    func quickRecommendation(_ token: BearerToken) -> Observable<Int>
+    
 }
 
 enum APIConnectionError: Error {

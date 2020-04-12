@@ -68,6 +68,14 @@ class AppAuthenticationService: AuthenticationService {
         bearerToken.onNext(nil)
         return Observable.just(())
     }
+    
+    func quickRecommendation() -> Observable<Int> {
+        guard let token = try? bearerToken.value() else {
+            return Observable.error(AuthenticationError.unauthorizedOperation)
+        }
+        
+        return apiService.quickRecommendation(token)
+    }
 }
 
 // MARK: - Database helpers
