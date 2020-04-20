@@ -13,6 +13,12 @@ import RxSwift
 
 class AppAPIService {
     private static let uriBase = "https://idagotvim.000webhostapp.com/api"
+    
+    private static var jsonDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }()
 }
 
 // MARK: - API Service
@@ -23,7 +29,7 @@ extension AppAPIService: APIService {
     
     func login(email: String, password: String) -> Observable<BearerToken> {
         
-        let endpoint = Endpoint.login(email: email, password: password)
+        let endpoint: Endpoint = .login(email: email, password: password)
         
         return performRequest(to: endpoint, responseType: APITokenResponse.self).share().map { $0.token }
     }
@@ -37,7 +43,7 @@ extension AppAPIService: APIService {
         password: String
     ) -> Observable<Bool> {
         
-        let endpoint = Endpoint.createUser(firstName: firstName, famiyName: famiyName, email: email, password: password)
+        let endpoint: Endpoint = .createUser(firstName: firstName, famiyName: famiyName, email: email, password: password)
         
         return performRequest(to: endpoint, responseType: APIBaseResponse.self).share().map { _ in true }
     }
@@ -46,7 +52,7 @@ extension AppAPIService: APIService {
     
     func validateToken(_ token: BearerToken) -> Observable<UserData> {
         return performRequest(
-            to: Endpoint.validateToken,
+            to: .validateToken,
             responseType: APIUserDataResponse.self,
             authenticateWith: token
         ).share().map { $0.data }
@@ -56,10 +62,16 @@ extension AppAPIService: APIService {
     
     func quickRecommendation(_ token: BearerToken) -> Observable<Int> {
         return performRequest(
-            to: Endpoint.quickRecommendation,
+            to: .quickRecommendation,
             responseType: APIIntDataResponse.self,
             authenticateWith: token
         ).share().map { $0.data }
+    }
+    
+    // MARK: - Dish
+    
+    func dish(id: Int) -> Observable<DishData> {
+        return performRequest(to: .dish(id: id), responseType: APIDishDataResponse.self).share().map { $0.data }
     }
 }
 
@@ -72,6 +84,7 @@ extension AppAPIService {
         case updateUser(firstName: String, famiyName: String, email: String, password: String?)
         case validateToken
         case quickRecommendation
+        case dish(id: Int)
         
         var url: String {
             switch self {
@@ -85,11 +98,15 @@ extension AppAPIService {
                 return "\(uriBase)/validate_token"
             case .quickRecommendation:
                 return "\(uriBase)/quick_recommendation"
+            case .dish(id: let id):
+                return "\(uriBase)/dish/\(id)"
             }
         }
         
         var httpRequestMethod: HTTPMethod {
             switch self {
+            case .dish:
+                return .get
             default:
                 return .post
             }
@@ -97,14 +114,14 @@ extension AppAPIService {
         
         var requiresAuthentication: Bool {
             switch self {
-            case .login, .createUser:
+            case .login, .createUser, .dish:
                 return false
             case .validateToken, .updateUser, .quickRecommendation:
                 return true
             }
         }
         
-        var parameters: [String: String] {
+        var parameters: [String: String]? {
             switch self {
             case .createUser(firstName: let firstname, famiyName: let familyname, email: let email, password: let password):
                 return [
@@ -119,7 +136,7 @@ extension AppAPIService {
                     Parameters.password: password
                 ]
             default:
-                return [:]
+                return nil
             }
         }
     }
@@ -151,7 +168,8 @@ private extension AppAPIService {
                 parameters: endpoint.parameters,
                 encoding: JSONEncoding.default,
                 headers: HTTPHeaders(endpoint.requiresAuthentication ? [HTTPHeader.authorization(bearerToken: token)] : [])
-                ).responseJSON { responseResult in
+            ).responseJSON { responseResult in
+                
                 AppDelegate.logger.trace("\n> Received API response:\n>> Status code \(String(describing: responseResult.response?.statusCode))\n>> Result: \(responseResult.result)")
                 
                 switch responseResult.result {
@@ -175,7 +193,7 @@ private extension AppAPIService {
                         
                         let serverResponse: APIBaseResponse
                         do {
-                            serverResponse = try JSONDecoder().decode(APIBaseResponse.self, from: data)
+                            serverResponse = try AppAPIService.jsonDecoder.decode(APIBaseResponse.self, from: data)
                         } catch let error {
                             AppDelegate.logger.error("Could not decode base server response! \(error.localizedDescription)")
                             observer.onError(error)
@@ -203,7 +221,7 @@ private extension AppAPIService {
                     
                     let serverResponse: ResponseType
                     do {
-                        serverResponse = try JSONDecoder().decode(ResponseType.self, from: data)
+                        serverResponse = try AppAPIService.jsonDecoder.decode(ResponseType.self, from: data)
                     } catch let error {
                         AppDelegate.logger.error("Could not decode response of type \(String(describing: ResponseType.self)) for endpoint \(endpoint)! \(error.localizedDescription)")
                         observer.onError(error)

@@ -15,5 +15,5 @@ struct RecipeOverviewInfo: Codable {
     let authorEmail: String
     let dateAdded: Int
     let commentsCount: Int
-    let rating: Double
+    let rating: Float
 }

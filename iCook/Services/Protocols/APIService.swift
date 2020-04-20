@@ -26,6 +26,8 @@ protocol APIService {
     
     func quickRecommendation(_ token: BearerToken) -> Observable<Int>
     
+    func dish(id: Int) -> Observable<DishData>
+    
 }
 
 enum APIConnectionError: Error {
