@@ -10,6 +10,8 @@ import UIKit
 
 class DishCoordinator: Coordinator {
     
+    private var child: Coordinator?
+    
     private let viewController: UIViewController
     private let services: ServiceDependencies
     private let dishId: Int
@@ -55,6 +57,8 @@ extension DishCoordinator: DishViewModelCoordinatorDelegate {
     }
     
     func goToAddRecipe() {
-        // TODO
+        let recipeCoordinator = RecipeCoordinator(in: navControllerWrapper, services: services)
+        child = recipeCoordinator
+        recipeCoordinator.start()
     }
 }

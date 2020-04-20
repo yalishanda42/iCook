@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2BS-T5-x5J">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="VpX-bW-qSg">
+            <objects>
+                <navigationController id="i1h-bL-bWf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fnf-D4-Llt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2BS-T5-x5J" kind="relationship" relationship="rootViewController" id="s4s-xw-aXU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CQl-yN-pN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1075" y="119"/>
+        </scene>
+        <!--Recipe View Controller-->
+        <scene sceneID="vcw-H2-Ytw">
+            <objects>
+                <viewController id="2BS-T5-x5J" customClass="RecipeViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qj9-ID-8s2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LbB-fb-7q3">
+                                <rect key="frame" x="8" y="96" width="398" height="25"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="foh-Y7-4kv">
+                                        <rect key="frame" x="0.0" y="0.0" width="195" height="25"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2MD-cF-dQB">
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="25"/>
+                                                <color key="tintColor" name="background-darker"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gFm-V0-mto">
+                                                <rect key="frame" x="39" y="0.0" width="39" height="25"/>
+                                                <color key="tintColor" name="background-darker"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xS8-ne-1yg">
+                                                <rect key="frame" x="78" y="0.0" width="39" height="25"/>
+                                                <color key="tintColor" name="background-darker"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RUx-f0-y63">
+                                                <rect key="frame" x="117" y="0.0" width="39" height="25"/>
+                                                <color key="tintColor" name="background-darker"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="biQ-55-kzk">
+                                                <rect key="frame" x="156" y="0.0" width="39" height="25"/>
+                                                <color key="tintColor" name="background-darker"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author Authorson &lt;asdasdas@asdasdasd.ascascasdasdasd&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="pPH-Q8-v3C">
+                                        <rect key="frame" x="203" y="0.0" width="195" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="L4w-aL-FFe"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sna-kB-hyr">
+                                <rect key="frame" x="177" y="137" width="60" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nS8-Tv-lFw">
+                                <rect key="frame" x="150.5" y="467" width="113.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8te-5D-BXY">
+                                <rect key="frame" x="8" y="171.5" width="398" height="287.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Първата стъпка при всички рецепти с боб е подготовката на боба. Предварителната обработка на боба се налага поради две причини: от една страна, за да уври по-бързо и да не остане „хрупкав“, от друга, за да не ви се подуят коремчетата след като похапнете сладко купичка вкусна боб чорба. Всяка баба има своя тайна за варене на боб: някои слагат една чаена лъжица захар, други една  супена лъжица ракиа, или пък малко хлебна сода. Дали тези тези трикове имат ефект е спорно. Има обаче един 100% доказан метод за по-бързо сваряване на боба: накиснете го в студена вода за около 7-8 часа. Така ако го накиснете вечерта преди да си легнете на сутринта ще е готов за варене.
+↵Изсипвате водата, в която е стоял бобът, измивате го и го слагате да заври в голяма тенджера. След като заври изсипвате водата, измивате го, наливате 1,5 л вода и го връщате на котлона. След като заври отстранявате с лъжица пяната, която се получава. Оставяте боба да ври на слаб огън.                                                                                                       ! Много важно е да знаете, че при варенето на боб солта се слага накрая! Ако посолите още в началото на варенето, то вашият боб няма почти никакви шансове да се свари. Дайте шанс на боба – сложете сол накрая! ;)
+↵Бобът ври на слаб огън около час, докато поомекне. Но тъй като на пазара има боб с различно качество, който увира за различно време най-добре е да не се доверявате на минутите, които производителят е написал на опаковката, защото те често са недостатъчни. За по-сигурно разбъркайте боба с дървена лъжица, ако не потраква и бобчетата не се удрят шумно в стените на тенджерата, значи се е посварил. Друг, много лесен и може би най-надежден начин е да пробвате едно бобче, ако е поомекнало, значи е дошъл момента да добавите ситно нарязаните зеленчуци.
+↵След като бобът е поомекнал слагате зеленчуците, добавяте сол на вкус, една чаена лъжица червен пипер една супена лъжица подправка за боб и 2-3 щипки джоджен, слагате и 4 супени лъжици олио. След още 30-40 мин бобът би трябвало да е готов, нооооо гаранция няма! Трябва да го пробвате! И когато ви се види достатъчно мек, то бобът вече е готов.
+↵
+↵Рецептата за боб чорба е изпълнена!</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" lookupSuggestion="YES"/>
+                            </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rx0-Dx-MbT">
+                                <rect key="frame" x="8" y="501.5" width="398" height="352.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="guK-sI-25T" style="IBUITableViewCellStyleDefault" id="UjT-jt-0cx">
+                                        <rect key="frame" x="0.0" y="28" width="398" height="45.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UjT-jt-0cx" id="C6h-3s-qa8">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="45.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No comments left. Be the first one!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="guK-sI-25T">
+                                                    <rect key="frame" x="20" y="0.0" width="358" height="45.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nS8-Tv-lFw" firstAttribute="top" secondItem="8te-5D-BXY" secondAttribute="bottom" constant="8" id="424-xc-OAh"/>
+                            <constraint firstItem="8te-5D-BXY" firstAttribute="top" secondItem="Sna-kB-hyr" secondAttribute="bottom" constant="8" id="FgT-94-Wlx"/>
+                            <constraint firstItem="nS8-Tv-lFw" firstAttribute="centerY" secondItem="qj9-ID-8s2" secondAttribute="centerY" constant="32" id="IWh-nq-Uaa"/>
+                            <constraint firstItem="vB9-i0-Xeu" firstAttribute="trailing" secondItem="8te-5D-BXY" secondAttribute="trailing" constant="8" id="KnZ-8g-mnv"/>
+                            <constraint firstItem="vB9-i0-Xeu" firstAttribute="bottom" secondItem="Rx0-Dx-MbT" secondAttribute="bottom" constant="8" id="LcW-eH-zIa"/>
+                            <constraint firstAttribute="trailing" secondItem="LbB-fb-7q3" secondAttribute="trailing" constant="8" id="NZ3-na-ACe"/>
+                            <constraint firstItem="LbB-fb-7q3" firstAttribute="top" secondItem="vB9-i0-Xeu" secondAttribute="top" constant="8" id="Npu-ZV-dZb"/>
+                            <constraint firstItem="LbB-fb-7q3" firstAttribute="leading" secondItem="vB9-i0-Xeu" secondAttribute="leading" constant="8" id="Pfg-gF-Wu9"/>
+                            <constraint firstItem="Rx0-Dx-MbT" firstAttribute="top" secondItem="nS8-Tv-lFw" secondAttribute="bottom" constant="8" id="V1I-rg-sMs"/>
+                            <constraint firstItem="vB9-i0-Xeu" firstAttribute="trailing" secondItem="Rx0-Dx-MbT" secondAttribute="trailing" constant="8" id="WdB-aS-xPq"/>
+                            <constraint firstItem="Rx0-Dx-MbT" firstAttribute="leading" secondItem="vB9-i0-Xeu" secondAttribute="leading" constant="8" id="XaQ-Nz-n6k"/>
+                            <constraint firstItem="nS8-Tv-lFw" firstAttribute="centerX" secondItem="qj9-ID-8s2" secondAttribute="centerX" id="fi9-zt-LkL"/>
+                            <constraint firstItem="Sna-kB-hyr" firstAttribute="centerX" secondItem="qj9-ID-8s2" secondAttribute="centerX" id="gNj-CD-CJd"/>
+                            <constraint firstItem="Sna-kB-hyr" firstAttribute="top" secondItem="LbB-fb-7q3" secondAttribute="bottom" constant="16" id="p3r-JU-jLe"/>
+                            <constraint firstItem="8te-5D-BXY" firstAttribute="leading" secondItem="vB9-i0-Xeu" secondAttribute="leading" constant="8" id="yH7-n8-C4l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vB9-i0-Xeu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6AP-pp-6iw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EFI-hW-gGV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2253.6231884057975" y="118.52678571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <namedColor name="background-darker">
+            <color red="1" green="0.8784313725490196" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

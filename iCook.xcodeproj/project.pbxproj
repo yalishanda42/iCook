@@ -57,6 +57,10 @@
 		748B3E46244DF63D00D1D1DC /* APIDishDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E45244DF63D00D1D1DC /* APIDishDataResponse.swift */; };
 		748B3E48244DF67E00D1D1DC /* APIRecipeDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E47244DF67E00D1D1DC /* APIRecipeDataResponse.swift */; };
 		748B3E4A244DF69800D1D1DC /* APIRatingDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E49244DF69800D1D1DC /* APIRatingDataResponse.swift */; };
+		748B3E4D244E0BE100D1D1DC /* RecipeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E4C244E0BE100D1D1DC /* RecipeCoordinator.swift */; };
+		748B3E4F244E0BFD00D1D1DC /* Recipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 748B3E4E244E0BFD00D1D1DC /* Recipe.storyboard */; };
+		748B3E54244E0C3900D1D1DC /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E53244E0C3900D1D1DC /* RecipeViewController.swift */; };
+		748B3E56244E0C5200D1D1DC /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E55244E0C5200D1D1DC /* RecipeViewModel.swift */; };
 		749BC3532425735E0068B492 /* KawaiiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3522425735E0068B492 /* KawaiiView.swift */; };
 		749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC3542425755C0068B492 /* UIColor+AssetColors.swift */; };
 		749BC357242579260068B492 /* KawaiiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BC356242579260068B492 /* KawaiiButton.swift */; };
@@ -151,6 +155,10 @@
 		748B3E45244DF63D00D1D1DC /* APIDishDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDishDataResponse.swift; sourceTree = "<group>"; };
 		748B3E47244DF67E00D1D1DC /* APIRecipeDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRecipeDataResponse.swift; sourceTree = "<group>"; };
 		748B3E49244DF69800D1D1DC /* APIRatingDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRatingDataResponse.swift; sourceTree = "<group>"; };
+		748B3E4C244E0BE100D1D1DC /* RecipeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCoordinator.swift; sourceTree = "<group>"; };
+		748B3E4E244E0BFD00D1D1DC /* Recipe.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recipe.storyboard; sourceTree = "<group>"; };
+		748B3E53244E0C3900D1D1DC /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		748B3E55244E0C5200D1D1DC /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		749BC3522425735E0068B492 /* KawaiiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiView.swift; sourceTree = "<group>"; };
 		749BC3542425755C0068B492 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
 		749BC356242579260068B492 /* KawaiiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KawaiiButton.swift; sourceTree = "<group>"; };
@@ -402,6 +410,7 @@
 				74B8B88924251E7C00C29491 /* Settings */,
 				743168A324119D82002B3905 /* Authenticate */,
 				74131993242695F400A42A4F /* Dish */,
+				748B3E4B244E0BC600D1D1DC /* Recipe */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -452,6 +461,41 @@
 				748B3E43244DF56E00D1D1DC /* RatingData.swift */,
 			);
 			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		748B3E4B244E0BC600D1D1DC /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				748B3E4C244E0BE100D1D1DC /* RecipeCoordinator.swift */,
+				748B3E4E244E0BFD00D1D1DC /* Recipe.storyboard */,
+				748B3E50244E0C0500D1D1DC /* ViewModels */,
+				748B3E51244E0C0C00D1D1DC /* ViewControllers */,
+				748B3E52244E0C1300D1D1DC /* Models */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		748B3E50244E0C0500D1D1DC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				748B3E55244E0C5200D1D1DC /* RecipeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		748B3E51244E0C0C00D1D1DC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				748B3E53244E0C3900D1D1DC /* RecipeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		748B3E52244E0C1300D1D1DC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		74B891B72427AC6800993FB7 /* ViewModels */ = {
@@ -673,6 +717,7 @@
 				74B8B88224251DA600C29491 /* Browse.storyboard in Resources */,
 				7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */,
 				74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */,
+				748B3E4F244E0BFD00D1D1DC /* Recipe.storyboard in Resources */,
 				742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */,
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
 				74B891B42427A41E00993FB7 /* RecipeTableViewCell.xib in Resources */,
@@ -717,6 +762,7 @@
 				7410CF1F2443D38A00F1F9CE /* APIIntDataResponse.swift in Sources */,
 				74B891CF2427E11F00993FB7 /* RecipeOverviewViewModel.swift in Sources */,
 				7413198E24266BC300A42A4F /* AuthenticateViewModel.swift in Sources */,
+				748B3E56244E0C5200D1D1DC /* RecipeViewModel.swift in Sources */,
 				748B3E44244DF56E00D1D1DC /* RatingData.swift in Sources */,
 				74B891BB2427BFD400993FB7 /* DishService.swift in Sources */,
 				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
@@ -729,6 +775,7 @@
 				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
 				74B891BE2427C1BE00993FB7 /* Dish.swift in Sources */,
+				748B3E4D244E0BE100D1D1DC /* RecipeCoordinator.swift in Sources */,
 				7413199A242696D700A42A4F /* DishViewController.swift in Sources */,
 				747E37A0244101F8001490CF /* AppUserService.swift in Sources */,
 				74B891B62427A44000993FB7 /* RecipeTableViewCell.swift in Sources */,
@@ -740,6 +787,7 @@
 				74400FCA2422ABAF00DC2E76 /* UIViewController+StoryboardInstantiable.swift in Sources */,
 				748B3E48244DF67E00D1D1DC /* APIRecipeDataResponse.swift in Sources */,
 				747E37942440E8E0001490CF /* UserData.swift in Sources */,
+				748B3E54244E0C3900D1D1DC /* RecipeViewController.swift in Sources */,
 				747E37A324410A92001490CF /* UIViewController+Rx.swift in Sources */,
 				747E379C2440FB96001490CF /* SettingsViewModel.swift in Sources */,
 				7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */,
