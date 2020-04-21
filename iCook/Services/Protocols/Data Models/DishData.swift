@@ -17,7 +17,6 @@ struct DishData: Codable {
 extension DishData {
     func asDomainDishModel() -> Dish {
         return Dish(
-            id: id,
             name: name,
             imageUrl: imageUrl,
             recipeOverviews: recipes.map{ $0.asDomainRecipeOverviewInfoModel() }

@@ -10,14 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecipeTableViewCell" customModule="iCook" customModuleProvider="target">
             <connections>
-                <outlet property="starsStackView" destination="rzQ-hq-6SB" id="AmK-Iq-rCU"/>
+                <outlet property="fiveStarView" destination="uvW-Fd-Jsl" id="G4G-fW-Vcb"/>
                 <outlet property="subtitleLabel" destination="6cA-FF-qWN" id="F0h-Jm-mEs"/>
                 <outlet property="titleLabel" destination="vOG-Ov-bHN" id="uCw-EV-0iR"/>
-                <outletCollection property="starImageViews" destination="zGs-7g-QF9" collectionClass="NSMutableArray" id="2qW-xJ-qZu"/>
-                <outletCollection property="starImageViews" destination="z38-3k-S9Z" collectionClass="NSMutableArray" id="vij-kC-Zlk"/>
-                <outletCollection property="starImageViews" destination="I2J-p6-wwc" collectionClass="NSMutableArray" id="CmZ-zN-xXt"/>
-                <outletCollection property="starImageViews" destination="cRR-G0-NYz" collectionClass="NSMutableArray" id="oFV-AY-MpT"/>
-                <outletCollection property="starImageViews" destination="SCe-A8-6kN" collectionClass="NSMutableArray" id="quN-gZ-gQg"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -39,31 +34,10 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzQ-hq-6SB">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvW-Fd-Jsl" customClass="FiveStarView" customModule="iCook" customModuleProvider="target">
                     <rect key="frame" x="343" y="44.5" width="110" height="20"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zGs-7g-QF9">
-                            <rect key="frame" x="0.0" y="0.0" width="22" height="20"/>
-                            <color key="tintColor" name="background-darker"/>
-                        </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z38-3k-S9Z">
-                            <rect key="frame" x="22" y="0.0" width="22" height="20"/>
-                            <color key="tintColor" name="background-darker"/>
-                        </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I2J-p6-wwc">
-                            <rect key="frame" x="44" y="0.0" width="22" height="20"/>
-                            <color key="tintColor" name="background-darker"/>
-                        </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cRR-G0-NYz">
-                            <rect key="frame" x="66" y="0.0" width="22" height="20"/>
-                            <color key="tintColor" name="background-darker"/>
-                        </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SCe-A8-6kN">
-                            <rect key="frame" x="88" y="0.0" width="22" height="20"/>
-                            <color key="tintColor" name="background-darker"/>
-                        </imageView>
-                    </subviews>
-                </stackView>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-04-20 · 88 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cA-FF-qWN">
                     <rect key="frame" x="46" y="65" width="171" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -78,12 +52,12 @@
                 <constraint firstItem="vOG-Ov-bHN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="CHu-Pv-ZwX"/>
                 <constraint firstItem="pDC-OY-dWI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PS1-ko-ryt"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6cA-FF-qWN" secondAttribute="bottom" constant="4" id="QFw-0G-Wng"/>
+                <constraint firstAttribute="trailing" secondItem="uvW-Fd-Jsl" secondAttribute="trailing" constant="8" id="QjB-ZR-ys4"/>
                 <constraint firstItem="6cA-FF-qWN" firstAttribute="top" secondItem="vOG-Ov-bHN" secondAttribute="bottom" constant="8" id="Qnn-oi-kdw"/>
-                <constraint firstItem="rzQ-hq-6SB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vOG-Ov-bHN" secondAttribute="trailing" constant="8" id="Vna-qF-2rT"/>
                 <constraint firstItem="vOG-Ov-bHN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-8" id="Wis-yY-1Iw"/>
                 <constraint firstItem="pDC-OY-dWI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="dvm-nm-fXm"/>
-                <constraint firstItem="rzQ-hq-6SB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rIT-UV-HXx"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rzQ-hq-6SB" secondAttribute="trailing" constant="8" id="vf9-ef-bLl"/>
+                <constraint firstItem="uvW-Fd-Jsl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6cA-FF-qWN" secondAttribute="trailing" constant="8" id="gIY-3g-1Aj"/>
+                <constraint firstItem="uvW-Fd-Jsl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nSM-GX-uPn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -92,10 +66,6 @@
     </objects>
     <resources>
         <image name="list.number" catalog="system" width="128" height="97"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
-        <namedColor name="background-darker">
-            <color red="1" green="0.8784313725490196" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="mediumgrey">
             <color red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
