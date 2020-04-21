@@ -12,6 +12,7 @@ import RxSwift
 class FakeRecipeService: RecipeService {
     func fetchRecipeInfo(for recipeId: Int) -> Observable<Recipe> {
         return Observable.just(Recipe(
+            id: 1,
             authorNames: "Alexander Ignatov",
             authorEmail: "yalishanda@abv.bg",
             avgRating: 6.9,

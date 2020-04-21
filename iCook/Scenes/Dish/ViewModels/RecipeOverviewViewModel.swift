@@ -9,6 +9,10 @@
 import Foundation
 
 class RecipeOverviewViewModel {
+    
+    var recipeId: Int {
+        model.id
+    }
         
     var title: String {
         "by \(model.authorNames)"

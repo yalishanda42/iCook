@@ -68,7 +68,7 @@ class RecipeViewModel: SceneViewModel {
 
 extension RecipeViewModel: IOTransformable {
     struct Input {
-        let viewDidLoad: Observable<Void>
+        let viewDidAppear: Observable<Void>
     }
     
     struct Output {
@@ -81,7 +81,7 @@ extension RecipeViewModel: IOTransformable {
     }
     
     func transform(_ input: Input) -> Output {
-        input.viewDidLoad.subscribe(onNext: load).disposed(by: disposeBag)
+        input.viewDidAppear.subscribe(onNext: load).disposed(by: disposeBag)
         
         return Output(
             recipeText: recipeText,

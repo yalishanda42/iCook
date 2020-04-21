@@ -28,7 +28,7 @@ public enum ViewControllerViewState: Equatable {
 
 extension RxSwift.Reactive where Base: UIViewController {
     public var viewDidLoad: Observable<Void> {
-        return methodInvoked(#selector(UIViewController.viewDidLoad))
+        return methodInvoked(#selector(UIViewController.viewDidAppear))
             .map { _ in return }
     }
     

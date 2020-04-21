@@ -36,7 +36,7 @@ extension RecipeData {
     func asDomainRecipeModel() -> Recipe {
         let comments = ratings.compactMap { $0.asDomainCommentModel() }
         
-        return Recipe(authorNames: userNames, authorEmail: userEmail, avgRating: avgRating, steps: steps, comments: comments)
+        return Recipe(id: id, authorNames: userNames, authorEmail: userEmail, avgRating: avgRating, steps: steps, comments: comments)
     }
     
     func asDomainRecipeOverviewInfoModel() -> RecipeOverviewInfo {

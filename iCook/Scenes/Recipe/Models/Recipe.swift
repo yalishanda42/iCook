@@ -7,6 +7,7 @@
 //
 
 struct Recipe {
+    let id: Int
     let authorNames: String
     let authorEmail: String
     let avgRating: Float

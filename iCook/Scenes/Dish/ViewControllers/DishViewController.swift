@@ -39,7 +39,7 @@ class DishViewController: SceneViewController<DishViewModel> {
             takeawayButtonTap: takeawayButton.button.rx.tap.asObservable(),
             addRecipeButtonTap: addRecipeButton.button.rx.tap.asObservable(),
             doneButtonTap: doneButton.rx.tap.asObservable(),
-            recipeTap: recipesTableView.rx.itemSelected.map { $0.row }.asObservable()
+            recipeTap: recipesTableView.rx.modelSelected(RecipeOverviewViewModel.self).asObservable()
         ))
         
         output.dishName

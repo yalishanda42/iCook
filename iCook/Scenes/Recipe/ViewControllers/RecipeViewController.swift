@@ -33,14 +33,15 @@ class RecipeViewController: SceneViewController<RecipeViewModel> {
     override func setupBindings() {
         super.setupBindings()
         
-        let output = viewModel.transform(RecipeViewModel.Input(viewDidLoad: rx.viewDidLoad.asObservable()))
+        let output = viewModel.transform(RecipeViewModel.Input(
+            viewDidAppear: rx.viewDidAppear.map { _ in }.asObservable()
+        ))
         
         output.recipeText.drive(recipeStepsTextView.rx.text).disposed(by: disposeBag)
         output.authorInfoText.drive(authorLabel.rx.text).disposed(by: disposeBag)
         output.commentsAreHidden.drive(commentsTableView.rx.isHidden).disposed(by: disposeBag)
         output.noCommentsTextIsHidden.drive(noCommentsLabel.rx.isHidden).disposed(by: disposeBag)
-        
-        output.recipeRating.drive(onNext: configureStars).disposed(by: disposeBag)
+        output.recipeRating.drive(onNext: fiveStarView.configureStars).disposed(by: disposeBag)
         
         output.commentViewModels.drive(commentsTableView.rx.items(
             cellIdentifier: commentCellReuseId,
@@ -48,13 +49,5 @@ class RecipeViewController: SceneViewController<RecipeViewModel> {
         ) { row, viewModel, cell in
             cell.configure(with: viewModel)
         }.disposed(by: disposeBag)
-    }
-}
-
-// MARK: - Helpers
-
-private extension RecipeViewController {
-    func configureStars(with rating: Float) {
-        fiveStarView.configureStars(showingRating: rating)
     }
 }

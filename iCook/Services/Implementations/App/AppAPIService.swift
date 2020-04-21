@@ -164,10 +164,10 @@ private extension AppAPIService {
                 method: endpoint.httpRequestMethod,
                 parameters: endpoint.parameters,
                 encoding: JSONEncoding.default,
-                headers: HTTPHeaders(endpoint.requiresAuthentication ? [HTTPHeader.authorization(bearerToken: token)] : [])
+                headers: HTTPHeaders(endpoint.requiresAuthentication ? [.authorization(bearerToken: token)] : [])
             ).responseJSON { responseResult in
                 
-                AppDelegate.logger.trace("\n> Received API response:\n>> Status code \(String(describing: responseResult.response?.statusCode))\n>> Result: \(responseResult.result)")
+                AppDelegate.logger.trace("\n> Received API response for URL \(endpoint.url):\n>> Status code \(String(describing: responseResult.response?.statusCode))\n>> Result: \(responseResult.result)")
                 
                 switch responseResult.result {
                 case .success:
@@ -192,7 +192,7 @@ private extension AppAPIService {
                         do {
                             serverResponse = try AppAPIService.jsonDecoder.decode(APIBaseResponse.self, from: data)
                         } catch let error {
-                            AppDelegate.logger.error("Could not decode base server response! \(error.localizedDescription)")
+                            AppDelegate.logger.error("Could not decode base server response! \(error)")
                             observer.onError(error)
                             return
                         }
@@ -220,7 +220,7 @@ private extension AppAPIService {
                     do {
                         serverResponse = try AppAPIService.jsonDecoder.decode(ResponseType.self, from: data)
                     } catch let error {
-                        AppDelegate.logger.error("Could not decode response of type \(String(describing: ResponseType.self)) for endpoint \(endpoint)! \(error.localizedDescription)")
+                        AppDelegate.logger.error("Could not decode response of type \(String(describing: ResponseType.self)) for endpoint \(endpoint)! \(error)")
                         observer.onError(error)
                         return
                     }

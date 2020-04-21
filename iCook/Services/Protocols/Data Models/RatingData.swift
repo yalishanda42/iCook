@@ -12,8 +12,8 @@ struct RatingData: Codable {
     let userId: Int
     let rating: Int
     let comment: String?
-    let authorNames: String
-    let authorEmail: String
+    let userNames: String
+    let userEmail: String
 }
 
 extension RatingData {
@@ -22,6 +22,6 @@ extension RatingData {
             return nil
         }
         
-        return Comment(text: commentText, authorNames: authorNames, authorEmail: authorEmail)
+        return Comment(text: commentText, authorNames: userNames, authorEmail: userEmail)
     }
 }

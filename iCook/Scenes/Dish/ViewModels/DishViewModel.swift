@@ -76,7 +76,7 @@ extension DishViewModel: IOTransformable {
         let takeawayButtonTap: Observable<Void>
         let addRecipeButtonTap: Observable<Void>
         let doneButtonTap: Observable<Void>
-        let recipeTap: Observable<Int>
+        let recipeTap: Observable<RecipeOverviewViewModel>
     }
     
     struct Output {
@@ -110,8 +110,8 @@ extension DishViewModel {
         coordinatorDelegate?.goToAddRecipe()
     }
     
-    private func viewRecipe(with id: Int) {
-        coordinatorDelegate?.goToRecipe(recipeId: id)
+    private func viewRecipe(of viewModel: RecipeOverviewViewModel) {
+        coordinatorDelegate?.goToRecipe(recipeId: viewModel.recipeId)
     }
     
     private func goBack() {
