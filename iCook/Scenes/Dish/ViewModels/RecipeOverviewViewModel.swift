@@ -18,8 +18,8 @@ class RecipeOverviewViewModel {
         "\(formattedDateString) · \(model.commentsCount) comments"
     }
     
-    var rating: Int {
-        Int(model.rating)
+    var rating: Float {
+        model.rating
     }
         
     private lazy var dateFormatter: DateFormatter = {

@@ -13,6 +13,7 @@ import RxCocoa
 protocol DishViewModelCoordinatorDelegate: AnyObject, Coordinator {
     func goToTakeaway()
     func goToAddRecipe()
+    func goToRecipe(recipeId: Int)
 }
 
 class DishViewModel: SceneViewModel {
@@ -75,6 +76,7 @@ extension DishViewModel: IOTransformable {
         let takeawayButtonTap: Observable<Void>
         let addRecipeButtonTap: Observable<Void>
         let doneButtonTap: Observable<Void>
+        let recipeTap: Observable<Int>
     }
     
     struct Output {
@@ -87,6 +89,7 @@ extension DishViewModel: IOTransformable {
         input.takeawayButtonTap.subscribe(onNext: orderTakeaway).disposed(by: disposeBag)
         input.addRecipeButtonTap.subscribe(onNext: addRecipe).disposed(by: disposeBag)
         input.doneButtonTap.subscribe(onNext: goBack).disposed(by: disposeBag)
+        input.recipeTap.subscribe(onNext: viewRecipe).disposed(by: disposeBag)
         
         return Output(
             dishName: dishName,
@@ -105,6 +108,10 @@ extension DishViewModel {
     
     private func addRecipe() {
         coordinatorDelegate?.goToAddRecipe()
+    }
+    
+    private func viewRecipe(with id: Int) {
+        coordinatorDelegate?.goToRecipe(recipeId: id)
     }
     
     private func goBack() {

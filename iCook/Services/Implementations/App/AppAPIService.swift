@@ -24,18 +24,14 @@ class AppAPIService {
 // MARK: - API Service
 
 extension AppAPIService: APIService {
-    
-    // MARK: - Login
-    
+        
     func login(email: String, password: String) -> Observable<BearerToken> {
         
         let endpoint: Endpoint = .login(email: email, password: password)
         
         return performRequest(to: endpoint, responseType: APITokenResponse.self).share().map { $0.token }
     }
-    
-    // MARK: - Create User
-    
+        
     func register(
         firstName: String,
         famiyName: String,
@@ -47,9 +43,7 @@ extension AppAPIService: APIService {
         
         return performRequest(to: endpoint, responseType: APIBaseResponse.self).share().map { _ in true }
     }
-    
-    // MARK: - Validate Token
-    
+        
     func validateToken(_ token: BearerToken) -> Observable<UserData> {
         return performRequest(
             to: .validateToken,
@@ -57,9 +51,7 @@ extension AppAPIService: APIService {
             authenticateWith: token
         ).share().map { $0.data }
     }
-    
-    // MARK: - Quick Recommendation
-    
+        
     func quickRecommendation(_ token: BearerToken) -> Observable<Int> {
         return performRequest(
             to: .quickRecommendation,
@@ -67,11 +59,13 @@ extension AppAPIService: APIService {
             authenticateWith: token
         ).share().map { $0.data }
     }
-    
-    // MARK: - Dish
-    
+        
     func dish(id: Int) -> Observable<DishData> {
         return performRequest(to: .dish(id: id), responseType: APIDishDataResponse.self).share().map { $0.data }
+    }
+        
+    func recipe(id: Int) -> Observable<RecipeData> {
+        return performRequest(to: .recipe(id: id), responseType: APIRecipeDataResponse.self).share().map { $0.data }
     }
 }
 
@@ -85,6 +79,7 @@ extension AppAPIService {
         case validateToken
         case quickRecommendation
         case dish(id: Int)
+        case recipe(id: Int)
         
         var url: String {
             switch self {
@@ -100,12 +95,14 @@ extension AppAPIService {
                 return "\(uriBase)/quick_recommendation"
             case .dish(id: let id):
                 return "\(uriBase)/dish/\(id)"
+            case .recipe(id: let id):
+                return "\(uriBase)/recipe/\(id)"
             }
         }
         
         var httpRequestMethod: HTTPMethod {
             switch self {
-            case .dish:
+            case .dish, .recipe:
                 return .get
             default:
                 return .post
@@ -114,7 +111,7 @@ extension AppAPIService {
         
         var requiresAuthentication: Bool {
             switch self {
-            case .login, .createUser, .dish:
+            case .login, .createUser, .dish, .recipe:
                 return false
             case .validateToken, .updateUser, .quickRecommendation:
                 return true

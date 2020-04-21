@@ -28,6 +28,8 @@ protocol APIService {
     
     func dish(id: Int) -> Observable<DishData>
     
+    func recipe(id: Int) -> Observable<RecipeData>
+    
 }
 
 enum APIConnectionError: Error {

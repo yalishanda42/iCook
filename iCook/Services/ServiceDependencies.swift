@@ -18,4 +18,6 @@ protocol ServiceDependencies {
     
     var userService: UserService { get }
     
+    var recipeService: RecipeService { get }
+    
 }

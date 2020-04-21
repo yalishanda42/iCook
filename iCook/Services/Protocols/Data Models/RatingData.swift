@@ -12,4 +12,16 @@ struct RatingData: Codable {
     let userId: Int
     let rating: Int
     let comment: String?
+    let authorNames: String
+    let authorEmail: String
+}
+
+extension RatingData {
+    func asDomainCommentModel() -> Comment? {
+        guard let commentText = comment else {
+            return nil
+        }
+        
+        return Comment(text: commentText, authorNames: authorNames, authorEmail: authorEmail)
+    }
 }

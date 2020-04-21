@@ -38,7 +38,8 @@ class DishViewController: SceneViewController<DishViewModel> {
         let output = viewModel.transform(DishViewModel.Input(
             takeawayButtonTap: takeawayButton.button.rx.tap.asObservable(),
             addRecipeButtonTap: addRecipeButton.button.rx.tap.asObservable(),
-            doneButtonTap: doneButton.rx.tap.asObservable()
+            doneButtonTap: doneButton.rx.tap.asObservable(),
+            recipeTap: recipesTableView.rx.itemSelected.map { $0.row }.asObservable()
         ))
         
         output.dishName
@@ -49,10 +50,9 @@ class DishViewController: SceneViewController<DishViewModel> {
             self?.imageView.imageDownloaded(from: url)
         }).disposed(by: disposeBag)
         
-        output.recipesViewModels.drive(
-            recipesTableView.rx.items(
-                cellIdentifier: recipeCellReuseId,
-                cellType: RecipeTableViewCell.self)
+        output.recipesViewModels.drive(recipesTableView.rx.items(
+            cellIdentifier: recipeCellReuseId,
+            cellType: RecipeTableViewCell.self)
         ) { row, viewModel, cell in
             cell.configure(with: viewModel)
         }.disposed(by: disposeBag)

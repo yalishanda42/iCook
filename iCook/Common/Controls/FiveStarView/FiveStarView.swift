@@ -35,8 +35,8 @@ class FiveStarView: UIView, XibLoadable {
     
     /// Configure the state of the stars (full, half-full, empty) based on a
     /// 'rating' from 0 to 10 inclusively.
-    func configureStars(showingRating rating: Int) {
-        let fullStars = Float(rating) / 2.0
+    func configureStars(showingRating rating: Float) {
+        let fullStars = rating / 2.0
         
         for star in starImageViews {
             let higherEnd = Float(star.tag)

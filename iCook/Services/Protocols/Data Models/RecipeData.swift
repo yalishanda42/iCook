@@ -18,17 +18,30 @@ struct RecipeData: Codable {
     let ratings: [RatingData]
 }
 
+// MARK: - Computed Properties
+
 extension RecipeData {
+    var avgRating: Float {
+        guard ratings.count > 0 else {
+            return 0
+        }
+        
+        return ratings.map { Float($0.rating) }.reduce(0, +) / Float(ratings.count)
+    }
+}
+
+// MARK: - Conversions
+
+extension RecipeData {
+    func asDomainRecipeModel() -> Recipe {
+        let comments = ratings.compactMap { $0.asDomainCommentModel() }
+        
+        return Recipe(authorNames: userNames, authorEmail: userEmail, avgRating: avgRating, steps: steps, comments: comments)
+    }
+    
     func asDomainRecipeOverviewInfoModel() -> RecipeOverviewInfo {
         let commentsCount = ratings.compactMap { $0.comment }.count  // counting non-null comments only
         
-        let rating: Float
-        if ratings.count > 0 {
-            rating = ratings.map { Float($0.rating) }.reduce(0, +) / Float(ratings.count)  // avg value
-        } else {
-            rating = 0
-        }
-        
-        return RecipeOverviewInfo(id: id, dishId: dishId, authorNames: userNames, authorEmail: userEmail, dateAdded: dateCreated, commentsCount: commentsCount, rating: rating)
+        return RecipeOverviewInfo(id: id, dishId: dishId, authorNames: userNames, authorEmail: userEmail, dateAdded: dateCreated, commentsCount: commentsCount, rating: avgRating)
     }
 }

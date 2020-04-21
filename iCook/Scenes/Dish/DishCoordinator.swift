@@ -57,7 +57,16 @@ extension DishCoordinator: DishViewModelCoordinatorDelegate {
     }
     
     func goToAddRecipe() {
-        let recipeCoordinator = RecipeCoordinator(in: navControllerWrapper, services: services)
+        // TODO
+    }
+    
+    func goToRecipe(recipeId: Int) {
+        let recipeCoordinator = RecipeCoordinator(
+            in: navControllerWrapper,
+            services: services,
+            recipeId: recipeId
+        )
+        
         child = recipeCoordinator
         recipeCoordinator.start()
     }

@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="1075" y="119"/>
         </scene>
-        <!--Recipe View Controller-->
+        <!--Recipe-->
         <scene sceneID="vcw-H2-Ytw">
             <objects>
                 <viewController id="2BS-T5-x5J" customClass="RecipeViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,11 +36,11 @@
                                 <rect key="frame" x="8" y="96" width="398" height="25"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qix-il-5X5" customClass="FiveStarView" customModule="iCook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="63" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="43.5" height="25"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author Authorson &lt;asdasdas@asdasdasd.ascascasdasdasd&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="pPH-Q8-v3C">
-                                        <rect key="frame" x="71" y="0.0" width="327" height="25"/>
+                                        <rect key="frame" x="51.5" y="0.0" width="346.5" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                                         <color key="textColor" name="deep-purple"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rx0-Dx-MbT">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rx0-Dx-MbT">
                                         <rect key="frame" x="0.0" y="25.5" width="414" height="335"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
@@ -162,7 +162,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vB9-i0-Xeu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6AP-pp-6iw"/>
+                    <navigationItem key="navigationItem" title="Recipe" id="6AP-pp-6iw"/>
+                    <connections>
+                        <outlet property="authorLabel" destination="pPH-Q8-v3C" id="rhT-Y6-OiU"/>
+                        <outlet property="commentsTableView" destination="Rx0-Dx-MbT" id="q6e-n0-GWu"/>
+                        <outlet property="fiveStarView" destination="qix-il-5X5" id="zME-Kg-FE3"/>
+                        <outlet property="noCommentsLabel" destination="X6z-Om-1bY" id="MyU-8s-2VG"/>
+                        <outlet property="recipeStepsTextView" destination="8te-5D-BXY" id="7kJ-a6-6d8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFI-hW-gGV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
