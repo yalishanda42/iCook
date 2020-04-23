@@ -29,7 +29,7 @@ extension AppAPIService: APIService {
         
         let endpoint: Endpoint = .login(email: email, password: password)
         
-        return performRequest(to: endpoint, responseType: APITokenResponse.self).share().map { $0.token }
+        return performSingleRequest(to: endpoint, responseType: APITokenResponse.self).map { $0.token }
     }
         
     func register(
@@ -41,31 +41,31 @@ extension AppAPIService: APIService {
         
         let endpoint: Endpoint = .createUser(firstName: firstName, famiyName: famiyName, email: email, password: password)
         
-        return performRequest(to: endpoint, responseType: APIBaseResponse.self).share().map { _ in true }
+        return performSingleRequest(to: endpoint, responseType: APIBaseResponse.self).map { _ in true }
     }
         
     func validateToken(_ token: BearerToken) -> Observable<UserData> {
-        return performRequest(
+        return performSingleRequest(
             to: .validateToken,
             responseType: APIUserDataResponse.self,
             authenticateWith: token
-        ).share().map { $0.data }
+        ).map { $0.data }
     }
         
     func quickRecommendation(_ token: BearerToken) -> Observable<Int> {
-        return performRequest(
+        return performSingleRequest(
             to: .quickRecommendation,
             responseType: APIIntDataResponse.self,
             authenticateWith: token
-        ).share().map { $0.data }
+        ).map { $0.data }
     }
         
     func dish(id: Int) -> Observable<DishData> {
-        return performRequest(to: .dish(id: id), responseType: APIDishDataResponse.self).share().map { $0.data }
+        return performSingleRequest(to: .dish(id: id), responseType: APIDishDataResponse.self).map { $0.data }
     }
         
     func recipe(id: Int) -> Observable<RecipeData> {
-        return performRequest(to: .recipe(id: id), responseType: APIRecipeDataResponse.self).share().map { $0.data }
+        return performSingleRequest(to: .recipe(id: id), responseType: APIRecipeDataResponse.self).map { $0.data }
     }
 }
 
@@ -153,7 +153,7 @@ extension AppAPIService {
 // MARK: - Helpers
 
 private extension AppAPIService {
-    func performRequest<ResponseType: APIResponse>(
+    func performSingleRequest<ResponseType: APIResponse>(
         to endpoint: Endpoint,
         responseType: ResponseType.Type,
         authenticateWith token: BearerToken = BearerToken()
@@ -237,6 +237,6 @@ private extension AppAPIService {
             return Disposables.create {
                 request.cancel()
             }
-        }
+        }.share()
     }
 }
