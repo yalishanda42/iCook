@@ -10,7 +10,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+protocol BrowseViewModelCoordinatorDelegate: AnyObject {
+    func gotoDish(id: Int)
+}
+
 class BrowseViewModel: SceneViewModel {
+    
+    weak var coordinatorDelegate: BrowseViewModelCoordinatorDelegate?
         
     private let searchService: SearchService
     
@@ -24,6 +30,7 @@ class BrowseViewModel: SceneViewModel {
 extension BrowseViewModel: IOTransformable {
     struct Input {
         let searchTerm: Observable<String>
+        let resultItemTap: Observable<Int>
     }
     
     struct Output {
@@ -34,6 +41,8 @@ extension BrowseViewModel: IOTransformable {
     }
     
     func transform(_ input: Input) -> Output {
+        input.resultItemTap.subscribe(onNext: viewDish).disposed(by: disposeBag)
+        
         let viewModels = results(for: input)
         let resultsAreHidden = viewModels.map { $0.isEmpty }
         let noResultsViewsAreHidden = resultsAreHidden.map(!)
@@ -58,5 +67,13 @@ extension BrowseViewModel: IOTransformable {
         input.searchTerm.map {
             $0.isEmpty ? "Search for yummy dishes." : "No results available."
         }.asDriver(onErrorJustReturn: "No results available.")
+    }
+}
+
+// MARK: - Helpers
+
+private extension BrowseViewModel {
+    func viewDish(id: Int) {
+        coordinatorDelegate?.gotoDish(id: id)
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 final class BrowseCoordinator: TabCoordinator {
     
+    private var child: Coordinator?
+    
     private let navController: UINavigationController
     private let services: ServiceDependencies
     
@@ -21,6 +23,7 @@ final class BrowseCoordinator: TabCoordinator {
     
     private lazy var browseViewModel: BrowseViewModel = {
         let result = BrowseViewModel(searchService: services.searchService)
+        result.coordinatorDelegate = self
         return result
     }()
     
@@ -31,5 +34,13 @@ final class BrowseCoordinator: TabCoordinator {
     
     func start() {
         navController.setViewControllers([browseController], animated: true)
+    }
+}
+
+extension BrowseCoordinator: BrowseViewModelCoordinatorDelegate {
+    func gotoDish(id: Int) {
+        let dishCoordinator = DishCoordinator(in: browseController, services: services, dishId: id)
+        dishCoordinator.start()
+        child = dishCoordinator
     }
 }

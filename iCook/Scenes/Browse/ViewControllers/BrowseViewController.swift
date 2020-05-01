@@ -34,8 +34,15 @@ class BrowseViewController: SceneViewController<BrowseViewModel> {
     override func setupBindings() {
         super.setupBindings()
         
+        let searchTermObservable = searchTextField.textField.rx.text.orEmpty.asObservable()
+        
+        let itemTapObservable = resultsTableView.rx
+            .modelSelected(DishOverviewViewModel.self)
+            .map { $0.id }.asObservable()
+        
         let output = viewModel.transform(BrowseViewModel.Input(
-            searchTerm: searchTextField.textField.rx.text.orEmpty.asObservable()
+            searchTerm: searchTermObservable,
+            resultItemTap: itemTapObservable
         ))
         
         output.resultsAreHidden.drive(resultsTableView.rx.isHidden).disposed(by: disposeBag)
