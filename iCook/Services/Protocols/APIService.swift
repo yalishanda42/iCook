@@ -30,6 +30,8 @@ protocol APIService {
     
     func recipe(id: Int) -> Observable<RecipeData>
     
+    func search(searchTerm: String) -> Observable<[DishData]>
+    
 }
 
 enum APIConnectionError: Error {

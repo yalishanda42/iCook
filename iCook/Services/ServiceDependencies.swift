@@ -15,9 +15,11 @@ protocol ServiceDependencies {
     var authenticationService: AuthenticationService { get }
     
     var dishService: DishService { get }
+        
+    var recipeService: RecipeService { get }
+    
+    var searchService: SearchService { get }
     
     var userService: UserService { get }
-    
-    var recipeService: RecipeService { get }
     
 }

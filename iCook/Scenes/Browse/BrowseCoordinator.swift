@@ -11,8 +11,18 @@ import UIKit
 final class BrowseCoordinator: TabCoordinator {
     
     private let navController: UINavigationController
-    
     private let services: ServiceDependencies
+    
+    private lazy var browseController: BrowseViewController = {
+        let result = BrowseViewController.instantiateFromStoryboard()
+        result.viewModel = browseViewModel
+        return result
+    }()
+    
+    private lazy var browseViewModel: BrowseViewModel = {
+        let result = BrowseViewModel(searchService: services.searchService)
+        return result
+    }()
     
     init(in navController: UINavigationController, services: ServiceDependencies) {
         self.navController = navController
@@ -20,7 +30,6 @@ final class BrowseCoordinator: TabCoordinator {
     }
     
     func start() {
-        let browseController = BrowseViewController.instantiateFromStoryboard()
         navController.setViewControllers([browseController], animated: true)
     }
 }

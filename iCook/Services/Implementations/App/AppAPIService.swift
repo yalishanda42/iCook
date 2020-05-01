@@ -67,6 +67,13 @@ extension AppAPIService: APIService {
     func recipe(id: Int) -> Observable<RecipeData> {
         return performSingleRequest(to: .recipe(id: id), responseType: APIRecipeDataResponse.self).map { $0.data }
     }
+    
+    func search(searchTerm: String) -> Observable<[DishData]> {
+        return performSingleRequest(
+            to: .search(searchTerm: searchTerm.addingPercentEncoding(withAllowedCharacters: .letters) ?? ""),
+            responseType: APIDishDataArrayResponse.self
+        ).map { $0.data }
+    }
 }
 
 // MARK: - Endpoints
@@ -80,6 +87,7 @@ extension AppAPIService {
         case quickRecommendation
         case dish(id: Int)
         case recipe(id: Int)
+        case search(searchTerm: String)
         
         var url: String {
             switch self {
@@ -97,12 +105,14 @@ extension AppAPIService {
                 return "\(uriBase)/dish/\(id)"
             case .recipe(id: let id):
                 return "\(uriBase)/recipe/\(id)"
+            case .search(searchTerm: let term):
+                return "\(uriBase)/search/\(term)"
             }
         }
         
         var httpRequestMethod: HTTPMethod {
             switch self {
-            case .dish, .recipe:
+            case .dish, .recipe, .search:
                 return .get
             default:
                 return .post
@@ -111,7 +121,7 @@ extension AppAPIService {
         
         var requiresAuthentication: Bool {
             switch self {
-            case .login, .createUser, .dish, .recipe:
+            case .login, .createUser, .dish, .recipe, .search:
                 return false
             case .validateToken, .updateUser, .quickRecommendation:
                 return true

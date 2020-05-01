@@ -50,6 +50,12 @@
 		744E8B78244F8CF900420188 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E8B77244F8CF900420188 /* RecipeService.swift */; };
 		744E8B7A244F8D5F00420188 /* AppRecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E8B79244F8D5F00420188 /* AppRecipeService.swift */; };
 		744E8B7C244F912C00420188 /* FakeRecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E8B7B244F912C00420188 /* FakeRecipeService.swift */; };
+		747BABAD245C1D9200AF9D85 /* BrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747BABAC245C1D9200AF9D85 /* BrowseViewModel.swift */; };
+		747BABAF245C1F8A00AF9D85 /* DishOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747BABAE245C1F8A00AF9D85 /* DishOverviewViewModel.swift */; };
+		747BABB1245C201700AF9D85 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747BABB0245C201700AF9D85 /* SearchService.swift */; };
+		747BABB3245C208B00AF9D85 /* FakeSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747BABB2245C208B00AF9D85 /* FakeSearchService.swift */; };
+		747BABB5245C22A800AF9D85 /* APIDishDataArrayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747BABB4245C22A800AF9D85 /* APIDishDataArrayResponse.swift */; };
+		747BABB7245C235200AF9D85 /* AppSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747BABB6245C235200AF9D85 /* AppSearchService.swift */; };
 		747C5C85242FF69C000C2875 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 747C5C84242FF69C000C2875 /* RxSwift */; };
 		747C5C87242FF69C000C2875 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 747C5C86242FF69C000C2875 /* RxCocoa */; };
 		747C5C89243017F5000C2875 /* UIImageView+Downloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747C5C88243017F5000C2875 /* UIImageView+Downloaded.swift */; };
@@ -159,6 +165,12 @@
 		744E8B77244F8CF900420188 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		744E8B79244F8D5F00420188 /* AppRecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRecipeService.swift; sourceTree = "<group>"; };
 		744E8B7B244F912C00420188 /* FakeRecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRecipeService.swift; sourceTree = "<group>"; };
+		747BABAC245C1D9200AF9D85 /* BrowseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewModel.swift; sourceTree = "<group>"; };
+		747BABAE245C1F8A00AF9D85 /* DishOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishOverviewViewModel.swift; sourceTree = "<group>"; };
+		747BABB0245C201700AF9D85 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		747BABB2245C208B00AF9D85 /* FakeSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSearchService.swift; sourceTree = "<group>"; };
+		747BABB4245C22A800AF9D85 /* APIDishDataArrayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDishDataArrayResponse.swift; sourceTree = "<group>"; };
+		747BABB6245C235200AF9D85 /* AppSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchService.swift; sourceTree = "<group>"; };
 		747C5C88243017F5000C2875 /* UIImageView+Downloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Downloaded.swift"; sourceTree = "<group>"; };
 		747E37932440E8E0001490CF /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		747E37952440E932001490CF /* APIUserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserDataResponse.swift; sourceTree = "<group>"; };
@@ -410,6 +422,7 @@
 				748B3E45244DF63D00D1D1DC /* APIDishDataResponse.swift */,
 				748B3E47244DF67E00D1D1DC /* APIRecipeDataResponse.swift */,
 				748B3E49244DF69800D1D1DC /* APIRatingDataResponse.swift */,
+				747BABB4245C22A800AF9D85 /* APIDishDataArrayResponse.swift */,
 			);
 			path = APIResponses;
 			sourceTree = "<group>";
@@ -486,6 +499,15 @@
 				744E8B7D244F98D800420188 /* RecipeTableViewCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		747BABAB245C1D6A00AF9D85 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				747BABAC245C1D9200AF9D85 /* BrowseViewModel.swift */,
+				747BABAE245C1F8A00AF9D85 /* DishOverviewViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		747E37992440FB20001490CF /* Models */ = {
@@ -577,6 +599,7 @@
 			children = (
 				74B8B88324251DB800C29491 /* BrowseCoordinator.swift */,
 				74B8B88124251DA600C29491 /* Browse.storyboard */,
+				747BABAB245C1D6A00AF9D85 /* ViewModels */,
 				74B8B88624251DF500C29491 /* ViewControllers */,
 			);
 			path = Browse;
@@ -595,9 +618,9 @@
 			children = (
 				74B8B88C2425203400C29491 /* SettingsCoordinator.swift */,
 				74B8B88E2425206400C29491 /* Settings.storyboard */,
+				747E37992440FB20001490CF /* Models */,
 				747E379A2440FB84001490CF /* ViewModels */,
 				74B8B890242524E300C29491 /* ViewControllers */,
-				747E37992440FB20001490CF /* Models */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -617,6 +640,7 @@
 				74EDA7EB2426493000E853E8 /* AppAuthenticationService.swift */,
 				7410CF1C2443D28F00F1F9CE /* AppDishService.swift */,
 				744E8B79244F8D5F00420188 /* AppRecipeService.swift */,
+				747BABB6245C235200AF9D85 /* AppSearchService.swift */,
 				747E379F244101F8001490CF /* AppUserService.swift */,
 				743168B32411AE72002B3905 /* Data Models */,
 			);
@@ -629,6 +653,7 @@
 				74B891C92427D0D700993FB7 /* FakeAuthenticationService.swift */,
 				74B891C72427CCFE00993FB7 /* FakeDishService.swift */,
 				744E8B7B244F912C00420188 /* FakeRecipeService.swift */,
+				747BABB2245C208B00AF9D85 /* FakeSearchService.swift */,
 			);
 			path = Fake;
 			sourceTree = "<group>";
@@ -667,6 +692,7 @@
 				74EDA7E92426475200E853E8 /* AuthenticationService.swift */,
 				74B891BA2427BFD400993FB7 /* DishService.swift */,
 				744E8B77244F8CF900420188 /* RecipeService.swift */,
+				747BABB0245C201700AF9D85 /* SearchService.swift */,
 				747E379D24410036001490CF /* UserService.swift */,
 				748B3E3E244DF46D00D1D1DC /* Data Models */,
 			);
@@ -817,6 +843,7 @@
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
 				742396D92438C7F900A56C99 /* APIResponse.swift in Sources */,
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
+				747BABB7245C235200AF9D85 /* AppSearchService.swift in Sources */,
 				743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */,
 				74B891CA2427D0D700993FB7 /* FakeAuthenticationService.swift in Sources */,
 				743168B02411AB8C002B3905 /* AppAPIService.swift in Sources */,
@@ -824,11 +851,13 @@
 				74B891C22427CAC200993FB7 /* RecipeOverviewInfo.swift in Sources */,
 				7410CF1F2443D38A00F1F9CE /* APIIntDataResponse.swift in Sources */,
 				744E8B70244F7D5700420188 /* Comment.swift in Sources */,
+				747BABAD245C1D9200AF9D85 /* BrowseViewModel.swift in Sources */,
 				74B891CF2427E11F00993FB7 /* RecipeOverviewViewModel.swift in Sources */,
 				7413198E24266BC300A42A4F /* AuthenticateViewModel.swift in Sources */,
 				748B3E56244E0C5200D1D1DC /* RecipeViewModel.swift in Sources */,
 				748B3E44244DF56E00D1D1DC /* RatingData.swift in Sources */,
 				74B891BB2427BFD400993FB7 /* DishService.swift in Sources */,
+				747BABB3245C208B00AF9D85 /* FakeSearchService.swift in Sources */,
 				74DB90482424E78E0092E51C /* DashboardViewController.swift in Sources */,
 				74400FC62422A95900DC2E76 /* AuthenticateCoordinator.swift in Sources */,
 				749BC3552425755C0068B492 /* UIColor+AssetColors.swift in Sources */,
@@ -858,6 +887,7 @@
 				744E8B6C244F7A1B00420188 /* CommentTableViewCell.swift in Sources */,
 				747E379C2440FB96001490CF /* SettingsViewModel.swift in Sources */,
 				7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */,
+				747BABAF245C1F8A00AF9D85 /* DishOverviewViewModel.swift in Sources */,
 				742396D52438B0E600A56C99 /* SceneViewController.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,
@@ -867,11 +897,13 @@
 				747E37982440FB1B001490CF /* User.swift in Sources */,
 				7431147B24265BA100F6A959 /* ServiceDependencies.swift in Sources */,
 				74A7CF542438F4AA00BD44AC /* UIAlertController+Rx.swift in Sources */,
+				747BABB5245C22A800AF9D85 /* APIDishDataArrayResponse.swift in Sources */,
 				741319952426963300A42A4F /* DishCoordinator.swift in Sources */,
 				744E8B6E244F7D2100420188 /* CommentViewModel.swift in Sources */,
 				742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */,
 				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,
 				74EDA7EA2426475200E853E8 /* AuthenticationService.swift in Sources */,
+				747BABB1245C201700AF9D85 /* SearchService.swift in Sources */,
 				748B3E46244DF63D00D1D1DC /* APIDishDataResponse.swift in Sources */,
 				74B891CC2427D1CF00993FB7 /* FakeServiceDependencies.swift in Sources */,
 			);

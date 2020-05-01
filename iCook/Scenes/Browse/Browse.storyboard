@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9OL-pz-br3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9OL-pz-br3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,19 +53,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frying-pan" translatesAutoresizingMaskIntoConstraints="NO" id="K9T-A8-a6T">
-                                <rect key="frame" x="147" y="324" width="120" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="3z1-fD-VlU"/>
-                                    <constraint firstAttribute="width" constant="120" id="y4O-hy-Rv3"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for dishes, recipes and saved lists." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iut-bh-KqJ">
-                                <rect key="frame" x="12" y="476" width="390" height="23"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="19"/>
-                                <color key="textColor" name="deep-purple"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="szK-kc-QIx">
+                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHp-Xe-Ob5">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frying-pan" translatesAutoresizingMaskIntoConstraints="NO" id="K9T-A8-a6T">
+                                                <rect key="frame" x="147" y="-87.5" width="120" height="120"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="3z1-fD-VlU"/>
+                                                    <constraint firstAttribute="width" constant="120" id="y4O-hy-Rv3"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for dishes, recipes and saved lists." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iut-bh-KqJ">
+                                                <rect key="frame" x="29" y="64.5" width="356" height="23"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="19"/>
+                                                <color key="textColor" name="deep-purple"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="K9T-A8-a6T" firstAttribute="centerY" secondItem="IHp-Xe-Ob5" secondAttribute="centerY" constant="-27.5" id="COI-u3-JrO"/>
+                                            <constraint firstItem="Iut-bh-KqJ" firstAttribute="centerX" secondItem="IHp-Xe-Ob5" secondAttribute="centerX" id="FkB-PB-XwB"/>
+                                            <constraint firstItem="K9T-A8-a6T" firstAttribute="centerX" secondItem="IHp-Xe-Ob5" secondAttribute="centerX" id="tQh-ba-wda"/>
+                                            <constraint firstItem="Iut-bh-KqJ" firstAttribute="top" secondItem="K9T-A8-a6T" secondAttribute="bottom" constant="32" id="vPY-Vf-qqe"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Efo-oO-5PN">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="92" id="9o5-k0-Kvx">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="92"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9o5-k0-Kvx" id="kG5-Dk-i9c">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooking-hapi-face" translatesAutoresizingMaskIntoConstraints="NO" id="Peu-Bp-s4T">
+                                                            <rect key="frame" x="8" y="25" width="42" height="42"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="Peu-Bp-s4T" secondAttribute="height" multiplier="1:1" id="Ahg-KE-SoM"/>
+                                                                <constraint firstAttribute="width" constant="42" id="lum-Xn-4Hh"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Very long long long long long long long name of dish" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ove-4P-RFh">
+                                                            <rect key="frame" x="58" y="8" width="348" height="41"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is a dish I guess · Many recipes here blablablabalbalbalalalalbalba" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVf-Ae-sPL">
+                                                            <rect key="frame" x="58" y="46" width="453" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" name="mediumgrey"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="ove-4P-RFh" firstAttribute="leading" secondItem="Peu-Bp-s4T" secondAttribute="trailing" constant="8" id="3QQ-XA-xkZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ove-4P-RFh" secondAttribute="trailing" constant="8" id="4MN-1r-0RB"/>
+                                                        <constraint firstItem="Peu-Bp-s4T" firstAttribute="centerY" secondItem="kG5-Dk-i9c" secondAttribute="centerY" id="O2C-Kc-9BR"/>
+                                                        <constraint firstItem="Peu-Bp-s4T" firstAttribute="leading" secondItem="kG5-Dk-i9c" secondAttribute="leading" constant="8" id="Zot-Wl-Hzk"/>
+                                                        <constraint firstItem="ove-4P-RFh" firstAttribute="top" secondItem="kG5-Dk-i9c" secondAttribute="top" constant="8" id="xB1-nu-IEY"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ij-qY-JIL" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
                                 <rect key="frame" x="8" y="88" width="398" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -82,28 +142,37 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="K9T-A8-a6T" firstAttribute="centerX" secondItem="GrS-hH-3xf" secondAttribute="centerX" id="Bgz-9j-7Uo"/>
-                            <constraint firstItem="Xws-ih-WXN" firstAttribute="trailing" secondItem="Iut-bh-KqJ" secondAttribute="trailing" constant="12" id="OP6-a7-y9z"/>
-                            <constraint firstItem="Iut-bh-KqJ" firstAttribute="top" secondItem="K9T-A8-a6T" secondAttribute="bottom" constant="32" id="SjU-eU-XOc"/>
+                            <constraint firstItem="szK-kc-QIx" firstAttribute="top" secondItem="8ij-qY-JIL" secondAttribute="bottom" id="4zb-Cq-vS1"/>
+                            <constraint firstItem="szK-kc-QIx" firstAttribute="trailing" secondItem="Xws-ih-WXN" secondAttribute="trailing" id="7su-Pw-FgA"/>
+                            <constraint firstItem="szK-kc-QIx" firstAttribute="leading" secondItem="Xws-ih-WXN" secondAttribute="leading" id="bk4-P8-G2Z"/>
                             <constraint firstItem="8ij-qY-JIL" firstAttribute="top" secondItem="Xws-ih-WXN" secondAttribute="top" id="eRq-vu-BRa"/>
-                            <constraint firstItem="K9T-A8-a6T" firstAttribute="centerY" secondItem="GrS-hH-3xf" secondAttribute="centerY" constant="-64" id="fqn-0p-fOP"/>
+                            <constraint firstItem="Xws-ih-WXN" firstAttribute="bottom" secondItem="szK-kc-QIx" secondAttribute="bottom" id="f6r-jk-Rbj"/>
                             <constraint firstItem="Xws-ih-WXN" firstAttribute="trailing" secondItem="8ij-qY-JIL" secondAttribute="trailing" constant="8" id="sn3-4p-vJL"/>
                             <constraint firstItem="8ij-qY-JIL" firstAttribute="leading" secondItem="Xws-ih-WXN" secondAttribute="leading" constant="8" id="x4K-hN-Yu9"/>
-                            <constraint firstItem="Iut-bh-KqJ" firstAttribute="leading" secondItem="Xws-ih-WXN" secondAttribute="leading" constant="12" id="yih-VQ-5w8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xws-ih-WXN"/>
                     </view>
                     <navigationItem key="navigationItem" id="qdl-bE-Spg"/>
+                    <connections>
+                        <outlet property="noResultsLabel" destination="Iut-bh-KqJ" id="epX-A0-ONb"/>
+                        <outlet property="noResultsView" destination="IHp-Xe-Ob5" id="Wwx-xt-EHA"/>
+                        <outlet property="resultsTableView" destination="Efo-oO-5PN" id="smg-7c-1uL"/>
+                        <outlet property="searchTextField" destination="8ij-qY-JIL" id="0P6-OA-Jg1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufI-Y8-Bq9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="125"/>
+            <point key="canvasLocation" x="50.724637681159422" y="124.55357142857142"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cooking-hapi-face" width="512" height="512"/>
         <image name="frying-pan" width="512" height="512"/>
         <namedColor name="deep-purple">
             <color red="0.41568627450980394" green="0.38823529411764707" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mediumgrey">
+            <color red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
