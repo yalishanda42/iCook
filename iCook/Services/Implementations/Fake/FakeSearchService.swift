@@ -12,8 +12,8 @@ import RxSwift
 class FakeSearchService: SearchService {
     func search(for searchTerm: String) -> Observable<[Dish]> {
         let models = [
-            Dish(name: "Пица с боб", imageUrl: "https://gradcontent.com/lib/250x250/pizza52.jpg", recipeOverviews: []),
-            Dish(name: "Бобена чорба", imageUrl: "https://www.supichka.com/files/images/1554/resize_536_2000.jpg", recipeOverviews: [])
+            Dish(id: 1, name: "Пица с боб", imageUrl: "https://gradcontent.com/lib/250x250/pizza52.jpg", recipeOverviews: []),
+            Dish(id: 2, name: "Бобена чорба", imageUrl: "https://www.supichka.com/files/images/1554/resize_536_2000.jpg", recipeOverviews: [])
         ]
         return Observable.just(models)
     }

@@ -10,7 +10,23 @@ import Foundation
 
 class DishOverviewViewModel {
     
-    let model: Dish
+    var id: Int {
+        model.id
+    }
+    
+    var imageUrl: String {
+        model.imageUrl
+    }
+    
+    var titleText: String {
+        model.name
+    }
+    
+    var subtitleText: String {
+        "Dish · \(model.recipeOverviews.count) recipes"
+    }
+    
+    private let model: Dish
     
     init(with model: Dish) {
         self.model = model

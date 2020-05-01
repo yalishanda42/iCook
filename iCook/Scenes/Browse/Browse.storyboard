@@ -85,42 +85,50 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="92" id="9o5-k0-Kvx">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="92"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchResultsCell" rowHeight="103" id="9o5-k0-Kvx" customClass="SearchResultsCell" customModule="iCook" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9o5-k0-Kvx" id="kG5-Dk-i9c">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooking-hapi-face" translatesAutoresizingMaskIntoConstraints="NO" id="Peu-Bp-s4T">
-                                                            <rect key="frame" x="8" y="25" width="42" height="42"/>
+                                                            <rect key="frame" x="8" y="30.5" width="42" height="42"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Peu-Bp-s4T" secondAttribute="height" multiplier="1:1" id="Ahg-KE-SoM"/>
                                                                 <constraint firstAttribute="width" constant="42" id="lum-Xn-4Hh"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Very long long long long long long long name of dish" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ove-4P-RFh">
-                                                            <rect key="frame" x="58" y="8" width="348" height="41"/>
+                                                            <rect key="frame" x="71" y="8" width="335" height="41"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is a dish I guess · Many recipes here blablablabalbalbalalalalbalba" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVf-Ae-sPL">
-                                                            <rect key="frame" x="58" y="46" width="453" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a dish I guess · Many recipes here blablablabalbalbalalalalbalba" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVf-Ae-sPL">
+                                                            <rect key="frame" x="71" y="57" width="452.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="mediumgrey"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="ove-4P-RFh" firstAttribute="leading" secondItem="Peu-Bp-s4T" secondAttribute="trailing" constant="8" id="3QQ-XA-xkZ"/>
+                                                        <constraint firstItem="ove-4P-RFh" firstAttribute="leading" secondItem="Peu-Bp-s4T" secondAttribute="trailing" constant="21" id="3QQ-XA-xkZ"/>
                                                         <constraint firstAttribute="trailing" secondItem="ove-4P-RFh" secondAttribute="trailing" constant="8" id="4MN-1r-0RB"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uVf-Ae-sPL" secondAttribute="bottom" constant="8" id="EuA-X6-lLX"/>
                                                         <constraint firstItem="Peu-Bp-s4T" firstAttribute="centerY" secondItem="kG5-Dk-i9c" secondAttribute="centerY" id="O2C-Kc-9BR"/>
                                                         <constraint firstItem="Peu-Bp-s4T" firstAttribute="leading" secondItem="kG5-Dk-i9c" secondAttribute="leading" constant="8" id="Zot-Wl-Hzk"/>
+                                                        <constraint firstItem="uVf-Ae-sPL" firstAttribute="leading" secondItem="Peu-Bp-s4T" secondAttribute="trailing" constant="21" id="ZtX-iV-KJp"/>
+                                                        <constraint firstItem="uVf-Ae-sPL" firstAttribute="top" secondItem="ove-4P-RFh" secondAttribute="bottom" constant="8" id="w0b-67-o8I"/>
                                                         <constraint firstItem="ove-4P-RFh" firstAttribute="top" secondItem="kG5-Dk-i9c" secondAttribute="top" constant="8" id="xB1-nu-IEY"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="imageView" destination="Peu-Bp-s4T" id="Shj-96-Tv0"/>
+                                                    <outlet property="leadingImageView" destination="Peu-Bp-s4T" id="8vc-kn-ItE"/>
+                                                    <outlet property="subtitleLabel" destination="uVf-Ae-sPL" id="pVd-YZ-EPH"/>
+                                                    <outlet property="titleLabel" destination="ove-4P-RFh" id="k3b-SA-mfU"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>

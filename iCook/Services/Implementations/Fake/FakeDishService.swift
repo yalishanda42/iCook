@@ -17,6 +17,7 @@ class FakeDishService: DishService {
     
     func fetchDishInfo(for dishId: Int) -> Observable<Dish> {
         return Observable.just(Dish(
+            id: 8888,
             name: "Baklava",
             imageUrl: "https://us.123rf.com/450wm/hayatikayhan/hayatikayhan1901/hayatikayhan190101187/116429036-traditional-delicious-turkish-baklava-with-pistachio-nuts-.jpg?ver=6",
             recipeOverviews: [

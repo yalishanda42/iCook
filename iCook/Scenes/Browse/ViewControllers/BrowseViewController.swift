@@ -19,7 +19,17 @@ class BrowseViewController: SceneViewController<BrowseViewModel> {
     @IBOutlet private weak var noResultsLabel: UILabel!
     @IBOutlet private weak var resultsTableView: UITableView!
     
+    // MARK: - Properties
+    
+    private let cellReuseId = "searchResultsCell"
+    
     // MARK: - Setup
+    
+    override func setupViews() {
+        super.setupViews()
+        
+        resultsTableView.tableFooterView = UIView() // remove extra empty rows
+    }
     
     override func setupBindings() {
         super.setupBindings()
@@ -28,10 +38,16 @@ class BrowseViewController: SceneViewController<BrowseViewModel> {
             searchTerm: searchTextField.textField.rx.text.orEmpty.asObservable()
         ))
         
-        // TODO: Bind table view
         output.resultsAreHidden.drive(resultsTableView.rx.isHidden).disposed(by: disposeBag)
         output.noResultsViewsAreHidden.drive(noResultsView.rx.isHidden).disposed(by: disposeBag)
         output.noResultsText.drive(noResultsLabel.rx.text).disposed(by: disposeBag)
+        
+        output.results.drive(resultsTableView.rx.items(
+            cellIdentifier: cellReuseId,
+            cellType: SearchResultsCell.self
+        )) { row, viewModel, cell in
+            cell.configure(with: viewModel)
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - Lifecycle

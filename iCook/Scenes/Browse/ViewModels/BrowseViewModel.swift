@@ -12,7 +12,7 @@ import RxCocoa
 
 class BrowseViewModel: SceneViewModel {
         
-    let searchService: SearchService
+    private let searchService: SearchService
     
     init(searchService: SearchService) {
         self.searchService = searchService
@@ -35,9 +35,9 @@ extension BrowseViewModel: IOTransformable {
     
     func transform(_ input: Input) -> Output {
         let viewModels = results(for: input)
-        let resultsAreHidden = viewModels.map { $0.isEmpty }.debug()
-        let noResultsViewsAreHidden = resultsAreHidden.map(!).debug()
-        let noResultsFetchedText = noResultsText(input: input).debug()
+        let resultsAreHidden = viewModels.map { $0.isEmpty }
+        let noResultsViewsAreHidden = resultsAreHidden.map(!)
+        let noResultsFetchedText = noResultsText(input: input)
         
         return Output(results: viewModels,
                       resultsAreHidden: resultsAreHidden,

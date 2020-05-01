@@ -9,6 +9,7 @@
 import Foundation
 
 struct Dish: Codable {
+    let id: Int
     let name: String
     let imageUrl: String
     let recipeOverviews: [RecipeOverviewInfo]
