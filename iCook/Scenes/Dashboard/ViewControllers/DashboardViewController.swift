@@ -22,7 +22,9 @@ class DashboardViewController: SceneViewController<DashboardViewModel> {
     override func setupBindings() {
         super.setupBindings()
         viewModel.transform(DashboardViewModel.Input(
-            quickRecommendationButtonTap: quickButton.button.rx.tap.asObservable()
+            quickRecommendationButtonTap: quickButton.button.rx.tap.asObservable(),
+            regularRecommendationButtonTap: suggestionButton.button.rx.tap.asObservable(),
+            rateRecipesButtonTap: contributionButton.button.rx.tap.asObservable()
         ))
     }
     

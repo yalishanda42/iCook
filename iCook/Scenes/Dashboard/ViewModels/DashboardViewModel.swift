@@ -12,6 +12,7 @@ import RxSwift
 protocol DashboardViewModelCoordinatorDelegate: AnyObject {
     func goToLoginScreen(onSuccessfulLogin: @escaping () -> Void)
     func goToDishScreen(dishId: Int)
+    func goToRateRecipesScreen()
 }
 
 class DashboardViewModel: SceneViewModel {
@@ -32,7 +33,8 @@ class DashboardViewModel: SceneViewModel {
 extension DashboardViewModel: IOTransformable {
     struct Input {
         let quickRecommendationButtonTap: Observable<Void>
-        // TODO: Add the other options
+        let regularRecommendationButtonTap: Observable<Void>
+        let rateRecipesButtonTap: Observable<Void>
     }
     
     func transform(_ input: Input) -> Void {
@@ -41,6 +43,14 @@ extension DashboardViewModel: IOTransformable {
             .subscribe(onNext: { [unowned self] isLoggedIn in
                 isLoggedIn ? self.showQuickRecommendation() : self.authenticate()
             }).disposed(by: disposeBag)
+        
+        input.regularRecommendationButtonTap
+            .subscribe(onNext: showRegularRecommendation)
+            .disposed(by: disposeBag)
+        
+        input.rateRecipesButtonTap
+            .subscribe(onNext: rateRecipes)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -61,5 +71,13 @@ private extension DashboardViewModel {
                 }, onError: { [weak self] error in
                     self?._errorReceived.onNext(error)
             }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
+    }
+    
+    func showRegularRecommendation() {
+        // TODO
+    }
+    
+    func rateRecipes() {
+        coordinatorDelegate?.goToRateRecipesScreen()
     }
 }

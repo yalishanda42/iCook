@@ -10,7 +10,9 @@ import UIKit
 
 final class DashboardCoordinator: TabCoordinator {
     
-    var child: Coordinator?
+    weak var switchTabDelegate: TabSwitchable?
+
+    private var child: Coordinator?
     
     private let navController: UINavigationController
     private let services: ServiceDependencies
@@ -64,5 +66,9 @@ extension DashboardCoordinator: DashboardViewModelCoordinatorDelegate {
         let dishCoordinator = DishCoordinator(in: presentedViewController, services: services, dishId: dishId)
         child = dishCoordinator
         dishCoordinator.start()
+    }
+    
+    func goToRateRecipesScreen() {
+        switchTabDelegate?.switchToSearch()
     }
 }

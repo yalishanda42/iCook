@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol TabSwitchable: AnyObject {
+    func switchToSearch()
+}
+
 protocol TabCoordinator: Coordinator {
+    var switchTabDelegate: TabSwitchable? { get set }
     init(in: UINavigationController, services: ServiceDependencies)
 }
 
@@ -48,7 +53,8 @@ final class AppCoordinator: Coordinator {
             var tabControllers = tabBarController.viewControllers ?? []
             tabControllers.append(navController)
             tabBarController.viewControllers = tabControllers
-            let coordinator = tab.coordinatorClass.init(in: navController, services: services)
+            var coordinator = tab.coordinatorClass.init(in: navController, services: services)
+            coordinator.switchTabDelegate = self
             childCoordinators.append(coordinator)
             coordinator.start()
         }
@@ -99,5 +105,11 @@ extension AppCoordinator {
                 return SettingsCoordinator.self
             }
         }
+    }
+}
+
+extension AppCoordinator: TabSwitchable {
+    func switchToSearch() {
+        tabBarController.selectedIndex = Tab.browse.rawValue
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 final class BrowseCoordinator: TabCoordinator {
     
+    weak var switchTabDelegate: TabSwitchable?
+    
     private var child: Coordinator?
     
     private let navController: UINavigationController
