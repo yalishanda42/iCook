@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-gu-rZR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="754"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooking-hapi-face" translatesAutoresizingMaskIntoConstraints="NO" id="QbF-KL-bzm">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
@@ -42,7 +42,7 @@
                                         </constraints>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iIG-A9-CjA">
-                                        <rect key="frame" x="0.0" y="224" width="414" height="402"/>
+                                        <rect key="frame" x="0.0" y="224" width="414" height="382"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PeA-wI-jhx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="27.666666666666686"/>
@@ -63,7 +63,7 @@
                                         </prototypes>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTY-sP-1eO" userLabel="Add Recipe Button" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="650" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="630" width="414" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="c1S-dN-ozO"/>
@@ -79,7 +79,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZr-9j-17v" userLabel="Order Takeaway Button" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="724" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="704" width="414" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="I don't wanna cook, order for home!"/>
@@ -100,7 +100,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8wA-gu-rZR" firstAttribute="leading" secondItem="Hyv-8L-UFM" secondAttribute="leading" id="2bi-4g-aWB"/>
-                            <constraint firstItem="Hyv-8L-UFM" firstAttribute="bottom" secondItem="8wA-gu-rZR" secondAttribute="bottom" id="82c-1L-73A"/>
+                            <constraint firstItem="Hyv-8L-UFM" firstAttribute="bottom" secondItem="8wA-gu-rZR" secondAttribute="bottom" constant="20" id="82c-1L-73A"/>
                             <constraint firstItem="8wA-gu-rZR" firstAttribute="top" secondItem="Hyv-8L-UFM" secondAttribute="top" id="XBX-wY-CVY"/>
                             <constraint firstItem="Hyv-8L-UFM" firstAttribute="trailing" secondItem="8wA-gu-rZR" secondAttribute="trailing" id="xvf-Cu-adT"/>
                         </constraints>
