@@ -26,6 +26,8 @@ protocol AuthenticationService {
     // Just requiring authentication
     
     func quickRecommendation() -> Observable<Int>
+    
+    func createRecipe(dishId: Int, steps: String) -> Observable<Void>
 }
 
 enum AuthenticationError: Error {

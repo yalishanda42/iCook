@@ -12,9 +12,15 @@ import RxCocoa
 
 class RecipeViewModel: SceneViewModel {
     
+    // MARK: - Coordinator
+    
+    weak var coordinatorDelegate: Coordinator?
+    
+    // MARK: - Function Mode
+    
     enum Mode {
         case view(recipeId: Int)
-        case create
+        case create(dishId: Int)
     }
     
     // MARK: - Properties
@@ -66,20 +72,6 @@ class RecipeViewModel: SceneViewModel {
         
         super.init()
     }
-    
-    // MARK: - Loading
-    
-    func load() {
-        recipe.subscribe(
-                onNext: { recipe in
-                    AppDelegate.logger.trace("New recipe: \(String(describing: recipe))")
-                }, onError: { [weak self] error in
-                    guard let self = self else { return }
-                    AppDelegate.logger.notice("Unable to fetch recipe: \(error.localizedDescription)")
-                    self._errorReceived.onNext(error)
-                }, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
-    }
 }
 
 extension RecipeViewModel: IOTransformable {
@@ -102,7 +94,14 @@ extension RecipeViewModel: IOTransformable {
     }
     
     func transform(_ input: Input) -> Output {
-        input.viewDidAppear.subscribe(onNext: load).disposed(by: disposeBag)
+        input.viewDidAppear
+            .subscribe(onNext: load)
+            .disposed(by: disposeBag)
+
+        input.doneButtonTapped
+            .withLatestFrom(input.stepsText)
+            .subscribe(onNext: submitNewRecipe)
+            .disposed(by: disposeBag)
         
         return Output(
             recipeText: recipeText,
@@ -115,5 +114,45 @@ extension RecipeViewModel: IOTransformable {
             doneButtonIsHidden: isInCreateRecipeMode.map(!),
             stepsTextIsEditable: isInCreateRecipeMode
         )
+    }
+}
+
+// MARK: - Helpers
+
+private extension RecipeViewModel {
+    func load() {
+        switch mode {
+        case .view(recipeId: let id):
+            recipe.subscribe(
+                onNext: { recipe in
+                    AppDelegate.logger.trace("New recipe: \(String(describing: recipe))")
+                }, onError: { [weak self] error in
+                    guard let self = self else { return }
+                    AppDelegate.logger.notice("Unable to fetch recipe with id \(id): \(error.localizedDescription)")
+                    self._errorReceived.onNext(error)
+                }, onCompleted: nil, onDisposed: nil)
+            .disposed(by: disposeBag)
+        default:
+            break
+        }
+    }
+    
+    func submitNewRecipe(_ stepsText: String) {
+        switch mode {
+        case .create(dishId: let id):
+            recipeService
+                .submitNewRecipe(for: id, withStepsText: stepsText)
+                .subscribe(onNext: goBack, onError: { [weak self] error in
+                    guard let self = self else { return }
+                    AppDelegate.logger.notice("Unable submit new recipe for dish with id \(id): \(error.localizedDescription)")
+                    self._errorReceived.onNext(error)
+                }).disposed(by: disposeBag)
+        default:
+            AppDelegate.logger.error("Should not be to submit new message while not in 'create' mode!")
+        }
+    }
+    
+    func goBack() {
+        coordinatorDelegate?.finish()
     }
 }

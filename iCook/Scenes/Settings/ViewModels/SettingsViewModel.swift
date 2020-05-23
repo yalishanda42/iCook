@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol SettingsViewModelCoordinatorDelegate: AnyObject, Coordinator {
+protocol SettingsViewModelCoordinatorDelegate: Coordinator {
     func gotoLogIn()
 }
 

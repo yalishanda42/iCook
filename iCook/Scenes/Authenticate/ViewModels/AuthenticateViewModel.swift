@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol AuthenticateViewModelCoordinatorDelegate: AnyObject, Coordinator {
+protocol AuthenticateViewModelCoordinatorDelegate: Coordinator {
     func goToRegister()
     func goBack()
 }

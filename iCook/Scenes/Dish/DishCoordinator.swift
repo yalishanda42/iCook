@@ -60,7 +60,7 @@ extension DishCoordinator: DishViewModelCoordinatorDelegate {
         let recipeCoordinator = RecipeCoordinator(
            in: navControllerWrapper,
            services: services,
-           viewModelMode: .create
+           viewModelMode: .create(dishId: dishId)
         )
 
         child = recipeCoordinator

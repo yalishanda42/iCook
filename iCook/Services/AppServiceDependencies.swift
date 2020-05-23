@@ -16,7 +16,7 @@ class AppServiceDependencies: ServiceDependencies {
     
     private(set) lazy var dishService: DishService = AppDishService(apiService: apiService, authenticationService: authenticationService)
     
-    private(set) lazy var recipeService: RecipeService = AppRecipeService(apiService: apiService)
+    private(set) lazy var recipeService: RecipeService = AppRecipeService(apiService: apiService, authenticationService: authenticationService)
     
     private(set) lazy var searchService: SearchService = AppSearchService(apiService: apiService)
 

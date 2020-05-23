@@ -23,4 +23,8 @@ class FakeRecipeService: RecipeService {
             ]
         ))
     }
+    
+    func submitNewRecipe(for dishId: Int, withStepsText: String) -> Observable<Void> {
+        return Observable.just(())
+    }
 }

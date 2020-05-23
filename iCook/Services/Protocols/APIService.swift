@@ -32,6 +32,8 @@ protocol APIService {
     
     func search(searchTerm: String) -> Observable<[DishData]>
     
+    func postRecipe(_ token: BearerToken, dishId: Int, steps: String) -> Observable<Void>
+    
 }
 
 enum APIConnectionError: Error {

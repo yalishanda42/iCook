@@ -76,6 +76,14 @@ class AppAuthenticationService: AuthenticationService {
         
         return apiService.quickRecommendation(token)
     }
+    
+    func createRecipe(dishId: Int, steps: String) -> Observable<Void> {
+        guard let  token = try? bearerToken.value() else {
+            return Observable.error(AuthenticationError.unauthorizedOperation)
+        }
+        
+        return apiService.postRecipe(token, dishId: dishId, steps: steps)
+    }
 }
 
 // MARK: - Database helpers

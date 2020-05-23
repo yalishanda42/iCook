@@ -13,4 +13,6 @@ protocol RecipeService {
     
     func fetchRecipeInfo(for recipeId: Int) -> Observable<Recipe>
     
+    func submitNewRecipe(for dishId: Int, withStepsText: String) -> Observable<Void>
+    
 }

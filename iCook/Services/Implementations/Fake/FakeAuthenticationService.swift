@@ -51,4 +51,8 @@ class FakeAuthenticationService: AuthenticationService {
     func quickRecommendation() -> Observable<Int> {
         return Observable.just(8888)
     }
+
+    func createRecipe(dishId: Int, steps: String) -> Observable<Void> {
+        return Observable.just(())
+    }
 }

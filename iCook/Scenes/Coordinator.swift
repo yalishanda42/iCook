@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     func start()
     func finish()
 }

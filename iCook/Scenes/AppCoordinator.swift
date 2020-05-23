@@ -53,7 +53,7 @@ final class AppCoordinator: Coordinator {
             var tabControllers = tabBarController.viewControllers ?? []
             tabControllers.append(navController)
             tabBarController.viewControllers = tabControllers
-            var coordinator = tab.coordinatorClass.init(in: navController, services: services)
+            let coordinator = tab.coordinatorClass.init(in: navController, services: services)
             coordinator.switchTabDelegate = self
             childCoordinators.append(coordinator)
             coordinator.start()

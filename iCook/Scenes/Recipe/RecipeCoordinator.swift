@@ -20,10 +20,11 @@ class RecipeCoordinator: Coordinator {
         return result
     }()
     
-    private lazy var viewModel = RecipeViewModel(
-        withMode: viewModelMode,
-        recipeService: services.recipeService
-    )
+    private lazy var viewModel: RecipeViewModel = {
+        let result = RecipeViewModel(withMode: viewModelMode, recipeService: services.recipeService)
+        result.coordinatorDelegate = self
+        return result
+    }()
     
     init(in navigationController: UINavigationController, services: ServiceDependencies, viewModelMode: RecipeViewModel.Mode) {
         self.navigationController = navigationController
@@ -33,5 +34,9 @@ class RecipeCoordinator: Coordinator {
     
     func start() {
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func finish() {
+        navigationController.popViewController(animated: true)
     }
 }

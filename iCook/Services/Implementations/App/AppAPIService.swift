@@ -65,7 +65,7 @@ extension AppAPIService: APIService {
     }
         
     func recipe(id: Int) -> Observable<RecipeData> {
-        return performSingleRequest(to: .recipe(id: id), responseType: APIRecipeDataResponse.self).map { $0.data }
+        return performSingleRequest(to: .getRecipe(id: id), responseType: APIRecipeDataResponse.self).map { $0.data }
     }
     
     func search(searchTerm: String) -> Observable<[DishData]> {
@@ -73,6 +73,14 @@ extension AppAPIService: APIService {
             to: .search(searchTerm: searchTerm.addingPercentEncoding(withAllowedCharacters: .letters) ?? ""),
             responseType: APIDishDataArrayResponse.self
         ).map { $0.data }
+    }
+    
+    func postRecipe(_ token: BearerToken, dishId: Int, steps: String) -> Observable<Void> {
+        return performSingleRequest(
+            to: .postRecipe(dishId: dishId, steps: steps),
+            responseType: APIBaseResponse.self,
+            authenticateWith: token
+        ).map { _ in }
     }
 }
 
@@ -86,33 +94,30 @@ extension AppAPIService {
         case validateToken
         case quickRecommendation
         case dish(id: Int)
-        case recipe(id: Int)
+        case getRecipe(id: Int)
+        case postRecipe(dishId: Int, steps: String)
         case search(searchTerm: String)
         
         var url: String {
+            let path: String
             switch self {
-            case .createUser:
-                return "\(uriBase)/create_user"
-            case .login:
-                return "\(uriBase)/login"
-            case .updateUser:
-                return "\(uriBase)/update_user"
-            case .validateToken:
-                return "\(uriBase)/validate_token"
-            case .quickRecommendation:
-                return "\(uriBase)/quick_recommendation"
-            case .dish(id: let id):
-                return "\(uriBase)/dish/\(id)"
-            case .recipe(id: let id):
-                return "\(uriBase)/recipe/\(id)"
-            case .search(searchTerm: let term):
-                return "\(uriBase)/search/\(term)"
+                case .createUser: path = "create_user"
+                case .login: path = "login"
+                case .updateUser: path = "update_user"
+                case .validateToken: path = "validate_token"
+                case .quickRecommendation: path = "quick_recommendation"
+                case .dish(id: let id): path = "dish/\(id)"
+                case .getRecipe(id: let id): path = "recipe/\(id)"
+                case .postRecipe: path = "recipe"
+                case .search(searchTerm: let term): path = "search/\(term)"
             }
+            
+            return "\(uriBase)/\(path)"
         }
         
         var httpRequestMethod: HTTPMethod {
             switch self {
-            case .dish, .recipe, .search:
+            case .dish, .getRecipe, .search:
                 return .get
             default:
                 return .post
@@ -121,30 +126,42 @@ extension AppAPIService {
         
         var requiresAuthentication: Bool {
             switch self {
-            case .login, .createUser, .dish, .recipe, .search:
+            case .login, .createUser, .dish, .getRecipe, .search:
                 return false
-            case .validateToken, .updateUser, .quickRecommendation:
+            case .validateToken, .updateUser, .quickRecommendation, .postRecipe:
                 return true
             }
         }
         
         var parameters: [String: String]? {
+            let params: [Parameter: String]
             switch self {
             case .createUser(firstName: let firstname, famiyName: let familyname, email: let email, password: let password):
-                return [
-                    Parameters.firstname: firstname,
-                    Parameters.lastname: familyname,
-                    Parameters.email: email,
-                    Parameters.password: password,
+                params = [
+                    .firstname: firstname,
+                    .lastname: familyname,
+                    .email: email,
+                    .password: password,
                 ]
             case .login(email: let email, password: let password):
-                return [
-                    Parameters.email: email,
-                    Parameters.password: password
+                params = [
+                    .email: email,
+                    .password: password
+                ]
+            case .postRecipe(dishId: let dishId, steps: let steps):
+                params = [
+                    .dishId: "\(dishId)",
+                    .steps: steps
                 ]
             default:
                 return nil
             }
+            
+            var result: [String: String] = [:]
+            params.keys.map { ($0, $0.rawValue) }.forEach { param, paramStr in
+                result[paramStr] = params[param]
+            }
+            return result
         }
     }
 }
@@ -152,11 +169,13 @@ extension AppAPIService {
 // MARK: - Parameters
 
 extension AppAPIService {
-    enum Parameters {
-        static let email = "email"
-        static let password = "password"
-        static let firstname = "firstname"
-        static let lastname = "lastname"
+    enum Parameter: String {
+        case email
+        case password
+        case firstname
+        case lastname
+        case dishId = "dish_id"
+        case steps
     }
 }
 

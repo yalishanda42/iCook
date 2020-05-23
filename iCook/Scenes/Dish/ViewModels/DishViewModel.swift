@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol DishViewModelCoordinatorDelegate: AnyObject, Coordinator {
+protocol DishViewModelCoordinatorDelegate: Coordinator {
     func goToTakeaway()
     func goToAddRecipe()
     func goToRecipe(recipeId: Int)

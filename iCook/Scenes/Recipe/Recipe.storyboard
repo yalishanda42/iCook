@@ -36,11 +36,11 @@
                                 <rect key="frame" x="8" y="96" width="398" height="25"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qix-il-5X5" customClass="FiveStarView" customModule="iCook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="43" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="43.5" height="25"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author Authorson &lt;asdasdas@asdasdasd.ascascasdasdasd&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="pPH-Q8-v3C">
-                                        <rect key="frame" x="51" y="0.0" width="347" height="25"/>
+                                        <rect key="frame" x="51.5" y="0.0" width="346.5" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -65,12 +65,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8te-5D-BXY">
                                 <rect key="frame" x="8" y="171.5" width="398" height="287.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Първата стъпка при всички рецепти с боб е подготовката на боба. Предварителната обработка на боба се налага поради две причини: от една страна, за да уври по-бързо и да не остане „хрупкав“, от друга, за да не ви се подуят коремчетата след като похапнете сладко купичка вкусна боб чорба. Всяка баба има своя тайна за варене на боб: някои слагат една чаена лъжица захар, други една  супена лъжица ракиа, или пък малко хлебна сода. Дали тези тези трикове имат ефект е спорно. Има обаче един 100% доказан метод за по-бързо сваряване на боба: накиснете го в студена вода за около 7-8 часа. Така ако го накиснете вечерта преди да си легнете на сутринта ще е готов за варене.
-↵Изсипвате водата, в която е стоял бобът, измивате го и го слагате да заври в голяма тенджера. След като заври изсипвате водата, измивате го, наливате 1,5 л вода и го връщате на котлона. След като заври отстранявате с лъжица пяната, която се получава. Оставяте боба да ври на слаб огън.                                                                                                       ! Много важно е да знаете, че при варенето на боб солта се слага накрая! Ако посолите още в началото на варенето, то вашият боб няма почти никакви шансове да се свари. Дайте шанс на боба – сложете сол накрая! ;)
-↵Бобът ври на слаб огън около час, докато поомекне. Но тъй като на пазара има боб с различно качество, който увира за различно време най-добре е да не се доверявате на минутите, които производителят е написал на опаковката, защото те често са недостатъчни. За по-сигурно разбъркайте боба с дървена лъжица, ако не потраква и бобчетата не се удрят шумно в стените на тенджерата, значи се е посварил. Друг, много лесен и може би най-надежден начин е да пробвате едно бобче, ако е поомекнало, значи е дошъл момента да добавите ситно нарязаните зеленчуци.
-↵След като бобът е поомекнал слагате зеленчуците, добавяте сол на вкус, една чаена лъжица червен пипер една супена лъжица подправка за боб и 2-3 щипки джоджен, слагате и 4 супени лъжици олио. След още 30-40 мин бобът би трябвало да е готов, нооооо гаранция няма! Трябва да го пробвате! И когато ви се види достатъчно мек, то бобът вече е готов.
-↵
-↵Рецептата за боб чорба е изпълнена!</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
