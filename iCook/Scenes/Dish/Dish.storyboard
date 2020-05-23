@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bw5-bd-lth">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bw5-bd-lth">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-1028" y="82"/>
         </scene>
-        <!--Baklava-->
+        <!--Dish-->
         <scene sceneID="xpY-Um-m4q">
             <objects>
                 <viewController id="bw5-bd-lth" customClass="DishViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hyv-8L-UFM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Baklava" id="lkR-cf-wFa" userLabel="Baklava">
+                    <navigationItem key="navigationItem" title="Dish" id="lkR-cf-wFa" userLabel="Baklava">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="QI5-pd-E8b">
                             <connections>
                                 <action selector="onTapBackButton:" destination="bw5-bd-lth" id="HtQ-Il-Wc8"/>
