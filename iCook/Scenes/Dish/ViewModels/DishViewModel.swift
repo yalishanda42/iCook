@@ -40,17 +40,21 @@ class DishViewModel: SceneViewModel {
             }.asDriver(onErrorJustReturn: [])
     }
     
+    private var isNotAuthenticated: Driver<Bool> {
+        authenticationService.isAuthenticated.map(!).asDriver(onErrorJustReturn: true)
+    }
+    
     private let dishService: DishService
-    
-    private let dishId: Int 
-    
+    private let authenticationService: AuthenticationService
+    private let dishId: Int
     private let dish: Observable<Dish>
     
     // MARK: - Initialization
     
-    init(dishId: Int, dishService: DishService) {
+    init(dishId: Int, dishService: DishService, authenticationService: AuthenticationService) {
         self.dishId = dishId
         self.dishService = dishService
+        self.authenticationService = authenticationService
         self.dish = self.dishService.fetchDishInfo(for: self.dishId)
     }
     
@@ -83,6 +87,7 @@ extension DishViewModel: IOTransformable {
         let dishName: Driver<String>
         let dishImageUrl: Driver<String>
         let recipesViewModels: Driver<[RecipeOverviewViewModel]>
+        let addRecipeButtonIsHidden: Driver<Bool>
     }
     
     func transform(_ input: Input) -> Output {
@@ -94,7 +99,8 @@ extension DishViewModel: IOTransformable {
         return Output(
             dishName: dishName,
             dishImageUrl: dishImageUrl,
-            recipesViewModels: dishRecipeViewModels
+            recipesViewModels: dishRecipeViewModels,
+            addRecipeButtonIsHidden: isNotAuthenticated
         )
     }
 }

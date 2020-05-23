@@ -45,6 +45,10 @@ class DishViewController: SceneViewController<DishViewModel> {
         output.dishName
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
+        
+        output.addRecipeButtonIsHidden
+            .drive(addRecipeButton.rx.isHidden)
+            .disposed(by: disposeBag)
                 
         output.dishImageUrl.drive (onNext: { [weak self] url in
             self?.imageView.imageDownloaded(from: url)

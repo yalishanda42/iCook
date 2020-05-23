@@ -29,7 +29,7 @@ class DishCoordinator: Coordinator {
     }()
     
     private lazy var dishViewModel: DishViewModel = {
-        let result = DishViewModel(dishId: dishId, dishService: services.dishService)
+        let result = DishViewModel(dishId: dishId, dishService: services.dishService, authenticationService: services.authenticationService)
         result.coordinatorDelegate = self
         return result
     }()
