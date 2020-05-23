@@ -12,42 +12,58 @@ import RxCocoa
 
 class RecipeViewModel: SceneViewModel {
     
+    enum Mode {
+        case view(recipeId: Int)
+        case create
+    }
+    
     // MARK: - Properties
     
-    private let recipeId: Int
+    private let mode: Mode
+    private let recipe: Observable<Recipe?>
     private let recipeService: RecipeService
-    private let recipe: Observable<Recipe>
     
     private var recipeText: Driver<String> {
-        recipe.map { $0.steps }.asDriver(onErrorJustReturn: "")
+        recipe.compactMap { $0?.steps }.asDriver(onErrorJustReturn: "")
     }
     
     private var recipeRating: Driver<Float> {
-        recipe.map { $0.avgRating }.asDriver(onErrorJustReturn: 0)
+        recipe.compactMap { $0?.avgRating }.asDriver(onErrorJustReturn: 0)
     }
     
     private var authorInfoText: Driver<String> {
-        recipe.map { "\($0.authorNames) <\($0.authorEmail)>"}.asDriver(onErrorJustReturn: "")
+        recipe.compactMap { $0 }.map { "\($0.authorNames) <\($0.authorEmail)>"}.asDriver(onErrorJustReturn: "")
     }
     
     private var noCommentsTextIsHidden: Driver<Bool> {
-        recipe.map { !$0.comments.isEmpty }.asDriver(onErrorJustReturn: false)
+        recipe.compactMap { !($0?.comments.isEmpty ?? false) }.asDriver(onErrorJustReturn: false)
     }
     
     private var commentsAreHidden: Driver<Bool> {
-        noCommentsTextIsHidden.map(!)
+        recipe.compactMap { $0?.comments.isEmpty }.asDriver(onErrorJustReturn: false)
     }
     
     private var commentViewModels: Driver<[CommentViewModel]> {
-        recipe.map { $0.comments.map(CommentViewModel.init) }.asDriver(onErrorJustReturn: [])
+        recipe.compactMap { $0?.comments.map(CommentViewModel.init) }.asDriver(onErrorJustReturn: [])
+    }
+    
+    private var isInCreateRecipeMode: Driver<Bool> {
+        recipe.map { $0 == nil }.asDriver(onErrorJustReturn: true)
     }
     
     // MARK: - Initialization
 
-    init(recipeId: Int, recipeService: RecipeService) {
-        self.recipeId = recipeId
+    init(withMode mode: Mode, recipeService: RecipeService) {
+        self.mode = mode
         self.recipeService = recipeService
-        self.recipe = recipeService.fetchRecipeInfo(for: recipeId)
+        
+        switch mode {
+        case .view(recipeId: let id):
+            self.recipe = recipeService.fetchRecipeInfo(for: id).map { $0 }
+        default:
+            self.recipe = Observable.just(nil)
+        }
+        
         super.init()
     }
     
@@ -56,10 +72,10 @@ class RecipeViewModel: SceneViewModel {
     func load() {
         recipe.subscribe(
                 onNext: { recipe in
-                    AppDelegate.logger.trace("Fetched recipe: \(recipe)")
+                    AppDelegate.logger.trace("New recipe: \(String(describing: recipe))")
                 }, onError: { [weak self] error in
                     guard let self = self else { return }
-                    AppDelegate.logger.notice("Unable to fetch recipe with id \(self.recipeId): \(error.localizedDescription)")
+                    AppDelegate.logger.notice("Unable to fetch recipe: \(error.localizedDescription)")
                     self._errorReceived.onNext(error)
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
@@ -69,6 +85,8 @@ class RecipeViewModel: SceneViewModel {
 extension RecipeViewModel: IOTransformable {
     struct Input {
         let viewDidAppear: Observable<Void>
+        let doneButtonTapped: Observable<Void>
+        let stepsText: Observable<String>
     }
     
     struct Output {
@@ -78,6 +96,9 @@ extension RecipeViewModel: IOTransformable {
         let noCommentsTextIsHidden: Driver<Bool>
         let commentsAreHidden: Driver<Bool>
         let commentViewModels: Driver<[CommentViewModel]>
+        let commentLabelIsHidden: Driver<Bool>
+        let doneButtonIsHidden: Driver<Bool>
+        let stepsTextIsEditable: Driver<Bool>
     }
     
     func transform(_ input: Input) -> Output {
@@ -89,7 +110,10 @@ extension RecipeViewModel: IOTransformable {
             authorInfoText: authorInfoText,
             noCommentsTextIsHidden: noCommentsTextIsHidden,
             commentsAreHidden: commentsAreHidden,
-            commentViewModels: commentViewModels
+            commentViewModels: commentViewModels,
+            commentLabelIsHidden: isInCreateRecipeMode,
+            doneButtonIsHidden: isInCreateRecipeMode.map(!),
+            stepsTextIsEditable: isInCreateRecipeMode
         )
     }
 }

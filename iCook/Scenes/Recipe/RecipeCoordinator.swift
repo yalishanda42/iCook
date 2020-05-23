@@ -12,7 +12,7 @@ class RecipeCoordinator: Coordinator {
     
     private let navigationController: UINavigationController
     private let services: ServiceDependencies
-    private let recipeId: Int
+    private let viewModelMode: RecipeViewModel.Mode
     
     private lazy var viewController: RecipeViewController = {
         let result = RecipeViewController.instantiateFromStoryboard()
@@ -21,14 +21,14 @@ class RecipeCoordinator: Coordinator {
     }()
     
     private lazy var viewModel = RecipeViewModel(
-        recipeId: recipeId,
+        withMode: viewModelMode,
         recipeService: services.recipeService
     )
     
-    init(in navigationController: UINavigationController, services: ServiceDependencies, recipeId: Int) {
+    init(in navigationController: UINavigationController, services: ServiceDependencies, viewModelMode: RecipeViewModel.Mode) {
         self.navigationController = navigationController
         self.services = services
-        self.recipeId = recipeId
+        self.viewModelMode = viewModelMode
     }
     
     func start() {
