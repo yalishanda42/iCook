@@ -81,6 +81,7 @@
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Gd7-3Q-m5C"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="Gd7-3Q-m5C" id="KWX-sM-un1"/>
                         <outlet property="foodpandaBgButton" destination="i6h-7i-9Ks" id="ge6-9T-8IX"/>
                         <outlet property="takeawayComButton" destination="dTY-3y-eal" id="vTP-c4-pkN"/>
                     </connections>

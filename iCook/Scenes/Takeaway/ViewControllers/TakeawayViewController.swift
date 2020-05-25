@@ -12,6 +12,7 @@ class TakeawayViewController: SceneViewController<TakeawayViewModel> {
     
     @IBOutlet private weak var takeawayComButton: KawaiiButton!
     @IBOutlet private weak var foodpandaBgButton: KawaiiButton!
+    @IBOutlet private weak var doneButton: UIBarButtonItem!
     
     override func setupViews() {
         super.setupViews()
@@ -22,7 +23,8 @@ class TakeawayViewController: SceneViewController<TakeawayViewModel> {
         
         viewModel.transform(TakeawayViewModel.Input(
             onTapTakeaway: takeawayComButton.button.rx.tap.asObservable(),
-            onTapFoodpanda: foodpandaBgButton.button.rx.tap.asObservable()
+            onTapFoodpanda: foodpandaBgButton.button.rx.tap.asObservable(),
+            onTapDoneButton: doneButton.rx.tap.asObservable()
         ))
     }
 }

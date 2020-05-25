@@ -24,11 +24,13 @@ extension TakeawayViewModel: IOTransformable {
     struct Input {
         let onTapTakeaway: Observable<Void>
         let onTapFoodpanda: Observable<Void>
+        let onTapDoneButton: Observable<Void>
     }
     
     func transform(_ input: Input) -> Void {
         input.onTapTakeaway.subscribe(onNext: openTakeaway).disposed(by: disposeBag)
         input.onTapFoodpanda.subscribe(onNext: openFoodpanda).disposed(by: disposeBag)
+        input.onTapDoneButton.subscribe(onNext: goBack).disposed(by: disposeBag)
     }
 }
 
