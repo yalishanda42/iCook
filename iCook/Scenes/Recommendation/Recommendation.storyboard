@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,11 +27,143 @@
         <!--Recommendation-->
         <scene sceneID="jn9-yK-8bT">
             <objects>
-                <viewController id="OUq-Lk-Xzh" customClass="RecommendationViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" id="OUq-Lk-Xzh" customClass="RecommendationViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NHF-DQ-0iV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="pk4-l0-oxI">
+                                <rect key="frame" x="16" y="60" width="343" height="275"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="214" translatesAutoresizingMaskIntoConstraints="NO" id="qwO-qJ-MUG">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8s8-k7-9am">
+                                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6by-aw-CXP">
+                                                <rect key="frame" x="278" y="0.0" width="65" height="30"/>
+                                                <state key="normal" title="Breakfast">
+                                                    <color key="titleColor" name="deep-purple"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="hyC-4F-Ehs" kind="presentation" identifier="pickerPresentation" id="uMP-GW-bSG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="R96-xi-k0L">
+                                        <rect key="frame" x="0.0" y="49" width="343" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cooking Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-aa-q7s">
+                                                <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vpu-ow-f6L">
+                                                <rect key="frame" x="253" y="0.0" width="90" height="30"/>
+                                                <state key="normal" title="Under 30min">
+                                                    <color key="titleColor" name="deep-purple"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="hyC-4F-Ehs" kind="presentation" identifier="pickerPresentation" id="9Do-en-P6b"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="jaI-lK-1gj">
+                                        <rect key="frame" x="0.0" y="98" width="343" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vegeterianity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1p-9s-d9W">
+                                                <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyF-ON-oUm">
+                                                <rect key="frame" x="300" y="0.0" width="43" height="30"/>
+                                                <state key="normal" title="Vegan">
+                                                    <color key="titleColor" name="deep-purple"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="hyC-4F-Ehs" kind="presentation" identifier="pickerPresentation" id="VLE-do-Q0H"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="90h-aq-rif">
+                                        <rect key="frame" x="0.0" y="147" width="343" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allergy options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xz-Gp-L24">
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cy-h6-FIn">
+                                                <rect key="frame" x="274" y="0.0" width="69" height="30"/>
+                                                <state key="normal" title="No Gluten">
+                                                    <color key="titleColor" name="deep-purple"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="hyC-4F-Ehs" kind="presentation" identifier="pickerPresentation" id="Qfq-XQ-6Nt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="FJQ-8d-ddA">
+                                        <rect key="frame" x="0.0" y="196" width="343" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Halal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BV-wA-GNi">
+                                                <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiD-L4-FUg">
+                                                <rect key="frame" x="313" y="0.0" width="30" height="30"/>
+                                                <state key="normal" title="Yes">
+                                                    <color key="titleColor" name="deep-purple"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="hyC-4F-Ehs" kind="presentation" identifier="pickerPresentation" id="JWk-rL-z0g"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="qhI-rP-SfB">
+                                        <rect key="frame" x="0.0" y="245" width="343" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blabla" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-Og-x7q">
+                                                <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8B-xF-NyK">
+                                                <rect key="frame" x="280" y="0.0" width="63" height="30"/>
+                                                <state key="normal" title="Blablabla">
+                                                    <color key="titleColor" name="deep-purple"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="hyC-4F-Ehs" kind="presentation" identifier="pickerPresentation" id="LQd-p4-xxT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pk4-l0-oxI" firstAttribute="top" secondItem="r4b-8N-3OS" secondAttribute="top" constant="16" id="QhI-Bo-Xo6"/>
+                            <constraint firstItem="r4b-8N-3OS" firstAttribute="trailing" secondItem="pk4-l0-oxI" secondAttribute="trailing" constant="16" id="dqy-qU-Y91"/>
+                            <constraint firstItem="pk4-l0-oxI" firstAttribute="leading" secondItem="r4b-8N-3OS" secondAttribute="leading" constant="16" id="pzf-Ww-WgS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="r4b-8N-3OS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recommendation" id="072-Jm-m74">
@@ -38,11 +171,95 @@
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="DJT-pd-d47" id="sEn-ut-5m1"/>
+                        <outletCollection property="optionLabels" destination="8s8-k7-9am" collectionClass="NSMutableArray" id="GDE-am-uB4"/>
+                        <outletCollection property="optionLabels" destination="0V2-aa-q7s" collectionClass="NSMutableArray" id="XdM-dX-Hhz"/>
+                        <outletCollection property="optionLabels" destination="C1p-9s-d9W" collectionClass="NSMutableArray" id="R4x-14-ab9"/>
+                        <outletCollection property="optionLabels" destination="8xz-Gp-L24" collectionClass="NSMutableArray" id="Wg6-XS-F32"/>
+                        <outletCollection property="optionLabels" destination="4BV-wA-GNi" collectionClass="NSMutableArray" id="aIn-6Q-oTN"/>
+                        <outletCollection property="optionLabels" destination="eVG-Og-x7q" collectionClass="NSMutableArray" id="gXa-bp-g6s"/>
+                        <outletCollection property="optionButtons" destination="6by-aw-CXP" collectionClass="NSMutableArray" id="Qn6-GU-gug"/>
+                        <outletCollection property="optionButtons" destination="Vpu-ow-f6L" collectionClass="NSMutableArray" id="n0F-AS-2gL"/>
+                        <outletCollection property="optionButtons" destination="oyF-ON-oUm" collectionClass="NSMutableArray" id="J4c-FJ-UIO"/>
+                        <outletCollection property="optionButtons" destination="2cy-h6-FIn" collectionClass="NSMutableArray" id="pZ8-IN-m4C"/>
+                        <outletCollection property="optionButtons" destination="kiD-L4-FUg" collectionClass="NSMutableArray" id="HgZ-Fc-rj5"/>
+                        <outletCollection property="optionButtons" destination="R8B-xF-NyK" collectionClass="NSMutableArray" id="8YU-tq-rdj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLI-FG-Ryf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="212" y="120"/>
         </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="85C-TV-9Wc">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="hyC-4F-Ehs" customClass="PickerViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JZH-up-ivj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDB-gj-Zoc">
+                                <rect key="frame" x="27.5" y="193.5" width="320" height="280"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCE-GL-4sf">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFU-wC-83M">
+                                                <rect key="frame" x="274" y="2" width="38" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Done"/>
+                                                <connections>
+                                                    <action selector="onTapDoneButton:" destination="hyC-4F-Ehs" eventType="touchUpInside" id="fag-IK-D5m"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="9Et-pw-OF1"/>
+                                            <constraint firstAttribute="bottom" secondItem="XFU-wC-83M" secondAttribute="bottom" id="dJU-1e-94k"/>
+                                            <constraint firstAttribute="trailing" secondItem="XFU-wC-83M" secondAttribute="trailing" constant="8" id="nor-tU-jCk"/>
+                                        </constraints>
+                                    </view>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLq-vg-UB3">
+                                        <rect key="frame" x="0.0" y="32" width="320" height="216"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="aCE-GL-4sf" firstAttribute="trailing" secondItem="nLq-vg-UB3" secondAttribute="trailing" id="941-0H-lMZ"/>
+                                    <constraint firstItem="nLq-vg-UB3" firstAttribute="leading" secondItem="zDB-gj-Zoc" secondAttribute="leading" id="A9W-hi-UyR"/>
+                                    <constraint firstItem="aCE-GL-4sf" firstAttribute="leading" secondItem="nLq-vg-UB3" secondAttribute="leading" id="Ec8-hK-wky"/>
+                                    <constraint firstItem="nLq-vg-UB3" firstAttribute="centerX" secondItem="zDB-gj-Zoc" secondAttribute="centerX" id="Se0-wx-gg5"/>
+                                    <constraint firstItem="nLq-vg-UB3" firstAttribute="top" secondItem="aCE-GL-4sf" secondAttribute="bottom" id="eQe-pm-1lX"/>
+                                    <constraint firstAttribute="trailing" secondItem="nLq-vg-UB3" secondAttribute="trailing" id="gwj-Si-PlW"/>
+                                    <constraint firstItem="aCE-GL-4sf" firstAttribute="top" secondItem="zDB-gj-Zoc" secondAttribute="top" id="riY-sP-RSs"/>
+                                    <constraint firstItem="nLq-vg-UB3" firstAttribute="centerY" secondItem="zDB-gj-Zoc" secondAttribute="centerY" id="syZ-nb-31F"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.69297425176056338" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zDB-gj-Zoc" firstAttribute="centerY" secondItem="JZH-up-ivj" secondAttribute="centerY" id="GGS-vo-TCp"/>
+                            <constraint firstItem="zDB-gj-Zoc" firstAttribute="centerX" secondItem="JZH-up-ivj" secondAttribute="centerX" id="Ii0-09-hDc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Oi-Xc-MUz"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="aCE-GL-4sf" id="ysm-hv-33u"/>
+                        <outlet property="pickerView" destination="nLq-vg-UB3" id="52i-3O-NXX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kV2-cn-Hbf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077.5999999999999" y="118.29085457271366"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="uMP-GW-bSG"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <namedColor name="deep-purple">
+            <color red="0.41568627450980394" green="0.38823529411764707" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

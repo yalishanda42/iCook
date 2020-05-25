@@ -17,6 +17,12 @@ class RecommendationViewController: SceneViewController<RecommendationViewModel>
     // MARK: - Outlets
 
     @IBOutlet private weak var doneButton: UIBarButtonItem!
+    @IBOutlet var optionLabels: [UILabel]!
+    @IBOutlet var optionButtons: [UIButton]!
+    
+    // MARK: - Properties
+    
+    private let segueId = "pickerPresentation"
     
     // MARK: - Setup
     
@@ -30,4 +36,10 @@ class RecommendationViewController: SceneViewController<RecommendationViewModel>
         viewModel.transform(RecommendationViewModel.Input(generateButtonTap: doneButton.rx.tap.asObservable()))
     }
 
+}
+
+extension RecommendationViewController {
+//    enum Option {
+//        case 
+//    }
 }
