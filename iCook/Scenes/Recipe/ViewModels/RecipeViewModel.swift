@@ -38,7 +38,13 @@ class RecipeViewModel: SceneViewModel {
     }
     
     private var authorInfoText: Driver<String> {
-        recipe.compactMap { $0 }.map { "\($0.authorNames) <\($0.authorEmail)>"}.asDriver(onErrorJustReturn: "")
+        recipe.map {
+            if let recipe = $0 {
+                return "\(recipe.authorNames) <\(recipe.authorEmail)>"
+            } else {
+                return "Submit your own recipe."
+            }
+        }.asDriver(onErrorJustReturn: "")
     }
     
     private var noCommentsTextIsHidden: Driver<Bool> {
@@ -91,6 +97,7 @@ extension RecipeViewModel: IOTransformable {
         let commentLabelIsHidden: Driver<Bool>
         let doneButtonIsHidden: Driver<Bool>
         let stepsTextIsEditable: Driver<Bool>
+        let ratingIsHidden: Driver<Bool>
     }
     
     func transform(_ input: Input) -> Output {
@@ -112,7 +119,8 @@ extension RecipeViewModel: IOTransformable {
             commentViewModels: commentViewModels,
             commentLabelIsHidden: isInCreateRecipeMode,
             doneButtonIsHidden: isInCreateRecipeMode.map(!),
-            stepsTextIsEditable: isInCreateRecipeMode
+            stepsTextIsEditable: isInCreateRecipeMode,
+            ratingIsHidden: isInCreateRecipeMode
         )
     }
 }
@@ -148,7 +156,7 @@ private extension RecipeViewModel {
                     self._errorReceived.onNext(error)
                 }).disposed(by: disposeBag)
         default:
-            AppDelegate.logger.error("Should not be to submit new message while not in 'create' mode!")
+            AppDelegate.logger.error("Should not be able to submit new message while not in 'create' mode!")
         }
     }
     

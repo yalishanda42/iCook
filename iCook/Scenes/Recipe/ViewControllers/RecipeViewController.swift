@@ -43,6 +43,7 @@ class RecipeViewController: SceneViewController<RecipeViewModel> {
         
         output.recipeText.drive(recipeStepsTextView.rx.text).disposed(by: disposeBag)
         output.authorInfoText.drive(authorLabel.rx.text).disposed(by: disposeBag)
+        output.ratingIsHidden.drive(fiveStarView.rx.isHidden).disposed(by: disposeBag)
         output.commentsAreHidden.drive(commentsTableView.rx.isHidden).disposed(by: disposeBag)
         output.commentLabelIsHidden.drive(commentsLabel.rx.isHidden).disposed(by: disposeBag)
         output.noCommentsTextIsHidden.drive(noCommentsLabel.rx.isHidden).disposed(by: disposeBag)
