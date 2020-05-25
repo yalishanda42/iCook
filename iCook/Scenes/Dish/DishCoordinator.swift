@@ -18,7 +18,7 @@ class DishCoordinator: Coordinator {
     
     private let navControllerWrapper: UINavigationController = {
         let result = UINavigationController()
-        result.modalPresentationStyle = .fullScreen
+        result.modalPresentationStyle = .automatic
         return result
     }()
     
