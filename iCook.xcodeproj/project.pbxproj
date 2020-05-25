@@ -21,6 +21,10 @@
 		74141012247BD6110095D5F9 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74141011247BD6110095D5F9 /* RecommendationViewController.swift */; };
 		74141015247BD64D0095D5F9 /* RecommendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74141014247BD64D0095D5F9 /* RecommendationViewModel.swift */; };
 		74175CAC247BE52300C12C76 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175CAB247BE52300C12C76 /* PickerViewController.swift */; };
+		74175CAF247C13B900C12C76 /* TakeawayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175CAE247C13B900C12C76 /* TakeawayCoordinator.swift */; };
+		74175CB1247C144F00C12C76 /* Takeaway.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74175CB0247C144F00C12C76 /* Takeaway.storyboard */; };
+		74175CB5247C14F400C12C76 /* TakeawayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175CB4247C14F400C12C76 /* TakeawayViewModel.swift */; };
+		74175CB7247C15F300C12C76 /* TakeawayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74175CB6247C15F300C12C76 /* TakeawayViewController.swift */; };
 		742396D32438AEF000A56C99 /* SceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D22438AEF000A56C99 /* SceneViewModel.swift */; };
 		742396D52438B0E600A56C99 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D42438B0E600A56C99 /* SceneViewController.swift */; };
 		742396D72438B99400A56C99 /* IOTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D62438B99400A56C99 /* IOTransformable.swift */; };
@@ -136,6 +140,10 @@
 		74141011247BD6110095D5F9 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
 		74141014247BD64D0095D5F9 /* RecommendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewModel.swift; sourceTree = "<group>"; };
 		74175CAB247BE52300C12C76 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		74175CAE247C13B900C12C76 /* TakeawayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeawayCoordinator.swift; sourceTree = "<group>"; };
+		74175CB0247C144F00C12C76 /* Takeaway.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Takeaway.storyboard; sourceTree = "<group>"; };
+		74175CB4247C14F400C12C76 /* TakeawayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeawayViewModel.swift; sourceTree = "<group>"; };
+		74175CB6247C15F300C12C76 /* TakeawayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeawayViewController.swift; sourceTree = "<group>"; };
 		742396D22438AEF000A56C99 /* SceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModel.swift; sourceTree = "<group>"; };
 		742396D42438B0E600A56C99 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		742396D62438B99400A56C99 /* IOTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOTransformable.swift; sourceTree = "<group>"; };
@@ -317,6 +325,33 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		74175CAD247C137F00C12C76 /* Takeaway */ = {
+			isa = PBXGroup;
+			children = (
+				74175CAE247C13B900C12C76 /* TakeawayCoordinator.swift */,
+				74175CB0247C144F00C12C76 /* Takeaway.storyboard */,
+				74175CB3247C14D800C12C76 /* ViewModels */,
+				74175CB2247C14D200C12C76 /* ViewControllers */,
+			);
+			path = Takeaway;
+			sourceTree = "<group>";
+		};
+		74175CB2247C14D200C12C76 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74175CB6247C15F300C12C76 /* TakeawayViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74175CB3247C14D800C12C76 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				74175CB4247C14F400C12C76 /* TakeawayViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		742A5B6A2425589C005F6C8F /* Kawaii */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +518,7 @@
 				74131993242695F400A42A4F /* Dish */,
 				748B3E4B244E0BC600D1D1DC /* Recipe */,
 				7414100B247BC6FF0095D5F9 /* Recommendation */,
+				74175CAD247C137F00C12C76 /* Takeaway */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -861,6 +897,7 @@
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
 				74316874241185B0002B3905 /* Authenticate.storyboard in Resources */,
 				749BC3592425793A0068B492 /* KawaiiButton.xib in Resources */,
+				74175CB1247C144F00C12C76 /* Takeaway.storyboard in Resources */,
 				74B8B88F2425206400C29491 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -894,6 +931,7 @@
 				7431686D241185B0002B3905 /* AppDelegate.swift in Sources */,
 				742396D92438C7F900A56C99 /* APIResponse.swift in Sources */,
 				7431686F241185B0002B3905 /* SceneDelegate.swift in Sources */,
+				74175CAF247C13B900C12C76 /* TakeawayCoordinator.swift in Sources */,
 				747BABB7245C235200AF9D85 /* AppSearchService.swift in Sources */,
 				743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */,
 				74B891CA2427D0D700993FB7 /* FakeAuthenticationService.swift in Sources */,
@@ -919,6 +957,7 @@
 				742396D72438B99400A56C99 /* IOTransformable.swift in Sources */,
 				747BABBA245C3A7E00AF9D85 /* SearchResultsCell.swift in Sources */,
 				747E379E24410036001490CF /* UserService.swift in Sources */,
+				74175CB7247C15F300C12C76 /* TakeawayViewController.swift in Sources */,
 				74B8B88424251DB800C29491 /* BrowseCoordinator.swift in Sources */,
 				74B8B88D2425203400C29491 /* SettingsCoordinator.swift in Sources */,
 				74B891BE2427C1BE00993FB7 /* Dish.swift in Sources */,
@@ -942,6 +981,7 @@
 				744E8B6C244F7A1B00420188 /* CommentTableViewCell.swift in Sources */,
 				747E379C2440FB96001490CF /* SettingsViewModel.swift in Sources */,
 				7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */,
+				74175CB5247C14F400C12C76 /* TakeawayViewModel.swift in Sources */,
 				747BABAF245C1F8A00AF9D85 /* DishOverviewViewModel.swift in Sources */,
 				742396D52438B0E600A56C99 /* SceneViewController.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,

@@ -53,7 +53,9 @@ class DishCoordinator: Coordinator {
 
 extension DishCoordinator: DishViewModelCoordinatorDelegate {
     func goToTakeaway() {
-        // TODO
+        let takeawayCoordinator = TakeawayCoordinator(in: dishViewController, services: services)
+        child = takeawayCoordinator
+        takeawayCoordinator.start()
     }
     
     func goToAddRecipe() {

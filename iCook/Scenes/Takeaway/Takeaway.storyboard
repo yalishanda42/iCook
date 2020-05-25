@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="67H-mU-gjg">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="An0-Ts-uvs">
+            <objects>
+                <navigationController id="PLP-AT-cTv" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M2g-Sb-6mg">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="67H-mU-gjg" kind="relationship" relationship="rootViewController" id="bNl-Xa-P2G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rth-Si-BOQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-842" y="148"/>
+        </scene>
+        <!--Order Takeaway-->
+        <scene sceneID="kaI-nB-kvo">
+            <objects>
+                <viewController id="67H-mU-gjg" customClass="TakeawayViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rEV-vW-gK8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTY-3y-eal" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                <rect key="frame" x="50" y="130" width="275" height="100"/>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.50196078431372548" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="qol-JX-4xj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Takeaway.com"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6h-7i-9Ks" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                <rect key="frame" x="50" y="272" width="275" height="100"/>
+                                <color key="backgroundColor" red="0.83529411764705885" green="0.098039215686274508" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="jpo-dc-k3G"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="FoodPanda.bg"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="i6h-7i-9Ks" firstAttribute="top" secondItem="dTY-3y-eal" secondAttribute="bottom" constant="42" id="SfQ-uM-y2w"/>
+                            <constraint firstItem="dTY-3y-eal" firstAttribute="top" secondItem="jwM-dH-dXp" secondAttribute="top" constant="42" id="TXb-7M-yuk"/>
+                            <constraint firstItem="i6h-7i-9Ks" firstAttribute="trailing" secondItem="dTY-3y-eal" secondAttribute="trailing" id="eTo-2v-QqV"/>
+                            <constraint firstItem="i6h-7i-9Ks" firstAttribute="leading" secondItem="dTY-3y-eal" secondAttribute="leading" id="uME-og-WMQ"/>
+                            <constraint firstItem="jwM-dH-dXp" firstAttribute="trailing" secondItem="dTY-3y-eal" secondAttribute="trailing" constant="50" id="yul-jA-XRh"/>
+                            <constraint firstItem="dTY-3y-eal" firstAttribute="leading" secondItem="jwM-dH-dXp" secondAttribute="leading" constant="50" id="z1h-NC-mRu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jwM-dH-dXp"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Order Takeaway" id="TVs-Mp-cb0">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Gd7-3Q-m5C"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="foodpandaBgButton" destination="i6h-7i-9Ks" id="ge6-9T-8IX"/>
+                        <outlet property="takeawayComButton" destination="dTY-3y-eal" id="vTP-c4-pkN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxR-Ut-3rt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="148" y="147.78325123152709"/>
+        </scene>
+    </scenes>
+</document>
