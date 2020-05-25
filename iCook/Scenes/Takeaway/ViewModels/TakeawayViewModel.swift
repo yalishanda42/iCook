@@ -13,6 +13,13 @@ class TakeawayViewModel: SceneViewModel {
     weak var coordinatorDelegate: Coordinator?
 }
 
+extension TakeawayViewModel {
+    enum Provider: String {
+        case takeaway = "https://takeaway.com"
+        case foodpanda = "https://foodpanda.com"
+    }
+}
+
 extension TakeawayViewModel: IOTransformable {
     struct Input {
         let onTapTakeaway: Observable<Void>
@@ -31,10 +38,18 @@ private extension TakeawayViewModel {
     }
     
     func openTakeaway() {
-        // TODO
+        openUrl(ofProvider: .takeaway)
     }
     
     func openFoodpanda() {
-        // TODO
+        openUrl(ofProvider: .foodpanda)
+    }
+    
+    func openUrl(ofProvider provider: Provider) {
+        guard let url = URL(string: provider.rawValue) else {
+            fatalError("invalid provider url! (\(provider.rawValue)")
+        }
+        
+        coordinatorDelegate?.openURL(url)
     }
 }
