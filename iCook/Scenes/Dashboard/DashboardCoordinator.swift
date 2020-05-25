@@ -71,4 +71,10 @@ extension DashboardCoordinator: DashboardViewModelCoordinatorDelegate {
     func goToRateRecipesScreen() {
         switchTabDelegate?.switchToSearch()
     }
+    
+    func goToRecommendationGenerationScreen() {
+        let recommendationCoordinator = RecommendationCoordinator(in: navController, services: services)
+        child = recommendationCoordinator
+        recommendationCoordinator.start()
+    }
 }

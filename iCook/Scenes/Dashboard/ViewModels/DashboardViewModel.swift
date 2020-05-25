@@ -13,6 +13,7 @@ protocol DashboardViewModelCoordinatorDelegate: AnyObject {
     func goToLoginScreen(onSuccessfulLogin: @escaping () -> Void)
     func goToDishScreen(dishId: Int)
     func goToRateRecipesScreen()
+    func goToRecommendationGenerationScreen()
 }
 
 class DashboardViewModel: SceneViewModel {
@@ -74,7 +75,7 @@ private extension DashboardViewModel {
     }
     
     func showRegularRecommendation() {
-        // TODO
+        coordinatorDelegate?.goToRecommendationGenerationScreen()
     }
     
     func rateRecipes() {

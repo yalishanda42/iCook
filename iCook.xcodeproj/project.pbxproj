@@ -16,6 +16,10 @@
 		7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7413199B24269D0D00A42A4F /* APIBaseResponse.swift */; };
 		7413199F2426C3DB00A42A4F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7413199E2426C3DB00A42A4F /* Alamofire */; };
 		741319A22426D6D500A42A4F /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 741319A12426D6D500A42A4F /* Logging */; };
+		7414100D247BC7930095D5F9 /* RecommendationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7414100C247BC7930095D5F9 /* RecommendationCoordinator.swift */; };
+		7414100F247BD5A90095D5F9 /* Recommendation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7414100E247BD5A90095D5F9 /* Recommendation.storyboard */; };
+		74141012247BD6110095D5F9 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74141011247BD6110095D5F9 /* RecommendationViewController.swift */; };
+		74141015247BD64D0095D5F9 /* RecommendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74141014247BD64D0095D5F9 /* RecommendationViewModel.swift */; };
 		742396D32438AEF000A56C99 /* SceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D22438AEF000A56C99 /* SceneViewModel.swift */; };
 		742396D52438B0E600A56C99 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D42438B0E600A56C99 /* SceneViewController.swift */; };
 		742396D72438B99400A56C99 /* IOTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742396D62438B99400A56C99 /* IOTransformable.swift */; };
@@ -126,6 +130,10 @@
 		741319962426968900A42A4F /* Dish.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dish.storyboard; sourceTree = "<group>"; };
 		74131999242696D700A42A4F /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		7413199B24269D0D00A42A4F /* APIBaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseResponse.swift; sourceTree = "<group>"; };
+		7414100C247BC7930095D5F9 /* RecommendationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCoordinator.swift; sourceTree = "<group>"; };
+		7414100E247BD5A90095D5F9 /* Recommendation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recommendation.storyboard; sourceTree = "<group>"; };
+		74141011247BD6110095D5F9 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
+		74141014247BD64D0095D5F9 /* RecommendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewModel.swift; sourceTree = "<group>"; };
 		742396D22438AEF000A56C99 /* SceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModel.swift; sourceTree = "<group>"; };
 		742396D42438B0E600A56C99 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		742396D62438B99400A56C99 /* IOTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOTransformable.swift; sourceTree = "<group>"; };
@@ -277,6 +285,33 @@
 				74131999242696D700A42A4F /* DishViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7414100B247BC6FF0095D5F9 /* Recommendation */ = {
+			isa = PBXGroup;
+			children = (
+				7414100C247BC7930095D5F9 /* RecommendationCoordinator.swift */,
+				7414100E247BD5A90095D5F9 /* Recommendation.storyboard */,
+				74141013247BD6380095D5F9 /* ViewModels */,
+				74141010247BD5F10095D5F9 /* ViewControllers */,
+			);
+			path = Recommendation;
+			sourceTree = "<group>";
+		};
+		74141010247BD5F10095D5F9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74141011247BD6110095D5F9 /* RecommendationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74141013247BD6380095D5F9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				74141014247BD64D0095D5F9 /* RecommendationViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		742A5B6A2425589C005F6C8F /* Kawaii */ = {
@@ -444,6 +479,7 @@
 				743168A324119D82002B3905 /* Authenticate */,
 				74131993242695F400A42A4F /* Dish */,
 				748B3E4B244E0BC600D1D1DC /* Recipe */,
+				7414100B247BC6FF0095D5F9 /* Recommendation */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -818,6 +854,7 @@
 				742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */,
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
 				74B891B42427A41E00993FB7 /* RecipeTableViewCell.xib in Resources */,
+				7414100F247BD5A90095D5F9 /* Recommendation.storyboard in Resources */,
 				74316879241185B1002B3905 /* Assets.xcassets in Resources */,
 				74316874241185B0002B3905 /* Authenticate.storyboard in Resources */,
 				749BC3592425793A0068B492 /* KawaiiButton.xib in Resources */,
@@ -858,6 +895,7 @@
 				743168AB2411A01E002B3905 /* KawaiiTextField.swift in Sources */,
 				74B891CA2427D0D700993FB7 /* FakeAuthenticationService.swift in Sources */,
 				743168B02411AB8C002B3905 /* AppAPIService.swift in Sources */,
+				7414100D247BC7930095D5F9 /* RecommendationCoordinator.swift in Sources */,
 				744E8B76244F823700420188 /* FiveStarView.swift in Sources */,
 				74B891C22427CAC200993FB7 /* RecipeOverviewInfo.swift in Sources */,
 				7410CF1F2443D38A00F1F9CE /* APIIntDataResponse.swift in Sources */,
@@ -895,6 +933,7 @@
 				748B3E48244DF67E00D1D1DC /* APIRecipeDataResponse.swift in Sources */,
 				747E37942440E8E0001490CF /* UserData.swift in Sources */,
 				748B3E54244E0C3900D1D1DC /* RecipeViewController.swift in Sources */,
+				74141015247BD64D0095D5F9 /* RecommendationViewModel.swift in Sources */,
 				747E37A324410A92001490CF /* UIViewController+Rx.swift in Sources */,
 				744E8B6C244F7A1B00420188 /* CommentTableViewCell.swift in Sources */,
 				747E379C2440FB96001490CF /* SettingsViewModel.swift in Sources */,
@@ -913,6 +952,7 @@
 				741319952426963300A42A4F /* DishCoordinator.swift in Sources */,
 				744E8B6E244F7D2100420188 /* CommentViewModel.swift in Sources */,
 				742A5B69242557CD005F6C8F /* UIView+XibLoadable.swift in Sources */,
+				74141012247BD6110095D5F9 /* RecommendationViewController.swift in Sources */,
 				74DB90462424E6F50092E51C /* DashboardCoordinator.swift in Sources */,
 				74EDA7EA2426475200E853E8 /* AuthenticationService.swift in Sources */,
 				747BABB1245C201700AF9D85 /* SearchService.swift in Sources */,
