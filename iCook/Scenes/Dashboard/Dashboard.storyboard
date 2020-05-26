@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DhC-GI-LGB">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DhC-GI-LGB">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,22 +25,22 @@
             </objects>
             <point key="canvasLocation" x="-1665" y="139"/>
         </scene>
-        <!--Dashboard-->
+        <!--Начало-->
         <scene sceneID="kUf-S7-myq">
             <objects>
-                <viewController storyboardIdentifier="DashboardViewController" title="Dashboard" id="DhC-GI-LGB" customClass="DashboardViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" title="Начало" id="DhC-GI-LGB" customClass="DashboardViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AD1-rL-1eb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good morning!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L15-9d-GXo">
-                                <rect key="frame" x="102.66666666666669" y="218" width="209" height="34.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дубрютру!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L15-9d-GXo">
+                                <rect key="frame" x="106.5" y="218" width="162" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="29"/>
                                 <color key="textColor" name="deep-purple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.haze" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fcX-Wc-5pI">
-                                <rect key="frame" x="87" y="77.000000000000014" width="240" height="127.33333333333333"/>
+                                <rect key="frame" x="67.5" y="76.5" width="240" height="128"/>
                                 <color key="tintColor" name="background-darker"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="126" id="20Y-ew-DQg"/>
@@ -48,16 +48,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-nP-IAf">
-                                <rect key="frame" x="32" y="477" width="350" height="288"/>
+                                <rect key="frame" x="32" y="282" width="311" height="288"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDz-SJ-s7y" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="rvB-yd-fQs"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Quick suggestion!"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Бързо предложение!"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
                                                 <color key="value" name="accent-darker"/>
                                             </userDefinedRuntimeAttribute>
@@ -67,10 +67,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-AY-5em" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="112" width="350" height="64"/>
+                                        <rect key="frame" x="0.0" y="112" width="311" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Find something to eat."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Чудиш се какво да хапваш?"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
                                                 <color key="value" name="deep-purple"/>
                                             </userDefinedRuntimeAttribute>
@@ -80,10 +80,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dec-tb-vjg" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="224" width="350" height="64"/>
+                                        <rect key="frame" x="0.0" y="224" width="311" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Rate recipes or add new."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Потърси ястия и рецепти."/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
                                                 <color key="value" name="deep-purple"/>
                                             </userDefinedRuntimeAttribute>
@@ -113,7 +113,7 @@
                         <viewLayoutGuide key="safeArea" id="Guv-WN-tB5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="k6g-Wl-8Tc"/>
-                    <navigationItem key="navigationItem" id="oCn-b1-Srz"/>
+                    <navigationItem key="navigationItem" title="Начало" id="oCn-b1-Srz"/>
                     <connections>
                         <outlet property="contributionButton" destination="Dec-tb-vjg" id="3Qk-7U-Io9"/>
                         <outlet property="quickButton" destination="PDz-SJ-s7y" id="GKq-0T-4nL"/>
@@ -126,7 +126,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sun.haze" catalog="system" width="64" height="58"/>
+        <image name="sun.haze" catalog="system" width="128" height="119"/>
         <namedColor name="accent-darker">
             <color red="0.99900001287460327" green="0.62300002574920654" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

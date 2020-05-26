@@ -44,14 +44,14 @@ class AuthenticateViewModel: SceneViewModel {
         case .login:
             firstNameIsHidden = true
             familyNameIsHidden = true
-            screenTitleText = "Login"
+            screenTitleText = "Вход"
             repeatPasswordFieldIsHidden = true
             registerButtonIsHidden = false
             backButtonIsHidden = true
         case .register:
             firstNameIsHidden = false
             familyNameIsHidden = false
-            screenTitleText = "Register"
+            screenTitleText = "Регистрация"
             repeatPasswordFieldIsHidden = false
             registerButtonIsHidden = true
             backButtonIsHidden = false

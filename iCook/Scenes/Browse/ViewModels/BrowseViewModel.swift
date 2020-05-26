@@ -65,8 +65,8 @@ extension BrowseViewModel: IOTransformable {
     
     private func noResultsText(input: Input) -> Driver<String> {
         input.searchTerm.map {
-            $0.isEmpty ? "Search for yummy dishes." : "No results available."
-        }.asDriver(onErrorJustReturn: "No results available.")
+            $0.isEmpty ? "Потърси нещо." : "Няма резултати."
+        }.asDriver(onErrorJustReturn: "Няма резултати.")
     }
 }
 

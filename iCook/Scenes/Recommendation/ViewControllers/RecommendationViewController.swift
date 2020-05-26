@@ -79,12 +79,12 @@ extension RecommendationViewController {
         
         var options: [String] {
             switch self {
-            case .type: return ["Breakfast", "Lunch", "Dinner", "Dessert", "Salad", "Any"]
-            case .cookingTime: return ["Under 30min", "30~60min", "90~120min", "120min+", "Doesn't matter"]
-            case .vegetarianity: return ["None", "Vegan", "Vegetarian"]
-            case .allergies: return ["None", "Gluten-free"]
-            case .halal: return ["No", "Yes", "Doesn't matter"]
-            case .test: return ["Blabla", "Blablablablabla", "Blabla blabla", "Bla!"]
+            case .type: return ["Закуска", "Обяд", "Вечеря", "Десерт", "Салата", "Всеки"]
+            case .cookingTime: return ["Под 30 мин.", "30~60 мин.", "90~120 мин.", "120+ мин.", "Без значение"]
+            case .vegetarianity: return ["Може да има месо", "Веган", "Вегетарианско"]
+            case .allergies: return ["Нямам", "Без глутен"]
+            case .halal: return ["Не", "Да", "Без значение"]
+            case .test: return ["Блабла", "Блаблаблаблабла", "Блабла блабла", "Бла!"]
             }
         }
     }

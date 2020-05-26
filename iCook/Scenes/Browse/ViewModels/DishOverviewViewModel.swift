@@ -23,7 +23,7 @@ class DishOverviewViewModel {
     }
     
     var subtitleText: String {
-        "Dish · \(model.recipeOverviews.count) recipes"
+        "Ястие · \(model.recipeOverviews.count) рецепти"
     }
     
     private let model: Dish

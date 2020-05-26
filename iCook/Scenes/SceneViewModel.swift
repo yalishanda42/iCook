@@ -25,11 +25,11 @@ class SceneViewModel {
         
         errorReceived = _errorReceived.map { error in
             guard let apiError = error as? APIConnectionError else {
-                return (title: "Error", message: "😟")
+                return (title: "Опа", message: "😟 Нещо се обърка, пробвай пак по-късно.")
             }
             
             return (title: apiError.title, message: apiError.localizedDescription)
             
-        }.asDriver(onErrorJustReturn: ("Error", "😟"))
+        }.asDriver(onErrorJustReturn: ("Опа", "😟 Нещо се обърка, пробвай пак по-късно."))
     }
 }

@@ -66,8 +66,8 @@
                                                     <constraint firstAttribute="width" constant="120" id="y4O-hy-Rv3"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for dishes, recipes and saved lists." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iut-bh-KqJ">
-                                                <rect key="frame" x="29" y="4" width="356" height="23"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Потърси ястия и рецепти." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iut-bh-KqJ">
+                                                <rect key="frame" x="92.5" y="4" width="229" height="23"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="19"/>
                                                 <color key="textColor" name="deep-purple"/>
                                                 <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="barColor">
                                         <color key="value" name="deep-purple"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Search for something yummy..."/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Потърси нещо вкусно тук..."/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

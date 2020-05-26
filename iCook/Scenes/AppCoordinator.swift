@@ -74,11 +74,11 @@ extension AppCoordinator {
         var displayName: String {
             switch self {
             case .dashboard:
-                return "Dashboard"
+                return "Начало"
             case .browse:
-                return "Browse"
+                return "Търсене"
             case .settings:
-                return "Settings"
+                return "Настройки"
             }
         }
         

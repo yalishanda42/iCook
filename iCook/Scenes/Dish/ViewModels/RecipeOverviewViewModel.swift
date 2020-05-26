@@ -15,11 +15,11 @@ class RecipeOverviewViewModel {
     }
         
     var title: String {
-        "by \(model.authorNames)"
+        "от \(model.authorNames)"
     }
     
     var description: String {
-        "\(formattedDateString) · \(model.commentsCount) comments"
+        "\(formattedDateString) · \(model.commentsCount) коментара"
     }
     
     var rating: Float {

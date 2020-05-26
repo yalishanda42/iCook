@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-1028" y="82"/>
         </scene>
-        <!--Dish-->
+        <!--Ястие-->
         <scene sceneID="xpY-Um-m4q">
             <objects>
                 <viewController id="bw5-bd-lth" customClass="DishViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iIG-A9-CjA">
                                         <rect key="frame" x="0.0" y="224" width="414" height="382"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PeA-wI-jhx">
+                                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рецепти" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PeA-wI-jhx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="27.666666666666686"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -69,7 +69,7 @@
                                             <constraint firstAttribute="height" constant="50" id="c1S-dN-ozO"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Add a recipe"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Добави нова рецепта"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
                                                 <color key="value" name="deep-purple"/>
                                             </userDefinedRuntimeAttribute>
@@ -82,7 +82,7 @@
                                         <rect key="frame" x="0.0" y="704" width="414" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="I don't wanna cook, order for home!"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Не искам да готвя, поръчай за вкъщи!"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
                                                 <color key="value" name="deep-purple"/>
                                             </userDefinedRuntimeAttribute>
@@ -106,8 +106,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hyv-8L-UFM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dish" id="lkR-cf-wFa" userLabel="Baklava">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="QI5-pd-E8b">
+                    <navigationItem key="navigationItem" title="Ястие" id="lkR-cf-wFa" userLabel="Baklava">
+                        <barButtonItem key="rightBarButtonItem" title="Назад" style="done" id="QI5-pd-E8b">
                             <connections>
                                 <action selector="onTapBackButton:" destination="bw5-bd-lth" id="HtQ-Il-Wc8"/>
                             </connections>

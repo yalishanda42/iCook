@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="XFd-9U-ame">
-                                <rect key="frame" x="24" y="142.33333333333337" width="366" height="384"/>
+                                <rect key="frame" x="24" y="138.66666666666663" width="366" height="384"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AcG-B4-seO">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="60"/>
@@ -29,7 +29,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="barColor">
                                                         <color key="value" name="accent-darker"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="First name"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Собствено име"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qS9-b4-0gC" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
@@ -39,7 +39,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="barColor">
                                                         <color key="value" name="accent-darker"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Family name"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Фамилно име"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
@@ -54,11 +54,11 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="barColor">
                                                 <color key="value" name="accent-darker"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="E-mail"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Имейл"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="O5Q-rW-VJi">
-                                        <rect key="frame" x="0.0" y="161.99999999999997" width="366" height="60"/>
+                                        <rect key="frame" x="0.0" y="162.00000000000003" width="366" height="60"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axF-xQ-qFb" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="175" height="60"/>
@@ -67,7 +67,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="barColor">
                                                         <color key="value" name="accent-darker"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Парола"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-y1-1hS" customClass="KawaiiTextField" customModule="iCook" customModuleProvider="target">
@@ -77,7 +77,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="barColor">
                                                         <color key="value" name="accent-darker"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Още веднъж"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
@@ -92,7 +92,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="barColor">
                                                 <color key="value" name="deep-purple"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Let's eat!"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Ай да готвим!"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeX-an-eUc" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
@@ -105,22 +105,22 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="barColor">
                                                 <color key="value" name="deep-purple"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Not registered?"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Нямаш регистрация?"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr1-1p-akm">
-                                <rect key="frame" x="131.66666666666666" y="62" width="150.99999999999997" height="44.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr1-1p-akm">
+                                <rect key="frame" x="95.666666666666671" y="62" width="222.66666666666663" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
                                 <color key="textColor" name="deep-purple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wm-6B-vLf">
-                                <rect key="frame" x="20" y="72" width="73" height="24"/>
+                                <rect key="frame" x="20" y="72" width="20" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" name="accent-lighter"/>
-                                <state key="normal" title=" Login" image="arrow.uturn.left" catalog="system">
+                                <state key="normal" image="arrow.uturn.left" catalog="system">
                                     <color key="titleColor" name="accent-lighter"/>
                                 </state>
                             </button>

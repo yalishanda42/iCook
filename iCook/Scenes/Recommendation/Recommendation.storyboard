@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-700" y="120"/>
         </scene>
-        <!--Recommendation-->
+        <!--Предпочитания-->
         <scene sceneID="jn9-yK-8bT">
             <objects>
                 <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" id="OUq-Lk-Xzh" customClass="RecommendationViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,8 +38,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="214" translatesAutoresizingMaskIntoConstraints="NO" id="qwO-qJ-MUG">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8s8-k7-9am">
-                                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тип" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8s8-k7-9am">
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -55,11 +55,11 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="R96-xi-k0L">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="R96-xi-k0L">
                                         <rect key="frame" x="0.0" y="49" width="343" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cooking Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-aa-q7s">
-                                                <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Време за приготвяне" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-aa-q7s">
+                                                <rect key="frame" x="0.0" y="0.0" width="170.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -75,18 +75,18 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="jaI-lK-1gj">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="jaI-lK-1gj">
                                         <rect key="frame" x="0.0" y="98" width="343" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vegeterianity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1p-9s-d9W">
-                                                <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вегетарианство" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1p-9s-d9W">
+                                                <rect key="frame" x="0.0" y="0.0" width="128.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyF-ON-oUm">
-                                                <rect key="frame" x="300" y="0.0" width="43" height="30"/>
-                                                <state key="normal" title="Vegan">
+                                                <rect key="frame" x="207" y="0.0" width="136" height="30"/>
+                                                <state key="normal" title="Може да има месо">
                                                     <color key="titleColor" name="deep-purple"/>
                                                 </state>
                                                 <connections>
@@ -98,8 +98,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="90h-aq-rif">
                                         <rect key="frame" x="0.0" y="147" width="343" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allergy options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xz-Gp-L24">
-                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Алергии" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xz-Gp-L24">
+                                                <rect key="frame" x="0.0" y="0.0" width="68" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -118,8 +118,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="FJQ-8d-ddA">
                                         <rect key="frame" x="0.0" y="196" width="343" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Halal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BV-wA-GNi">
-                                                <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Халал" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BV-wA-GNi">
+                                                <rect key="frame" x="0.0" y="0.0" width="48.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -138,8 +138,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="133" translatesAutoresizingMaskIntoConstraints="NO" id="qhI-rP-SfB">
                                         <rect key="frame" x="0.0" y="245" width="343" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blabla" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-Og-x7q">
-                                                <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Блабла" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-Og-x7q">
+                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -166,8 +166,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r4b-8N-3OS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recommendation" id="072-Jm-m74">
-                        <barButtonItem key="rightBarButtonItem" title="Generate!" style="done" id="DJT-pd-d47"/>
+                    <navigationItem key="navigationItem" title="Предпочитания" id="072-Jm-m74">
+                        <barButtonItem key="rightBarButtonItem" title="Генерирай!" style="done" id="DJT-pd-d47"/>
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="DJT-pd-d47" id="sEn-ut-5m1"/>
@@ -204,9 +204,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFU-wC-83M">
-                                                <rect key="frame" x="274" y="2" width="38" height="30"/>
+                                                <rect key="frame" x="254" y="2" width="58" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="Done"/>
+                                                <state key="normal" title="Избери"/>
                                                 <connections>
                                                     <action selector="onTapDoneButton:" destination="hyC-4F-Ehs" eventType="touchUpInside" id="fag-IK-D5m"/>
                                                 </connections>

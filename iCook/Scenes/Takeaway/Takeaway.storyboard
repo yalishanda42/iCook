@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="-842" y="148"/>
         </scene>
-        <!--Order Takeaway-->
+        <!--Поръчка за вкъщи-->
         <scene sceneID="kaI-nB-kvo">
             <objects>
                 <viewController id="67H-mU-gjg" customClass="TakeawayViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,8 +77,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jwM-dH-dXp"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Order Takeaway" id="TVs-Mp-cb0">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Gd7-3Q-m5C"/>
+                    <navigationItem key="navigationItem" title="Поръчка за вкъщи" id="TVs-Mp-cb0">
+                        <barButtonItem key="rightBarButtonItem" title="Назад" style="done" id="Gd7-3Q-m5C"/>
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="Gd7-3Q-m5C" id="KWX-sM-un1"/>

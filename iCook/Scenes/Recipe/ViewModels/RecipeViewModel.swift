@@ -42,7 +42,7 @@ class RecipeViewModel: SceneViewModel {
             if let recipe = $0 {
                 return "\(recipe.authorNames) <\(recipe.authorEmail)>"
             } else {
-                return "Submit your own recipe."
+                return ""
             }
         }.asDriver(onErrorJustReturn: "")
     }

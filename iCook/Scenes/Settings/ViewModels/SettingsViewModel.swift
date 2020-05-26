@@ -30,7 +30,7 @@ class SettingsViewModel: SceneViewModel {
     }
     
     private var userButtonText: Driver<String> {
-        userDetailsAreHidden.map { $0 ? "Log In" : "Log Out" }
+        userDetailsAreHidden.map { $0 ? "Влез" : "Излез" }
     }
     
     private let authenticationService: AuthenticationService
