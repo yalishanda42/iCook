@@ -28,7 +28,7 @@
         <!--Начало-->
         <scene sceneID="kUf-S7-myq">
             <objects>
-                <viewController storyboardIdentifier="DashboardViewController" title="Начало" id="DhC-GI-LGB" customClass="DashboardViewController" customModule="iCook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" title="Начало" id="DhC-GI-LGB" customClass="DashboardViewController" customModule="iДаГотвим" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AD1-rL-1eb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-nP-IAf">
                                 <rect key="frame" x="32" y="282" width="311" height="288"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDz-SJ-s7y" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDz-SJ-s7y" customClass="KawaiiButton" customModule="iДаГотвим" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -66,7 +66,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-AY-5em" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-AY-5em" customClass="KawaiiButton" customModule="iДаГотвим" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="112" width="311" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -79,7 +79,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dec-tb-vjg" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dec-tb-vjg" customClass="KawaiiButton" customModule="iДаГотвим" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="224" width="311" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <userDefinedRuntimeAttributes>

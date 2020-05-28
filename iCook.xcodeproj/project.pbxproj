@@ -76,6 +76,14 @@
 		747E379E24410036001490CF /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E379D24410036001490CF /* UserService.swift */; };
 		747E37A0244101F8001490CF /* AppUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E379F244101F8001490CF /* AppUserService.swift */; };
 		747E37A324410A92001490CF /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747E37A224410A92001490CF /* UIViewController+Rx.swift */; };
+		74897CEF247FD1A700F1DB89 /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74897CEE247FD1A700F1DB89 /* Comments.storyboard */; };
+		74897CF1247FD1BC00F1DB89 /* CommentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74897CF0247FD1BC00F1DB89 /* CommentsCoordinator.swift */; };
+		74897CF5247FD23100F1DB89 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74897CF4247FD23100F1DB89 /* CommentsViewController.swift */; };
+		74897CF7247FD23A00F1DB89 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74897CF6247FD23A00F1DB89 /* CommentsViewModel.swift */; };
+		74897CFA247FD33900F1DB89 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74897CF9247FD33900F1DB89 /* Products.storyboard */; };
+		74897CFC247FD35B00F1DB89 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74897CFB247FD35B00F1DB89 /* ProductsViewController.swift */; };
+		74897CFE247FD39B00F1DB89 /* ProductsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74897CFD247FD39B00F1DB89 /* ProductsCoordinator.swift */; };
+		74897D00247FD3AC00F1DB89 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74897CFF247FD3AC00F1DB89 /* ProductsViewModel.swift */; };
 		748B3E40244DF49B00D1D1DC /* DishData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E3F244DF49B00D1D1DC /* DishData.swift */; };
 		748B3E42244DF51200D1D1DC /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E41244DF51200D1D1DC /* RecipeData.swift */; };
 		748B3E44244DF56E00D1D1DC /* RatingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B3E43244DF56E00D1D1DC /* RatingData.swift */; };
@@ -199,6 +207,14 @@
 		747E379D24410036001490CF /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		747E379F244101F8001490CF /* AppUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserService.swift; sourceTree = "<group>"; };
 		747E37A224410A92001490CF /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		74897CEE247FD1A700F1DB89 /* Comments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
+		74897CF0247FD1BC00F1DB89 /* CommentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCoordinator.swift; sourceTree = "<group>"; };
+		74897CF4247FD23100F1DB89 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		74897CF6247FD23A00F1DB89 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		74897CF9247FD33900F1DB89 /* Products.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Products.storyboard; sourceTree = "<group>"; };
+		74897CFB247FD35B00F1DB89 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		74897CFD247FD39B00F1DB89 /* ProductsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCoordinator.swift; sourceTree = "<group>"; };
+		74897CFF247FD3AC00F1DB89 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		748B3E3F244DF49B00D1D1DC /* DishData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishData.swift; sourceTree = "<group>"; };
 		748B3E41244DF51200D1D1DC /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 		748B3E43244DF56E00D1D1DC /* RatingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingData.swift; sourceTree = "<group>"; };
@@ -519,6 +535,8 @@
 				748B3E4B244E0BC600D1D1DC /* Recipe */,
 				7414100B247BC6FF0095D5F9 /* Recommendation */,
 				74175CAD247C137F00C12C76 /* Takeaway */,
+				74897CED247FD15800F1DB89 /* Comments */,
+				74897CF8247FD24000F1DB89 /* Products */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -607,6 +625,60 @@
 			isa = PBXGroup;
 			children = (
 				747E379B2440FB96001490CF /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74897CED247FD15800F1DB89 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				74897CF0247FD1BC00F1DB89 /* CommentsCoordinator.swift */,
+				74897CEE247FD1A700F1DB89 /* Comments.storyboard */,
+				74897CF3247FD22000F1DB89 /* ViewModels */,
+				74897CF2247FD1C600F1DB89 /* ViewControllers */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		74897CF2247FD1C600F1DB89 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74897CF4247FD23100F1DB89 /* CommentsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74897CF3247FD22000F1DB89 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				74897CF6247FD23A00F1DB89 /* CommentsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		74897CF8247FD24000F1DB89 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74897CFD247FD39B00F1DB89 /* ProductsCoordinator.swift */,
+				74897CF9247FD33900F1DB89 /* Products.storyboard */,
+				74897D02247FD3BB00F1DB89 /* ViewModels */,
+				74897D01247FD3AF00F1DB89 /* ViewControllers */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		74897D01247FD3AF00F1DB89 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				74897CFB247FD35B00F1DB89 /* ProductsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74897D02247FD3BB00F1DB89 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				74897CFF247FD3AC00F1DB89 /* ProductsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -884,11 +956,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74897CEF247FD1A700F1DB89 /* Comments.storyboard in Resources */,
 				741319972426968900A42A4F /* Dish.storyboard in Resources */,
 				74B8B88224251DA600C29491 /* Browse.storyboard in Resources */,
 				7431687C241185B1002B3905 /* LaunchScreen.storyboard in Resources */,
 				744E8B74244F81D100420188 /* FiveStarView.xib in Resources */,
 				74DB90442424E6D90092E51C /* Dashboard.storyboard in Resources */,
+				74897CFA247FD33900F1DB89 /* Products.storyboard in Resources */,
 				748B3E4F244E0BFD00D1D1DC /* Recipe.storyboard in Resources */,
 				742A5B6C24255942005F6C8F /* KawaiiTextField.xib in Resources */,
 				743168A0241189F2002B3905 /* Colors.xcassets in Resources */,
@@ -922,6 +996,7 @@
 				742396D32438AEF000A56C99 /* SceneViewModel.swift in Sources */,
 				748B3E40244DF49B00D1D1DC /* DishData.swift in Sources */,
 				74B891C82427CCFE00993FB7 /* FakeDishService.swift in Sources */,
+				74897D00247FD3AC00F1DB89 /* ProductsViewModel.swift in Sources */,
 				74B8B88824251E0700C29491 /* BrowseViewController.swift in Sources */,
 				7410CF1D2443D28F00F1F9CE /* AppDishService.swift in Sources */,
 				747C5C89243017F5000C2875 /* UIImageView+Downloaded.swift in Sources */,
@@ -940,6 +1015,8 @@
 				744E8B76244F823700420188 /* FiveStarView.swift in Sources */,
 				74B891C22427CAC200993FB7 /* RecipeOverviewInfo.swift in Sources */,
 				7410CF1F2443D38A00F1F9CE /* APIIntDataResponse.swift in Sources */,
+				74897CFC247FD35B00F1DB89 /* ProductsViewController.swift in Sources */,
+				74897CF1247FD1BC00F1DB89 /* CommentsCoordinator.swift in Sources */,
 				744E8B70244F7D5700420188 /* Comment.swift in Sources */,
 				747BABAD245C1D9200AF9D85 /* BrowseViewModel.swift in Sources */,
 				74B891CF2427E11F00993FB7 /* RecipeOverviewViewModel.swift in Sources */,
@@ -964,6 +1041,7 @@
 				748B3E4D244E0BE100D1D1DC /* RecipeCoordinator.swift in Sources */,
 				7413199A242696D700A42A4F /* DishViewController.swift in Sources */,
 				744E8B78244F8CF900420188 /* RecipeService.swift in Sources */,
+				74897CFE247FD39B00F1DB89 /* ProductsCoordinator.swift in Sources */,
 				747E37A0244101F8001490CF /* AppUserService.swift in Sources */,
 				74B891B62427A44000993FB7 /* RecipeTableViewCell.swift in Sources */,
 				74311479242659C700F6A959 /* AppServiceDependencies.swift in Sources */,
@@ -981,8 +1059,10 @@
 				744E8B6C244F7A1B00420188 /* CommentTableViewCell.swift in Sources */,
 				747E379C2440FB96001490CF /* SettingsViewModel.swift in Sources */,
 				7413199C24269D0D00A42A4F /* APIBaseResponse.swift in Sources */,
+				74897CF7247FD23A00F1DB89 /* CommentsViewModel.swift in Sources */,
 				74175CB5247C14F400C12C76 /* TakeawayViewModel.swift in Sources */,
 				747BABAF245C1F8A00AF9D85 /* DishOverviewViewModel.swift in Sources */,
+				74897CF5247FD23100F1DB89 /* CommentsViewController.swift in Sources */,
 				742396D52438B0E600A56C99 /* SceneViewController.swift in Sources */,
 				743168B62411B9F6002B3905 /* APITokenResponse.swift in Sources */,
 				74316877241185B0002B3905 /* iCook.xcdatamodeld in Sources */,

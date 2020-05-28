@@ -10,11 +10,16 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+protocol RecipeViewModelCoordinatorDelegate: Coordinator {
+    func goToComments()
+    func goToProducts()
+}
+
 class RecipeViewModel: SceneViewModel {
     
     // MARK: - Coordinator
     
-    weak var coordinatorDelegate: Coordinator?
+    weak var coordinatorDelegate: RecipeViewModelCoordinatorDelegate?
     
     // MARK: - Function Mode
     
@@ -85,16 +90,15 @@ extension RecipeViewModel: IOTransformable {
         let viewDidAppear: Observable<Void>
         let doneButtonTapped: Observable<Void>
         let stepsText: Observable<String>
+        let commentButtonTapped: Observable<Void>
+        let productsButtonTapped: Observable<Void>
     }
     
     struct Output {
         let recipeText: Driver<String>
         let recipeRating: Driver<Float>
         let authorInfoText: Driver<String>
-        let noCommentsTextIsHidden: Driver<Bool>
-        let commentsAreHidden: Driver<Bool>
-        let commentViewModels: Driver<[CommentViewModel]>
-        let commentLabelIsHidden: Driver<Bool>
+        let commentsButtonIsHidden: Driver<Bool>
         let doneButtonIsHidden: Driver<Bool>
         let stepsTextIsEditable: Driver<Bool>
         let ratingIsHidden: Driver<Bool>
@@ -110,14 +114,20 @@ extension RecipeViewModel: IOTransformable {
             .subscribe(onNext: submitNewRecipe)
             .disposed(by: disposeBag)
         
+        input.commentButtonTapped
+            .subscribe(onNext: viewComments)
+            .disposed(by: disposeBag)
+    
+        input.productsButtonTapped
+            .subscribe(onNext: viewProducts)
+            .disposed(by: disposeBag)
+        
         return Output(
             recipeText: recipeText,
             recipeRating: recipeRating,
             authorInfoText: authorInfoText,
-            noCommentsTextIsHidden: noCommentsTextIsHidden,
-            commentsAreHidden: commentsAreHidden,
-            commentViewModels: commentViewModels,
-            commentLabelIsHidden: isInCreateRecipeMode,
+
+            commentsButtonIsHidden: isInCreateRecipeMode,
             doneButtonIsHidden: isInCreateRecipeMode.map(!),
             stepsTextIsEditable: isInCreateRecipeMode,
             ratingIsHidden: isInCreateRecipeMode
@@ -162,5 +172,14 @@ private extension RecipeViewModel {
     
     func goBack() {
         coordinatorDelegate?.finish()
+    }
+    
+    func viewComments() {
+        coordinatorDelegate?.goToComments()
+
+    }
+    
+    func viewProducts() {
+        coordinatorDelegate?.goToProducts()
     }
 }

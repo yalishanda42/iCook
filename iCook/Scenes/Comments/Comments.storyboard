@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j10-ip-ARb">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="tXP-Qz-vcc">
+            <objects>
+                <navigationController id="eEl-cL-45D" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rjO-xA-Fng">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="j10-ip-ARb" kind="relationship" relationship="rootViewController" id="7rU-sY-Oa0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jhb-AJ-eO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2186" y="117"/>
+        </scene>
+        <!--Коментари-->
+        <scene sceneID="7qz-iu-zhN">
+            <objects>
+                <viewController id="j10-ip-ARb" customClass="CommentsViewController" customModule="iДаГотвим" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ofn-ZW-DbT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="G6N-D0-2zG">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Много добра рецепта! Мисля, че" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="joZ-hi-gZp">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="745.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="BYJ-10-yHO"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Няма коментари. Напиши първия!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bnQ-bb-paZ">
+                                        <rect key="frame" x="0.0" y="748.5" width="414" height="25.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s0x-xC-Vue">
+                                        <rect key="frame" x="0.0" y="774" width="414" height="0.0"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" id="iFb-hg-3c1" customClass="CommentTableViewCell" customModule="iДаГотвим" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="167.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iFb-hg-3c1" id="SUz-TK-b6N">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="167.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eVg-xW-OkU">
+                                                            <rect key="frame" x="8" y="60.5" width="50" height="47.5"/>
+                                                            <color key="tintColor" name="mediumgrey"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="j7T-wa-o0q"/>
+                                                                <constraint firstAttribute="width" secondItem="eVg-xW-OkU" secondAttribute="height" multiplier="1:1" id="o1N-yx-57Y"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEt-RR-3xy">
+                                                            <rect key="frame" x="66" y="19" width="320" height="82"/>
+                                                            <string key="text">Lorem Ipsum Dolor Sit Amet banana banitsata s med askdjbaskdjbaksjdbkasjdasj kasj dkjasdk jasd sadf dfg dfsg dsfg dsfgdfsg dsfg dsf</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="User Usernamov &lt;asdasdasdas@asdljahskdjhaksjdh.asdasdasdasdasdasdasd&gt;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="oT9-yA-aPL">
+                                                            <rect key="frame" x="66" y="109" width="340" height="50.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" name="mediumgrey"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="oT9-yA-aPL" firstAttribute="top" secondItem="AEt-RR-3xy" secondAttribute="bottom" constant="8" id="4Kd-qk-aqF"/>
+                                                        <constraint firstItem="eVg-xW-OkU" firstAttribute="centerY" secondItem="SUz-TK-b6N" secondAttribute="centerY" id="VRR-V1-aRA"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="AEt-RR-3xy" secondAttribute="trailing" constant="8" id="XGx-eh-KTp"/>
+                                                        <constraint firstItem="oT9-yA-aPL" firstAttribute="leading" secondItem="eVg-xW-OkU" secondAttribute="trailing" constant="8" id="YmY-Ce-V9w"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oT9-yA-aPL" secondAttribute="bottom" constant="8" id="b4X-ml-dyX"/>
+                                                        <constraint firstItem="AEt-RR-3xy" firstAttribute="leading" secondItem="eVg-xW-OkU" secondAttribute="trailing" constant="8" id="doH-UD-WiG"/>
+                                                        <constraint firstItem="eVg-xW-OkU" firstAttribute="leading" secondItem="SUz-TK-b6N" secondAttribute="leading" constant="8" id="gRa-oE-YAw"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oT9-yA-aPL" secondAttribute="trailing" constant="8" id="jSn-CF-Ice"/>
+                                                        <constraint firstItem="AEt-RR-3xy" firstAttribute="top" secondItem="SUz-TK-b6N" secondAttribute="topMargin" constant="8" id="q70-DL-fuv"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="authorLabel" destination="oT9-yA-aPL" id="Nx1-Da-z60"/>
+                                                    <outlet property="avatarImageView" destination="eVg-xW-OkU" id="kgF-zB-jxM"/>
+                                                    <outlet property="commentLabel" destination="AEt-RR-3xy" id="rH2-F4-okm"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="G6N-D0-2zG" firstAttribute="bottom" secondItem="4p1-Gj-OhA" secondAttribute="bottom" id="115-Yg-Lmg"/>
+                            <constraint firstItem="G6N-D0-2zG" firstAttribute="leading" secondItem="4p1-Gj-OhA" secondAttribute="leading" id="PS7-7q-dJc"/>
+                            <constraint firstAttribute="trailing" secondItem="G6N-D0-2zG" secondAttribute="trailing" id="ceU-Ik-03u"/>
+                            <constraint firstItem="G6N-D0-2zG" firstAttribute="top" secondItem="4p1-Gj-OhA" secondAttribute="top" id="uLt-lM-FJu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4p1-Gj-OhA"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Коментари" id="tGl-cW-KEW">
+                        <barButtonItem key="rightBarButtonItem" title="Назад" id="aWz-aX-dLX"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="commentsTableView" destination="s0x-xC-Vue" id="8Ms-Vy-efg"/>
+                        <outlet property="doneButton" destination="aWz-aX-dLX" id="9NO-xM-PhH"/>
+                        <outlet property="noCommentsLabel" destination="bnQ-bb-paZ" id="DFR-sW-5pj"/>
+                        <outlet property="textView" destination="bnQ-bb-paZ" id="FQp-vj-Sc7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EYq-ua-QuT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3246" y="117"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <namedColor name="mediumgrey">
+            <color red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

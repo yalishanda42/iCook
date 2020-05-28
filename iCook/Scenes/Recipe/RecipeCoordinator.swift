@@ -10,6 +10,8 @@ import UIKit
 
 class RecipeCoordinator: Coordinator {
     
+    private var child: Coordinator?
+    
     private let navigationController: UINavigationController
     private let services: ServiceDependencies
     private let viewModelMode: RecipeViewModel.Mode
@@ -38,5 +40,19 @@ class RecipeCoordinator: Coordinator {
     
     func finish() {
         navigationController.popViewController(animated: true)
+    }
+}
+
+extension RecipeCoordinator: RecipeViewModelCoordinatorDelegate {
+    func goToComments() {
+        let coordinator = CommentsCoordinator(in: viewController, services: services)
+        child = coordinator
+        coordinator.start()
+    }
+    
+    func goToProducts() {
+        let coordinator = ProductsCoordinator(in: viewController, services: services)
+        child = coordinator
+        coordinator.start()
     }
 }
