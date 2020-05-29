@@ -14,16 +14,16 @@ class SceneViewModel {
     
     final let disposeBag = DisposeBag()
     
-    let _isLoading = BehaviorSubject<Bool>(value: false)
+    let isLoadingSubject = BehaviorSubject<Bool>(value: false)
     let isLoading: Driver<Bool>
     
-    let _errorReceived = PublishSubject<Error>()
+    let errorSubject = PublishSubject<Error>()
     let errorReceived: Driver<(title: String, message: String)>
     
     init() {
-        isLoading = _isLoading.asDriver(onErrorJustReturn: false)
+        isLoading = isLoadingSubject.asDriver(onErrorJustReturn: false)
         
-        errorReceived = _errorReceived.map { error in
+        errorReceived = errorSubject.map { error in
             guard let apiError = error as? APIConnectionError else {
                 return (title: "Опа", message: "😟 Нещо се обърка, пробвай пак по-късно.")
             }

@@ -52,8 +52,9 @@ class AppAuthenticationService: AuthenticationService {
         famiyName: String,
         email: String,
         password: String
-    ) -> Observable<Bool> {
+    ) -> Observable<Void> {
         return apiService.register(firstName: firstName, famiyName: famiyName, email: email, password: password)
+            .map { _ in }
     }
     
     func validateToken() -> Observable<UserData> {

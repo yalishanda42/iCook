@@ -17,7 +17,7 @@ protocol AuthenticationService {
     
     func login(email: String, password: String) -> Observable<Void>
     
-    func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Bool>
+    func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Void>
     
     func validateToken() -> Observable<UserData>
     

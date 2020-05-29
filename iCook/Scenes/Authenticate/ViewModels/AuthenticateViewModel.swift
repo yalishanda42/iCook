@@ -145,7 +145,7 @@ private extension AuthenticateViewModel {
                 onNext: { [weak self] _ in
                     self?.coordinatorDelegate?.finish()
                 }, onError: { [weak self] error in
-                    self?._errorReceived.onNext(error)
+                    self?.errorSubject.onNext(error)
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
@@ -163,14 +163,10 @@ private extension AuthenticateViewModel {
             password: password
         ).subscribe(
             onNext: { [weak self] success in
-                if success {
-                    self?.login(email: email, password: password)
-                } else {
-                    AppDelegate.logger.warning("Incorrect 'false' value received for AuthenticationService.register()")
-                }
+                self?.login(email: email, password: password)
             },
             onError: { [weak self] error in
-                self?._errorReceived.onNext(error)
+                self?.errorSubject.onNext(error)
             },
             onCompleted: nil,
             onDisposed: nil

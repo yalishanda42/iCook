@@ -70,7 +70,7 @@ private extension DashboardViewModel {
                 onNext: { [weak self] dishId in
                     self?.coordinatorDelegate?.goToDishScreen(dishId: dishId)
                 }, onError: { [weak self] error in
-                    self?._errorReceived.onNext(error)
+                    self?.errorSubject.onNext(error)
             }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
     

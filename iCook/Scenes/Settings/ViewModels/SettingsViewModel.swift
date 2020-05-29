@@ -89,7 +89,7 @@ private extension SettingsViewModel {
     func onTapLogOutButton() {
         // TODO: Ask user if they are sure about logging out via an alert
         authenticationService.logout().subscribe(onNext: load, onError: { [weak self] error in
-            self?._errorReceived.onNext(error)
+            self?.errorSubject.onNext(error)
         }).disposed(by: disposeBag)
     }
     
@@ -108,7 +108,7 @@ private extension SettingsViewModel {
             }, onError: { [weak self] error in
                 guard let self = self else { return }
                 guard error is AuthenticationError else {
-                    self._errorReceived.onNext(error)
+                    self.errorSubject.onNext(error)
                     return
                 }
                 

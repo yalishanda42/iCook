@@ -25,9 +25,9 @@ class FakeAuthenticationService: AuthenticationService {
         return Observable.just(())
     }
     
-    func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Bool> {
+    func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Void> {
         AppDelegate.logger.trace("Fake registration.")
-        return Observable.just(true)
+        return Observable.just(())
     }
     
     func validateToken() -> Observable<UserData> {
