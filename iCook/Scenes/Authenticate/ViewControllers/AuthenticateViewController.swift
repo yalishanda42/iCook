@@ -46,11 +46,11 @@ class AuthenticateViewController: SceneViewController<AuthenticateViewModel> {
         backButton.isHidden = viewModel.backButtonIsHidden
         
         viewModel.transform(AuthenticateViewModel.Input(
-            firstNameText: firstName.textField.rx.text.asObservable(),
-            familyNameText: familyName.textField.rx.text.asObservable(),
-            emailText: emailField.textField.rx.text.asObservable(),
-            passwordText: passwordField.textField.rx.text.asObservable(),
-            passwordRepeatedText: repeatPasswordField.textField.rx.text.asObservable(),
+            firstNameText: firstName.textField.rx.text.orEmpty.asObservable(),
+            familyNameText: familyName.textField.rx.text.orEmpty.asObservable(),
+            emailText: emailField.textField.rx.text.orEmpty.asObservable(),
+            passwordText: passwordField.textField.rx.text.orEmpty.asObservable(),
+            passwordRepeatedText: repeatPasswordField.textField.rx.text.orEmpty.asObservable(),
             continueButtonTap: continueButton.button.rx.tap.asObservable(),
             goResgisterButtonTap: registerButton.button.rx.tap.asObservable(),
             goBackButtonTap: backButton.rx.tap.asObservable())

@@ -75,11 +75,11 @@ extension AuthenticateViewModel {
 extension AuthenticateViewModel: IOTransformable {
     struct Input {
         // Text
-        let firstNameText: Observable<String?>
-        let familyNameText: Observable<String?>
-        let emailText: Observable<String?>
-        let passwordText: Observable<String?>
-        let passwordRepeatedText: Observable<String?>
+        let firstNameText: Observable<String>
+        let familyNameText: Observable<String>
+        let emailText: Observable<String>
+        let passwordText: Observable<String>
+        let passwordRepeatedText: Observable<String>
         // Button taps
         let continueButtonTap: Observable<Void>
         let goResgisterButtonTap: Observable<Void>
@@ -103,11 +103,11 @@ private extension AuthenticateViewModel {
 
     private func continueButtonTap(input: Input) -> Observable<(String, String, String, String, String)> {
         return input.continueButtonTap.withLatestFrom(Observable.combineLatest(
-            input.emailText.map { $0 ?? "" },
-            input.passwordText.map { $0 ?? "" },
-            input.passwordRepeatedText.map { $0 ?? "" },
-            input.firstNameText.map { $0 ?? "" },
-            input.familyNameText.map { $0 ?? "" }
+            input.emailText,
+            input.passwordText,
+            input.passwordRepeatedText,
+            input.firstNameText,
+            input.familyNameText
         ))
     }
     
