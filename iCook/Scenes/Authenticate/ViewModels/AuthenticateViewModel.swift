@@ -101,7 +101,7 @@ extension AuthenticateViewModel: IOTransformable {
 
 private extension AuthenticateViewModel {
 
-    private func continueButtonTap(input: Input) -> Observable<(String, String, String, String, String)> {
+    func continueButtonTap(input: Input) -> Observable<(String, String, String, String, String)> {
         return input.continueButtonTap.withLatestFrom(Observable.combineLatest(
             input.emailText,
             input.passwordText,
@@ -111,7 +111,7 @@ private extension AuthenticateViewModel {
         ))
     }
     
-    private func sendAuthenticationRequest(
+    func sendAuthenticationRequest(
         email: String,
         password: String,
         passwordRepeated: String,
@@ -126,7 +126,7 @@ private extension AuthenticateViewModel {
         }
     }
 
-    private func goRegister() {
+    func goRegister() {
         guard type != .register else {
             AppDelegate.logger.error("Incorrect behaviour! Tried to go to Register from Register!")
             return
@@ -135,7 +135,7 @@ private extension AuthenticateViewModel {
         coordinatorDelegate?.goToRegister()
     }
 
-    private func goBack() {
+    func goBack() {
         coordinatorDelegate?.goBack()
     }
 
