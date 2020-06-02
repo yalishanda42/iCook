@@ -64,13 +64,15 @@ extension SettingsViewModel: IOTransformable {
     func transform(_ input: Input) -> Output {
         let authenticationStateChanged = authenticationService.isAuthenticated.map { _ in }
         
-        let loginButtonTap = input.userButtonTap
+        let buttonTapAndAuthenticationState = input.userButtonTap
             .withLatestFrom(authenticationService.isAuthenticated)
+            .share()
+        
+        let loginButtonTap = buttonTapAndAuthenticationState
             .filter { $0 == false }
             .map { _ in }
         
-        let logoutButtonTap = input.userButtonTap
-            .withLatestFrom(authenticationService.isAuthenticated)
+        let logoutButtonTap = buttonTapAndAuthenticationState
             .filter { $0 == true }
             .map { _ in }
             .flatMapLatest(authenticationService.logout)
