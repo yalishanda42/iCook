@@ -42,10 +42,6 @@ class SettingsViewModel: SceneViewModel {
         self.authenticationService = authenticationService
         self.userService = userService
         super.init()
-        
-        authenticationService.isAuthenticated.subscribe(onNext: { [weak self] _ in
-            self?.load()
-        }).disposed(by: disposeBag)
     }
 }
 
@@ -66,12 +62,28 @@ extension SettingsViewModel: IOTransformable {
     }
     
     func transform(_ input: Input) -> Output {
-        input.viewDidAppear.subscribe(onNext: load).disposed(by: disposeBag)
-        input.userButtonTap
+        let authenticationStateChanged = authenticationService.isAuthenticated.map { _ in }
+        
+        let loginButtonTap = input.userButtonTap
             .withLatestFrom(authenticationService.isAuthenticated)
-            .subscribe(onNext: { [unowned self] isLoggedIn in
-                isLoggedIn ? self.onTapLogOutButton() : self.onTapLogInButton()
-            }).disposed(by: disposeBag)
+            .filter { $0 == false }
+            .map { _ in }
+        
+        let logoutButtonTap = input.userButtonTap
+            .withLatestFrom(authenticationService.isAuthenticated)
+            .filter { $0 == true }
+            .map { _ in }
+            .flatMapLatest(authenticationService.logout)
+        
+        let userResult = Observable
+            .merge(input.viewDidAppear, logoutButtonTap, authenticationStateChanged)
+            .flatMapLatest(userResults)
+            .share()
+        
+        userResult.map {"\($0.firstName) \($0.familyName)" }.subscribe(userNames).disposed(by: disposeBag)
+        userResult.map { $0.email }.subscribe(userEmail).disposed(by: disposeBag)
+        
+        loginButtonTap.subscribe(onNext: onTapLogInButton).disposed(by: disposeBag)
         
         return Output(
             namesText: userNames.asDriver(onErrorJustReturn: ""),
@@ -86,35 +98,20 @@ extension SettingsViewModel: IOTransformable {
 // MARK: - Helpers
 
 private extension SettingsViewModel {
-    func onTapLogOutButton() {
-        // TODO: Ask user if they are sure about logging out via an alert
-        authenticationService.logout().subscribe(onNext: load, onError: { [weak self] error in
-            self?.errorSubject.onNext(error)
-        }).disposed(by: disposeBag)
-    }
-    
     func onTapLogInButton() {
         coordinatorDelegate?.gotoLogIn()
     }
     
-    func load() {
-        userService.fetchUserData().subscribe(
-            onNext: { [weak self] user in
-                guard let self = self else { return }
-                
-                self.userNames.onNext("\(user.firstName) \(user.familyName)")
-                self.userEmail.onNext(user.email)
-                
-            }, onError: { [weak self] error in
-                guard let self = self else { return }
-                guard error is AuthenticationError else {
-                    self.errorSubject.onNext(error)
-                    return
-                }
-                
-                self.userNames.onNext("")
-                self.userEmail.onNext("")
-                
-            }).disposed(by: disposeBag)
+    func userResults() -> Observable<User> {
+        userService.fetchUserData().catchError { [unowned self] error in
+            guard error is AuthenticationError else {
+                self.errorSubject.onNext(error)
+                return .empty()
+            }
+            
+            self.userNames.onNext("")
+            self.userEmail.onNext("")
+            return .empty()
+        }
     }
 }
