@@ -87,44 +87,32 @@ extension AuthenticateViewModel: IOTransformable {
     }
     
     func transform(_ input: Input) -> Void {
-        continueButtonTap(input: input)
-            .subscribe(onNext: sendAuthenticationRequest(email:password:passwordRepeated:firstName:familyName:))
-            .disposed(by: disposeBag)
-        
         input.goBackButtonTap.subscribe(onNext: goBack).disposed(by: disposeBag)
-        
         input.goResgisterButtonTap.subscribe(onNext: goRegister).disposed(by: disposeBag)
+        
+        let authenticateSuccess: Observable<Void>
+        switch type {
+        case .login:
+            authenticateSuccess = input.continueButtonTap.withLatestFrom(Observable.combineLatest(
+                input.emailText,
+                input.passwordText
+            )).flatMapLatest(login(email:password:))
+        case .register:
+            authenticateSuccess = input.continueButtonTap.withLatestFrom(Observable.combineLatest(
+                input.firstNameText,
+                input.familyNameText,
+                input.emailText,
+                input.passwordText
+            )).flatMapLatest(register(firstName:famiyName:email:password:))
+        }
+        
+        authenticateSuccess.subscribe(onNext: finish).disposed(by: disposeBag)
     }
 }
 
 // MARK: - Helpers
 
 private extension AuthenticateViewModel {
-
-    func continueButtonTap(input: Input) -> Observable<(String, String, String, String, String)> {
-        return input.continueButtonTap.withLatestFrom(Observable.combineLatest(
-            input.emailText,
-            input.passwordText,
-            input.passwordRepeatedText,
-            input.firstNameText,
-            input.familyNameText
-        ))
-    }
-    
-    func sendAuthenticationRequest(
-        email: String,
-        password: String,
-        passwordRepeated: String,
-        firstName: String,
-        familyName: String
-    ) {
-        switch type {
-        case .login:
-            login(email: email, password: password)
-        case .register:
-            register(firstName: firstName, famiyName: familyName, email: email, password: password, repeatedPassword: passwordRepeated)
-        }
-    }
 
     func goRegister() {
         guard type != .register else {
@@ -138,38 +126,28 @@ private extension AuthenticateViewModel {
     func goBack() {
         coordinatorDelegate?.goBack()
     }
-
-    func login(email: String, password: String) {
-        authenticationService.login(email: email, password: password)
-            .subscribe(
-                onNext: { [weak self] _ in
-                    self?.coordinatorDelegate?.finish()
-                }, onError: { [weak self] error in
-                    self?.errorSubject.onNext(error)
-                }, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
+    
+    func finish() {
+        coordinatorDelegate?.finish()
     }
 
-    func register(firstName: String, famiyName: String, email: String, password: String, repeatedPassword: String) {
-        guard password == repeatedPassword else {
-            // TODO: handle password mismatch
-            return
-        }
-
-        authenticationService.register(
-            firstName: firstName,
-            famiyName: famiyName,
-            email: email,
-            password: password
-        ).subscribe(
-            onNext: { [weak self] success in
-                self?.login(email: email, password: password)
-            },
-            onError: { [weak self] error in
+    func login(email: String, password: String) -> Observable<Void> {
+        authenticationService
+            .login(email: email, password: password)
+            .catchError { [weak self] error in
                 self?.errorSubject.onNext(error)
-            },
-            onCompleted: nil,
-            onDisposed: nil
-        ).disposed(by: disposeBag)
+                return .empty()
+            }
+    }
+
+    func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Void> {
+        authenticationService
+            .register(firstName: firstName, famiyName: famiyName, email: email, password: password)
+            .catchError { [weak self] error in
+                self?.errorSubject.onNext(error)
+                return .empty()
+            }.flatMapLatest { [weak self] _ in
+                self?.login(email: email, password: password) ?? .empty()
+            }
     }
 }

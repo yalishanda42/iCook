@@ -58,7 +58,7 @@ extension BrowseViewModel: IOTransformable {
         input.searchTerm
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .flatMap(searchService.search)
+            .flatMapLatest(searchService.search)
             .map{ $0.map(DishOverviewViewModel.init) }
             .asDriver(onErrorJustReturn: [])
     }
