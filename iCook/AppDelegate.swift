@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static let logger: Logger = {
         var result = Logger(label: "bg.abv.yalishanda.iCook")
-        result.logLevel = .trace
+        #if DEBUG
+            result.logLevel = .trace
+        #else
+            result.logLevel = .notice
+        #endif
         return result
     }()
 
