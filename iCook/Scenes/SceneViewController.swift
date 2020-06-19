@@ -14,26 +14,6 @@ class SceneViewController<VM: SceneViewModel>: UIViewController {
     
     /// The ViewModel of the View. Must be set before the lifecycle methods are invoked.
     var viewModel: VM!
-    
-    private var loadingIndicator: UIActivityIndicatorView?
-    private var isLoading = false {
-        didSet {
-            if isLoading && loadingIndicator == nil {
-                let indicator = UIActivityIndicatorView(style: .large)
-                view.addSubview(indicator)
-                indicator.translatesAutoresizingMaskIntoConstraints = false
-                indicator.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-                indicator.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-                indicator.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-                indicator.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-                indicator.startAnimating()
-                loadingIndicator = indicator
-            } else if !isLoading {
-                loadingIndicator?.stopAnimating()
-                loadingIndicator = nil
-            }
-        }
-    }
         
     final let disposeBag = DisposeBag()
     
@@ -49,13 +29,7 @@ class SceneViewController<VM: SceneViewModel>: UIViewController {
     
     /// Called as the second part of viewDidLoad. Setup the bindings with the ViewModel here. Always call super.
     func setupBindings() {
-        viewModel.isLoading.drive(onNext: { [weak self] isLoading in
-            self?.isLoading = isLoading
-            }).disposed(by: disposeBag)
-        
-        viewModel.errorReceived.drive(onNext: { [weak self] title, message in
-            guard let self = self else { return }
-            
+        viewModel.errorReceived.drive(onNext: { [unowned self] title, message in
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
