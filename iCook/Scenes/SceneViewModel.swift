@@ -7,24 +7,25 @@
 //
 
 import Foundation
-import RxCocoa
 import RxSwift
+import RxCocoa
 
 class SceneViewModel {
     
     final let disposeBag = DisposeBag()
     
-    let errorSubject = PublishSubject<Error>()
-    let errorReceived: Driver<(title: String, message: String)>
+    let _errorRelay = PublishRelay<Error>()
+    let errorReceived: Signal<(title: String, message: String)>
     
     init() {
-        errorReceived = errorSubject.map { error in
-            guard let apiError = error as? APIConnectionError else {
-                return (title: "Опа", message: "😟 Нещо се обърка, пробвай пак по-късно.")
+        errorReceived = _errorRelay
+            .asSignal()
+            .map { error in
+                guard let apiError = error as? APIConnectionError else {
+                    return (title: "Опа", message: "😟 Нещо се обърка, пробвай пак по-късно.")
+                }
+                
+                return (title: apiError.title, message: apiError.localizedDescription)
             }
-            
-            return (title: apiError.title, message: apiError.localizedDescription)
-            
-        }.asDriver(onErrorJustReturn: ("Опа", "😟 Нещо се обърка, пробвай пак по-късно."))
     }
 }

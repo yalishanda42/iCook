@@ -22,8 +22,8 @@ class SettingsViewModel: SceneViewModel {
     
     // MARK: - Properties
     
-    private let userNames = BehaviorSubject<String>(value: "")
-    private let userEmail = BehaviorSubject<String>(value: "")
+    private let userNames = BehaviorRelay<String>(value: "")
+    private let userEmail = BehaviorRelay<String>(value: "")
     
     private var userDetailsAreHidden: Driver<Bool> {
         authenticationService.isAuthenticated.asDriver(onErrorJustReturn: false).map(!)
@@ -82,14 +82,21 @@ extension SettingsViewModel: IOTransformable {
             .flatMapLatest(userResults)
             .share()
         
-        userResult.map {"\($0.firstName) \($0.familyName)" }.subscribe(userNames).disposed(by: disposeBag)
-        userResult.map { $0.email }.subscribe(userEmail).disposed(by: disposeBag)
+        userResult
+            .map { "\($0.firstName) \($0.familyName)" }
+            .subscribe(onNext: userNames.accept)
+            .disposed(by: disposeBag)
+        
+        userResult
+            .map { $0.email }
+            .subscribe(onNext: userEmail.accept)
+            .disposed(by: disposeBag)
         
         loginButtonTap.subscribe(onNext: onTapLogInButton).disposed(by: disposeBag)
         
         return Output(
-            namesText: userNames.asDriver(onErrorJustReturn: ""),
-            emailText: userEmail.asDriver(onErrorJustReturn: ""),
+            namesText: userNames.asDriver(),
+            emailText: userEmail.asDriver(),
             userButtonText: userButtonText,
             namesAreHidden: userDetailsAreHidden,
             emailIsHidden: userDetailsAreHidden
@@ -107,12 +114,12 @@ private extension SettingsViewModel {
     func userResults() -> Observable<User> {
         userService.fetchUserData().catchError { [unowned self] error in
             guard error is AuthenticationError else {
-                self.errorSubject.onNext(error)
+                self._errorRelay.accept(error)
                 return .empty()
             }
             
-            self.userNames.onNext("")
-            self.userEmail.onNext("")
+            self.userNames.accept("")
+            self.userEmail.accept("")
             return .empty()
         }
     }

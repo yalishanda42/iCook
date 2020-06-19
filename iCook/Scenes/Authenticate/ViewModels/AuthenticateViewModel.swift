@@ -134,19 +134,14 @@ private extension AuthenticateViewModel {
     func login(email: String, password: String) -> Observable<Void> {
         authenticationService
             .login(email: email, password: password)
-            .catchError { [weak self] error in
-                self?.errorSubject.onNext(error)
-                return .empty()
-            }
+            .catchErrorPublishAndReturnEmpty(toRelay: _errorRelay)
     }
 
     func register(firstName: String, famiyName: String, email: String, password: String) -> Observable<Void> {
         authenticationService
             .register(firstName: firstName, famiyName: famiyName, email: email, password: password)
-            .catchError { [weak self] error in
-                self?.errorSubject.onNext(error)
-                return .empty()
-            }.flatMapLatest { [weak self] _ in
+            .catchErrorPublishAndReturnEmpty(toRelay: _errorRelay)
+            .flatMapLatest { [weak self] _ in
                 self?.login(email: email, password: password) ?? .empty()
             }
     }

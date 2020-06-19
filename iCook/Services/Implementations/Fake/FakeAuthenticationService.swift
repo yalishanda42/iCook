@@ -8,20 +8,21 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 class FakeAuthenticationService: AuthenticationService {
         
     let isAuthenticated: Observable<Bool>
     
-    private let isAuthenticatedSubject = BehaviorSubject(value: true)
+    private let isAuthenticatedRelay = BehaviorRelay(value: true)
     
     init() {
-        self.isAuthenticated = isAuthenticatedSubject.asObservable()
+        self.isAuthenticated = isAuthenticatedRelay.asObservable()
     }
     
     func login(email: String, password: String) -> Observable<Void> {
         AppDelegate.logger.trace("Fake login.")
-        isAuthenticatedSubject.onNext(true)
+        isAuthenticatedRelay.accept(true)
         return Observable.just(())
     }
     
@@ -31,7 +32,7 @@ class FakeAuthenticationService: AuthenticationService {
     }
     
     func validateToken() -> Observable<UserData> {
-        guard (try? isAuthenticatedSubject.value()) ?? false else {
+        guard isAuthenticatedRelay.value else {
             return Observable.error(AuthenticationError.unauthorizedOperation)
         }
         
@@ -44,7 +45,7 @@ class FakeAuthenticationService: AuthenticationService {
     }
     
     func logout() -> Observable<Void> {
-        isAuthenticatedSubject.onNext(false)
+        isAuthenticatedRelay.accept(false)
         return Observable.just(())
     }
     

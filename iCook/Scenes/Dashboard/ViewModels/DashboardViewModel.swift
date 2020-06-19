@@ -39,11 +39,25 @@ extension DashboardViewModel: IOTransformable {
     }
     
     func transform(_ input: Input) -> Void {
-        input.quickRecommendationButtonTap
+        let quickRecommendationLoggedIn = input.quickRecommendationButtonTap
             .withLatestFrom(authenticationService.isAuthenticated)
-            .subscribe(onNext: { [unowned self] isLoggedIn in
-                isLoggedIn ? self.showQuickRecommendation() : self.authenticate()
-            }).disposed(by: disposeBag)
+            .filter { $0 == true }
+            .map { _ in }
+            
+        let quickRecommendationLoggedOut = input.quickRecommendationButtonTap
+            .withLatestFrom(authenticationService.isAuthenticated)
+            .filter { $0 == false }
+            .map { _ in }
+            .flatMapLatest(authenticate)
+        
+        Observable.merge(quickRecommendationLoggedIn, quickRecommendationLoggedOut)
+            .flatMapLatest { [weak self] _ -> Observable<Int> in
+                guard let self = self else { return Observable.empty() }
+                return self.dishService
+                    .generateNewQuickRandomDishSuggestion()
+                    .catchErrorPublishAndReturnEmpty(toRelay: self._errorRelay)
+            }.subscribe(onNext: showQuickRecommendation(forDishId:))
+            .disposed(by: disposeBag)
         
         input.regularRecommendationButtonTap
             .subscribe(onNext: showRegularRecommendation)
@@ -58,20 +72,19 @@ extension DashboardViewModel: IOTransformable {
 // MARK: - Helpers
 
 private extension DashboardViewModel {
-    func authenticate() {
-        coordinatorDelegate?.goToLoginScreen() { [weak self] in
-            self?.showQuickRecommendation()
+    func authenticate() -> Observable<Void> {
+        return Observable.create { [weak self] observer in
+            self?.coordinatorDelegate?.goToLoginScreen() {
+                observer.onNext(())
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
         }
     }
     
-    func showQuickRecommendation() {
-        dishService.generateNewQuickRandomDishSuggestion()
-            .subscribe(
-                onNext: { [weak self] dishId in
-                    self?.coordinatorDelegate?.goToDishScreen(dishId: dishId)
-                }, onError: { [weak self] error in
-                    self?.errorSubject.onNext(error)
-            }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
+    func showQuickRecommendation(forDishId dishId: Int) {
+        coordinatorDelegate?.goToDishScreen(dishId: dishId)
     }
     
     func showRegularRecommendation() {

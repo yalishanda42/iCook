@@ -67,7 +67,7 @@ class DishViewModel: SceneViewModel {
                 }, onError: { [weak self] error in
                     guard let self = self else { return }
                     AppDelegate.logger.notice("Unable to fetch dish with id \(self.dishId): \(error.localizedDescription)")
-                    self.errorSubject.onNext(error)
+                    self._errorRelay.accept(error)
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }

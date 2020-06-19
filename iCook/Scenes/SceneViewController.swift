@@ -29,7 +29,7 @@ class SceneViewController<VM: SceneViewModel>: UIViewController {
     
     /// Called as the second part of viewDidLoad. Setup the bindings with the ViewModel here. Always call super.
     func setupBindings() {
-        viewModel.errorReceived.drive(onNext: { [unowned self] title, message in
+        viewModel.errorReceived.emit(onNext: { [unowned self] title, message in
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)

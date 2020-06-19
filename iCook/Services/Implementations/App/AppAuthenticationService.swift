@@ -8,14 +8,14 @@
 
 import UIKit
 import RxSwift
+import RxRelay
 import CoreData
 
 class AppAuthenticationService: AuthenticationService {
         
     let isAuthenticated: Observable<Bool>
     
-    private let isAuthenticatedSubject = BehaviorSubject(value: false)
-    private let bearerToken = BehaviorSubject<APIService.BearerToken?>(value: nil)
+    private let bearerToken = BehaviorRelay<APIService.BearerToken?>(value: nil)
     
     private let apiService: APIService
         
@@ -25,12 +25,10 @@ class AppAuthenticationService: AuthenticationService {
     
     init(apiService: APIService) {
         self.apiService = apiService
-        self.isAuthenticated = isAuthenticatedSubject.asObservable()
-        
-        bearerToken.map { $0 != nil }.subscribe(isAuthenticatedSubject).disposed(by: disposeBag)
+        self.isAuthenticated = bearerToken.map { $0 != nil }.asObservable()
         
         if let savedToken = retrieveToken() {
-            bearerToken.onNext(savedToken)
+            bearerToken.accept(savedToken)
         }
         
         bearerToken.subscribe(onNext: persistToken).disposed(by: disposeBag)
@@ -38,13 +36,12 @@ class AppAuthenticationService: AuthenticationService {
     
     func login(email: String, password: String) -> Observable<Void> {
         let result = apiService.login(email: email, password: password)
-        result.subscribe(onNext: { [weak self] token in
-                    self?.bearerToken.onNext(token)
-                }, onError: { [weak self] error in
-                    self?.bearerToken.onNext(nil)
-                }, onCompleted: nil, onDisposed: nil
+        result.subscribe(onNext: bearerToken.accept,
+                         onError: { [weak self] error in
+                            self?.bearerToken.accept(nil)
+                        }
             ).disposed(by: disposeBag)
-        return result.map { _ in () }
+        return result.map { _ in }
     }
     
     func register(
@@ -58,7 +55,7 @@ class AppAuthenticationService: AuthenticationService {
     }
     
     func validateToken() -> Observable<UserData> {
-        guard let token = try? bearerToken.value() else {
+        guard let token = bearerToken.value else {
             return Observable.error(AuthenticationError.unauthorizedOperation)
         }
         
@@ -66,12 +63,12 @@ class AppAuthenticationService: AuthenticationService {
     }
     
     func logout() -> Observable<Void> {
-        bearerToken.onNext(nil)
+        bearerToken.accept(nil)
         return Observable.just(())
     }
     
     func quickRecommendation() -> Observable<Int> {
-        guard let token = try? bearerToken.value() else {
+        guard let token = bearerToken.value else {
             return Observable.error(AuthenticationError.unauthorizedOperation)
         }
         
@@ -79,7 +76,7 @@ class AppAuthenticationService: AuthenticationService {
     }
     
     func createRecipe(dishId: Int, steps: String) -> Observable<Void> {
-        guard let  token = try? bearerToken.value() else {
+        guard let  token = bearerToken.value else {
             return Observable.error(AuthenticationError.unauthorizedOperation)
         }
         

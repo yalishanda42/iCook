@@ -137,7 +137,7 @@ private extension RecipeViewModel {
                 }, onError: { [weak self] error in
                     guard let self = self else { return }
                     AppDelegate.logger.notice("Unable to fetch recipe with id \(id): \(error.localizedDescription)")
-                    self.errorSubject.onNext(error)
+                    self._errorRelay.accept(error)
                 }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
         default:
@@ -153,7 +153,7 @@ private extension RecipeViewModel {
                 .subscribe(onNext: goBack, onError: { [weak self] error in
                     guard let self = self else { return }
                     AppDelegate.logger.notice("Unable submit new recipe for dish with id \(id): \(error.localizedDescription)")
-                    self.errorSubject.onNext(error)
+                    self._errorRelay.accept(error)
                 }).disposed(by: disposeBag)
         default:
             AppDelegate.logger.error("Should not be able to submit new message while not in 'create' mode!")
