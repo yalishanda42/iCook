@@ -51,9 +51,10 @@ class DishViewController: SceneViewController<DishViewModel> {
             .drive(addRecipeButton.rx.isHidden)
             .disposed(by: disposeBag)
                 
-        output.dishImageUrl.drive (onNext: { [weak self] url in
-            self?.imageView.imageDownloaded(from: url)
-        }).disposed(by: disposeBag)
+        output.dishImageUrl
+            .flatMapLatest(UIImage.imageDownloaded(from:))
+            .drive(imageView.rx.image)
+            .disposed(by: disposeBag)
         
         output.recipesViewModels.drive(recipesTableView.rx.items(
             cellIdentifier: recipeCellReuseId,

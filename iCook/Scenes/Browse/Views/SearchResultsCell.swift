@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SearchResultsCell: UITableViewCell {
     
@@ -15,6 +16,17 @@ class SearchResultsCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
     
+    // MARK: - Properties
+    
+    private var disposeBag = DisposeBag()
+    
+    // MARK: - Lifecycle
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     // MARK: - ViewModel
     
     private var viewModel: DishOverviewViewModel?
@@ -22,7 +34,12 @@ class SearchResultsCell: UITableViewCell {
     func configure(with viewModel: DishOverviewViewModel) {
         titleLabel.text = viewModel.titleText
         subtitleLabel.text = viewModel.subtitleText
-        leadingImageView.imageDownloaded(from: viewModel.imageUrl)
+        
+        UIImage
+            .imageDownloaded(from: viewModel.imageUrl)
+            .drive(leadingImageView.rx.image)
+            .disposed(by: disposeBag)
+        
         self.viewModel = viewModel
     }
 }
