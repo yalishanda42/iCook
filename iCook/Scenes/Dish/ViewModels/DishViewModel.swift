@@ -24,30 +24,9 @@ class DishViewModel: SceneViewModel {
     
     // MARK: - Properties
     
-    private var dishName: Driver<String> {
-        dish.map { $0.name }.asDriver(onErrorJustReturn: "")
-    }
-    
-    private var dishImageUrl: Driver<String> {
-        dish.map { $0.imageUrl }.asDriver(onErrorJustReturn: "")
-    }
-    
-    private var dishRecipeViewModels: Driver<[RecipeOverviewViewModel]> {
-        dish.map { dish in
-                dish.recipeOverviews
-                    .map(RecipeOverviewViewModel.init)
-                    .sorted { recipe1, recipe2 in recipe1.rating > recipe2.rating  }
-            }.asDriver(onErrorJustReturn: [])
-    }
-    
-    private var isNotAuthenticated: Driver<Bool> {
-        authenticationService.isAuthenticated.map(!).asDriver(onErrorJustReturn: true)
-    }
-    
     private let dishService: DishService
     private let authenticationService: AuthenticationService
     private let dishId: Int
-    private let dish: Observable<Dish>
     
     // MARK: - Initialization
     
@@ -55,21 +34,6 @@ class DishViewModel: SceneViewModel {
         self.dishId = dishId
         self.dishService = dishService
         self.authenticationService = authenticationService
-        self.dish = self.dishService.fetchDishInfo(for: self.dishId)
-    }
-    
-    // MARK: - Loading
-    
-    func load() {
-        dish.subscribe(
-                onNext: { dish in
-                    AppDelegate.logger.trace("Fetched dish: \(dish)")
-                }, onError: { [weak self] error in
-                    guard let self = self else { return }
-                    AppDelegate.logger.notice("Unable to fetch dish with id \(self.dishId): \(error.localizedDescription)")
-                    self._errorRelay.accept(error)
-                }, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
     }
 }
 
@@ -77,6 +41,7 @@ class DishViewModel: SceneViewModel {
 
 extension DishViewModel: IOTransformable {
     struct Input {
+        let viewDidAppear: Observable<Void>
         let takeawayButtonTap: Observable<Void>
         let addRecipeButtonTap: Observable<Void>
         let doneButtonTap: Observable<Void>
@@ -91,6 +56,24 @@ extension DishViewModel: IOTransformable {
     }
     
     func transform(_ input: Input) -> Output {
+        let dish = input.viewDidAppear
+            .flatMapLatest { [weak self] _ -> Observable<Dish> in
+                guard let self = self else { return .empty() }
+                return self.dishService
+                    .fetchDishInfo(for: self.dishId)
+                    .catchErrorPublishAndReturnEmpty(toRelay: self._errorRelay)
+            }.asDriverIgnoringError()
+        
+        let dishName = dish.map { $0.name }
+        let dishImageUrl = dish.map { $0.imageUrl }
+        let dishRecipeViewModels = dish.map { dish in
+            dish.recipeOverviews
+                .map(RecipeOverviewViewModel.init)
+                .sorted { $0.rating > $1.rating  }
+        }
+        
+        let isNotAuthenticated = authenticationService.isAuthenticated.map(!).asDriverIgnoringError()
+        
         input.takeawayButtonTap.subscribe(onNext: orderTakeaway).disposed(by: disposeBag)
         input.addRecipeButtonTap.subscribe(onNext: addRecipe).disposed(by: disposeBag)
         input.doneButtonTap.subscribe(onNext: goBack).disposed(by: disposeBag)

@@ -43,7 +43,6 @@ class DishCoordinator: Coordinator {
     func start() {
         navControllerWrapper.setViewControllers([dishViewController], animated: false)
         viewController.present(navControllerWrapper, animated: true, completion: nil)
-        dishViewModel.load()
     }
     
     func finish() {

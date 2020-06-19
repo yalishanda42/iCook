@@ -36,6 +36,7 @@ class DishViewController: SceneViewController<DishViewModel> {
         super.setupBindings()
         
         let output = viewModel.transform(DishViewModel.Input(
+            viewDidAppear: rx.viewDidAppear.map { _ in }.asObservable(),
             takeawayButtonTap: takeawayButton.button.rx.tap.asObservable(),
             addRecipeButtonTap: addRecipeButton.button.rx.tap.asObservable(),
             doneButtonTap: doneButton.rx.tap.asObservable(),
