@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DhC-GI-LGB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DhC-GI-LGB">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,7 +54,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDz-SJ-s7y" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="64"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="rvB-yd-fQs"/>
                                         </constraints>
@@ -68,7 +70,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-AY-5em" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="112" width="311" height="64"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Чудиш се какво да хапваш?"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
@@ -81,7 +83,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dec-tb-vjg" customClass="KawaiiButton" customModule="iCook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="224" width="311" height="64"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Потърси ястия и рецепти."/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColorNormal">
@@ -99,7 +101,8 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Guv-WN-tB5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Guv-WN-tB5" firstAttribute="trailing" secondItem="NDX-nP-IAf" secondAttribute="trailing" constant="32" id="1py-sd-hE3"/>
                             <constraint firstItem="fcX-Wc-5pI" firstAttribute="centerX" secondItem="AD1-rL-1eb" secondAttribute="centerX" id="3Ny-0I-igv"/>
@@ -110,12 +113,12 @@
                             <constraint firstItem="L15-9d-GXo" firstAttribute="top" secondItem="fcX-Wc-5pI" secondAttribute="bottom" constant="15" id="jHZ-3x-x28"/>
                             <constraint firstItem="NDX-nP-IAf" firstAttribute="leading" secondItem="Guv-WN-tB5" secondAttribute="leading" constant="32" id="v5n-4a-403"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Guv-WN-tB5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="k6g-Wl-8Tc"/>
                     <navigationItem key="navigationItem" title="Начало" id="oCn-b1-Srz"/>
                     <connections>
                         <outlet property="contributionButton" destination="Dec-tb-vjg" id="3Qk-7U-Io9"/>
+                        <outlet property="greetingLabel" destination="L15-9d-GXo" id="Ti8-6a-wyE"/>
                         <outlet property="quickButton" destination="PDz-SJ-s7y" id="GKq-0T-4nL"/>
                         <outlet property="suggestionButton" destination="wdw-AY-5em" id="VgX-G0-lSq"/>
                     </connections>
@@ -136,5 +139,8 @@
         <namedColor name="deep-purple">
             <color red="0.41568627450980394" green="0.38823529411764707" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

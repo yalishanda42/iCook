@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol DashboardViewModelCoordinatorDelegate: AnyObject {
     func goToLoginScreen(onSuccessfulLogin: @escaping () -> Void)
@@ -38,7 +39,11 @@ extension DashboardViewModel: IOTransformable {
         let rateRecipesButtonTap: Observable<Void>
     }
     
-    func transform(_ input: Input) -> Void {
+    struct Output {
+        let greetingLabelText: Driver<String>
+    }
+    
+    func transform(_ input: Input) -> Output {
         let quickRecommendationLoggedIn = input.quickRecommendationButtonTap
             .withLatestFrom(authenticationService.isAuthenticated)
             .filter { $0 == true }
@@ -66,6 +71,8 @@ extension DashboardViewModel: IOTransformable {
         input.rateRecipesButtonTap
             .subscribe(onNext: rateRecipes)
             .disposed(by: disposeBag)
+        
+        return Output(greetingLabelText: Driver.just("Добро утро!")) // TODO: adjust
     }
 }
 
