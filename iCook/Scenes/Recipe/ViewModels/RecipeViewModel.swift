@@ -26,7 +26,7 @@ class RecipeViewModel: SceneViewModel {
     // MARK: - Properties
     
     private let mode: Mode
-    private let recipe: Observable<Recipe?>
+    private let recipe = BehaviorRelay<Recipe?>(value: nil)
     private let recipeService: RecipeService
     
     private var recipeText: Driver<String> {
@@ -68,14 +68,6 @@ class RecipeViewModel: SceneViewModel {
     init(withMode mode: Mode, recipeService: RecipeService) {
         self.mode = mode
         self.recipeService = recipeService
-        
-        switch mode {
-        case .view(recipeId: let id):
-            self.recipe = recipeService.fetchRecipeInfo(for: id).map { $0 }
-        default:
-            self.recipe = Observable.just(nil)
-        }
-        
         super.init()
     }
 }
@@ -104,8 +96,9 @@ extension RecipeViewModel: IOTransformable {
         input.viewDidAppear
             .flatMapLatest(load)
             .subscribe(
-                onNext: { recipe in
+                onNext: { [weak self] recipe in
                     AppDelegate.logger.trace("New recipe: \(String(describing: recipe))")
+                    self?.recipe.accept(recipe)
                 })
             .disposed(by: disposeBag)
 
@@ -136,7 +129,9 @@ private extension RecipeViewModel {
     func load() -> Observable<Recipe?> {
         switch mode {
         case .view(let id):
-            return recipe
+            return recipeService
+                .fetchRecipeInfo(for: id) // -> Observable<Recipe>
+                .map { $0 }              // -> Observable<Recipe?>
                 .catchError { [weak self] error in
                     guard let self = self else { return .empty() }
                     AppDelegate.logger.notice("Unable to fetch recipe with id \(id): \(error.localizedDescription)")
