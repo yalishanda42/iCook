@@ -102,12 +102,17 @@ extension RecipeViewModel: IOTransformable {
     
     func transform(_ input: Input) -> Output {
         input.viewDidAppear
-            .subscribe(onNext: load)
+            .flatMapLatest(load)
+            .subscribe(
+                onNext: { recipe in
+                    AppDelegate.logger.trace("New recipe: \(String(describing: recipe))")
+                })
             .disposed(by: disposeBag)
 
         input.doneButtonTapped
             .withLatestFrom(input.stepsText)
-            .subscribe(onNext: submitNewRecipe)
+            .flatMapLatest(submitNewRecipe)
+            .subscribe(onNext: goBack)
             .disposed(by: disposeBag)
         
         return Output(
@@ -128,35 +133,37 @@ extension RecipeViewModel: IOTransformable {
 // MARK: - Helpers
 
 private extension RecipeViewModel {
-    func load() {
+    func load() -> Observable<Recipe?> {
         switch mode {
-        case .view(recipeId: let id):
-            recipe.subscribe(
-                onNext: { recipe in
-                    AppDelegate.logger.trace("New recipe: \(String(describing: recipe))")
-                }, onError: { [weak self] error in
-                    guard let self = self else { return }
+        case .view(let id):
+            return recipe
+                .catchError { [weak self] error in
+                    guard let self = self else { return .empty() }
                     AppDelegate.logger.notice("Unable to fetch recipe with id \(id): \(error.localizedDescription)")
                     self._errorRelay.accept(error)
-                }, onCompleted: nil, onDisposed: nil)
-            .disposed(by: disposeBag)
+                    return .empty()
+                }
         default:
-            break
+            return .empty()
         }
     }
     
-    func submitNewRecipe(_ stepsText: String) {
+    func submitNewRecipe(_ stepsText: String) -> Observable<Void> {
         switch mode {
         case .create(dishId: let id):
-            recipeService
+            return recipeService
                 .submitNewRecipe(for: id, withStepsText: stepsText)
-                .subscribe(onNext: goBack, onError: { [weak self] error in
-                    guard let self = self else { return }
-                    AppDelegate.logger.notice("Unable submit new recipe for dish with id \(id): \(error.localizedDescription)")
-                    self._errorRelay.accept(error)
-                }).disposed(by: disposeBag)
+                .catchError {
+                    [weak self] error in
+                    guard let self = self else { return .empty() }
+                        AppDelegate.logger.notice("Unable to submit new recipe for dish with id \(id): \(error.localizedDescription)")
+                        self._errorRelay.accept(error)
+                    return .empty()
+                }
+                
         default:
             AppDelegate.logger.error("Should not be able to submit new message while not in 'create' mode!")
+            return .empty()
         }
     }
     
